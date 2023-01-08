@@ -1,0 +1,372 @@
+﻿@model Project_IT.Models.Reservation
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+    #vazhno {
+        display: none;
+    }
+
+    #forma {
+        background-image: url("../../Content/24.jpg");
+        background-position-x: 540px;
+        background-position-y: 110px;
+        background-repeat: no-repeat;
+        background-size: 336px 252px;
+        padding-bottom: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        color: darkslategrey;
+        text-shadow: 0.2px 0.2px black;
+        font-size: 20px;
+    }
+
+    #preCena, #cenovnik {
+        font-weight: bold;
+        width: 135px;
+    }
+
+    #rezerv {
+        font-weight: bold;
+        font-size: 20px;
+        color: green
+    }
+
+    #faktura {
+        color: blueviolet;
+        font-size: 20px;
+    }
+
+    #txtVreme {
+        display: none;
+    }
+
+    #preCena {
+    }
+</style>
+
+
+<h2>Резервирај</h2>
+
+
+@using (Html.BeginForm())
+{
+    <div id="forma">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h3 style="color: blueviolet; font-weight: bold ">Бунгалов</h3>
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.EditorFor(model => model.VremeRezervacija, new { htmlAttributes = new { @id = "txtVreme" } })
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Ime, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Ime, new { htmlAttributes = new { @class = "form-control", @id = "txtIme" } })
+                    @Html.ValidationMessageFor(model => model.Ime, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Prezime, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Prezime, new { htmlAttributes = new { @class = "form-control", @id = "txtPrezime" } })
+                    @Html.ValidationMessageFor(model => model.Prezime, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @id = "txtEmail" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Telefon, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "form-control", @id = "txtTelefon" } })
+                    @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Lica, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Lica, new { htmlAttributes = new { @class = "form-control", @id = "txtLica" } })
+                    @Html.ValidationMessageFor(model => model.Lica, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DataNaPristignuvanje, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DataNaPristignuvanje, new { htmlAttributes = new { @class = "form-control", @id = "txtDateP" } })
+                    @Html.ValidationMessageFor(model => model.DataNaPristignuvanje, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DataNaZaminuvanje, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DataNaZaminuvanje, new { htmlAttributes = new { @class = "form-control", @id = "txtDateZ" } })
+                    @Html.ValidationMessageFor(model => model.DataNaZaminuvanje, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Denovi, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Denovi, new { htmlAttributes = new { @class = "form-control", @readonly = true, @id = "txtDenovi" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2"></label>
+                <div class="col-md-10">
+                    <button class="btn btn-default form-control" id="preCena" form="presmetajCena">Пресметај цена</button>
+                    <button class="btn btn-default form-control" id="cenovnik" form="presmetajCena">Ценовник</button>
+                    <br /><span id="cenaError" style="color:red"></span>
+                </div>
+            </div>
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Cena, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Cena, new { htmlAttributes = new { @class = "form-control", @readonly = true, @id = "txtCena" } })
+                    <!--@Html.ValidationMessageFor(model => model.Cena, "", new { @class = "text-danger" })-->
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+
+                    <br /> <br />
+                    <input id="rezerv" type="submit" value="Резервирај" class="btn btn-default" />
+
+                    <p id="vazhno" style="color:indianred">Важно: мора да се пресмета цена пред да се резервира!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<br />
+<div>
+
+    @Html.ActionLink("Назад до Почетна", "Index", "Home", null, new { @class = "btn btn-default" })
+
+
+</div>
+
+<div id="modal_div">
+    <img src="../../Content/cenovnik.jpg" width="488" height="695" />
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+
+    $(document).ready(function () {
+        const $jq = $.noConflict();
+
+        $("#modal_div").dialog({
+            autoOpen: false,
+            modal: false,
+            buttons: {
+                Затвори: function () {
+                    $("#modal_div").dialog("close")
+                }
+            }
+        })
+        $("#cenovnik").click(function () {
+            $("#modal_div").dialog("open")
+            $(".ui-dialog").css("width", "550px")
+            $(".ui-dialog").css("margin-left", "250px")
+        })
+
+        $("#txtIme").change(function () {
+            document.getElementById("txtCena").value = "";
+            myfunc();
+        })
+        $("#txtPrezime").change(function () {
+            document.getElementById("txtCena").value = "";
+            myfunc();
+        })
+        $("#txtEmail").change(function () {
+            document.getElementById("txtCena").value = "";
+            myfunc();
+        })
+        $("#txtTelefon").change(function () {
+            document.getElementById("txtCena").value = "";
+            myfunc();
+        })
+        $("#txtLica").change(function () {
+            document.getElementById("txtCena").value = "";
+            myfunc();
+        })
+        $("#txtCena").change(function () {
+            myfunc();
+        })
+
+
+        $("#preCena").click(function () {
+
+            var ime = document.getElementById("txtIme")
+            var prezime = document.getElementById("txtPrezime")
+            var email = document.getElementById("txtEmail")
+            var telefon = document.getElementById("txtTelefon")
+            var lica = document.getElementById("txtLica")
+            var dataP = document.getElementById("txtDateP")
+            var dataZ = document.getElementById("txtDateZ")
+            var denovi = document.getElementById("txtDenovi")
+
+            if (email.value == "" || telefon.value == "" || ime.value == "" || prezime.value == "" || lica.value == "" || dataP.value == "" || dataZ.value == "" || denovi.value == "") {
+                document.getElementById("cenaError").innerHTML = "Ве молиме внесете ги сите полиња";
+                document.getElementById("txtCena").value = "";
+                return;
+            }
+            /*
+            else if (lica.value >= "4") {
+                document.getElementById("cenaError").innerHTML = "";
+                document.getElementById("txtCena").value = "";
+                return
+            }
+            */
+            else
+                document.getElementById("cenaError").innerHTML = "";
+
+
+            var vkCena = 0;
+            var denoviInt = parseInt(denovi.value)
+            console.log(denovi, denoviInt)
+            if (denoviInt < 3)
+                vkCena = denoviInt * 1480;
+            if (denoviInt >= 3 && denoviInt <= 8)
+                vkCena = denoviInt * 1280;
+            if (denoviInt >= 9 && denoviInt <= 15)
+                vkCena = denoviInt * 1180;
+            if (denoviInt >= 15 && denoviInt <= 20)
+                vkCena = denoviInt * 1090;
+            if (denoviInt >= 21)
+                vkCena = denoviInt * 980;
+
+            var tur_tax = 0;
+            var licaInt = parseInt(lica.value)
+            tur_tax = licaInt * denoviInt * 40
+            vkCena += tur_tax;
+
+            document.getElementById("txtCena").value = vkCena;
+        })
+
+        $("#txtDateP").datepicker({
+            dateFormat: "dd.mm.yy",
+            changemonth: true,
+            changeyear: true,
+            firstDay: 1,
+            dayNamesMin: ["Не", "По", "Вт", "Ср", "Че", "Пе", "Са"],
+            monthNames: ["Јануари", "Февруари", "Март", "Април", "Мај", "Јуни", "Јули",
+                "Август", "Септември", "Октомври", "Ноември", "Декември"],
+            minDate: +1
+        });
+        $("#txtDateP").removeAttr("data-val-date");
+
+        $("#txtDateZ").datepicker({
+            dateFormat: "dd.mm.yy",
+            changemonth: true,
+            changeyear: true,
+            firstDay: 1,
+            dayNamesMin: ["Не", "По", "Вт", "Ср", "Че", "Пе", "Са"],
+            monthNames: ["Јануари", "Февруари", "Март", "Април", "Мај", "Јуни", "Јули",
+                "Август", "Септември", "Октомври", "Ноември", "Декември"],
+            minDate: +1
+        })
+        $("#txtDateZ").removeAttr("data-val-date");
+
+        $("#txtDateP").change(function () {
+            myfunc();
+            document.getElementById("txtCena").value = "";
+            document.getElementById("txtDateZ").value = "";
+            document.getElementById("txtDenovi").value = "";
+
+            var time_value = document.getElementById("txtDateP").value
+            var values = time_value.split(".");
+            values[0]++;
+            if (values[0] >= 30) {
+                values[0] = "1";
+                values[1]++;
+                if (values[1] > 12) {
+                    values[1] = 1;
+                    values[2]++;
+                }
+                console.log(values[1])
+            }
+            var parsed_date = new Date(values[2], values[1] - 1, values[0]);
+            console.log(values[2], values[1], values[0]);
+            //            godina     mesec       den
+            $("#txtDateZ").datepicker('option', 'minDate', parsed_date)
+
+
+
+        })
+        document.getElementById("txtDateP").setAttribute('autocomplete', 'off');
+        document.getElementById("txtDateZ").setAttribute('autocomplete', 'off');
+
+        $("#txtDateZ").change(function () {
+            myfunc();
+            document.getElementById("txtDenovi").value = "";
+            document.getElementById("txtCena").value = "";
+            //Да се земат двете дати и да се пресметаат денови
+            if (document.getElementById("txtDateP") != "") {
+                var time_value2 = document.getElementById("txtDateP").value
+                var valuesP = time_value2.split(".");
+                var dataPristignuva = new Date(valuesP[2], valuesP[1] - 1, valuesP[0]);
+
+                var time_value3 = document.getElementById("txtDateZ").value
+                var valuesZ = time_value3.split(".");
+                var dataZaminuva = new Date(valuesZ[2], valuesZ[1] - 1, valuesZ[0]);
+                console.log("Data Pristignat: ", dataPristignuva)
+                console.log("Data Zaminuva: ", dataZaminuva)
+                let difference = dataZaminuva.getTime() - dataPristignuva.getTime();
+                console.log(difference);
+                let totalDays = Math.ceil(difference / (1000 * 3600 * 24));
+                console.log(totalDays)
+                document.getElementById("txtDenovi").value = totalDays;
+            }
+        })
+
+        $("#txtVreme").datepicker({
+            dateFormat: "dd.mm.yy"
+        });
+        $("#txtVreme").datepicker('setDate', 'today');
+
+        function myfunc() {
+            if (document.getElementById("txtCena").value == "") {
+                var el = document.getElementById("vazhno");
+                el.style.display = "block";
+            }
+            else {
+                var el = document.getElementById("vazhno");
+                el.style.display = "none";
+            }
+        }
+
+    })
+</script>

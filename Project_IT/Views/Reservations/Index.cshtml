@@ -1,0 +1,152 @@
+﻿@model IEnumerable<Project_IT.Models.Reservation>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+@{
+    ViewBag.Title = "Резервации";
+    int vkupno = 0;
+}
+<style>
+    .dataTables_empty {
+        text-align: center;
+        color: #da2a2a;
+        font-weight: bold;
+    }
+    .sorting:nth-child(13)::after {
+        visibility: hidden;
+    }
+    .sorting_asc:nth-child(13)::after {
+        visibility: hidden;
+    }
+    .sorting_desc:nth-child(13)::after {
+        visibility: hidden;
+    }
+    .sorting:nth-child(12)::after {
+        visibility: hidden;
+    }
+
+    .sorting_asc:nth-child(12)::after {
+        visibility: hidden;
+    }
+
+    .sorting_desc:nth-child(12)::after {
+        visibility: hidden;
+    }
+</style>
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Нова резервација", "Create")
+</p>
+<table id="tabela" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefon)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.VremeRezervacija)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.DataNaPristignuvanje)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.DataNaZaminuvanje)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Denovi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cena)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefon)
+                </td>
+
+                <td>
+                    @{ var vre = item.VremeRezervacija.ToString("dd.MM.yyyy"); }
+                    @Html.DisplayFor(modelItem => vre)
+                </td>
+                <td>
+                    @{ var pri = item.DataNaPristignuvanje.ToString("dd.MM.yyyy"); }
+                    @Html.DisplayFor(modelItem => pri)
+                </td>
+                <td>
+                    @{ var zam = item.DataNaZaminuvanje.ToString("dd.MM.yyyy"); }
+                    @Html.DisplayFor(modelItem => zam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Denovi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lica)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cena)
+                    @{
+                        vkupno += item.Cena;
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Измени", "Edit", new { id = item.Id }) <br />
+                    @Html.ActionLink("Детали", "Details", new { id = item.Id }) <br />
+                    @Html.ActionLink("Избриши", "Delete", new { id = item.Id })
+                </td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<hr />
+<div id="vkupnoPromet" style="float:right; font-weight:bold; font-size:19px">
+    Вкупно промет: @vkupno
+</div>
+<br />
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var table = $('#tabela').DataTable();
+        })
+    </script>
+    }

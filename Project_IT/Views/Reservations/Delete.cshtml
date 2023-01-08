@@ -1,0 +1,118 @@
+﻿@model Project_IT.Models.Reservation
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<style>
+    .ld {
+        width: 200px;
+        display: inline-block;
+        text-align: right;
+        font-weight: bold
+    }
+
+    .ldd {
+        width: 200px;
+        display: inline-block;
+    }
+
+    .lddd {
+        text-align: right;
+        display: inline-block;
+    }
+
+    #txtInfo {
+        width: 500px;
+        max-width: 500px;
+        height: 200px;
+    }
+</style>
+
+<h2>Избриши резервација?</h2>
+
+<div>
+    <hr />
+
+    <div id="detalenPogled">
+        <span class="ld">
+            Име:
+        </span>
+        <span class="rd">
+            @Model.Ime @Model.Prezime
+        </span> <br />
+
+        <span class="ld">
+            E-mail адреса:
+        </span>
+        <span class="rd">
+            @Model.Email
+        </span> <br />
+
+        <span class="ld">
+            Телефон:
+        </span>
+        <span class="rd">
+            @Model.Telefon
+        </span><br />
+
+        <span class="ld">
+            Лица:
+        </span>
+        <span class="rd" id="lica2">
+            @Model.Lica
+        </span>
+        <br />
+
+        <span class="ld">
+            Дата на пристигнување:
+        </span>
+        <span class="rd">
+            @Model.DataNaPristignuvanje.ToString("dd.MM.yyyy")
+        </span><br />
+
+        <span class="ld">
+            Дата на заминување:
+        </span>
+        <span class="rd">
+            @Model.DataNaZaminuvanje.ToString("dd.MM.yyyy")
+        </span>
+        <br />
+
+        <span class="ld">
+            Ноќевања:
+        </span>
+        <span class="rd">
+            @Model.Denovi
+        </span>
+        <br />
+        <span class="ld">
+            Цена:
+        </span>
+        <span class="rd">
+            @Model.Cena
+        </span>
+        <br />
+
+        <br />
+
+
+ 
+        <span style="font-weight: bold">Забелешка: </span><br />
+        <textarea id="txtInfo" readonly="readonly" style="width:550px;height:250px;">@Model.Info</textarea>
+
+    </div>
+
+
+
+   
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input style="color:red; font-weight:bold" type="submit" value="Избриши" class="btn btn-default" /> |
+            @Html.ActionLink("Сите резервации", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автокамп Отешево</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+<style>
+    #logoNav {
+        float: left;
+        margin-top: 4px;
+        width: 48px;
+    }
+    center {
+        display: none;
+    }
+    </style>
+
+    <script>
+        function funk1(){
+            document.getElementById("homeKopce").style.color = "white";
+        }
+        function funk2() {
+            document.getElementById("homeKopce").style.color = "#9d9d9d";
+        }
+    </script>
+</head>
+
+<body style="display:flex">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href='@Url.Action("Index", "Home")'><img id="logoNav" onmouseout="funk2()" onmouseover="funk1()" src="~/Content/Avtokamp_Logo_Transparent.png" /></a>
+                @Html.ActionLink("Автокамп Отешево", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @id = "homeKopce", @onmouseover = "funk1()", @onmouseout = "funk2()" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    <!-- <li>@Html.ActionLink("Home", "Index", "Home")</li> -->
+                    <li>@Html.ActionLink("Резервирај", "Create", "Reservations")</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Резервации", "Index", "Reservations")</li>
+                    }
+
+                    <li>@Html.ActionLink("За нас", "About", "Home")</li>
+                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - ТД „Европа 2002“ ДОО - Отешево, Ресен</p>
+            <p>&copy; Made by: <a href="https://github.com/stojchevskiboris">Boris Stojchevski</a></p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

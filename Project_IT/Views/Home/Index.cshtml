@@ -1,0 +1,147 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="jumbotron" id="jmbtrn">
+    <h1 style="font-weight:bold">Преспанско Езеро</h1>
+    <p style="color: #f1c9ff; text-shadow: 0.5px 0px black; font-size: 23px">
+        Се наоѓа во југозападниот дел од Земјата, со површина од 276.4 km<sup>2</sup>.<br />
+        Бистра езерска вода, долги песочни плажи, присуство на многу сончеви денови, а свежи ноќи, еколошки чиста средина, планини со бујна вегетација и изградени туристички капацитети - се одлики на убавата Преспа.
+    </p>
+
+    <p><a href="https://mk.wikipedia.org/wiki/%D0%9F%D1%80%D0%B5%D1%81%D0%BF%D0%B0%D0%BD%D1%81%D0%BA%D0%BE_%D0%95%D0%B7%D0%B5%D1%80%D0%BE" class="btn btn-primary btn-m">Дознај повеќе за<br /> преспанското езеро &raquo;</a></p>
+</div>
+
+<div class="row">
+    <h1>Автокамп Отешево</h1>
+    <div>
+        <h4>
+            Автокампот располага со бунгалови и плацови за камп-приколки и шатори.
+        </h4>
+
+
+        <div class="container" style="text-align: -webkit-center;">
+            <div id="myCarousel" style="width:727px" class="carousel slide" data-ride="carousel" data-interval="2000" data-pause="hover">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                    <li data-target="#myCarousel" data-slide-to="4"></li>
+                </ol>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <div class="carousel-content">
+                            <div style="margin: 0 auto">
+                                <p>
+                                    <img alt="The 1st Photo." src="../../Content/24.jpg"
+                                         style="width: 576px; height: 432px " />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="carousel-content">
+                            <div style="margin: 0 auto">
+                                <p>
+                                    <img alt="The 2nd Photo." src="../../Content/1.jpg"
+                                         style="width: 576px; height: 432px " />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="carousel-content">
+                            <div style="margin: 0 auto">
+                                <p>
+                                    <img alt="The 3rd Photo." src="../../Content/11.jpg"
+                                         style="width: 576px; height: 432px " />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="carousel-content">
+                            <div style="margin: 0 auto">
+                                <p>
+                                    <img alt="The 4th Photo." src="../../Content/10.jpg"
+                                         style="width: 576px; height: 432px " />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="carousel-content">
+                            <div style="margin: 0 auto">
+                                <p>
+                                    <img alt="The 5th Photo." src="../../Content/18.jpg"
+                                         style="width: 576px; height: 432px " />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only"> Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style type="text/css">
+            .carousel-inner {
+                width: auto;
+                height: auto;
+                max-height: auto !important;
+            }
+
+            .carousel-content {
+                color: black;
+                display: flex;
+                text-align: center;
+            }
+        </style>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.carousel').carousel();
+            });
+        </script>
+
+        <div style=" text-align: -webkit-center;">
+            <span class="arrows">&raquo; </span>@Html.ActionLink("Резервирај Бунгалов", "Create", "Reservations", null, new { @class = "btn btn-primary btn-m", @style = "font-size:25px;" })<span class="arrows"> &laquo;</span>
+        </div>
+    </div>
+
+</div>
+
+<style type="text/css">
+
+
+    #jmbtrn {
+        background-image: url("../../Content/13.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        vertical-align: top;
+        color: #3749d6;
+    }
+
+        #jmbtrn h1 {
+            text-shadow: 1px -1px white;
+        }
+
+
+    .arrows {
+        color: blue;
+        font-size: 35px;
+    }
+</style>
