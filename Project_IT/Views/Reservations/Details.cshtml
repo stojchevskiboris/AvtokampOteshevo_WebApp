@@ -1,0 +1,170 @@
+﻿@model Project_IT.Models.Reservation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<style>
+    .ld {
+        width: 200px;
+        display: inline-block;
+        text-align: right;
+        font-weight: bold
+    }
+
+    .ldd {
+        width: 200px;
+        display: inline-block;
+    }
+
+    .lddd {
+        text-align: right;
+        display: inline-block;
+    }
+    #txtInfo {
+        width: 500px;
+        max-width: 500px;
+        height: 200px;
+    }
+</style>
+<h2>Детали за резервација</h2>
+
+<div>
+
+    <hr />
+    <div id="detalenPogled">
+
+        <span class="ld">
+            Резервирано на:
+        </span>
+        <span class="rd">
+            @Model.VremeRezervacija.ToString("dd.MM.yyyy")
+        </span><br />
+
+        <span class="ld">
+            Име:
+        </span>
+        <span class="rd">
+            @Model.Ime @Model.Prezime
+        </span> <br />
+
+        <span class="ld">
+            E-mail адреса:
+        </span>
+        <span class="rd">
+            @Model.Email
+        </span> <br />
+
+        <span class="ld">
+            Телефон:
+        </span>
+        <span class="rd">
+            @Model.Telefon
+        </span><br />
+
+        <span class="ld">
+            Лица:
+        </span>
+        <span class="rd" id="lica2">
+            @Model.Lica
+        </span>
+        <br />
+
+
+
+        <span class="ld">
+            Дата на пристигнување:
+        </span>
+        <span class="rd">
+            @Model.DataNaPristignuvanje.ToString("dd.MM.yyyy")
+        </span><br />
+
+        <span class="ld">
+            Дата на заминување:
+        </span>
+        <span class="rd">
+            @Model.DataNaZaminuvanje.ToString("dd.MM.yyyy")
+        </span>
+        <br />
+
+        <span class="ld">
+            Ноќевања:
+        </span>
+        <span class="rd">
+            @Model.Denovi
+        </span>
+        <br />
+
+
+        <br />
+        <span class="ld" style="font-size:19px">Сметка: </span><br />
+
+        <span class="ld">Ноќевања: </span>
+        <span class="ldd">@Model.Denovi ноќи х <span id="cenaNokj"></span>ден.  </span>
+        <span class="lddd" id="vknokj"></span> денари.<br />
+
+        <span class="ld">Туристичка такса: </span>
+        <span class="ldd">@Model.Lica лица х @Model.Denovi ноќи х  40ден.  </span>
+        <span class="lddd" id="tax"></span> денари. <br />
+
+
+
+
+        <span class="ld">Паркинг за автомобил: </span>
+        <span class="ldd"></span>
+        <span class="lddd">Гратис</span> <br />
+
+
+        <span class="ld">Вкупно:</span>
+        <span class="ldd"></span>
+        <span class="lddd"></span>
+        <span style="font-size:18px"> @Model.Cena денари </span><br />
+
+        <br /><br />
+        <span style="font-weight: bold">Забелешка: </span><br />
+        <textarea id="txtInfo" readonly="readonly" style="width:550px;height:250px;">@Model.Info</textarea>
+
+    </div>
+
+
+
+</div>
+<p>
+    @Html.ActionLink("Измени", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Сите резервации", "Index")
+</p>
+<script>
+    $(document).ready(function () {
+        document.getElementById("tax").innerHTML = @Model.Lica*@Model.Denovi* 40
+
+        var denoviInt = @Model.Denovi;
+        var vkCena = 0;
+        if (denoviInt < 3)
+            vkCena = 1480;
+        if (denoviInt >= 3 && denoviInt <= 8)
+            vkCena =  1280;
+        if (denoviInt >= 9 && denoviInt <= 15)
+            vkCena = 1180;
+        if (denoviInt >= 15 && denoviInt <= 20)
+            vkCena =  1090;
+        if (denoviInt >= 21)
+            vkCena = 980;
+
+        document.getElementById("cenaNokj").innerHTML = vkCena
+        document.getElementById("vknokj").innerHTML = denoviInt * vkCena
+
+        $("#kopce").click(function () {
+            var el = document.getElementById("smetka");
+            el.style.display = "block"
+        })
+    })
+
+</script>

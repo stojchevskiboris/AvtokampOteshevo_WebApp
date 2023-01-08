@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Контакт";
+}
+
+<style>
+    #mapa {
+        /* Napraj da se gleda desno od tekstot */
+        display: inline-block;
+        margin-top: 60px;
+        float: right;
+        border: 5px gray solid
+    }
+
+    #contactInfo {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .mapouter {
+        position: relative;
+        text-align: right;
+        height: 500px;
+        width: 550px;
+    }
+
+    .gmap_canvas {
+        overflow: hidden;
+        background: none !important;
+        height: 500px;
+        width: 550px;
+    }
+    /* SOCIAL ICONS - GENERAL */
+    .social li a img {
+        width: 55px;
+        margin-left: 10px
+    }
+
+    .social li {
+        list-style-type: none;
+        display: inline-block
+    }
+    #link1 {
+        cursor: default;
+        text-decoration: none;
+        color: black;
+    }
+    #logo2 {
+        width :250px;
+        vertical-align:top;
+        margin-left:17px;
+    }
+</style>
+
+
+
+<div id="contactInfo">
+    <br />
+    <h2>@ViewBag.Title</h2>
+    <address>
+        Туристичка населба Отешево бб.<br />
+        Ресен, 7310<br />
+        Република Северна Македонија<span id="addRole">@Html.ActionLink(".", "AddUserToRole", "Account", null, new { @id = "link1" })</span>
+
+    </address>
+    <address>
+        <strong><img src="~/Content/email.png" width="30px"/>Информации и резервации:</strong> <br />  <a style="margin-left:30px" href="mailto:avtokamp.otesevo@gmail.com">avtokamp.otesevo@gmail.com</a><br />
+        <strong><img src="~/Content/phone.png" width="30px" />Телефон:</strong> <a href="tel:+38970207259">070207259</a>
+        <br /><br />
+        <div>
+            <ul class="social">
+                <li class="instagram">
+                    <a href="https://www.instagram.com/autocampotesevo/"><img src="~/Content/insta_Logo.png" /></a>
+                </li>
+
+                <li class="facebook">
+                    <a href="https://www.facebook.com/autocampotesevo/"><img src="~/Content/fb_Logo.png" /></a>
+                </li>
+                <li class="website">
+                    <a href="https://avtokampotesevo.wixsite.com/otesevo"><img src="~/Content/website.png" /></a>
+                </li>
+            </ul>
+        </div>
+        <img src="~/Content/Avtokamp_Logo1.png" id="logo2" />
+
+
+    </address>
+</div>
+
+
+<div id="mapa">
+    <div class="mapouter">
+        <div class="gmap_canvas">
+            <iframe width="550" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=%D0%B0%D0%B2%D1%82%D0%BE%D0%BA%D0%B0%D0%BC%D0%BF%20%D0%BE%D1%82%D0%B5%D1%88%D0%B5%D0%B2%D0%BE&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/"></a><br>
+        </div>
+    </div>
+</div>
+
