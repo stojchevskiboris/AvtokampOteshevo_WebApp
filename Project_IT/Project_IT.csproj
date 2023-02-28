@@ -402,6 +402,7 @@
     <None Include="Properties\PublishProfiles\FTPProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\FTPProfile2.pubxml" />
     <None Include="Properties\PublishProfiles\FTPProfile3.pubxml" />
+    <None Include="Properties\PublishProfiles\FTPProfile4.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
