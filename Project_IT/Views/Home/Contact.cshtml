@@ -3,6 +3,9 @@
 }
 
 <style>
+    body{
+        background:white;
+    }
     #mapa {
         /* Napraj da se gleda desno od tekstot */
         display: inline-block;
@@ -49,6 +52,22 @@
         vertical-align:top;
         margin-left:17px;
     }
+
+    @@media only screen and (max-width: 600px) {
+        #mapa {
+            float: unset;
+            width: 20px;
+            border: 0px gray solid;
+            display:contents;
+        }
+        #gmap_canvas{
+            width:70%;
+        }
+        .mapouter {
+            text-align: left;
+        }
+    }
+
 </style>
 
 

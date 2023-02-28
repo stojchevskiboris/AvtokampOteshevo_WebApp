@@ -1,0 +1,189 @@
+﻿@model Project_IT.Models.Reservation
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<br />
+<h2>Испрати барање за резервација</h2> 
+<br />
+<div id="f1">
+    <div class="field">
+        <label class="control-label col-md-2">*Име и презиме</label>
+        <input class="form-control" id="ime" required="required" />
+    </div> <br />
+    <div class="field">
+        <label class="control-label col-md-2">*E-mail адреса</label>
+        <input class="form-control" id="email" required="required" />
+    </div><br />
+    <div class="field">
+        <label class="control-label col-md-2">*Телефон</label>
+        <input class="form-control" id="telefon" required="required" />
+    </div><br />
+    <div class="field">
+        <label class="control-label col-md-2">*Број на лица</label>
+        <input class="form-control" id="lica" type="number" min="1" max="10" required="required" />
+    </div><br />
+    <div class="field">
+        <label class="control-label col-md-2">Дата на пристигнување</label>
+        <input class="form-control" id="dataP" type="date" value="" />
+    </div><br />
+    <div class="field">
+        <label class="control-label col-md-2">Дата на заминување</label>
+        <input class="form-control" id="dataZ" type="date" value="" />
+    </div><br />
+    <div class="field">
+        <label class="control-label col-md-2">Дополнителни барања</label>
+        <textarea class="form-control" id="poraka" required="required"></textarea>
+    </div><br />
+
+    <p>Полињата означени со * се задолжителни</p>
+    <input type="submit" class="btn btn-primary" id="isprati" value="Испрати барање" />
+</div>
+
+<br />
+<form id="form">
+    <div class="field">
+        <label for="from_name">from_name</label>
+        <textarea type="text" name="from_name" id="from_name"></textarea>
+    </div>
+    <div class="field">
+        <label for="reply_to">reply_to</label>
+        <input type="text" name="reply_to" id="reply_to">
+    </div>
+    <div class="field">
+        <label for="message">message</label>
+        <textarea type="text" name="message" id="message"></textarea>
+    </div>
+
+    <input type="submit" id="button" value="Send Email">
+</form>
+
+<style>
+    .danger {
+        background: #ff00001f;
+    }
+    #poraka{
+        min-height:50px;
+        min-width:50px;
+        max-height:300px;
+    }
+    #form {
+        display:none
+    }
+</style>
+
+
+<script src="~/Content/email.min.js"></script>
+
+<script type="text/javascript">
+    emailjs.init('0YVQaG2ITtZEM__Mt')
+</script>
+
+<script>
+    const btn = document.getElementById('button');
+
+    document.getElementById('form')
+        .addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            btn.value = 'Sending...';
+
+            const serviceID = 'default_service';
+            const templateID = 'template_ufh4xh4';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    btn.value = 'Send Email';
+                    alert('Барањето е испратено!');
+                    document.getElementById("ime").value = "";
+                    document.getElementById("email").value = "";
+                    document.getElementById("telefon").value = "";
+                    document.getElementById("lica").value = "";
+                }, (err) => {
+                    btn.value = 'Send Email';
+                    alert(JSON.stringify(err));
+                });
+        });
+
+    $("#isprati").click(function () {
+        var e1 = $("#dataP").val()
+        var e2 = $("#dataZ").val()
+        if (e1 == "") e1 = 'Null';
+        else {
+            var tmp = e1.substr(8, 2) + "." + e1.substr(5, 2) + "." + e1.substr(0, 4)
+            e1 = tmp;
+        }
+        if (e2 == "") e2 = 'Null';
+        else {
+            var tmp = e2.substr(8, 2) + "." + e2.substr(5, 2) + "." + e2.substr(0, 4)
+            e2 = tmp;
+        }
+        var ime = $("#ime");
+        if (ime.val() == "") {
+            ime.addClass("danger")
+        } else {
+            ime.removeClass("danger")
+        }
+
+        var email = $("#email");
+        if (email.val() == "") {
+            email.addClass("danger")
+        } else {
+            email.removeClass("danger")
+        }
+
+        var telefon = $("#telefon");
+        if (telefon.val() == "") {
+            telefon.addClass("danger")
+        } else {
+            telefon.removeClass("danger")
+        }
+
+        var lica = $("#lica");
+        if (lica.val() == "") {
+            lica.addClass("danger")
+        } else {
+            lica.removeClass("danger")
+        }
+
+        if (ime.val() == "" || email.val() == "" || telefon.val() == "" || lica.val() == "") {
+            return
+        }
+
+        $("#from_name").val(" Име и презиме: " + ime.val() +
+            "\n Email: " + email.val() +
+            "\n Телефон: " + telefon.val() +
+            "\n Дата на пристигнување: " + e1 +
+            "\n Дата на заминување: " + e2
+
+        )
+
+        var poraka = $("#poraka").val()
+
+        $("#message").val(poraka)
+
+
+
+
+
+
+
+        btn.click()
+    })
+</script>
+
+
+<br />
+<div>
+    @Html.ActionLink("Назад до Почетна", "Index", "Home", null, new { @class = "btn btn-default" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
