@@ -3,45 +3,51 @@
 @{
     if (User.IsInRole("Admin"))
     {
-    <style>
-        #zdr {
-            color: red
-        }
-        #zdr:hover{
-            color:white
-        }
-    </style>
-    }
-    }
-        
-        @if (Request.IsAuthenticated)
-        {
-            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-            {
-                @Html.AntiForgeryToken()
-
-                <ul class="nav navbar-nav navbar-right">
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <li>
-                            @Html.ActionLink("Додај Admin", "AddUserToRole", "Account", routeValues: null, htmlAttributes: new { id = "addToRoleLink" })
-                        </li>
-                    }
-
-
-                    <li>
-
-                        @Html.ActionLink("Здраво " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new {@id = "zdr" })
-
-                    </li>
-                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Одјави се</a></li>
-                </ul>
+        <style>
+            #zdr {
+                color: red
             }
-        }
-        else
-        {
-            <ul class="nav navbar-nav navbar-right">
-                <li>@Html.ActionLink("Регистрација", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                <li>@Html.ActionLink("Најава", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-            </ul>
-        }
+
+            #zdr:hover {
+                color: white
+            }
+        </style>
+    }
+}
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            @if (User.IsInRole("Admin"))
+            {
+                <li>
+                    @Html.ActionLink("Додај Admin", "AddUserToRole", "Account", routeValues: null, htmlAttributes: new { id = "addToRoleLink" })
+                </li>
+            }
+
+
+            <li>
+
+                @Html.ActionLink("Здраво " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @id = "zdr" })
+
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Одјави се</a></li>
+        </ul>
+    }
+}
+else
+{
+    <!--
+
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Регистрација", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Најава", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+
+    -->
+}

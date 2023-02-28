@@ -60,6 +60,11 @@ namespace Project_IT.Controllers
             return View(reservation);
         }
 
+        public ActionResult Create2()
+        {
+            return View();
+        }
+
         public ActionResult Final(Reservation reservation)
         {
             return View(reservation);

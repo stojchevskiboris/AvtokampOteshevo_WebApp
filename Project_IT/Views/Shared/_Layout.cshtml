@@ -47,7 +47,7 @@
                 <ul class="nav navbar-nav">
 
                     <!-- <li>@Html.ActionLink("Home", "Index", "Home")</li> -->
-                    <li>@Html.ActionLink("Резервирај", "Create", "Reservations")</li>
+                    <li>@Html.ActionLink("Резервирај", "Create2", "Reservations")</li>
                     @if (User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Резервации", "Index", "Reservations")</li>
@@ -65,13 +65,16 @@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - ТД „Европа 2002“ ДОО - Отешево, Ресен</p>
-            <p>&copy; Made by: <a href="https://github.com/stojchevskiboris">Boris Stojchevski</a></p>
+            <p style="font-size:12px">&copy; <a href="https://github.com/stojchevskiboris">Boris Stojchevski</a></p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-</body>
+</
+    
+    
+    >
 
 </html>
