@@ -1,34 +1,40 @@
 ﻿<style>
     #kontakt, #rezerviraj {
+        font-weight: bold;
         text-decoration: underline
     }
     body {
         background: white;
     }
-
+    .glyphicon-align-justify {
+        padding: 3px;
+        text-align: justify;
+        font-size: 18px;
+        font-family: system-ui;
+    }
 </style>
 
 <br />
 <h2>За Автокамп Отешево</h2>
 <hr />
-<h4 style="color: #a656bd; font-weight: bold; ">Добредојдовте на веб-страната на Автокамп Отешево.</h4>
+<h4 style="color: #a656bd; font-weight: bold; font-size:25px; ">Добредојдовте на веб-страната на Автокамп Отешево.</h4>
 <br />
 <div id="tekst">
-    <p>
+    <p class="glyphicon-align-justify">
         Вашето присуство е добредојдено и во нашиот камп, 
         после кое сме сигурни дека ќе станете наш редовен гостин.
     </p>
-    <p>
+    <p class="glyphicon-align-justify">
         Преку нашата веб-страна Ви нудиме пристап до клучните информации
         поврзани со Автокампот, но исто така и ние Ви стоиме на располагање
         за секое ваше дополнително прашање → @Html.ActionLink("Контактирајте не", "Contact", "Home", null, new {@id="kontakt"})
     </p>
-    <p>
+    <p class="glyphicon-align-justify">
         Доколку веќе сме одговориле на сите ваши прашања, тогаш не чекајте →
         @Html.ActionLink("Резервирајте го вашето место, веднаш!", "Create2", "Reservations", null, new { @id = "rezerviraj" })
 
     </p>
-    <p style="font-weight: bold; color: #a656bd; font-size: 18px">
+    <p style="font-weight: bold; color: #a656bd; font-size: 25px;">
         Ве очекуваме!
     </p>
 </div>

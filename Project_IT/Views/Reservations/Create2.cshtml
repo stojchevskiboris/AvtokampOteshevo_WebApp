@@ -35,7 +35,7 @@
     </div><br />
     <div class="field">
         <label class="control-label col-md-2">Дата на заминување</label>
-        <input class="form-control" id="dataZ" type="date" value="" />
+        <input class="form-control" id="dataZ" type="date" value="24-04-2002" />
     </div><br />
     <div class="field">
         <label class="control-label col-md-2">Дополнителни барања</label>
@@ -63,6 +63,7 @@
 
     <input type="submit" id="button" value="Send Email">
 </form>
+
 
 <style>
     .danger {
@@ -105,14 +106,31 @@
                     document.getElementById("email").value = "";
                     document.getElementById("telefon").value = "";
                     document.getElementById("lica").value = "";
+                    $("#dataP").val("");
+                    $("#dataZ").val("");
+                    document.getElementById("poraka").value = "";
                 }, (err) => {
                     btn.value = 'Send Email';
                     alert(JSON.stringify(err));
+
                 });
         });
 
 
+    Date.prototype.addDays = function (days) {
+        var date = new Date(this.valueOf());
+        date.setDate(date.getDate() + days);
+        return date;
+    }
+
     var today = new Date();
+
+    today = today.addDays(2)
+
+    //console.log(today.getDate())
+    //console.log(today.getMonth())
+    //console.log(today.getFullYear())
+
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
@@ -185,6 +203,54 @@
 
 
         btn.click()
+    })
+
+
+
+
+    $("#dataP").change(function () {
+        $("#dataZ").val("")
+        var dtP = $("#dataP").val()
+
+        var dd = String(dtP).slice(8, 10)
+        var mm = String(dtP).slice(5, 7)
+        var yyyy = String(dtP).slice(0, 4)
+
+
+
+        var minZdate = new Date(yyyy, mm - 1, dd)
+        minZdate = minZdate.addDays(2)
+
+
+        var Tdd = String(minZdate.getDate()).padStart(2, '0');
+        var Tmm = String(minZdate.getMonth() + 1).padStart(2, '0');
+        var Tyyyy = minZdate.getFullYear();
+
+        minZdate = Tyyyy + '-' + Tmm + '-' + Tdd;
+
+        $('#dataZ').attr('min', minZdate);
+
+
+            
+        //var dd2 = String(dtZ).slice(8, 10)
+        //var mm2 = String(dtZ).slice(5, 7)
+        //var yyyy2 = String(dtZ).slice(0, 4)
+
+        //var dateZ = new Date(yyyy2, mm2 - 1, dd2);
+
+        //console.log(dateP)
+        //console.log(dateZ)
+
+        //console.log(dateP.getTime() < dateZ.getTime())
+
+        //// if dataZ is less than dataP, Then --->
+        //// $("#dataP").val("")
+    })
+
+    $("#dataZ").change(function () {
+        // $("#dataP").val("")
+
+        
     })
 </script>
 
