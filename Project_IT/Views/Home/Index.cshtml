@@ -14,11 +14,17 @@
 </div>
 
 <div class="row">
-    <h1>Автокамп Отешево</h1>
+    <div class="header1 pdl">
+        <h1>Автокамп Отешево</h1>
+    </div>
     <div>
-        <h4>
+        <h4 class="pdl pdl2">
+            Нечија приказна од детството, нечие љубовно сеќавање, нечиј рај за душата...
+        </h4>
+        <h4 class="pdl">
             Автокампот располага со бунгалови и плацови за камп-приколки и шатори.
         </h4>
+        <br />
 
 
         <div class="container" style="text-align: -webkit-center;">
@@ -37,8 +43,7 @@
                         <div class="carousel-content">
                             <div style="margin: 0 auto">
                                 <p>
-                                    <img class="cr_img" alt="The 1st Photo." src="../../Content/24.jpg"
-                                         style="width: 576px; height: 432px " />
+                                    <img class="cr_img" alt="Бунгалов, " src="../../Content/24.jpg" />
                                 </p>
                             </div>
                         </div>
@@ -47,8 +52,7 @@
                         <div class="carousel-content">
                             <div style="margin: 0 auto">
                                 <p>
-                                    <img class="cr_img" alt="The 2nd Photo." src="../../Content/1.jpg"
-                                         style="width: 576px; height: 432px " />
+                                    <img class="cr_img" alt="Шатор, " src="../../Content/1.jpg" />
                                 </p>
                             </div>
                         </div>
@@ -57,8 +61,7 @@
                         <div class="carousel-content">
                             <div style="margin: 0 auto">
                                 <p>
-                                    <img class="cr_img" alt="The 3rd Photo." src="../../Content/11.jpg"
-                                         style="width: 576px; height: 432px " />
+                                    <img class="cr_img" alt="Приколка, " src="../../Content/11.jpg" />
                                 </p>
                             </div>
                         </div>
@@ -67,8 +70,7 @@
                         <div class="carousel-content">
                             <div style="margin: 0 auto">
                                 <p>
-                                    <img class="cr_img" alt="The 4th Photo." src="../../Content/10.jpg"
-                                         style="width: 576px; height: 432px " />
+                                    <img class="cr_img" alt="Езеро, " src="../../Content/10.jpg" />
                                 </p>
                             </div>
                         </div>
@@ -77,8 +79,7 @@
                         <div class="carousel-content">
                             <div style="margin: 0 auto">
                                 <p>
-                                    <img class="cr_img" alt="The 5th Photo." src="../../Content/18.jpg"
-                                         style="width: 576px; height: 432px " />
+                                    <img class="cr_img" alt="Природа" src="../../Content/18.jpg" />
                                 </p>
                             </div>
                         </div>
@@ -120,7 +121,7 @@
         </script>
 
         <div style=" text-align: -webkit-center;">
-            <span class="arrows">&raquo; </span>@Html.ActionLink("Резервирај Бунгалов", "Create2", "Reservations", null, new { @class = "btn btn-primary btn-m", @style = "font-size:25px;" })<span class="arrows"> &laquo;</span>
+            <span class="arrows"> </span>@Html.ActionLink("Резервирај Бунгалов", "Create2", "Reservations", null, new { @class = "btn btn-primary btn-m", @style = "font-size:25px;" })<span class="arrows"></span>
         </div>
     </div>
 
@@ -133,7 +134,11 @@
     #myCarousel {
         width: auto;
         height: auto;
-        max-height:70vh;
+        
+    }
+    .cr_img{
+        width:auto;
+        max-width:700px;
     }
 
     @@media only screen and (max-width: 600px) {
@@ -146,7 +151,7 @@
         }
         .cr_img {
             width: auto;
-            height: auto;
+            max-width: 90vw;
         }
     }
     #jmbtrn {
@@ -166,6 +171,24 @@
         color: blue;
         font-size: 35px;
     }
-    
+
+    .header1 {
+        border-bottom: 2px solid pink;
+        text-shadow: 1px -1px pink;
+    }
+
+    .pdl {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .pdl2 {
+        text-shadow: 1px -1px pink;
+    }
+    .carousel-inner{
+        border-radius:40px;
+    }
+    .left, .carousel-control, .right, .carousel-control {
+        border-radius: 10px;
+    }
 
 </style>
