@@ -9,4 +9,4 @@ Password: Boris210!@!
 Site path: //empty//
 
 
-Social widgets display absolute
+Social widgets display absolute 
