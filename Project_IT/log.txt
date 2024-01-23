@@ -1,0 +1,13 @@
+INFO  2024-01-23 16:09:06,426  1098ms ReservationsController Index              - Home Index
+INFO  2024-01-23 16:09:23,378 18050ms ReservationsController Index              - Home Index
+INFO  2024-01-23 16:09:23,969 18641ms ReservationsController Index              - Home Index
+INFO  2024-01-23 16:09:24,439 19111ms ReservationsController Index              - Home Index
+INFO  2024-01-23 16:09:24,778 19450ms ReservationsController Index              - Home Index
+INFO  2024-01-23 16:09:25,222 19894ms ReservationsController Index              - Home Index
+INFO  2024-01-23 16:09:25,534 20206ms ReservationsController Index              - Home Index
+INFO  2024-01-23 16:09:26,138 20810ms ReservationsController Index              - Home Index
+INFO  2024-01-23 16:09:26,364 21036ms ReservationsController Index              - Home Index
+INFO  2024-01-23 16:09:26,664 21336ms ReservationsController Index              - Home Index
+INFO  2024-01-23 16:09:27,006 21678ms ReservationsController Index              - Home Index
+INFO  2024-01-23 16:09:27,359 22031ms ReservationsController Index              - Home Index
+INFO  2024-01-23 16:09:27,674 22346ms ReservationsController Index              - Home Index

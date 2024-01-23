@@ -27,12 +27,10 @@ namespace Project_IT
             
         }
         protected void Application_Error(object sender, EventArgs e)
-        {
+        {        
             var ex = Server.GetLastError();
             if (ex == null) return;
-
             log.Error(ex.Message);
-
         }
     }
 }
