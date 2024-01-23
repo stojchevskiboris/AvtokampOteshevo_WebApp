@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using log4net;
 using Project_IT.Models;
 
 namespace Project_IT.Controllers
@@ -13,6 +14,8 @@ namespace Project_IT.Controllers
     public class ReservationsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private static log4net.ILog Log { get; set; }
+        ILog log = log4net.LogManager.GetLogger(typeof(ReservationsController));
 
         // GET: Reservations
         [Authorize(Roles = "Admin")]
