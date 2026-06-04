@@ -1,266 +1,206 @@
-﻿@model Project_IT.Models.Reservation
+@model Project_IT.Models.Reservation
 
+@{
+    ViewBag.Title = "Резервација";
+}
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-<br />
-<h2>Испрати барање за резервација</h2> 
-<br />
-<div id="f1">
-    <div class="field">
-        <label class="control-label col-md-2">*Име и презиме</label>
-        <input class="form-control" id="ime" required="required" />
-    </div> <br />
-    <div class="field">
-        <label class="control-label col-md-2">*E-mail адреса</label>
-        <input class="form-control" id="email" required="required" />
-    </div><br />
-    <div class="field">
-        <label class="control-label col-md-2">*Телефон</label>
-        <input class="form-control" id="telefon" required="required" />
-    </div><br />
-    <div class="field">
-        <label class="control-label col-md-2">*Број на лица</label>
-        <input class="form-control" id="lica" type="number" min="1" max="10" required="required" />
-    </div><br />
-    <div class="field">
-        <label class="control-label col-md-2">Дата на пристигнување</label>
-        <input class="form-control" id="dataP" type="date" value="" />
-    </div><br />
-    <div class="field">
-        <label class="control-label col-md-2">Дата на заминување</label>
-        <input class="form-control" id="dataZ" type="date" value="24-04-2002" />
-    </div><br />
-    <div class="field">
-        <label class="control-label col-md-2">Дополнителни барања</label>
-        <textarea class="form-control" id="poraka" required="required"></textarea>
-    </div><br />
-
-    <p>Полињата означени со * се задолжителни</p>
-    <input type="submit" class="btn btn-primary" id="isprati" value="Испрати барање" />
-</div>
-
-<br />
-<form id="form">
-    <div class="field">
-        <label for="from_name">from_name</label>
-        <textarea type="text" name="from_name" id="from_name"></textarea>
+<div class="max-w-4xl mx-auto py-12 px-4">
+    <div class="text-center mb-12">
+        <h2 class="text-4xl font-extrabold text-forest-800 mb-4">Испрати барање за резервација</h2>
+        <p class="text-gray-600">Пополнете ги податоците и ќе ве контактираме во најбрз можен рок.</p>
     </div>
-    <div class="field">
-        <label for="reply_to">reply_to</label>
+
+    <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+        <div class="p-8 md:p-12">
+            <div id="f1" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Name -->
+                    <div class="relative group">
+                        <label class="block text-sm font-bold text-forest-700 mb-2 transition-all group-focus-within:text-accent">*Име и презиме</label>
+                        <input id="ime" required="required" placeholder="Вашето име"
+                               class="w-full bg-gray-50 border-2 border-gray-100 rounded-xl py-4 px-5 focus:bg-white focus:border-accent focus:ring-0 transition-all outline-none" />
+                    </div>
+
+                    <!-- Email -->
+                    <div class="relative group">
+                        <label class="block text-sm font-bold text-forest-700 mb-2 transition-all group-focus-within:text-accent">*E-mail адреса</label>
+                        <input id="email" type="email" required="required" placeholder="email@example.com"
+                               class="w-full bg-gray-50 border-2 border-gray-100 rounded-xl py-4 px-5 focus:bg-white focus:border-accent focus:ring-0 transition-all outline-none" />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Phone -->
+                    <div class="relative group">
+                        <label class="block text-sm font-bold text-forest-700 mb-2 transition-all group-focus-within:text-accent">*Телефон</label>
+                        <input id="telefon" required="required" placeholder="07X XXX XXX"
+                               class="w-full bg-gray-50 border-2 border-gray-100 rounded-xl py-4 px-5 focus:bg-white focus:border-accent focus:ring-0 transition-all outline-none" />
+                    </div>
+
+                    <!-- Persons -->
+                    <div class="relative group">
+                        <label class="block text-sm font-bold text-forest-700 mb-2 transition-all group-focus-within:text-accent">*Број на лица</label>
+                        <input id="lica" type="number" min="1" max="10" required="required" value="1"
+                               class="w-full bg-gray-50 border-2 border-gray-100 rounded-xl py-4 px-5 focus:bg-white focus:border-accent focus:ring-0 transition-all outline-none" />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Arrival Date -->
+                    <div class="relative group">
+                        <label class="block text-sm font-bold text-forest-700 mb-2 transition-all group-focus-within:text-accent">Дата на пристигнување</label>
+                        <input id="dataP" type="date"
+                               class="w-full bg-gray-50 border-2 border-gray-100 rounded-xl py-4 px-5 focus:bg-white focus:border-accent focus:ring-0 transition-all outline-none" />
+                    </div>
+
+                    <!-- Departure Date -->
+                    <div class="relative group">
+                        <label class="block text-sm font-bold text-forest-700 mb-2 transition-all group-focus-within:text-accent">Дата на заминување</label>
+                        <input id="dataZ" type="date"
+                               class="w-full bg-gray-50 border-2 border-gray-100 rounded-xl py-4 px-5 focus:bg-white focus:border-accent focus:ring-0 transition-all outline-none" />
+                    </div>
+                </div>
+
+                <!-- Message -->
+                <div class="relative group">
+                    <label class="block text-sm font-bold text-forest-700 mb-2 transition-all group-focus-within:text-accent">Дополнителни барања</label>
+                    <textarea id="poraka" placeholder="Овде напишете ги вашите желби или прашања..."
+                              class="w-full bg-gray-50 border-2 border-gray-100 rounded-xl py-4 px-5 focus:bg-white focus:border-accent focus:ring-0 transition-all outline-none min-h-[120px]"></textarea>
+                </div>
+
+                <p class="text-xs text-gray-400 font-medium italic">Полињата означени со * се задолжителни</p>
+
+                <button id="isprati" class="w-full btn-primary text-xl py-5 mt-4">
+                    Испрати барање
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Form for EmailJS -->
+    <form id="form" class="hidden">
+        <textarea name="from_name" id="from_name"></textarea>
         <input type="text" name="reply_to" id="reply_to">
+        <textarea name="message" id="message"></textarea>
+        <input type="submit" id="button">
+    </form>
+
+    <div class="mt-12 text-center">
+        @Html.ActionLink("← Назад до Почетна", "Index", "Home", null, new { @class = "text-forest-700 hover:text-accent font-bold transition-colors" })
     </div>
-    <div class="field">
-        <label for="message">message</label>
-        <textarea type="text" name="message" id="message"></textarea>
-    </div>
-
-    <input type="submit" id="button" value="Send Email">
-</form>
-
-
-<style>
-    .danger {
-        background: #ff00001f;
-    }
-    #poraka{
-        min-height:50px;
-        min-width:50px;
-        max-height:300px;
-    }
-    #form {
-        display:none
-    }
-</style>
-
-
-<script src="~/Content/email.min.js"></script>
-
-<script type="text/javascript">
-    emailjs.init('0YVQaG2ITtZEM__Mt')
-</script>
-
-<script>
-    const btn = document.getElementById('button');
-
-    document.getElementById('form')
-        .addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            btn.value = 'Sending...';
-
-            const serviceID = 'default_service';
-            const templateID = 'template_ufh4xh4';
-
-            emailjs.sendForm(serviceID, templateID, this)
-                .then(() => {
-                    btn.value = 'Send Email';
-                    alert('Барањето е испратено!');
-                    document.getElementById("ime").value = "";
-                    document.getElementById("email").value = "";
-                    document.getElementById("telefon").value = "";
-                    document.getElementById("lica").value = "";
-                    $("#dataP").val("");
-                    $("#dataZ").val("");
-                    document.getElementById("poraka").value = "";
-                }, (err) => {
-                    btn.value = 'Send Email';
-                    alert(JSON.stringify(err));
-
-                });
-        });
-
-
-    Date.prototype.addDays = function (days) {
-        var date = new Date(this.valueOf());
-        date.setDate(date.getDate() + days);
-        return date;
-    }
-
-    var today = new Date();
-
-    today = today.addDays(2)
-
-    //console.log(today.getDate())
-
-    //console.log(today.getMonth())
-    //console.log(today.getFullYear())
-
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
-    var yyyy = today.getFullYear();
-
-    today = yyyy + '-' + mm + '-' + dd;
-    $('#dataP').attr('min', today);
-    $('#dataZ').attr('min', today);
-
-    $("#isprati").click(function () {
-        var e1 = $("#dataP").val()
-        var e2 = $("#dataZ").val()
-        if (e1 == "") e1 = 'Null';
-        else {
-            var tmp = e1.substr(8, 2) + "." + e1.substr(5, 2) + "." + e1.substr(0, 4)
-            e1 = tmp;
-        }
-        if (e2 == "") e2 = 'Null';
-        else {
-            var tmp = e2.substr(8, 2) + "." + e2.substr(5, 2) + "." + e2.substr(0, 4)
-            e2 = tmp;
-        }
-        var ime = $("#ime");
-        if (ime.val() == "") {
-            ime.addClass("danger")
-        } else {
-            ime.removeClass("danger")
-        }
-
-        var email = $("#email");
-        if (email.val() == "") {
-            email.addClass("danger")
-        } else {
-            email.removeClass("danger")
-        }
-
-        var telefon = $("#telefon");
-        if (telefon.val() == "") {
-            telefon.addClass("danger")
-        } else {
-            telefon.removeClass("danger")
-        }
-
-        var lica = $("#lica");
-        if (lica.val() == "") {
-            lica.addClass("danger")
-        } else {
-            lica.removeClass("danger")
-        }
-
-        if (ime.val() == "" || email.val() == "" || telefon.val() == "" || lica.val() == "") {
-            return
-        }
-
-        $("#from_name").val(" Име и презиме: " + ime.val() +
-            "\n Email: " + email.val() +
-            "\n Телефон: " + telefon.val() +
-            "\n Дата на пристигнување: " + e1 +
-            "\n Дата на заминување: " + e2
-
-        )
-
-        var poraka = $("#poraka").val()
-
-        $("#message").val(poraka)
-
-
-
-
-
-
-
-        btn.click()
-    })
-
-
-
-
-    $("#dataP").change(function () {
-        $("#dataZ").val("")
-        var dtP = $("#dataP").val()
-
-        var dd = String(dtP).slice(8, 10)
-        var mm = String(dtP).slice(5, 7)
-        var yyyy = String(dtP).slice(0, 4)
-
-
-
-        var minZdate = new Date(yyyy, mm - 1, dd)
-        minZdate = minZdate.addDays(2)
-
-
-        var Tdd = String(minZdate.getDate()).padStart(2, '0');
-        var Tmm = String(minZdate.getMonth() + 1).padStart(2, '0');
-        var Tyyyy = minZdate.getFullYear();
-
-        minZdate = Tyyyy + '-' + Tmm + '-' + Tdd;
-
-        $('#dataZ').attr('min', minZdate);
-
-
-            
-        //var dd2 = String(dtZ).slice(8, 10)
-        //var mm2 = String(dtZ).slice(5, 7)
-        //var yyyy2 = String(dtZ).slice(0, 4)
-
-        //var dateZ = new Date(yyyy2, mm2 - 1, dd2);
-
-        //console.log(dateP)
-        //console.log(dateZ)
-
-        //console.log(dateP.getTime() < dateZ.getTime())
-
-        //// if dataZ is less than dataP, Then --->
-        //// $("#dataP").val("")
-    })
-
-    $("#dataZ").change(function () {
-        // $("#dataP").val("")
-
-        
-    })
-</script>
-
-
-<br />
-<div>
-    @Html.ActionLink("Назад до Почетна", "Index", "Home", null, new { @class = "btn btn-default" })
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Content/email.min.js"></script>
+    <script type="text/javascript">
+        emailjs.init('0YVQaG2ITtZEM__Mt')
+    </script>
+
+    <script>
+        const btn = document.getElementById('button');
+
+        document.getElementById('form')
+            .addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const originalBtn = document.getElementById('isprati');
+                const originalText = originalBtn.innerText;
+                originalBtn.innerText = 'Се испраќа...';
+                originalBtn.disabled = true;
+
+                const serviceID = 'default_service';
+                const templateID = 'template_ufh4xh4';
+
+                emailjs.sendForm(serviceID, templateID, this)
+                    .then(() => {
+                        originalBtn.innerText = originalText;
+                        originalBtn.disabled = false;
+                        alert('Барањето е испратено!');
+                        // Reset form
+                        document.getElementById("ime").value = "";
+                        document.getElementById("email").value = "";
+                        document.getElementById("telefon").value = "";
+                        document.getElementById("lica").value = "1";
+                        document.getElementById("dataP").value = "";
+                        document.getElementById("dataZ").value = "";
+                        document.getElementById("poraka").value = "";
+                    }, (err) => {
+                        originalBtn.innerText = originalText;
+                        originalBtn.disabled = false;
+                        alert('Грешка при испраќање: ' + JSON.stringify(err));
+                    });
+            });
+
+        // Date constraints logic
+        Date.prototype.addDays = function (days) {
+            var date = new Date(this.valueOf());
+            date.setDate(date.getDate() + days);
+            return date;
+        }
+
+        var today = new Date();
+        today = today.addDays(2);
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+        var minDate = yyyy + '-' + mm + '-' + dd;
+
+        document.getElementById('dataP').setAttribute('min', minDate);
+        document.getElementById('dataZ').setAttribute('min', minDate);
+
+        document.getElementById('isprati').addEventListener('click', function() {
+            var ime = document.getElementById("ime");
+            var email = document.getElementById("email");
+            var telefon = document.getElementById("telefon");
+            var lica = document.getElementById("lica");
+            var dataP = document.getElementById("dataP").value;
+            var dataZ = document.getElementById("dataZ").value;
+            var poraka = document.getElementById("poraka").value;
+
+            // Simple validation highlighting
+            [ime, email, telefon, lica].forEach(el => {
+                if (!el.value) {
+                    el.classList.add('border-red-300', 'bg-red-50');
+                } else {
+                    el.classList.remove('border-red-300', 'bg-red-50');
+                }
+            });
+
+            if (!ime.value || !email.value || !telefon.value || !lica.value) return;
+
+            // Format dates for email
+            var d1 = dataP ? dataP.split('-').reverse().join('.') : 'Не е избрано';
+            var d2 = dataZ ? dataZ.split('-').reverse().join('.') : 'Не е избрано';
+
+            document.getElementById("from_name").value = "Име и презиме: " + ime.value +
+                "\nEmail: " + email.value +
+                "\nТелефон: " + telefon.value +
+                "\nДата на пристигнување: " + d1 +
+                "\nДата на заминување: " + d2;
+
+            document.getElementById("message").value = poraka;
+            document.getElementById("reply_to").value = email.value;
+
+            btn.click();
+        });
+
+        document.getElementById('dataP').addEventListener('change', function() {
+            var dtP = this.value;
+            if(!dtP) return;
+            
+            var parts = dtP.split('-');
+            var minZdate = new Date(parts[0], parts[1]-1, parts[2]);
+            minZdate = minZdate.addDays(2);
+
+            var Tdd = String(minZdate.getDate()).padStart(2, '0');
+            var Tmm = String(minZdate.getMonth() + 1).padStart(2, '0');
+            var Tyyyy = minZdate.getFullYear();
+            var minZStr = Tyyyy + '-' + Tmm + '-' + Tdd;
+
+            document.getElementById('dataZ').setAttribute('min', minZStr);
+            if(document.getElementById('dataZ').value < minZStr) {
+                document.getElementById('dataZ').value = "";
+            }
+        });
+    </script>
 }

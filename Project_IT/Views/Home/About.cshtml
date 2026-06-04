@@ -1,40 +1,45 @@
-﻿<style>
-    #kontakt, #rezerviraj {
-        font-weight: bold;
-        text-decoration: underline
-    }
-    body {
-        background: white;
-    }
-    .glyphicon-align-justify {
-        padding: 3px;
-        text-align: justify;
-        font-size: 18px;
-        font-family: system-ui;
-    }
-</style>
+@{
+    ViewBag.Title = "За нас";
+}
 
-<br />
-<h2>За Автокамп Отешево</h2>
-<hr />
-<h4 style="color: #a656bd; font-weight: bold; font-size:25px; ">Добредојдовте на веб-страната на Автокамп Отешево.</h4>
-<br />
-<div id="tekst">
-    <p class="glyphicon-align-justify">
-        Вашето присуство е добредојдено и во нашиот камп, 
-        после кое сме сигурни дека ќе станете наш редовен гостин.
-    </p>
-    <p class="glyphicon-align-justify">
-        Преку нашата веб-страна Ви нудиме пристап до клучните информации
-        поврзани со Автокампот, но исто така и ние Ви стоиме на располагање
-        за секое ваше дополнително прашање → @Html.ActionLink("Контактирајте не", "Contact", "Home", null, new {@id="kontakt"})
-    </p>
-    <p class="glyphicon-align-justify">
-        Доколку веќе сме одговориле на сите ваши прашања, тогаш не чекајте →
-        @Html.ActionLink("Резервирајте го вашето место, веднаш!", "Create2", "Reservations", null, new { @id = "rezerviraj" })
+<div class="max-w-4xl mx-auto py-16 px-4">
+    <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-forest-800 mb-6">За Автокамп Отешево</h2>
+        <div class="h-1.5 w-24 bg-accent mx-auto rounded-full mb-8"></div>
+        <p class="text-2xl text-forest-600 font-semibold leading-relaxed">
+            Добредојдовте на веб-страната на Автокамп Отешево.
+        </p>
+    </div>
 
-    </p>
-    <p style="font-weight: bold; color: #a656bd; font-size: 25px;">
-        Ве очекуваме!
-    </p>
+    <div class="prose prose-lg max-w-none text-gray-600 space-y-8">
+        <div class="bg-forest-50 border-l-8 border-forest-500 p-8 rounded-r-2xl shadow-sm">
+            <p class="text-xl italic">
+                "Вашето присуство е добредојдено и во нашиот камп, после кое сме сигурни дека ќе станете наш редовен гостин."
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-8">
+            <div>
+                <p class="text-lg leading-relaxed mb-6">
+                    Преку нашата веб-страна Ви нудиме пристап до клучните информации поврзани со Автокампот,
+                    но исто така и ние Ви стоиме на располагање за секое ваше дополнително прашање.
+                </p>
+                <a href='@Url.Action("Contact", "Home")' class="inline-flex items-center text-forest-700 font-bold hover:text-accent transition-colors">
+                    <span>Контактирајте не</span>
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+            <div class="rounded-3xl overflow-hidden shadow-xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                <img src="~/Content/10.jpg" alt="Camp Nature" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <div class="text-center pt-12">
+            <p class="text-lg mb-8">Доколку веќе сме одговориле на сите ваши прашања, тогаш не чекајте:</p>
+            <a href='@Url.Action("Create2", "Reservations")' class="btn-primary text-xl px-12">
+                Резервирајте го вашето место, веднаш!
+            </a>
+            <p class="mt-12 text-3xl font-heading font-extrabold text-forest-800">Ве очекуваме!</p>
+        </div>
+    </div>
 </div>
