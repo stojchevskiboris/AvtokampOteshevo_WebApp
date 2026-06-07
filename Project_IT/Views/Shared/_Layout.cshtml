@@ -13,7 +13,7 @@
     <!-- Tailwind CSS -->
     @Scripts.Render("~/bundles/tailwind")
     <script>
-        tailwind.config = {
+        window.tailwind && (tailwind.config = {
             theme: {
                 extend: {
                     colors: {
@@ -50,7 +50,7 @@
                     },
                 }
             }
-        }
+        });
     </script>
 
     <!-- Alpine.js -->
@@ -105,10 +105,10 @@
 
                 <!-- Mobile menu button -->
                 <div class="flex items-center md:hidden">
-                    <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-forest-800 focus:outline-none">
+                    <button x-on:click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-forest-800 focus:outline-none">
                         <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                            <path :class="{'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                            <path :class="{'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            <path x-bind:class="{'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-bind:class="{'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
