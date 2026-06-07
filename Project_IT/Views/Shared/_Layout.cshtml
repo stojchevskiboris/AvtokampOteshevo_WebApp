@@ -13,44 +13,46 @@
     <!-- Tailwind CSS -->
     @Scripts.Render("~/bundles/tailwind")
     <script>
-        window.tailwind && (tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        forest: {
-                            50: '#f2f7f6',
-                            100: '#e1edea',
-                            200: '#c5dbd6',
-                            300: '#9bbfb6',
-                            400: '#6b9c91',
-                            500: '#4d8075',
-                            600: '#3c665e',
-                            700: '#32534c',
-                            800: '#1a3636', // Deep Forest
-                            900: '#1e312e',
+        if (window['tailwind']) {
+            window['tailwind'].config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            forest: {
+                                50: '#f2f7f6',
+                                100: '#e1edea',
+                                200: '#c5dbd6',
+                                300: '#9bbfb6',
+                                400: '#6b9c91',
+                                500: '#4d8075',
+                                600: '#3c665e',
+                                700: '#32534c',
+                                800: '#1a3636', // Deep Forest
+                                900: '#1e312e',
+                            },
+                            earth: {
+                                50: '#fbf8f4',
+                                100: '#f5eee3',
+                                200: '#ebdcc5',
+                                300: '#dec29d',
+                                400: '#cea270',
+                                500: '#c28951',
+                                600: '#b47343',
+                                700: '#965d39',
+                                800: '#794c33',
+                                900: '#633f2c',
+                            },
+                            sand: '#D6BD98',
+                            accent: '#fb8500', // Modern Orange
                         },
-                        earth: {
-                            50: '#fbf8f4',
-                            100: '#f5eee3',
-                            200: '#ebdcc5',
-                            300: '#dec29d',
-                            400: '#cea270',
-                            500: '#c28951',
-                            600: '#b47343',
-                            700: '#965d39',
-                            800: '#794c33',
-                            900: '#633f2c',
+                        fontFamily: {
+                            sans: ['Inter', 'sans-serif'],
+                            heading: ['Montserrat', 'sans-serif'],
                         },
-                        sand: '#D6BD98',
-                        accent: '#fb8500', // Modern Orange
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Montserrat', 'sans-serif'],
-                    },
+                    }
                 }
-            }
-        });
+            };
+        }
     </script>
 
     <!-- Alpine.js -->
