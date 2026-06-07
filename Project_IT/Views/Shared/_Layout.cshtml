@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    @Scripts.Render("~/bundles/tailwind")
     <script>
         tailwind.config = {
             theme: {
@@ -54,7 +54,7 @@
     </script>
 
     <!-- Alpine.js -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @Scripts.Render("~/bundles/alpine")
 
     <style type="text/tailwindcss">
         @layer base {

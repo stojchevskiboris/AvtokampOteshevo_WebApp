@@ -1,4 +1,4 @@
-﻿using System.Web;
+using System.Web;
 using System.Web.Optimization;
 
 namespace Project_IT
@@ -25,6 +25,13 @@ namespace Project_IT
                       "~/Scripts/DataTables/dataTables.bootstrap.js"
                       ));
 
+            bundles.Add(new ScriptBundle("~/bundles/tailwind").Include(
+                      "~/Scripts/tailwind.3.4.1.min.js"
+                      ));
+
+            bundles.Add(new ScriptBundle("~/bundles/alpine").Include(
+                      "~/Scripts/alpine.3.13.5.min.js"
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
