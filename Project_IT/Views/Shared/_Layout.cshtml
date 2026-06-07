@@ -57,20 +57,20 @@
     @Scripts.Render("~/bundles/alpine")
 
     <style type="text/tailwindcss">
-        @layer base {
+        @@layer base {
             h1, h2, h3, h4, h5, h6 {
-                @apply font-heading;
+                @@apply font-heading;
             }
             body {
-                @apply font-sans text-gray-900 bg-white;
+                @@apply font-sans text-gray-900 bg-white;
             }
         }
-        @layer components {
+        @@layer components {
             .btn-primary {
-                @apply bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg;
+                @@apply bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg;
             }
             .glass-nav {
-                @apply bg-white/80 backdrop-blur-md border-b border-white/20 sticky top-0 z-50;
+                @@apply bg-white/80 backdrop-blur-md border-b border-white/20 sticky top-0 z-50;
             }
         }
     </style>
