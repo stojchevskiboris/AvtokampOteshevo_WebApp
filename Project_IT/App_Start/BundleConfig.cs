@@ -25,11 +25,13 @@ namespace Project_IT
                       "~/Scripts/DataTables/dataTables.bootstrap.js"
                       ));
 
-            bundles.Add(new ScriptBundle("~/bundles/tailwind").Include(
+            // Use 'Bundle' instead of 'ScriptBundle' for modern libraries to skip minification
+            // that might fail on modern JS syntax.
+            bundles.Add(new Bundle("~/bundles/tailwind").Include(
                       "~/Scripts/tailwind.3.4.1.min.js"
                       ));
 
-            bundles.Add(new ScriptBundle("~/bundles/alpine").Include(
+            bundles.Add(new Bundle("~/bundles/alpine").Include(
                       "~/Scripts/alpine.3.13.5.min.js"
                       ));
 
