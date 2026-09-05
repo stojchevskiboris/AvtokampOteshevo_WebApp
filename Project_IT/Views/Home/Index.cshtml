@@ -24,7 +24,7 @@
         </h1>
 
         <p class="text-lg md:text-xl text-white/90 max-w-xl mx-auto mb-10 leading-relaxed font-body" style="text-shadow: 0 1px 8px rgba(0,0,0,0.4);">
-            Вашето природно засолниште на брегот на Преспанското Езеро — бунгалови, кампување и незаборавни доживувања.
+            Вашето природно засолниште на брегот на <br /> Преспанското Езеро
         </p>
 
         <button onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' })"
@@ -46,7 +46,7 @@
          style="box-shadow: 0 12px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.04);">
 
         <!-- Check-in -->
-        <div class="flex flex-col gap-1 px-4 py-3 border border-slate-200 rounded-xl bg-white hover:border-slate-300 transition-colors flex-1 min-w-0">
+        <label for="bookingCheckIn" class="flex flex-col gap-1 px-4 py-3 border border-slate-200 rounded-xl bg-white hover:border-slate-300 transition-colors flex-1 min-w-0 cursor-pointer">
             <span class="text-[11px] text-slate-400 font-semibold uppercase tracking-wider flex items-center gap-1 font-body">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <rect x="3" y="4" width="18" height="18" rx="2" />
@@ -55,10 +55,10 @@
                 Пристигнување
             </span>
             <input type="date" id="bookingCheckIn" class="w-full max-w-full text-slate-800 text-sm font-medium outline-none bg-transparent cursor-pointer font-body" />
-        </div>
+        </label>
 
         <!-- Check-out -->
-        <div class="flex flex-col gap-1 px-4 py-3 border border-slate-200 rounded-xl bg-white hover:border-slate-300 transition-colors flex-1 min-w-0">
+        <label for="bookingCheckOut" class="flex flex-col gap-1 px-4 py-3 border border-slate-200 rounded-xl bg-white hover:border-slate-300 transition-colors flex-1 min-w-0 cursor-pointer">
             <span class="text-[11px] text-slate-400 font-semibold uppercase tracking-wider flex items-center gap-1 font-body">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <rect x="3" y="4" width="18" height="18" rx="2" />
@@ -67,7 +67,7 @@
                 Заминување
             </span>
             <input type="date" id="bookingCheckOut" class="w-full max-w-full text-slate-800 text-sm font-medium outline-none bg-transparent cursor-pointer font-body" />
-        </div>
+        </label>
 
         <!-- Guests -->
         <div class="flex flex-col gap-1 px-4 py-3 border border-slate-200 rounded-xl bg-white hover:border-slate-300 transition-colors flex-1 min-w-0">
@@ -118,10 +118,10 @@
                 <em class="italic font-normal">се среќава со комфортот</em>
             </h2>
             <p class="text-slate-600 leading-relaxed mb-5 text-base font-body">
-                Автокамп Отешево лежи на источниот брег на Преспанското Езеро, опкружен со вековни шуми и кристално чиста вода. Нашиот камп нуди уникатна можност да ги доживеете убавините на македонската природа без да се откажете од комфорт.
+                Автокамп Отешево лежи на западниот брег на Преспанското Езеро, опкружен со вековни шуми и растителен свет со ендемичен карактер, кои го прават овој простор уникатен и погоден за одмор, рекреација и целосна регенреација.
             </p>
             <p class="text-slate-500 leading-relaxed mb-8 text-sm font-body">
-                Со повеќе од 20 години традиција, нудиме луксузни бунгалови, опремени кампинг места, директен пристап до езерската плажа и незаборавни залези на сонцето над Преспа.
+                Со повеќе од 50 години традиција, нудиме бунгалови, опремени кампинг места, директен пристап до езерската плажа и незаборавни залези на сонцето над Преспа.
             </p>
             <a href='@Url.Action("New", "Reservations")'
                class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white transition-all hover:opacity-90 hover:shadow-lg no-underline cursor-pointer bg-brand-gradient font-body"
@@ -133,16 +133,16 @@
         <!-- Right: Feature Cards Grid -->
         <div class="grid grid-cols-2 gap-4">
             <div class="bg-white rounded-2xl p-6 flex flex-col gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-md border border-slate-100" style="box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
-                <h3 class="text-sm font-semibold text-slate-800 font-body">Нетакната природа</h3>
+                <h3 class="text-sm font-semibold text-slate-800 font-body">Недопрена природа</h3>
                 <p class="text-xs text-slate-500 leading-relaxed font-body">Опкружени со вековни шуми и чист планински воздух</p>
             </div>
             <div class="bg-white rounded-2xl p-6 flex flex-col gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-md border border-slate-100" style="box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
-                <h3 class="text-sm font-semibold text-slate-800 font-body">Луксузни бунгалови</h3>
+                <h3 class="text-sm font-semibold text-slate-800 font-body">Удобни бунгалови</h3>
                 <p class="text-xs text-slate-500 leading-relaxed font-body">Комфорни и современо опремени бунгалови за незаборавен одмор</p>
             </div>
             <div class="bg-white rounded-2xl p-6 flex flex-col gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-md border border-slate-100" style="box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
-                <h3 class="text-sm font-semibold text-slate-800 font-body">Плажа на езерото</h3>
-                <p class="text-xs text-slate-500 leading-relaxed font-body">Директен пристап до убавата преспанска плажа</p>
+                <h3 class="text-sm font-semibold text-slate-800 font-body">Природни лечилиште</h3>
+                <p class="text-xs text-slate-500 leading-relaxed font-body">Уникатна микроклима и чист планински воздух за регенерација на телото и умот</p>
             </div>
             <div class="bg-white rounded-2xl p-6 flex flex-col gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-md border border-slate-100" style="box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
                 <h3 class="text-sm font-semibold text-slate-800 font-body">Мирна средина</h3>
@@ -154,22 +154,18 @@
 
 <!-- ── Stats Bar ────────────────────────────────────────────────────────── -->
 <div class="py-12 px-6 bg-brand-gradient">
-    <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+    <div class="max-w-4xl mx-auto grid grid-cols-3 gap-8 text-center text-white">
         <div>
-            <div class="text-3xl md:text-4xl font-bold mb-1 font-display">20+</div>
+            <div class="text-3xl md:text-4xl font-bold mb-1 font-display">50+</div>
             <div class="text-white/70 text-xs uppercase tracking-wider font-body">Години искуство</div>
         </div>
         <div>
-            <div class="text-3xl md:text-4xl font-bold mb-1 font-display">50+</div>
+            <div class="text-3xl md:text-4xl font-bold mb-1 font-display">10+</div>
             <div class="text-white/70 text-xs uppercase tracking-wider font-body">Бунгалови</div>
         </div>
         <div>
             <div class="text-3xl md:text-4xl font-bold mb-1 font-display">5000+</div>
             <div class="text-white/70 text-xs uppercase tracking-wider font-body">Задоволни гости</div>
-        </div>
-        <div>
-            <div class="text-3xl md:text-4xl font-bold mb-1 font-display">4.9★</div>
-            <div class="text-white/70 text-xs uppercase tracking-wider font-body">Просечна оценка</div>
         </div>
     </div>
 </div>
@@ -190,51 +186,61 @@
         <div id="carouselContainer" class="relative rounded-2xl overflow-hidden shadow-2xl" style="height: 480px; box-shadow: 0 20px 60px rgba(0,0,0,0.18);">
             <!-- Slide Item 0 -->
             <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-100">
-                <img src="https://images.unsplash.com/photo-1777863895689-3da81ec075e1?w=1200&h=700&fit=crop&auto=format" alt="Бунгалови над водата" class="w-full h-full object-cover" />
+                <img src="~/Content/appartments.png" alt="Бунгалови" class="w-full h-full object-cover" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
-                    <h3 class="text-2xl mb-1 font-display">Бунгалови над водата</h3>
-                    <p class="text-white/80 text-sm font-body">Плови над мирното Преспанско Езеро</p>
+                    <h3 class="text-2xl mb-1 font-display">Бунгалови</h3>
+                    <p class="text-white/80 text-sm font-body">Пронајдете го Вашиот мир меѓу планината и брановите</p>
                 </div>
             </div>
 
             <!-- Slide Item 1 -->
             <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
-                <img src="https://images.unsplash.com/photo-1772703003096-fe4096559f81?w=1200&h=700&fit=crop&auto=format" alt="Шумски бунгалови" class="w-full h-full object-cover" />
+                <img src="~/Content/appartments2.jpg" alt="Бунгалови" class="w-full h-full object-cover" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
-                    <h3 class="text-2xl mb-1 font-display">Шумски бунгалови</h3>
-                    <p class="text-white/80 text-sm font-body">Уникатно сместување меѓу вековните дабови</p>
+                    <h3 class="text-2xl mb-1 font-display">Бунгалови</h3>
+                    <p class="text-white/80 text-sm font-body">Уживајте во мирисот на розите и спокојот на Преспа</p>
                 </div>
             </div>
 
             <!-- Slide Item 2 -->
             <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
-                <img src="https://images.unsplash.com/photo-1678736428852-7458e1d61fc6?w=1200&h=700&fit=crop&auto=format" alt="Кампување под ѕвездите" class="w-full h-full object-cover" />
+                <img src="~/Content/tents.jpg" alt="Кампување во чисто зеленило" class="w-full h-full object-cover" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
-                    <h3 class="text-2xl mb-1 font-display">Кампување под ѕвездите</h3>
-                    <p class="text-white/80 text-sm font-body">Природа, тишина и незаборавни вечери</p>
+                    <h3 class="text-2xl mb-1 font-display">Кампување во чисто зеленило</h3>
+                    <p class="text-white/80 text-sm font-body">Поставете го вашиот шатор под густите крошни и уживајте во природата</p>
                 </div>
             </div>
 
             <!-- Slide Item 3 -->
             <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
-                <img src="https://images.unsplash.com/photo-1780902429411-481e1e6cc303?w=1200&h=700&fit=crop&auto=format" alt="Слобода во природата" class="w-full h-full object-cover" />
+                <img src="~/Content/camphome.jpg" alt="Погодно за вашата камп-приколка" class="w-full h-full object-cover" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
-                    <h3 class="text-2xl mb-1 font-display">Слобода во природата</h3>
-                    <p class="text-white/80 text-sm font-body">Идеално место за семејства и авантуристи</p>
+                    <h3 class="text-2xl mb-1 font-display">Погодно за вашата камп-приколка</h3>
+                    <p class="text-white/80 text-sm font-body">Најдете ја вашата идеална локација за кампинг</p>
                 </div>
             </div>
 
             <!-- Slide Item 4 -->
             <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
-                <img src="https://images.unsplash.com/photo-1596003903067-bf5762ad5c19?w=1200&h=700&fit=crop&auto=format" alt="Езерски пејзажи" class="w-full h-full object-cover" />
+                <img src="~/Content/campervan2.jpg" alt="Езерски пејзажи" class="w-full h-full object-cover" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                 <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
-                    <h3 class="text-2xl mb-1 font-display">Езерски пејзажи</h3>
-                    <p class="text-white/80 text-sm font-body">Зелени планини и кристално чиста вода</p>
+                    <h3 class="text-2xl mb-1 font-display">Авантура без граници</h3>
+                    <p class="text-white/80 text-sm font-body">Совршено место за вашиот кампер со поглед кон езерото</p>
+                </div>
+            </div>
+
+            <!-- Slide Item 5 -->
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
+                <img src="~/Content/picnic.jpg" alt="Моменти за паметење" class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                    <h3 class="text-2xl mb-1 font-display">Моменти за паметење</h3>
+                    <p class="text-white/80 text-sm font-body">Место каде што семејните насмевки и верноста на миленичињата создаваат совршени моменти</p>
                 </div>
             </div>
 
@@ -255,6 +261,7 @@
                 <button class="carousel-dot transition-all duration-300 rounded-full cursor-pointer h-2 w-2 bg-white/50" aria-label="Slide 3"></button>
                 <button class="carousel-dot transition-all duration-300 rounded-full cursor-pointer h-2 w-2 bg-white/50" aria-label="Slide 4"></button>
                 <button class="carousel-dot transition-all duration-300 rounded-full cursor-pointer h-2 w-2 bg-white/50" aria-label="Slide 5"></button>
+                <button class="carousel-dot transition-all duration-300 rounded-full cursor-pointer h-2 w-2 bg-white/50" aria-label="Slide 6"></button>
             </div>
         </div>
     </div>
@@ -297,6 +304,22 @@
                     }
                 });
             }
+
+            // Open date picker when clicking on either label card container
+            var labels = document.querySelectorAll('label[for="bookingCheckIn"], label[for="bookingCheckOut"]');
+            labels.forEach(function (label) {
+                label.addEventListener('click', function (e) {
+                    var inputId = label.getAttribute('for');
+                    var input = document.getElementById(inputId);
+                    if (input && typeof input.showPicker === 'function') {
+                        // Avoid double triggering if directly clicking the native input element
+                        if (e.target !== input) {
+                            e.preventDefault();
+                            input.showPicker();
+                        }
+                    }
+                });
+            });
 
             // Handle Booking Search Button Action
             var searchBtn = document.getElementById('bookingSearchBtn');
@@ -351,7 +374,7 @@
                 if (timer) clearInterval(timer);
                 timer = setInterval(function () {
                     goToSlide(activeIdx + 1);
-                }, 5000);
+                }, 7000);
             }
 
             if (prevBtn) {

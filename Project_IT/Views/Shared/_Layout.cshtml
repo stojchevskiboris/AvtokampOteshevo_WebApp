@@ -7,6 +7,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <link rel="icon" href="~/Content/favicon.ico" type="image/x-icon" />
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -72,8 +74,8 @@
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
             <!-- Brand Logo -->
             <a href='@Url.Action("Index", "Home")' class="flex items-center gap-2.5 no-underline shrink-0 group">
-                <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white text-lg font-bold shadow-md bg-brand-gradient group-hover:scale-105 transition-transform">
-                    А
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white text-lg font-bold shadow-md group-hover:scale-105 transition-transform">
+                    <img src="~/Content/logo.png" alt="Logo" class="w-full h-full object-contain" />
                 </div>
                 <div class="flex flex-col leading-none">
                     <span class="text-sm font-semibold tracking-wide text-slate-800 font-body">
@@ -85,21 +87,33 @@
                 </div>
             </a>
 
+            @{
+                string currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+                string currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+            }
+
             <!-- Desktop Nav Links -->
             <nav class="max-sm:hidden sm:flex items-center gap-1">
-                <a href='@Url.Action("Index", "Home")#home' class="px-4 py-2 rounded-full text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all duration-200 no-underline font-body">
+                <a href='@Url.Action("Index", "Home")#home'
+                   class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-slate-700 hover:text-slate-900 hover:bg-slate-100 @(currentController == "Home" && currentAction == "Index" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
                     Дома
                 </a>
+
                 @if (User.IsInRole("Admin"))
                 {
-                    <a href='@Url.Action("Index", "Reservations")' class="px-4 py-2 rounded-full text-sm font-medium text-amber-700 bg-amber-50 hover:bg-amber-100 transition-all duration-200 no-underline font-body">
+                    <a href='@Url.Action("Index", "Reservations")'
+                       class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-amber-700 bg-amber-50 hover:bg-amber-100 @(currentController == "Reservations" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
                         Резервации (Admin)
                     </a>
                 }
-                <a href='@Url.Action("About", "Home")' class="px-4 py-2 rounded-full text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all duration-200 no-underline font-body">
+
+                <a href='@Url.Action("About", "Home")'
+                   class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-slate-700 hover:text-slate-900 hover:bg-slate-100 @(currentController == "Home" && currentAction == "About" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
                     За нас
                 </a>
-                <a href='@Url.Action("Contact", "Home")' class="px-4 py-2 rounded-full text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all duration-200 no-underline font-body">
+
+                <a href='@Url.Action("Contact", "Home")'
+                   class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-slate-700 hover:text-slate-900 hover:bg-slate-100 @(currentController == "Home" && currentAction == "Contact" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
                     Контакт
                 </a>
             </nav>
@@ -121,21 +135,29 @@
 
         <!-- Mobile Menu Drawer -->
         <div id="mobileMenu" class="hidden sm:hidden border-t border-slate-100 bg-white/95 backdrop-blur-md px-6 py-4 flex flex-col gap-2">
-            <a href='@Url.Action("Index", "Home")#home' class="py-2.5 px-3 rounded-xl text-slate-700 font-medium hover:bg-slate-50 no-underline font-body">
+            <a href='@Url.Action("Index", "Home")#home'
+               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController == "Home" && currentAction == "Index" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
                 Дома
             </a>
+
             @if (User.IsInRole("Admin"))
             {
-                <a href='@Url.Action("Index", "Reservations")' class="py-2.5 px-3 rounded-xl text-amber-700 font-medium hover:bg-amber-50 no-underline font-body">
+                <a href='@Url.Action("Index", "Reservations")'
+                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "Reservations" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
                     Резервации (Admin)
                 </a>
             }
-            <a href='@Url.Action("About", "Home")' class="py-2.5 px-3 rounded-xl text-slate-700 font-medium hover:bg-slate-50 no-underline font-body">
+
+            <a href='@Url.Action("About", "Home")'
+               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController == "Home" && currentAction == "About" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
                 За нас
             </a>
-            <a href='@Url.Action("Contact", "Home")' class="py-2.5 px-3 rounded-xl text-slate-700 font-medium hover:bg-slate-50 no-underline font-body">
+
+            <a href='@Url.Action("Contact", "Home")'
+               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController == "Home" && currentAction == "Contact" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
                 Контакт
             </a>
+
             <div class="pt-2 border-t border-slate-100 flex flex-col gap-2">
                 @Html.Partial("_LoginPartial")
                 <a href='@Url.Action("New", "Reservations")' class="py-3 rounded-full text-white font-semibold text-center bg-brand-gradient no-underline">
@@ -157,7 +179,7 @@
             <div>
                 <div class="flex items-center gap-3 mb-5">
                     <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white text-lg font-bold" style="background: rgba(255,255,255,0.12);">
-                        А
+                        <img src="~/Content/logo.png" alt="Logo" class="w-full h-full object-contain" />
                     </div>
                     <div>
                         <div class="text-sm font-semibold opacity-80 font-body">Автокамп</div>
@@ -165,7 +187,7 @@
                     </div>
                 </div>
                 <p class="text-white/50 text-sm leading-relaxed font-body">
-                    Природен рај на бреговите на Преспанското Езеро. Дојдете и доживејте ја убавината на Македонија.
+                    Природен рај на брегот на Преспанското Езеро. Дојдете и доживејте ја убавината на нашиот Автокамп.
                 </p>
             </div>
 
@@ -175,8 +197,8 @@
                 <div class="flex flex-col gap-3 font-body">
                     <a href='@Url.Action("Index", "Home")#home' class="text-white/60 hover:text-white text-sm transition no-underline">Дома</a>
                     <a href='@Url.Action("New", "Reservations")' class="text-white/60 hover:text-white text-sm transition no-underline">Резервирај</a>
-                    <a href='@Url.Action("Index", "Home")#about' class="text-white/60 hover:text-white text-sm transition no-underline">За нас</a>
-                    <a href='@Url.Action("Index", "Home")#contact' class="text-white/60 hover:text-white text-sm transition no-underline">Контакт</a>
+                    <a href='@Url.Action("About", "Home")' class="text-white/60 hover:text-white text-sm transition no-underline">За нас</a>
+                    <a href='@Url.Action("Contact", "Home")' class="text-white/60 hover:text-white text-sm transition no-underline">Контакт</a>
                 </div>
             </div>
 

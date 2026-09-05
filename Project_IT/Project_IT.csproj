@@ -218,10 +218,19 @@
     <Content Include="Content\19.JPG" />
     <Content Include="Content\2.jpg" />
     <Content Include="Content\24.jpg" />
+    <Content Include="Content\appartments2.jpg" />
+    <Content Include="Content\appartments.png" />
     <Content Include="Content\Avtokamp_Logo1.png" />
     <Content Include="Content\Avtokamp_Logo_Transparent.png" />
     <Content Include="Content\Avtokamp_Logo_Transparent2.png" />
     <Content Include="Content\banner3.png" />
+    <Content Include="Content\campervan.jpg" />
+    <Content Include="Content\campervan2.jpg" />
+    <Content Include="Content\camphome.jpg" />
+    <Content Include="Content\favicon.ico" />
+    <Content Include="Content\logo.png" />
+    <Content Include="Content\picnic.jpg" />
+    <Content Include="Content\priroda.jpg" />
     <Content Include="Content\reservationBackground.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -393,6 +402,7 @@
     <Content Include="Content\fb_Logo.png" />
     <Content Include="Content\insta_logo.png" />
     <Content Include="Content\phone.png" />
+    <Content Include="Content\tents.jpg" />
     <Content Include="Content\website.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
