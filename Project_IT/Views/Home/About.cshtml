@@ -1,40 +1,105 @@
-﻿<style>
-    #kontakt, #rezerviraj {
-        font-weight: bold;
-        text-decoration: underline
-    }
-    body {
-        background: white;
-    }
-    .glyphicon-align-justify {
-        padding: 3px;
-        text-align: justify;
-        font-size: 18px;
-        font-family: system-ui;
-    }
-</style>
+@{
+    ViewBag.Title = "За нас - Автокамп Отешево";
+}
 
-<br />
-<h2>За Автокамп Отешево</h2>
-<hr />
-<h4 style="color: #a656bd; font-weight: bold; font-size:25px; ">Добредојдовте на веб-страната на Автокамп Отешево.</h4>
-<br />
-<div id="tekst">
-    <p class="glyphicon-align-justify">
-        Вашето присуство е добредојдено и во нашиот камп, 
-        после кое сме сигурни дека ќе станете наш редовен гостин.
-    </p>
-    <p class="glyphicon-align-justify">
-        Преку нашата веб-страна Ви нудиме пристап до клучните информации
-        поврзани со Автокампот, но исто така и ние Ви стоиме на располагање
-        за секое ваше дополнително прашање → @Html.ActionLink("Контактирајте не", "Contact", "Home", null, new {@id="kontakt"})
-    </p>
-    <p class="glyphicon-align-justify">
-        Доколку веќе сме одговориле на сите ваши прашања, тогаш не чекајте →
-        @Html.ActionLink("Резервирајте го вашето место, веднаш!", "New", "Reservations", null, new { @id = "rezerviraj" })
+<div class="py-12 md:py-16 px-6 max-w-7xl mx-auto">
+    <!-- Header Section -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="inline-block text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 font-body"
+              style="background: rgba(26,61,43,0.08); color: #1a3d2b;">
+            За Автокамп Отешево
+        </span>
+        <h1 class="text-4xl md:text-5xl text-slate-800 mb-6 leading-tight font-display font-bold">
+            Вашето омилено место за <br /><em class="italic font-normal">одмор и релаксација</em>
+        </h1>
+        <p class="text-slate-600 text-lg leading-relaxed font-body">
+            Сместен на самиот брег на кристално чистото Преспанско Езеро, Автокамп Отешево нуди совршен спој на природна убавина, спокојство и современ комфор.
+        </p>
+    </div>
 
-    </p>
-    <p style="font-weight: bold; color: #a656bd; font-size: 25px;">
-        Ве очекуваме!
-    </p>
+    <!-- Hero Card / Feature Banner -->
+    <div class="relative rounded-3xl overflow-hidden shadow-2xl mb-20 border border-slate-100" style="box-shadow: 0 20px 50px rgba(0,0,0,0.1);">
+        <div class="grid lg:grid-cols-2 bg-white">
+            <div class="p-8 md:p-12 flex flex-col justify-center">
+                <span class="text-xs font-semibold uppercase tracking-wider text-emerald-800 mb-3 font-body">Нашата Приказна</span>
+                <h2 class="text-3xl md:text-4xl text-slate-800 font-display mb-6">Традиција и љубов кон природата</h2>
+                <p class="text-slate-600 leading-relaxed font-body mb-4">
+                    Автокамп Отешево е основан со визија да им овоможи на сите љубители на природата автентично доживување покрај Преспанското Езеро. Со децении наназад, нашиот камп е омилена дестинација за семејства, авантуристи и сите оние кои бараат бегство од секојдневниот градски метеж.
+                </p>
+                <p class="text-slate-600 leading-relaxed font-body mb-8">
+                    Ние постојано ги подобруваме нашите капацитети — од комфорни бунгалови и современи кампинг парцели до подобрени содржини за рекреација и одмор.
+                </p>
+                <div class="flex items-center gap-4">
+                    <a href='@Url.Action("New", "Reservations")' class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white bg-brand-gradient transition-all duration-200 hover:opacity-90 hover:shadow-lg no-underline font-body">
+                        Резервирај сместување ↗
+                    </a>
+                    <a href='@Url.Action("Contact", "Home")' class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all duration-200 no-underline font-body">
+                        Контактирајте нè
+                    </a>
+                </div>
+            </div>
+            <div class="relative min-h-[320px] lg:min-h-full">
+                <img src="https://images.unsplash.com/photo-1772703003096-fe4096559f81?w=1000&h=800&fit=crop&auto=format" alt="Автокамп Отешево" class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-black/20 to-transparent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Values & Offerings Grid -->
+    <div class="mb-20">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-3xl text-slate-800 font-display mb-4">Што нудиме во Автокамп Отешево</h2>
+            <p class="text-slate-600 text-sm font-body">Современи услови и природно опкружување за нешта што се паметат.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center text-2xl mb-6">
+                    🏡
+                </div>
+                <h3 class="text-xl font-semibold text-slate-800 font-display mb-3">Комотни Бунгалови</h3>
+                <p class="text-slate-600 text-sm font-body leading-relaxed">
+                    Целосно опремени бунгалови кои нудат вистинска удобност и приватност во срцето на природата.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center text-2xl mb-6">
+                    🏕️
+                </div>
+                <h3 class="text-xl font-semibold text-slate-800 font-display mb-3">Кампинг Места</h3>
+                <p class="text-slate-600 text-sm font-body leading-relaxed">
+                    Уредени места за шатори и автокампери со обезбеден пристап до електрична енергија и санитарни јазли.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center text-2xl mb-6">
+                    🏖️
+                </div>
+                <h3 class="text-xl font-semibold text-slate-800 font-display mb-3">Приватна Плажа</h3>
+                <p class="text-slate-600 text-sm font-body leading-relaxed">
+                    Директен пристап до плажата на Преспанското Езеро за сончање, капење и уживање во сонцевите залези.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action Card -->
+    <div class="rounded-3xl p-10 md:p-14 text-center text-white bg-brand-gradient shadow-xl relative overflow-hidden">
+        <div class="relative z-10 max-w-2xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Подготвени за незаборавен одмор?</h2>
+            <p class="text-white/80 font-body mb-8 leading-relaxed">
+                Зачувајте го вашето омилено место денес. Доколку имате прашања или посебни барања, стоиме на располагање.
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <a href='@Url.Action("New", "Reservations")' class="px-8 py-3.5 rounded-full text-sm font-semibold text-slate-900 bg-white hover:bg-slate-100 transition-all shadow-lg no-underline font-body">
+                    Резервирај веднаш
+                </a>
+                <a href='@Url.Action("Contact", "Home")' class="px-8 py-3.5 rounded-full text-sm font-semibold text-white bg-white/10 hover:bg-white/20 transition-all border border-white/20 no-underline font-body">
+                    Контактирајте нè
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
