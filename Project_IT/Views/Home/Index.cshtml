@@ -1,194 +1,386 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+@{
+    ViewBag.Title = "Автокамп Отешево - Почетна";
 }
 
+<!-- ── Hero Section ─────────────────────────────────────────────────────── -->
+<section id="home" class="relative flex flex-col items-center justify-center text-center px-6" style="height: 92vh; min-height: 600px; max-height: 860px;">
+    <!-- Background Image & Gradient Overlay -->
+    <div class="absolute inset-0 bg-slate-800 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1546587348-d12660c30c50?w=1920&h=900&fit=crop&auto=format"
+             alt="Преспанско Езеро"
+             class="w-full h-full object-cover" />
+        <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(10,25,18,0.55) 0%, rgba(10,25,18,0.25) 50%, rgba(10,25,18,0.75) 100%);"></div>
+    </div>
 
-<div class="jumbotron" id="jmbtrn">
-    <h1 style="font-weight:bold">Преспанско Езеро</h1>
-    <p style="color: #f1c9ff; text-shadow: 0.5px 0px black; font-size: 23px">
-        Се наоѓа во југозападниот дел од Земјата, со површина од 276.4 km<sup>2</sup>.<br />
-        Бистра езерска вода, долги песочни плажи, присуство на многу сончеви денови, а свежи ноќи, еколошки чиста средина, планини со бујна вегетација и изградени туристички капацитети - се одлики на убавата Преспа.
-    </p>
+    <!-- Content Container -->
+    <div class="relative z-10 max-w-3xl mx-auto text-white">
+        <span class="inline-block text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 text-white/90 font-body shadow-sm"
+              style="background: rgba(255,255,255,0.18); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
+            Преспанско Езеро, Македонија
+        </span>
 
-    <p><a href="https://mk.wikipedia.org/wiki/%D0%9F%D1%80%D0%B5%D1%81%D0%BF%D0%B0%D0%BD%D1%81%D0%BA%D0%BE_%D0%95%D0%B7%D0%B5%D1%80%D0%BE" class="btn btn-primary btn-m">Дознај повеќе за<br /> преспанското езеро &raquo;</a></p>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight font-display font-bold" style="text-shadow: 0 2px 20px rgba(0,0,0,0.3);">
+            Добредојдовте во <em class="italic font-normal">Автокамп Отешево</em>
+        </h1>
+
+        <p class="text-lg md:text-xl text-white/90 max-w-xl mx-auto mb-10 leading-relaxed font-body" style="text-shadow: 0 1px 8px rgba(0,0,0,0.4);">
+            Вашето природно засолниште на брегот на Преспанското Езеро — бунгалови, кампување и незаборавни доживувања.
+        </p>
+
+        <button onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' })"
+                class="inline-flex items-center gap-2.5 px-8 py-4 rounded-full text-sm font-semibold transition-all duration-200 hover:opacity-90 hover:shadow-xl hover:-translate-y-0.5 active:scale-95 cursor-pointer font-body bg-white text-slate-900 shadow-xl">
+            Истражете го кампот
+            <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs bg-emerald-900 text-white">↗</span>
+        </button>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/60 font-body">
+        <div class="w-px h-10 bg-white/40 animate-pulse"></div>
+        <span class="text-[10px] tracking-widest uppercase">Скролај</span>
+    </div>
+</section>
+
+<!-- ── Booking Bar Widget ───────────────────────────────────────────────── -->
+<div id="booking" class="mx-auto max-w-5xl px-6 -mt-10 relative z-20">
+    <div class="bg-white rounded-2xl p-5 flex flex-col lg:flex-row items-stretch gap-3 border border-slate-100"
+         style="box-shadow: 0 12px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.04);">
+
+        <!-- Check-in -->
+        <div class="flex flex-col gap-1 px-4 py-3 border border-slate-200 rounded-xl bg-white hover:border-slate-300 transition-colors flex-1 min-w-0">
+            <span class="text-[11px] text-slate-400 font-semibold uppercase tracking-wider flex items-center gap-1 font-body">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                    <path d="M16 2v4M8 2v4M3 10h18" />
+                </svg>
+                Пристигнување
+            </span>
+            <input type="date" id="bookingCheckIn" class="w-full text-slate-800 text-sm font-medium outline-none bg-transparent cursor-pointer font-body" />
+        </div>
+
+        <!-- Check-out -->
+        <div class="flex flex-col gap-1 px-4 py-3 border border-slate-200 rounded-xl bg-white hover:border-slate-300 transition-colors flex-1 min-w-0">
+            <span class="text-[11px] text-slate-400 font-semibold uppercase tracking-wider flex items-center gap-1 font-body">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                    <path d="M16 2v4M8 2v4M3 10h18" />
+                </svg>
+                Заминување
+            </span>
+            <input type="date" id="bookingCheckOut" class="w-full text-slate-800 text-sm font-medium outline-none bg-transparent cursor-pointer font-body" />
+        </div>
+
+        <!-- Guests -->
+        <div class="flex flex-col gap-1 px-4 py-3 border border-slate-200 rounded-xl bg-white hover:border-slate-300 transition-colors flex-1 min-w-0">
+            <span class="text-[11px] text-slate-400 font-semibold uppercase tracking-wider flex items-center gap-1 font-body">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+                Гости
+            </span>
+            <select id="bookingGuests" class="w-full text-slate-800 text-sm font-medium outline-none bg-transparent cursor-pointer font-body">
+                <option value="1">1 гостин</option>
+                <option value="2" selected>2 гости</option>
+                <option value="3">3 гости</option>
+                <option value="4">4 гости</option>
+                <option value="5">5 гости</option>
+                <option value="6">6 гости</option>
+                <option value="7">7 гости</option>
+                <option value="8">8 гости</option>
+            </select>
+        </div>
+
+        <!-- Search Button -->
+        <button id="bookingSearchBtn"
+                class="lg:self-stretch flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-white font-semibold text-sm transition-all duration-200 hover:opacity-90 hover:shadow-xl active:scale-95 cursor-pointer whitespace-nowrap bg-brand-gradient shadow-lg font-body"
+                style="box-shadow: 0 4px 16px rgba(26,61,43,0.4);">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+            </svg>
+            Пребарај
+        </button>
+    </div>
 </div>
 
-<div class="row">
-    <div class="header1 pdl">
-        <h1>Автокамп Отешево</h1>
-    </div>
-    <div>
-        <h4 class="pdl pdl2">
-            Нечија приказна од детството, нечие љубовно сеќавање, нечиј рај за душата...
-        </h4>
-        <h4 class="pdl">
-            Автокампот располага со бунгалови и плацови за камп-приколки и шатори.
-        </h4>
-        <br />
+<!-- ── About & Features Section ─────────────────────────────────────────── -->
+<section id="about" class="py-28 px-6" style="background-color: var(--color-cream);">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <!-- Left: Brand Story -->
+        <div>
+            <span class="inline-block text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 font-body"
+                  style="background: rgba(26,61,43,0.08); color: #1a3d2b;">
+                За нас
+            </span>
+            <h2 class="text-4xl md:text-5xl text-slate-800 mb-6 leading-snug font-display">
+                Каде природата<br />
+                <em class="italic font-normal">се среќава со комфортот</em>
+            </h2>
+            <p class="text-slate-600 leading-relaxed mb-5 text-base font-body">
+                Автокамп Отешево лежи на источниот брег на Преспанското Езеро, опкружен со вековни шуми и кристално чиста вода. Нашиот камп нуди уникатна можност да ги доживеете убавините на македонската природа без да се откажете од комфорт.
+            </p>
+            <p class="text-slate-500 leading-relaxed mb-8 text-sm font-body">
+                Со повеќе од 20 години традиција, нудиме луксузни бунгалови, опремени кампинг места, директен пристап до езерската плажа и незаборавни залези на сонцето над Преспа.
+            </p>
+            <a href='@Url.Action("Create2", "Reservations")'
+               class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white transition-all hover:opacity-90 hover:shadow-lg no-underline cursor-pointer bg-brand-gradient font-body"
+               style="box-shadow: 0 4px 14px rgba(26,61,43,0.35);">
+                Резервирај сега ↗
+            </a>
+        </div>
 
-
-        <div class="container" style="text-align: -webkit-center;">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="4500" data-pause="hover">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                    <li data-target="#myCarousel" data-slide-to="3"></li>
-                    <li data-target="#myCarousel" data-slide-to="4"></li>
-                </ol>
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <div class="carousel-content">
-                            <div style="margin: 0 auto">
-                                <p>
-                                    <img class="cr_img" alt="Бунгалов, " src="../../Content/24.jpg" />
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="carousel-content">
-                            <div style="margin: 0 auto">
-                                <p>
-                                    <img class="cr_img" alt="Шатор, " src="../../Content/1.jpg" />
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="carousel-content">
-                            <div style="margin: 0 auto">
-                                <p>
-                                    <img class="cr_img" alt="Приколка, " src="../../Content/11.jpg" />
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="carousel-content">
-                            <div style="margin: 0 auto">
-                                <p>
-                                    <img class="cr_img" alt="Езеро, " src="../../Content/10.jpg" />
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="carousel-content">
-                            <div style="margin: 0 auto">
-                                <p>
-                                    <img class="cr_img" alt="Природа" src="../../Content/18.jpg" />
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only"> Previous</span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+        <!-- Right: Feature Cards Grid -->
+        <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white rounded-2xl p-6 flex flex-col gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-md border border-slate-100" style="box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+                <span class="text-3xl">🌿</span>
+                <h3 class="text-sm font-semibold text-slate-800 font-body">Нетакната природа</h3>
+                <p class="text-xs text-slate-500 leading-relaxed font-body">Опкружени со вековни шуми и чист планински воздух</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 flex flex-col gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-md border border-slate-100" style="box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+                <span class="text-3xl">🏡</span>
+                <h3 class="text-sm font-semibold text-slate-800 font-body">Луксузни бунгалови</h3>
+                <p class="text-xs text-slate-500 leading-relaxed font-body">Комфорни и современо опремени бунгалови за незаборавен одмор</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 flex flex-col gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-md border border-slate-100" style="box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+                <span class="text-3xl">🏖️</span>
+                <h3 class="text-sm font-semibold text-slate-800 font-body">Плажа на езерото</h3>
+                <p class="text-xs text-slate-500 leading-relaxed font-body">Директен пристап до убавата преспанска плажа</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 flex flex-col gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-md border border-slate-100" style="box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+                <span class="text-3xl">🤫</span>
+                <h3 class="text-sm font-semibold text-slate-800 font-body">Мирна средина</h3>
+                <p class="text-xs text-slate-500 leading-relaxed font-body">Идеален бегство од градскиот метеж и секојдневниот стрес</p>
             </div>
         </div>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <style type="text/css">
-            .carousel-inner {
-                width: auto;
-                height: auto;
-                max-height: auto !important;
-            }
+    </div>
+</section>
 
-            .carousel-content {
-                color: black;
-                display: flex;
-                text-align: center;
-            }
-        </style>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                //$('.carousel').carousel({ interval: 5000 });
-            });
-
-
-        </script>
-
-        <div style=" text-align: -webkit-center;">
-            <span class="arrows"> </span>@Html.ActionLink("Резервирај Бунгалов", "Create2", "Reservations", null, new { @class = "btn btn-primary btn-m", @style = "font-size:25px;" })<span class="arrows"></span>
+<!-- ── Stats Bar ────────────────────────────────────────────────────────── -->
+<div class="py-12 px-6 bg-brand-gradient">
+    <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+        <div>
+            <div class="text-3xl md:text-4xl font-bold mb-1 font-display">20+</div>
+            <div class="text-white/70 text-xs uppercase tracking-wider font-body">Години искуство</div>
+        </div>
+        <div>
+            <div class="text-3xl md:text-4xl font-bold mb-1 font-display">50+</div>
+            <div class="text-white/70 text-xs uppercase tracking-wider font-body">Бунгалови</div>
+        </div>
+        <div>
+            <div class="text-3xl md:text-4xl font-bold mb-1 font-display">5000+</div>
+            <div class="text-white/70 text-xs uppercase tracking-wider font-body">Задоволни гости</div>
+        </div>
+        <div>
+            <div class="text-3xl md:text-4xl font-bold mb-1 font-display">4.9★</div>
+            <div class="text-white/70 text-xs uppercase tracking-wider font-body">Просечна оценка</div>
         </div>
     </div>
-
 </div>
 
-<style type="text/css">
+<!-- ── Gallery Carousel ─────────────────────────────────────────────────── -->
+<section class="py-20 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10">
+            <span class="inline-block text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 font-body"
+                  style="background: rgba(26,61,43,0.08); color: #1a3d2b;">
+                Галерија
+            </span>
+            <h2 class="text-4xl md:text-5xl text-slate-800 font-display">
+                Погледнете ги нашите убавини
+            </h2>
+        </div>
 
-    
+        <div id="carouselContainer" class="relative rounded-2xl overflow-hidden shadow-2xl" style="height: 480px; box-shadow: 0 20px 60px rgba(0,0,0,0.18);">
+            <!-- Slide Item 0 -->
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-100">
+                <img src="https://images.unsplash.com/photo-1777863895689-3da81ec075e1?w=1200&h=700&fit=crop&auto=format" alt="Бунгалови над водата" class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                    <h3 class="text-2xl mb-1 font-display">Бунгалови над водата</h3>
+                    <p class="text-white/80 text-sm font-body">Плови над мирното Преспанско Езеро</p>
+                </div>
+            </div>
 
-    #myCarousel {
-        width: auto;
-        height: auto;
-        
-    }
-    .cr_img{
-        width:auto;
-        max-width:700px;
-    }
+            <!-- Slide Item 1 -->
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
+                <img src="https://images.unsplash.com/photo-1772703003096-fe4096559f81?w=1200&h=700&fit=crop&auto=format" alt="Шумски бунгалови" class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                    <h3 class="text-2xl mb-1 font-display">Шумски бунгалови</h3>
+                    <p class="text-white/80 text-sm font-body">Уникатно сместување меѓу вековните дабови</p>
+                </div>
+            </div>
 
-    @@media only screen and (max-width: 600px) {
-        body {
-            margin: 10px;
-        }
-        #myCarousel {
-            width: auto;
-            height: auto;
-        }
-        .cr_img {
-            width: auto;
-            max-width: 90vw;
-        }
-    }
-    #jmbtrn {
-        background-image: url("../../Content/13.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-        vertical-align: top;
-        color: #3749d6;
-    }
+            <!-- Slide Item 2 -->
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
+                <img src="https://images.unsplash.com/photo-1678736428852-7458e1d61fc6?w=1200&h=700&fit=crop&auto=format" alt="Кампување под ѕвездите" class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                    <h3 class="text-2xl mb-1 font-display">Кампување под ѕвездите</h3>
+                    <p class="text-white/80 text-sm font-body">Природа, тишина и незаборавни вечери</p>
+                </div>
+            </div>
 
-    #jmbtrn h1 {
-        text-shadow: 1px -1px white;
-    }
+            <!-- Slide Item 3 -->
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
+                <img src="https://images.unsplash.com/photo-1780902429411-481e1e6cc303?w=1200&h=700&fit=crop&auto=format" alt="Слобода во природата" class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                    <h3 class="text-2xl mb-1 font-display">Слобода во природата</h3>
+                    <p class="text-white/80 text-sm font-body">Идеално место за семејства и авантуристи</p>
+                </div>
+            </div>
 
+            <!-- Slide Item 4 -->
+            <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
+                <img src="https://images.unsplash.com/photo-1596003903067-bf5762ad5c19?w=1200&h=700&fit=crop&auto=format" alt="Езерски пејзажи" class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                    <h3 class="text-2xl mb-1 font-display">Езерски пејзажи</h3>
+                    <p class="text-white/80 text-sm font-body">Зелени планини и кристално чиста вода</p>
+                </div>
+            </div>
 
-    .arrows {
-        color: blue;
-        font-size: 35px;
-    }
+            <!-- Carousel Controls -->
+            <button id="prevSlideBtn" class="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full flex items-center justify-center transition hover:scale-110 cursor-pointer text-white text-xl z-10"
+                    style="background: rgba(255,255,255,0.25); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);" aria-label="Previous">
+                ‹
+            </button>
+            <button id="nextSlideBtn" class="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full flex items-center justify-center transition hover:scale-110 cursor-pointer text-white text-xl z-10"
+                    style="background: rgba(255,255,255,0.25); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);" aria-label="Next">
+                ›
+            </button>
 
-    .header1 {
-        border-bottom: 2px solid pink;
-        text-shadow: 1px -1px pink;
-    }
+            <!-- Indicator Dots -->
+            <div id="carouselDots" class="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-10">
+                <button class="carousel-dot transition-all duration-300 rounded-full cursor-pointer h-2 w-6 bg-white" aria-label="Slide 1"></button>
+                <button class="carousel-dot transition-all duration-300 rounded-full cursor-pointer h-2 w-2 bg-white/50" aria-label="Slide 2"></button>
+                <button class="carousel-dot transition-all duration-300 rounded-full cursor-pointer h-2 w-2 bg-white/50" aria-label="Slide 3"></button>
+                <button class="carousel-dot transition-all duration-300 rounded-full cursor-pointer h-2 w-2 bg-white/50" aria-label="Slide 4"></button>
+                <button class="carousel-dot transition-all duration-300 rounded-full cursor-pointer h-2 w-2 bg-white/50" aria-label="Slide 5"></button>
+            </div>
+        </div>
+    </div>
+</section>
 
-    .pdl {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-    .pdl2 {
-        text-shadow: 1px -1px pink;
-    }
-    .carousel-inner{
-        border-radius:40px;
-    }
-    .left, .carousel-control, .right, .carousel-control {
-        border-radius: 10px;
-    }
+@section scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Setup default dates for Booking Widget
+            var today = new Date();
+            var checkInDate = new Date();
+            checkInDate.setDate(today.getDate() + 7);
+            var checkOutDate = new Date();
+            checkOutDate.setDate(today.getDate() + 10);
 
-</style>
+            var formatDate = function (d) {
+                return d.toISOString().split('T')[0];
+            };
+
+            var checkInInput = document.getElementById('bookingCheckIn');
+            var checkOutInput = document.getElementById('bookingCheckOut');
+            var guestsSelect = document.getElementById('bookingGuests');
+
+            if (checkInInput && checkOutInput) {
+                checkInInput.value = formatDate(checkInDate);
+                checkInInput.min = formatDate(today);
+                checkOutInput.value = formatDate(checkOutDate);
+                checkOutInput.min = formatDate(checkInDate);
+
+                checkInInput.addEventListener('change', function () {
+                    var newIn = new Date(this.value);
+                    if (isNaN(newIn.getTime())) return;
+                    var minOut = new Date(newIn);
+                    minOut.setDate(minOut.getDate() + 1);
+                    checkOutInput.min = formatDate(minOut);
+
+                    var currentOut = new Date(checkOutInput.value);
+                    if (currentOut <= newIn) {
+                        checkOutInput.value = formatDate(minOut);
+                    }
+                });
+            }
+
+            // Handle Booking Search Button Action
+            var searchBtn = document.getElementById('bookingSearchBtn');
+            if (searchBtn) {
+                searchBtn.addEventListener('click', function () {
+                    var inVal = checkInInput ? checkInInput.value : '';
+                    var outVal = checkOutInput ? checkOutInput.value : '';
+                    var guestsVal = guestsSelect ? guestsSelect.value : '2';
+
+                    var reservationUrl = '@Url.Action("Create2", "Reservations")' +
+                        '?checkIn=' + encodeURIComponent(inVal) +
+                        '&checkOut=' + encodeURIComponent(outVal) +
+                        '&guests=' + encodeURIComponent(guestsVal);
+
+                    window.location.href = reservationUrl;
+                });
+            }
+
+            // Carousel Implementation
+            var slides = document.querySelectorAll('.carousel-slide');
+            var dots = document.querySelectorAll('.carousel-dot');
+            var prevBtn = document.getElementById('prevSlideBtn');
+            var nextBtn = document.getElementById('nextSlideBtn');
+            var activeIdx = 0;
+            var timer = null;
+
+            function goToSlide(idx) {
+                activeIdx = (idx + slides.length) % slides.length;
+
+                slides.forEach(function (slide, i) {
+                    if (i === activeIdx) {
+                        slide.classList.remove('opacity-0', 'pointer-events-none');
+                        slide.classList.add('opacity-100');
+                    } else {
+                        slide.classList.remove('opacity-100');
+                        slide.classList.add('opacity-0', 'pointer-events-none');
+                    }
+                });
+
+                dots.forEach(function (dot, i) {
+                    if (i === activeIdx) {
+                        dot.classList.remove('w-2', 'bg-white/50');
+                        dot.classList.add('w-6', 'bg-white');
+                    } else {
+                        dot.classList.remove('w-6', 'bg-white');
+                        dot.classList.add('w-2', 'bg-white/50');
+                    }
+                });
+            }
+
+            function startTimer() {
+                if (timer) clearInterval(timer);
+                timer = setInterval(function () {
+                    goToSlide(activeIdx + 1);
+                }, 5000);
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function () {
+                    goToSlide(activeIdx - 1);
+                    startTimer();
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function () {
+                    goToSlide(activeIdx + 1);
+                    startTimer();
+                });
+            }
+
+            dots.forEach(function (dot, i) {
+                dot.addEventListener('click', function () {
+                    goToSlide(i);
+                    startTimer();
+                });
+            });
+
+            startTimer();
+        });
+    </script>
+}
