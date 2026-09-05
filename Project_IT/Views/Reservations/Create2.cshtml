@@ -1,96 +1,162 @@
-﻿@model Project_IT.Models.Reservation
+@model Project_IT.Models.Reservation
 
+@{
+    ViewBag.Title = "Резервирај - Автокамп Отешево";
+}
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div class="py-12 px-6" style="background-color: var(--color-cream); min-height: 80vh;">
+    <div class="max-w-3xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-10">
+            <span class="inline-block text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 font-body"
+                  style="background: rgba(26,61,43,0.08); color: #1a3d2b;">
+                Резервација
+            </span>
+            <h1 class="text-3xl md:text-4xl text-slate-800 font-display font-bold">
+                Испрати барање за резервација
+            </h1>
+            <p class="text-slate-600 mt-3 text-sm md:text-base font-body">
+                Пополнете ги податоците подолу за да испратите барање за резервација во Автокамп Отешево.
+            </p>
+        </div>
 
+        <!-- Reservation Form Card -->
+        <div id="f1" class="bg-white rounded-2xl p-6 md:p-10 border border-slate-100 shadow-xl space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Name -->
+                <div class="flex flex-col gap-1.5">
+                    <label for="ime" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                        * Име и презиме
+                    </label>
+                    <input type="text" id="ime" required="required" placeholder="Пр. Петар Петровски"
+                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                </div>
 
-<br />
-<h2>Испрати барање за резервација</h2> 
-<br />
-<div id="f1">
-    <div class="field">
-        <label class="control-label col-md-2">*Име и презиме</label>
-        <input class="form-control" id="ime" required="required" />
-    </div> <br />
-    <div class="field">
-        <label class="control-label col-md-2">*E-mail адреса</label>
-        <input class="form-control" id="email" required="required" />
-    </div><br />
-    <div class="field">
-        <label class="control-label col-md-2">*Телефон</label>
-        <input class="form-control" id="telefon" required="required" />
-    </div><br />
-    <div class="field">
-        <label class="control-label col-md-2">*Број на лица</label>
-        <input class="form-control" id="lica" type="number" min="1" max="10" required="required" />
-    </div><br />
-    <div class="field">
-        <label class="control-label col-md-2">Дата на пристигнување</label>
-        <input class="form-control" id="dataP" type="date" value="" />
-    </div><br />
-    <div class="field">
-        <label class="control-label col-md-2">Дата на заминување</label>
-        <input class="form-control" id="dataZ" type="date" value="24-04-2002" />
-    </div><br />
-    <div class="field">
-        <label class="control-label col-md-2">Дополнителни барања</label>
-        <textarea class="form-control" id="poraka" required="required"></textarea>
-    </div><br />
+                <!-- Email -->
+                <div class="flex flex-col gap-1.5">
+                    <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                        * E-mail адреса
+                    </label>
+                    <input type="email" id="email" required="required" placeholder="vasiot@email.com"
+                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                </div>
 
-    <p>Полињата означени со * се задолжителни</p>
-    <input type="submit" class="btn btn-primary" id="isprati" value="Испрати барање" />
+                <!-- Phone -->
+                <div class="flex flex-col gap-1.5">
+                    <label for="telefon" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                        * Телефон
+                    </label>
+                    <input type="tel" id="telefon" required="required" placeholder="07X XXX XXX"
+                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                </div>
+
+                <!-- Guests -->
+                <div class="flex flex-col gap-1.5">
+                    <label for="lica" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                        * Број на лица
+                    </label>
+                    <input type="number" id="lica" min="1" max="10" required="required" placeholder="2"
+                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                </div>
+
+                <!-- Check-in Date -->
+                <div class="flex flex-col gap-1.5">
+                    <label for="dataP" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                        Дата на пристигнување
+                    </label>
+                    <input type="date" id="dataP"
+                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer font-body" />
+                </div>
+
+                <!-- Check-out Date -->
+                <div class="flex flex-col gap-1.5">
+                    <label for="dataZ" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                        Дата на заминување
+                    </label>
+                    <input type="date" id="dataZ"
+                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer font-body" />
+                </div>
+            </div>
+
+            <!-- Message -->
+            <div class="flex flex-col gap-1.5">
+                <label for="poraka" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                    Дополнителни барања
+                </label>
+                <textarea id="poraka" rows="3" placeholder="Напомени или дополнителни барања..."
+                          class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body resize-y"></textarea>
+            </div>
+
+            <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
+                <p class="text-xs text-slate-400 font-body">
+                    Полињата означени со * се задолжителни.
+                </p>
+                <button type="button" id="isprati"
+                        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl text-white font-semibold text-sm transition-all duration-200 hover:opacity-90 hover:shadow-xl active:scale-95 cursor-pointer bg-brand-gradient shadow-md font-body"
+                        style="box-shadow: 0 4px 14px rgba(26,61,43,0.35);">
+                    Испрати барање ↗
+                </button>
+            </div>
+        </div>
+
+        <!-- Back Link -->
+        <div class="mt-6 text-center">
+            <a href='@Url.Action("Index", "Home")' class="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 text-sm font-medium transition font-body no-underline">
+                ← Назад до Почетна
+            </a>
+        </div>
+    </div>
 </div>
 
-<br />
-<form id="form">
-    <div class="field">
-        <label for="from_name">from_name</label>
-        <textarea type="text" name="from_name" id="from_name"></textarea>
-    </div>
-    <div class="field">
-        <label for="reply_to">reply_to</label>
-        <input type="text" name="reply_to" id="reply_to">
-    </div>
-    <div class="field">
-        <label for="message">message</label>
-        <textarea type="text" name="message" id="message"></textarea>
-    </div>
-
+<!-- Hidden EmailJS Form -->
+<form id="form" class="hidden">
+    <textarea name="from_name" id="from_name"></textarea>
+    <input type="text" name="reply_to" id="reply_to"></input>
+    <textarea name="message" id="message"></textarea>
     <input type="submit" id="button" value="Send Email">
 </form>
 
-
 <style>
     .danger {
-        background: #ff00001f;
-    }
-    #poraka{
-        min-height:50px;
-        min-width:50px;
-        max-height:300px;
-    }
-    #form {
-        display:none
+        border-color: #ef4444 !important;
+        background-color: #fef2f2 !important;
     }
 </style>
-
 
 <script src="~/Content/email.min.js"></script>
 
 <script type="text/javascript">
-    emailjs.init('0YVQaG2ITtZEM__Mt')
+    emailjs.init('0YVQaG2ITtZEM__Mt');
 </script>
 
-<script>
-    const btn = document.getElementById('button');
+<script type="text/javascript">
+    Date.prototype.addDays = function (days) {
+        var date = new Date(this.valueOf());
+        date.setDate(date.getDate() + days);
+        return date;
+    };
 
-    document.getElementById('form')
-        .addEventListener('submit', function (event) {
+    function updateMinCheckOut(checkInVal) {
+        if (!checkInVal) return;
+        var parts = checkInVal.split('-');
+        if (parts.length === 3) {
+            var yyyy = parseInt(parts[0], 10);
+            var mm = parseInt(parts[1], 10);
+            var dd = parseInt(parts[2], 10);
+
+            var minZdate = new Date(yyyy, mm - 1, dd).addDays(1);
+            var Tdd = String(minZdate.getDate()).padStart(2, '0');
+            var Tmm = String(minZdate.getMonth() + 1).padStart(2, '0');
+            var Tyyyy = minZdate.getFullYear();
+
+            $('#dataZ').attr('min', Tyyyy + '-' + Tmm + '-' + Tdd);
+        }
+    }
+
+    $(document).ready(function () {
+        const btn = document.getElementById('button');
+
+        document.getElementById('form').addEventListener('submit', function (event) {
             event.preventDefault();
 
             btn.value = 'Sending...';
@@ -112,154 +178,109 @@
                 }, (err) => {
                     btn.value = 'Send Email';
                     alert(JSON.stringify(err));
-
                 });
         });
 
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+        var todayStr = yyyy + '-' + mm + '-' + dd;
 
-    Date.prototype.addDays = function (days) {
-        var date = new Date(this.valueOf());
-        date.setDate(date.getDate() + days);
-        return date;
-    }
+        $('#dataP').attr('min', todayStr);
+        $('#dataZ').attr('min', todayStr);
 
-    var today = new Date();
+        // Prepopulate from URL parameters
+        var urlParams = new URLSearchParams(window.location.search);
+        var paramCheckIn = urlParams.get('checkIn');
+        var paramCheckOut = urlParams.get('checkOut');
+        var paramGuests = urlParams.get('guests');
 
-    today = today.addDays(2)
-
-    //console.log(today.getDate())
-
-    //console.log(today.getMonth())
-    //console.log(today.getFullYear())
-
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
-    var yyyy = today.getFullYear();
-
-    today = yyyy + '-' + mm + '-' + dd;
-    $('#dataP').attr('min', today);
-    $('#dataZ').attr('min', today);
-
-    $("#isprati").click(function () {
-        var e1 = $("#dataP").val()
-        var e2 = $("#dataZ").val()
-        if (e1 == "") e1 = 'Null';
-        else {
-            var tmp = e1.substr(8, 2) + "." + e1.substr(5, 2) + "." + e1.substr(0, 4)
-            e1 = tmp;
-        }
-        if (e2 == "") e2 = 'Null';
-        else {
-            var tmp = e2.substr(8, 2) + "." + e2.substr(5, 2) + "." + e2.substr(0, 4)
-            e2 = tmp;
-        }
-        var ime = $("#ime");
-        if (ime.val() == "") {
-            ime.addClass("danger")
-        } else {
-            ime.removeClass("danger")
+        if (paramGuests) {
+            $('#lica').val(paramGuests);
         }
 
-        var email = $("#email");
-        if (email.val() == "") {
-            email.addClass("danger")
-        } else {
-            email.removeClass("danger")
+        if (paramCheckIn) {
+            $('#dataP').val(paramCheckIn);
+            updateMinCheckOut(paramCheckIn);
         }
 
-        var telefon = $("#telefon");
-        if (telefon.val() == "") {
-            telefon.addClass("danger")
-        } else {
-            telefon.removeClass("danger")
+        if (paramCheckOut) {
+            $('#dataZ').val(paramCheckOut);
         }
 
-        var lica = $("#lica");
-        if (lica.val() == "") {
-            lica.addClass("danger")
-        } else {
-            lica.removeClass("danger")
-        }
+        $("#dataP").change(function () {
+            var dtP = $("#dataP").val();
+            if (dtP) {
+                updateMinCheckOut(dtP);
+                var currentOut = $("#dataZ").val();
+                if (currentOut && currentOut <= dtP) {
+                    $("#dataZ").val("");
+                }
+            }
+        });
 
-        if (ime.val() == "" || email.val() == "" || telefon.val() == "" || lica.val() == "") {
-            return
-        }
+        $("#isprati").click(function () {
+            var e1 = $("#dataP").val();
+            var e2 = $("#dataZ").val();
+            if (e1 == "") e1 = 'Null';
+            else {
+                var tmp = e1.substr(8, 2) + "." + e1.substr(5, 2) + "." + e1.substr(0, 4);
+                e1 = tmp;
+            }
+            if (e2 == "") e2 = 'Null';
+            else {
+                var tmp = e2.substr(8, 2) + "." + e2.substr(5, 2) + "." + e2.substr(0, 4);
+                e2 = tmp;
+            }
 
-        $("#from_name").val(" Име и презиме: " + ime.val() +
-            "\n Email: " + email.val() +
-            "\n Телефон: " + telefon.val() +
-            "\n Дата на пристигнување: " + e1 +
-            "\n Дата на заминување: " + e2
+            var ime = $("#ime");
+            if (ime.val() == "") {
+                ime.addClass("danger");
+            } else {
+                ime.removeClass("danger");
+            }
 
-        )
+            var email = $("#email");
+            if (email.val() == "") {
+                email.addClass("danger");
+            } else {
+                email.removeClass("danger");
+            }
 
-        var poraka = $("#poraka").val()
+            var telefon = $("#telefon");
+            if (telefon.val() == "") {
+                telefon.addClass("danger");
+            } else {
+                telefon.removeClass("danger");
+            }
 
-        $("#message").val(poraka)
+            var lica = $("#lica");
+            if (lica.val() == "") {
+                lica.addClass("danger");
+            } else {
+                lica.removeClass("danger");
+            }
 
+            if (ime.val() == "" || email.val() == "" || telefon.val() == "" || lica.val() == "") {
+                return;
+            }
 
+            $("#from_name").val(" Име и презиме: " + ime.val() +
+                "\n Email: " + email.val() +
+                "\n Телефон: " + telefon.val() +
+                "\n Број на лица: " + lica.val() +
+                "\n Дата на пристигнување: " + e1 +
+                "\n Дата на заминување: " + e2
+            );
 
+            var poraka = $("#poraka").val();
+            $("#message").val(poraka);
 
-
-
-
-        btn.click()
-    })
-
-
-
-
-    $("#dataP").change(function () {
-        $("#dataZ").val("")
-        var dtP = $("#dataP").val()
-
-        var dd = String(dtP).slice(8, 10)
-        var mm = String(dtP).slice(5, 7)
-        var yyyy = String(dtP).slice(0, 4)
-
-
-
-        var minZdate = new Date(yyyy, mm - 1, dd)
-        minZdate = minZdate.addDays(2)
-
-
-        var Tdd = String(minZdate.getDate()).padStart(2, '0');
-        var Tmm = String(minZdate.getMonth() + 1).padStart(2, '0');
-        var Tyyyy = minZdate.getFullYear();
-
-        minZdate = Tyyyy + '-' + Tmm + '-' + Tdd;
-
-        $('#dataZ').attr('min', minZdate);
-
-
-            
-        //var dd2 = String(dtZ).slice(8, 10)
-        //var mm2 = String(dtZ).slice(5, 7)
-        //var yyyy2 = String(dtZ).slice(0, 4)
-
-        //var dateZ = new Date(yyyy2, mm2 - 1, dd2);
-
-        //console.log(dateP)
-        //console.log(dateZ)
-
-        //console.log(dateP.getTime() < dateZ.getTime())
-
-        //// if dataZ is less than dataP, Then --->
-        //// $("#dataP").val("")
-    })
-
-    $("#dataZ").change(function () {
-        // $("#dataP").val("")
-
-        
-    })
+            btn.click();
+        });
+    });
 </script>
-
-
-<br />
-<div>
-    @Html.ActionLink("Назад до Почетна", "Index", "Home", null, new { @class = "btn btn-default" })
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
