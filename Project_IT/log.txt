@@ -12,3 +12,23 @@ INFO  2024-01-23 16:09:27,006 21678ms ReservationsController Index              
 INFO  2024-01-23 16:09:27,359 22031ms ReservationsController Index              - Home Index
 INFO  2024-01-23 16:09:27,674 22346ms ReservationsController Index              - Home Index
 ERROR 2026-09-05 14:45:56,778 892913ms ReservationsController Application_Error  - The controller for path '/contact' was not found or does not implement IController.
+ERROR 2026-09-05 14:46:43,626 939761ms ReservationsController Application_Error  - The controller for path '/Contact' was not found or does not implement IController.
+ERROR 2026-09-05 14:59:37,501  5815ms ReservationsController Invoke             - The controller for path '/c/c' was not found or does not implement IController.
+ERROR 2026-09-05 14:59:42,132 10445ms ReservationsController Invoke             - The controller for path '/c' was not found or does not implement IController.
+ERROR 2026-09-05 14:59:54,660  6720ms ReservationsController Invoke             - The controller for path '/c/c' was not found or does not implement IController.
+ERROR 2026-09-05 15:00:09,742 21802ms ReservationsController Invoke             - The controller for path '/NotKnownController/NotKnownView' was not found or does not implement IController.
+ERROR 2026-09-05 15:02:16,453  6483ms ReservationsController Invoke             - The controller for path '/c/c' was not found or does not implement IController.
+ERROR 2026-09-05 15:02:59,422  4719ms ReservationsController Invoke             - The controller for path '/d/d' was not found or does not implement IController.
+ERROR 2026-09-05 15:03:26,420 31717ms ReservationsController Invoke             - The controller for path '/NotKnownController/NotKnownView' was not found or does not implement IController.
+ERROR 2026-09-05 15:04:03,752  6855ms ReservationsController Invoke             - The controller for path '/NotKnownController/NotKnownView' was not found or does not implement IController.
+ERROR 2026-09-05 15:04:05,974  9078ms ReservationsController Invoke             - The controller for path '/NotKnownController/NotKnownView' was not found or does not implement IController.
+ERROR 2026-09-05 15:04:15,444  1282ms ReservationsController Invoke             - The controller for path '/NotKnownController/NotKnownView' was not found or does not implement IController.
+ERROR 2026-09-05 15:08:41,295 267133ms ReservationsController Invoke             - C:\Users\boriss\source\repos\AvtokampOteshevo_WebApp\Project_IT\Views\Shared\_Layout.cshtml(50): error CS0103: The name 'keyframes' does not exist in the current context
+ERROR 2026-09-05 15:08:41,466 267304ms ReservationsController Invoke             - C:\Users\boriss\source\repos\AvtokampOteshevo_WebApp\Project_IT\Views\Shared\_Layout.cshtml(50): error CS0103: The name 'keyframes' does not exist in the current context
+ERROR 2026-09-05 15:08:41,691 267529ms ReservationsController Invoke             - C:\Users\boriss\source\repos\AvtokampOteshevo_WebApp\Project_IT\Views\Shared\_Layout.cshtml(50): error CS0103: The name 'keyframes' does not exist in the current context
+ERROR 2026-09-05 15:08:41,845 267683ms ReservationsController Invoke             - C:\Users\boriss\source\repos\AvtokampOteshevo_WebApp\Project_IT\Views\Shared\_Layout.cshtml(50): error CS0103: The name 'keyframes' does not exist in the current context
+ERROR 2026-09-05 15:08:57,414 283252ms ReservationsController Invoke             - C:\Users\boriss\source\repos\AvtokampOteshevo_WebApp\Project_IT\Views\Shared\_Layout.cshtml(50): error CS0103: The name 'keyframes' does not exist in the current context
+ERROR 2026-09-05 15:08:57,574 283413ms ReservationsController Invoke             - C:\Users\boriss\source\repos\AvtokampOteshevo_WebApp\Project_IT\Views\Shared\_Layout.cshtml(50): error CS0103: The name 'keyframes' does not exist in the current context
+ERROR 2026-09-05 15:08:57,776 283614ms ReservationsController Invoke             - C:\Users\boriss\source\repos\AvtokampOteshevo_WebApp\Project_IT\Views\Shared\_Layout.cshtml(50): error CS0103: The name 'keyframes' does not exist in the current context
+ERROR 2026-09-05 15:08:57,929 283767ms ReservationsController Invoke             - C:\Users\boriss\source\repos\AvtokampOteshevo_WebApp\Project_IT\Views\Shared\_Layout.cshtml(50): error CS0103: The name 'keyframes' does not exist in the current context
+ERROR 2026-09-05 15:13:39,074 564912ms ReservationsController Invoke             - A public action method 'Derails' was not found on controller 'Project_IT.Controllers.ReservationsController'.
