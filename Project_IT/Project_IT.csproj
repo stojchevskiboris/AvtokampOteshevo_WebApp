@@ -543,7 +543,7 @@
     <Content Include="Views\Reservations\Final.cshtml" />
     <Content Include="Views\Account\AddUserToRole.cshtml" />
     <Content Include="Views\Reservations\Calendar.cshtml" />
-    <Content Include="Views\Reservations\Create2.cshtml" />
+    <Content Include="Views\Reservations\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

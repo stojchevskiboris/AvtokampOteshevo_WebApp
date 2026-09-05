@@ -123,7 +123,7 @@
             <p class="text-slate-500 leading-relaxed mb-8 text-sm font-body">
                 Со повеќе од 20 години традиција, нудиме луксузни бунгалови, опремени кампинг места, директен пристап до езерската плажа и незаборавни залези на сонцето над Преспа.
             </p>
-            <a href='@Url.Action("Create2", "Reservations")'
+            <a href='@Url.Action("New", "Reservations")'
                class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white transition-all hover:opacity-90 hover:shadow-lg no-underline cursor-pointer bg-brand-gradient font-body"
                style="box-shadow: 0 4px 14px rgba(26,61,43,0.35);">
                 Резервирај сега ↗
@@ -306,7 +306,7 @@
                     var outVal = checkOutInput ? checkOutInput.value : '';
                     var guestsVal = guestsSelect ? guestsSelect.value : '2';
 
-                    var reservationUrl = '@Url.Action("Create2", "Reservations")' +
+                    var reservationUrl = '@Url.Action("New", "Reservations")' +
                         '?checkIn=' + encodeURIComponent(inVal) +
                         '&checkOut=' + encodeURIComponent(outVal) +
                         '&guests=' + encodeURIComponent(guestsVal);

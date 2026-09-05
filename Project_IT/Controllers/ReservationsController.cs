@@ -43,6 +43,8 @@ namespace Project_IT.Controllers
         // GET: Reservations/Create
         public ActionResult Create()
         {
+            return RedirectToAction("New", "Reservations");
+
             return View();
         }
 
@@ -53,6 +55,9 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Email,Ime,Prezime,Denovi,Lica,Cena,Telefon,DataNaPristignuvanje,DataNaZaminuvanje,VremeRezervacija,Info")] Reservation reservation)
         {
+            // Redirect to new reservation page
+            return RedirectToAction("New", "Reservations");
+
             if (ModelState.IsValid)
             {
                 db.Reservations.Add(reservation);
@@ -63,18 +68,22 @@ namespace Project_IT.Controllers
             return View(reservation);
         }
 
-        public ActionResult Create2()
+        public ActionResult New()
         {
             return View();
         }
 
         public ActionResult Final(Reservation reservation)
         {
+            return RedirectToAction("New", "Reservations");
+            
             return View(reservation);
         }
 
         public ActionResult Calendar()
         {
+            return RedirectToAction("New", "Reservations");
+
             return View();
         }
 
