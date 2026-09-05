@@ -222,6 +222,7 @@
     <Content Include="Content\Avtokamp_Logo_Transparent.png" />
     <Content Include="Content\Avtokamp_Logo_Transparent2.png" />
     <Content Include="Content\banner3.png" />
+    <Content Include="Content\reservationBackground.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

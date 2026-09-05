@@ -11,3 +11,4 @@ INFO  2024-01-23 16:09:26,664 21336ms ReservationsController Index              
 INFO  2024-01-23 16:09:27,006 21678ms ReservationsController Index              - Home Index
 INFO  2024-01-23 16:09:27,359 22031ms ReservationsController Index              - Home Index
 INFO  2024-01-23 16:09:27,674 22346ms ReservationsController Index              - Home Index
+ERROR 2026-09-05 14:45:56,778 892913ms ReservationsController Application_Error  - The controller for path '/contact' was not found or does not implement IController.

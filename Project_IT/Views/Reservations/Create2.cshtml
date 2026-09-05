@@ -4,24 +4,28 @@
     ViewBag.Title = "Резервирај - Автокамп Отешево";
 }
 
-<div class="py-12 px-6" style="background-color: var(--color-cream); min-height: 80vh;">
-    <div class="max-w-3xl mx-auto">
+<div class="py-12 px-6 bg-cover bg-center bg-no-repeat relative"
+     style="min-height: 80vh; background-image: url('@Url.Content("~/Content/reservationBackground.png")');">
+
+    <!-- Optional: Dark overlay to improve readability of white/dark text on top of the image -->
+    <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
+
+    <div class="max-w-3xl mx-auto relative z-10">
         <!-- Header -->
         <div class="text-center mb-10">
-            <span class="inline-block text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 font-body"
-                  style="background: rgba(26,61,43,0.08); color: #1a3d2b;">
+            <span class="inline-block text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 font-body bg-black/40 text-emerald-300 backdrop-blur-md border border-white/10">
                 Резервација
             </span>
-            <h1 class="text-3xl md:text-4xl text-slate-800 font-display font-bold">
+            <h1 class="text-3xl md:text-4xl text-white font-display font-bold drop-shadow-md">
                 Испрати барање за резервација
             </h1>
-            <p class="text-slate-600 mt-3 text-sm md:text-base font-body">
+            <p class="text-slate-100 mt-3 text-sm md:text-base font-body font-normal drop-shadow">
                 Пополнете ги податоците подолу за да испратите барање за резервација во Автокамп Отешево.
             </p>
         </div>
 
         <!-- Reservation Form Card -->
-        <div id="f1" class="bg-white rounded-2xl p-6 md:p-10 border border-slate-100 shadow-xl space-y-6">
+        <div id="f1" class="bg-white/95 backdrop-blur-md rounded-2xl p-6 md:p-10 border border-slate-100 shadow-2xl space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Name -->
                 <div class="flex flex-col gap-1.5">
@@ -84,7 +88,7 @@
                     Дополнителни барања
                 </label>
                 <textarea id="poraka" rows="3" placeholder="Напомени или дополнителни барања..."
-                          class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body resize-y"></textarea>
+                          class="max-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body resize-y"></textarea>
             </div>
 
             <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
@@ -101,7 +105,7 @@
 
         <!-- Back Link -->
         <div class="mt-6 text-center">
-            <a href='@Url.Action("Index", "Home")' class="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 text-sm font-medium transition font-body no-underline">
+            <a href='@Url.Action("Index", "Home")' class="inline-flex items-center gap-2 text-slate-900 bg-white/80 hover:bg-white px-4 py-2 rounded-full text-sm font-semibold transition font-body no-underline shadow-sm backdrop-blur-sm">
                 ← Назад до Почетна
             </a>
         </div>
@@ -111,9 +115,9 @@
 <!-- Hidden EmailJS Form -->
 <form id="form" class="hidden">
     <textarea name="from_name" id="from_name"></textarea>
-    <input type="text" name="reply_to" id="reply_to"></input>
+    <input type="text" name="reply_to" id="reply_to" />
     <textarea name="message" id="message"></textarea>
-    <input type="submit" id="button" value="Send Email">
+    <input type="submit" id="button" value="Send Email" />
 </form>
 
 <style>
@@ -149,12 +153,19 @@
             var Tmm = String(minZdate.getMonth() + 1).padStart(2, '0');
             var Tyyyy = minZdate.getFullYear();
 
-            $('#dataZ').attr('min', Tyyyy + '-' + Tmm + '-' + Tdd);
+            document.getElementById('dataZ').setAttribute('min', Tyyyy + '-' + Tmm + '-' + Tdd);
         }
     }
 
-    $(document).ready(function () {
+    document.addEventListener('DOMContentLoaded', function () {
         const btn = document.getElementById('button');
+        const dataP = document.getElementById('dataP');
+        const dataZ = document.getElementById('dataZ');
+        const ime = document.getElementById('ime');
+        const email = document.getElementById('email');
+        const telefon = document.getElementById('telefon');
+        const lica = document.getElementById('lica');
+        const poraka = document.getElementById('poraka');
 
         document.getElementById('form').addEventListener('submit', function (event) {
             event.preventDefault();
@@ -167,14 +178,31 @@
             emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {
                     btn.value = 'Send Email';
-                    alert('Барањето е испратено!');
-                    document.getElementById("ime").value = "";
-                    document.getElementById("email").value = "";
-                    document.getElementById("telefon").value = "";
-                    document.getElementById("lica").value = "";
-                    $("#dataP").val("");
-                    $("#dataZ").val("");
-                    document.getElementById("poraka").value = "";
+
+                    // Clear values
+                    ime.value = "";
+                    email.value = "";
+                    telefon.value = "";
+                    lica.value = "";
+                    dataP.value = "";
+                    dataZ.value = "";
+                    poraka.value = "";
+
+                    // Replace form card with thank you state
+                    const formCard = document.getElementById('f1');
+                    formCard.innerHTML = `
+                        <div class="text-center py-12 px-4 space-y-4">
+                            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-sm">
+                                ✓
+                            </div>
+                            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-display">
+                                Ви благодариме!
+                            </h2>
+                            <p class="text-slate-600 font-body text-base max-w-md mx-auto leading-relaxed">
+                                Вашето барање за резервација е успешно испратено. Ќе ве контактираме во најкраток можен рок.
+                            </p>
+                        </div>
+                    `;
                 }, (err) => {
                     btn.value = 'Send Email';
                     alert(JSON.stringify(err));
@@ -187,8 +215,8 @@
         var yyyy = today.getFullYear();
         var todayStr = yyyy + '-' + mm + '-' + dd;
 
-        $('#dataP').attr('min', todayStr);
-        $('#dataZ').attr('min', todayStr);
+        dataP.setAttribute('min', todayStr);
+        dataZ.setAttribute('min', todayStr);
 
         // Prepopulate from URL parameters
         var urlParams = new URLSearchParams(window.location.search);
@@ -197,32 +225,32 @@
         var paramGuests = urlParams.get('guests');
 
         if (paramGuests) {
-            $('#lica').val(paramGuests);
+            lica.value = paramGuests;
         }
 
         if (paramCheckIn) {
-            $('#dataP').val(paramCheckIn);
+            dataP.value = paramCheckIn;
             updateMinCheckOut(paramCheckIn);
         }
 
         if (paramCheckOut) {
-            $('#dataZ').val(paramCheckOut);
+            dataZ.value = paramCheckOut;
         }
 
-        $("#dataP").change(function () {
-            var dtP = $("#dataP").val();
+        dataP.addEventListener('change', function () {
+            var dtP = dataP.value;
             if (dtP) {
                 updateMinCheckOut(dtP);
-                var currentOut = $("#dataZ").val();
+                var currentOut = dataZ.value;
                 if (currentOut && currentOut <= dtP) {
-                    $("#dataZ").val("");
+                    dataZ.value = "";
                 }
             }
         });
 
-        $("#isprati").click(function () {
-            var e1 = $("#dataP").val();
-            var e2 = $("#dataZ").val();
+        document.getElementById('isprati').addEventListener('click', function () {
+            var e1 = dataP.value;
+            var e2 = dataZ.value;
             if (e1 == "") e1 = 'Null';
             else {
                 var tmp = e1.substr(8, 2) + "." + e1.substr(5, 2) + "." + e1.substr(0, 4);
@@ -234,48 +262,42 @@
                 e2 = tmp;
             }
 
-            var ime = $("#ime");
-            if (ime.val() == "") {
-                ime.addClass("danger");
+            if (ime.value == "") {
+                ime.classList.add("danger");
             } else {
-                ime.removeClass("danger");
+                ime.classList.remove("danger");
             }
 
-            var email = $("#email");
-            if (email.val() == "") {
-                email.addClass("danger");
+            if (email.value == "") {
+                email.classList.add("danger");
             } else {
-                email.removeClass("danger");
+                email.classList.remove("danger");
             }
 
-            var telefon = $("#telefon");
-            if (telefon.val() == "") {
-                telefon.addClass("danger");
+            if (telefon.value == "") {
+                telefon.classList.add("danger");
             } else {
-                telefon.removeClass("danger");
+                telefon.classList.remove("danger");
             }
 
-            var lica = $("#lica");
-            if (lica.val() == "") {
-                lica.addClass("danger");
+            if (lica.value == "") {
+                lica.classList.add("danger");
             } else {
-                lica.removeClass("danger");
+                lica.classList.remove("danger");
             }
 
-            if (ime.val() == "" || email.val() == "" || telefon.val() == "" || lica.val() == "") {
+            if (ime.value == "" || email.value == "" || telefon.value == "" || lica.value == "") {
                 return;
             }
 
-            $("#from_name").val(" Име и презиме: " + ime.val() +
-                "\n Email: " + email.val() +
-                "\n Телефон: " + telefon.val() +
-                "\n Број на лица: " + lica.val() +
+            document.getElementById("from_name").value = " Име и презиме: " + ime.value +
+                "\n Email: " + email.value +
+                "\n Телефон: " + telefon.value +
+                "\n Број на лица: " + lica.value +
                 "\n Дата на пристигнување: " + e1 +
-                "\n Дата на заминување: " + e2
-            );
+                "\n Дата на заминување: " + e2;
 
-            var poraka = $("#poraka").val();
-            $("#message").val(poraka);
+            document.getElementById("message").value = poraka.value;
 
             btn.click();
         });

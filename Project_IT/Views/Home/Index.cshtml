@@ -42,7 +42,7 @@
 
 <!-- ── Booking Bar Widget ───────────────────────────────────────────────── -->
 <div id="booking" class="mx-auto max-w-5xl px-6 -mt-10 relative z-20">
-    <div class="bg-white rounded-2xl p-5 flex flex-col lg:flex-row items-stretch gap-3 border border-slate-100"
+    <div class="bg-white rounded-2xl p-5 flex flex-col sm:flex-row items-stretch gap-3 border border-slate-100"
          style="box-shadow: 0 12px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.04);">
 
         <!-- Check-in -->
@@ -54,7 +54,7 @@
                 </svg>
                 Пристигнување
             </span>
-            <input type="date" id="bookingCheckIn" class="w-full text-slate-800 text-sm font-medium outline-none bg-transparent cursor-pointer font-body" />
+            <input type="date" id="bookingCheckIn" class="w-full max-w-full text-slate-800 text-sm font-medium outline-none bg-transparent cursor-pointer font-body" />
         </div>
 
         <!-- Check-out -->
@@ -66,7 +66,7 @@
                 </svg>
                 Заминување
             </span>
-            <input type="date" id="bookingCheckOut" class="w-full text-slate-800 text-sm font-medium outline-none bg-transparent cursor-pointer font-body" />
+            <input type="date" id="bookingCheckOut" class="w-full max-w-full text-slate-800 text-sm font-medium outline-none bg-transparent cursor-pointer font-body" />
         </div>
 
         <!-- Guests -->
@@ -79,7 +79,7 @@
                 </svg>
                 Гости
             </span>
-            <select id="bookingGuests" class="w-full text-slate-800 text-sm font-medium outline-none bg-transparent cursor-pointer font-body">
+            <select id="bookingGuests" class="w-full max-w-full text-slate-800 text-sm font-medium outline-none bg-transparent cursor-pointer font-body">
                 <option value="1">1 гостин</option>
                 <option value="2" selected>2 гости</option>
                 <option value="3">3 гости</option>
@@ -93,7 +93,7 @@
 
         <!-- Search Button -->
         <button id="bookingSearchBtn"
-                class="lg:self-stretch flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-white font-semibold text-sm transition-all duration-200 hover:opacity-90 hover:shadow-xl active:scale-95 cursor-pointer whitespace-nowrap bg-brand-gradient shadow-lg font-body"
+                class="sm:self-stretch flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-white font-semibold text-sm transition-all duration-200 hover:opacity-90 hover:shadow-xl active:scale-95 cursor-pointer whitespace-nowrap bg-brand-gradient shadow-lg font-body"
                 style="box-shadow: 0 4px 16px rgba(26,61,43,0.4);">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="8" />
