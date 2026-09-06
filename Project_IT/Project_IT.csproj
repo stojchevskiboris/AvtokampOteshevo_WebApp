@@ -224,6 +224,7 @@
     <Content Include="Content\Avtokamp_Logo_Transparent.png" />
     <Content Include="Content\Avtokamp_Logo_Transparent2.png" />
     <Content Include="Content\banner3.png" />
+    <Content Include="Content\bannerVideo.mp4" />
     <Content Include="Content\campervan.jpg" />
     <Content Include="Content\campervan2.jpg" />
     <Content Include="Content\camphome.jpg" />
@@ -403,6 +404,7 @@
     <Content Include="Content\insta_logo.png" />
     <Content Include="Content\phone.png" />
     <Content Include="Content\tents.jpg" />
+    <Content Include="Content\tents.png" />
     <Content Include="Content\website.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
