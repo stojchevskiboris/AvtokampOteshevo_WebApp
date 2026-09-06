@@ -32,3 +32,6 @@ ERROR 2026-09-05 15:08:57,574 283413ms ReservationsController Invoke            
 ERROR 2026-09-05 15:08:57,776 283614ms ReservationsController Invoke             - C:\Users\boriss\source\repos\AvtokampOteshevo_WebApp\Project_IT\Views\Shared\_Layout.cshtml(50): error CS0103: The name 'keyframes' does not exist in the current context
 ERROR 2026-09-05 15:08:57,929 283767ms ReservationsController Invoke             - C:\Users\boriss\source\repos\AvtokampOteshevo_WebApp\Project_IT\Views\Shared\_Layout.cshtml(50): error CS0103: The name 'keyframes' does not exist in the current context
 ERROR 2026-09-05 15:13:39,074 564912ms ReservationsController Invoke             - A public action method 'Derails' was not found on controller 'Project_IT.Controllers.ReservationsController'.
+ERROR 2026-09-06 16:08:47,480 38655ms ReservationsController Invoke             - The controller for path '/Users' was not found or does not implement IController.
+ERROR 2026-09-06 16:08:53,502 44678ms ReservationsController Invoke             - The controller for path '/Users/Create' was not found or does not implement IController.
+ERROR 2026-09-06 16:17:07,355 22780ms ReservationsController Invoke             - The controller for path '/Users' was not found or does not implement IController.
