@@ -13,7 +13,6 @@ using Project_IT.Models;
 
 namespace Project_IT.Controllers
 {
-    [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -23,7 +22,7 @@ namespace Project_IT.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -35,9 +34,9 @@ namespace Project_IT.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -59,6 +58,7 @@ namespace Project_IT.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -69,6 +69,7 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            return RedirectToAction("Index", "Home");
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -97,7 +98,7 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
-            // Require that the user has already logged in via username/password or external login
+            return RedirectToAction("Index", "Home");
             if (!await SignInManager.HasBeenVerifiedAsync())
             {
                 return View("Error");
@@ -112,6 +113,7 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
         {
+            return RedirectToAction("Index", "Home");
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -134,26 +136,25 @@ namespace Project_IT.Controllers
                     return View(model);
             }
         }
-        //[Authorize(Roles = "Admin")]
+
         public ActionResult AddUserToRole()
         {
-            
-                AddToRoleModel model = new AddToRoleModel();
-                model.Roles = new List<string>() { "Admin" };
-                return View(model);
-            
+            return RedirectToAction("Index", "Home");
+            AddToRoleModel model = new AddToRoleModel();
+            model.Roles = new List<string>() { "Admin" };
+            return View(model);
         }
 
         [AllowAnonymous]
         [HttpPost]
         public ActionResult AddUserToRole(AddToRoleModel model)
         {
-            
+            return RedirectToAction("Index", "Home");
             if (ModelState.IsValid)
             {
                 var email = model.Email;
                 var user = UserManager.FindByEmail(email);
-                if (user == null )
+                if (user == null)
                 {
                     return RedirectToAction("AddUserToRole", "Account");
                 }
@@ -168,6 +169,7 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -178,6 +180,7 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            return RedirectToAction("Index", "Home");
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
@@ -197,7 +200,6 @@ namespace Project_IT.Controllers
                 AddErrors(result);
             }
 
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
 
@@ -206,6 +208,7 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
+            return RedirectToAction("Index", "Home");
             if (userId == null || code == null)
             {
                 return View("Error");
@@ -219,6 +222,7 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
+            return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -229,12 +233,12 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
+            return RedirectToAction("Index", "Home");
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByNameAsync(model.Email);
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
-                    // Don't reveal that the user does not exist or is not confirmed
                     return View("ForgotPasswordConfirmation");
                 }
 
@@ -246,7 +250,6 @@ namespace Project_IT.Controllers
                 // return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
 
@@ -255,6 +258,7 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
         {
+            return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -263,6 +267,7 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
+            return RedirectToAction("Index", "Home");
             return code == null ? View("Error") : View();
         }
 
@@ -273,6 +278,7 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
         {
+            return RedirectToAction("Index", "Home");
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -280,7 +286,6 @@ namespace Project_IT.Controllers
             var user = await UserManager.FindByNameAsync(model.Email);
             if (user == null)
             {
-                // Don't reveal that the user does not exist
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
             var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
@@ -297,6 +302,7 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
+            return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -307,7 +313,7 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
-            // Request a redirect to the external login provider
+            return RedirectToAction("Index", "Home");
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
@@ -316,6 +322,7 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
+            return RedirectToAction("Index", "Home");
             var userId = await SignInManager.GetVerifiedUserIdAsync();
             if (userId == null)
             {
@@ -333,12 +340,12 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SendCode(SendCodeViewModel model)
         {
+            return RedirectToAction("Index", "Home");
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-            // Generate the token and send it
             if (!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
             {
                 return View("Error");
@@ -351,13 +358,13 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
+            return RedirectToAction("Index", "Home");
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
                 return RedirectToAction("Login");
             }
 
-            // Sign in the user with this external login provider if the user already has a login
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
             switch (result)
             {
@@ -369,7 +376,6 @@ namespace Project_IT.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
                 case SignInStatus.Failure:
                 default:
-                    // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
                     return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
@@ -383,6 +389,7 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
         {
+            return RedirectToAction("Index", "Home");
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Manage");
@@ -390,7 +397,6 @@ namespace Project_IT.Controllers
 
             if (ModelState.IsValid)
             {
-                // Get the information about the user from the external login provider
                 var info = await AuthenticationManager.GetExternalLoginInfoAsync();
                 if (info == null)
                 {
@@ -420,6 +426,7 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            return RedirectToAction("Index", "Home");
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
@@ -429,6 +436,7 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
         {
+            return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -453,7 +461,6 @@ namespace Project_IT.Controllers
         }
 
         #region Helpers
-        // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
         private IAuthenticationManager AuthenticationManager
@@ -474,6 +481,7 @@ namespace Project_IT.Controllers
 
         private ActionResult RedirectToLocal(string returnUrl)
         {
+            return RedirectToAction("Index", "Home");
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
