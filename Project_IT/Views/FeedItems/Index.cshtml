@@ -1,0 +1,70 @@
+@model IEnumerable<Project_IT.Models.FeedItem>
+@using Project_IT.Models
+
+@{
+    ViewBag.Title = "Администрација — Новости & Понуди";
+}
+
+<div class="max-w-7xl mx-auto px-6 py-10 font-sans">
+    <div class="flex items-center justify-between mb-8">
+        <div>
+            <h1 class="text-3xl font-serif text-slate-800">Управување со Новости & Понуди</h1>
+            <p class="text-slate-500 text-sm mt-1">Додавајте, менувајте или бришете содржини од федот</p>
+        </div>
+        <a href="@Url.Action("Create")" class="px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-brand-gradient shadow-md hover:opacity-90 transition">
+            + Нов запис
+        </a>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+        <table class="w-full text-left text-sm text-slate-600">
+            <thead class="bg-slate-50 border-b border-slate-100 text-slate-500 uppercase text-xs">
+                <tr>
+                    <th class="px-6 py-4 font-semibold">Наслов</th>
+                    <th class="px-6 py-4 font-semibold">Категорија</th>
+                    <th class="px-6 py-4 font-semibold">Баџ</th>
+                    <th class="px-6 py-4 font-semibold">Истакнато</th>
+                    <th class="px-6 py-4 font-semibold">Објавено</th>
+                    <th class="px-6 py-4 font-semibold">Датум</th>
+                    <th class="px-6 py-4 font-semibold text-right">Акции</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+                @foreach (var item in Model)
+                {
+                    <tr class="hover:bg-slate-50/50 transition">
+                        <td class="px-6 py-4 font-medium text-slate-800">
+                            <div>@item.Title</div>
+                            @if (!string.IsNullOrEmpty(item.Subtitle))
+                            {
+                                <div class="text-xs text-slate-400 font-normal truncate max-w-xs">@item.Subtitle</div>
+                            }
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-slate-100 text-slate-700">
+                                @item.Category
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 text-xs">
+                            @(!string.IsNullOrEmpty(item.LabelBadge) ? item.LabelBadge : "-")
+                        </td>
+                        <td class="px-6 py-4 text-xs">
+                            @(item.IsFeatured ? "Да" : "Не")
+                        </td>
+                        <td class="px-6 py-4 text-xs">
+                            @(item.IsPublished ? "Да" : "Не")
+                        </td>
+                        <td class="px-6 py-4 text-xs text-slate-400">
+                            @item.CreatedOn.ToString("dd.MM.yyyy")
+                        </td>
+                        <td class="px-6 py-4 text-right space-x-2">
+                            <a href="@Url.Action("Edit", new { id = item.Id })" class="text-emerald-700 hover:text-emerald-900 font-semibold text-xs">Измени</a>
+                            <a href="@Url.Action("Details", new { id = item.Id })" class="text-slate-600 hover:text-slate-900 font-semibold text-xs">Детали</a>
+                            <a href="@Url.Action("Delete", new { id = item.Id })" class="text-rose-600 hover:text-rose-800 font-semibold text-xs">Избриши</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -171,8 +171,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FeedItemsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ReservationsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -201,10 +203,16 @@
     <Compile Include="Migrations\202207122009134_AddInfoProperty.designer.cs">
       <DependentUpon>202207122009134_AddInfoProperty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202405010000000_AddFeedItemsTable.cs" />
+    <Compile Include="Migrations\202405010000000_AddFeedItemsTable.designer.cs">
+      <DependentUpon>202405010000000_AddFeedItemsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FeedItem.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NewsPageViewModel.cs" />
     <Compile Include="Models\Reservation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -556,6 +564,12 @@
     <Content Include="Views\Account\AddUserToRole.cshtml" />
     <Content Include="Views\Reservations\Calendar.cshtml" />
     <Content Include="Views\Reservations\New.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\FeedItems\Create.cshtml" />
+    <Content Include="Views\FeedItems\Delete.cshtml" />
+    <Content Include="Views\FeedItems\Details.cshtml" />
+    <Content Include="Views\FeedItems\Edit.cshtml" />
+    <Content Include="Views\FeedItems\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -594,6 +608,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207122009134_AddInfoProperty.resx">
       <DependentUpon>202207122009134_AddInfoProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202405010000000_AddFeedItemsTable.resx">
+      <DependentUpon>202405010000000_AddFeedItemsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

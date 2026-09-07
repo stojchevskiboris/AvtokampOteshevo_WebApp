@@ -1,0 +1,32 @@
+@model Project_IT.Models.FeedItem
+
+@{
+    ViewBag.Title = "Бришење запис — Новости & Понуди";
+}
+
+<div class="max-w-2xl mx-auto px-6 py-10 font-sans">
+    <div class="mb-6">
+        <a href="@Url.Action("Index")" class="text-sm text-slate-400 hover:text-slate-700 transition">&larr; Назад на листата</a>
+        <h1 class="text-3xl font-serif text-rose-700 mt-2">Избриши запис</h1>
+        <p class="text-slate-500 text-sm mt-1">Дали сте сигурни дека сакате да го избришете овој запис?</p>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 space-y-4 mb-6">
+        <h2 class="text-xl font-serif text-slate-800">@Model.Title</h2>
+        <p class="text-sm text-slate-500">@Model.Subtitle</p>
+        <div class="text-xs text-slate-400">Категорија: @Model.Category | Датум: @Model.CreatedOn.ToString("dd.MM.yyyy")</div>
+    </div>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="flex items-center gap-4">
+            <button type="submit" class="px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-rose-600 hover:bg-rose-700 shadow-md transition">
+                Избриши
+            </button>
+            <a href="@Url.Action("Index")" class="px-6 py-2.5 rounded-full text-sm font-semibold text-slate-600 border border-slate-200 hover:bg-slate-50 transition">
+                Откажи
+            </a>
+        </div>
+    }
+</div>

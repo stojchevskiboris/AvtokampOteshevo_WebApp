@@ -21,6 +21,8 @@ namespace Project_IT.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<FeedItem> FeedItems { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
