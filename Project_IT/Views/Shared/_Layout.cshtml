@@ -114,15 +114,15 @@
 
                 <a href='@Url.Action("Index", "News")'
                    class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-slate-700 hover:text-slate-900 hover:bg-slate-100 @(currentController == "News" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
-                    Новости & Понуди
+                    Новости
                 </a>
 
                 @if (Request.IsAuthenticated || User.IsInRole("Admin"))
                 {
-                    <a href='@Url.Action("Index", "Reservations")'
+                    @*<a href='@Url.Action("Index", "Reservations")'
                        class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-amber-700 bg-amber-50 hover:bg-amber-100 @(currentController == "Reservations" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
                         Резервации
-                    </a>
+                    </a>*@
                     <a href='@Url.Action("Index", "FeedItems")'
                        class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-amber-700 bg-amber-50 hover:bg-amber-100 @(currentController == "FeedItems" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
                         Уреди Новости
