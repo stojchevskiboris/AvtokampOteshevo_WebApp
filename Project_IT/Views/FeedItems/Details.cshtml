@@ -1,0 +1,70 @@
+@model Project_IT.Models.FeedItem
+
+@{
+    ViewBag.Title = "Детали за запис — Новости & Понуди";
+}
+
+<div class="max-w-3xl mx-auto px-6 py-10 font-sans">
+    <div class="mb-6">
+        <a href="@Url.Action("Index")" class="text-sm text-slate-400 hover:text-slate-700 transition">&larr; Назад на листата</a>
+        <h1 class="text-3xl font-serif text-slate-800 mt-2">Детали за запис</h1>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 space-y-4">
+        <div>
+            <span class="text-xs font-semibold uppercase text-slate-400">Наслов</span>
+            <h2 class="text-xl font-serif text-slate-800">@Model.Title</h2>
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.Subtitle))
+        {
+            <div>
+                <span class="text-xs font-semibold uppercase text-slate-400">Поднаслов</span>
+                <p class="text-sm text-slate-600">@Model.Subtitle</p>
+            </div>
+        }
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 py-4 border-y border-slate-100">
+            <div>
+                <span class="text-xs font-semibold uppercase text-slate-400 block">Категорија</span>
+                <span class="text-sm text-slate-700">@Model.Category</span>
+            </div>
+            <div>
+                <span class="text-xs font-semibold uppercase text-slate-400 block">Баџ</span>
+                <span class="text-sm text-slate-700">@(!string.IsNullOrEmpty(Model.LabelBadge) ? Model.LabelBadge : "-")</span>
+            </div>
+            <div>
+                <span class="text-xs font-semibold uppercase text-slate-400 block">Истакнато</span>
+                <span class="text-sm text-slate-700">@(Model.IsFeatured ? "Да" : "Не")</span>
+            </div>
+            <div>
+                <span class="text-xs font-semibold uppercase text-slate-400 block">Објавено</span>
+                <span class="text-sm text-slate-700">@(Model.IsPublished ? "Да" : "Не")</span>
+            </div>
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <div>
+                <span class="text-xs font-semibold uppercase text-slate-400 block mb-2">Слика</span>
+                <img src="@Model.ImageUrl" alt="@Model.Title" class="max-h-64 rounded-xl object-cover" />
+            </div>
+        }
+
+        <div>
+            <span class="text-xs font-semibold uppercase text-slate-400 block mb-1">Опис</span>
+            <div class="text-sm text-slate-600 leading-relaxed">
+                @Html.Raw(Model.Description)
+            </div>
+        </div>
+
+        <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
+            <a href="@Url.Action("Edit", new { id = Model.Id })" class="px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-brand-gradient shadow-md hover:opacity-90 transition">
+                Измени
+            </a>
+            <a href="@Url.Action("Index")" class="px-6 py-2.5 rounded-full text-sm font-semibold text-slate-600 border border-slate-200 hover:bg-slate-50 transition">
+                Назад
+            </a>
+        </div>
+    </div>
+</div>

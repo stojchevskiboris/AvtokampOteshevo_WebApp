@@ -21,6 +21,9 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Alpine.js CDN for collapsible states (x-data, x-collapse) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,11 +112,20 @@
                     Дома
                 </a>
 
+                <a href='@Url.Action("Index", "News")'
+                   class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-slate-700 hover:text-slate-900 hover:bg-slate-100 @(currentController == "News" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
+                    Новости & Понуди
+                </a>
+
                 @if (User.IsInRole("Admin"))
                 {
                     <a href='@Url.Action("Index", "Reservations")'
                        class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-amber-700 bg-amber-50 hover:bg-amber-100 @(currentController == "Reservations" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
                         Резервации (Admin)
+                    </a>
+                    <a href='@Url.Action("Index", "FeedItems")'
+                       class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-amber-700 bg-amber-50 hover:bg-amber-100 @(currentController == "FeedItems" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
+                        Уреди Новости (Admin)
                     </a>
                 }
 
@@ -150,11 +162,20 @@
                 Дома
             </a>
 
+            <a href='@Url.Action("Index", "News")'
+               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController == "News" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
+                Новости & Понуди
+            </a>
+
             @if (User.IsInRole("Admin"))
             {
                 <a href='@Url.Action("Index", "Reservations")'
                    class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "Reservations" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
                     Резервации (Admin)
+                </a>
+                <a href='@Url.Action("Index", "FeedItems")'
+                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "FeedItems" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
+                    Уреди Новости (Admin)
                 </a>
             }
 

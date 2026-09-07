@@ -1,0 +1,245 @@
+@model Project_IT.Models.NewsPageViewModel
+@using Project_IT.Models
+
+@{
+    ViewBag.Title = "Новости & Понуди — Автокамп Отешево";
+}
+
+<div class="font-sans antialiased bg-[#FAF8F5]">
+
+    <!-- Page Hero -->
+    <section class="relative flex flex-col items-center justify-center text-center px-6 pt-16 h-[46vh] min-h-[340px] max-h-[520px]">
+        <div class="absolute inset-0 bg-slate-800">
+            <img src="https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=1600&h=600&fit=crop&auto=format"
+                 alt="Камп под ѕвездите"
+                 class="w-full h-full object-cover" />
+            <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(10,25,18,0.6) 0%, rgba(10,25,18,0.55) 100%);"></div>
+        </div>
+        <div class="relative z-10">
+            <span class="inline-block text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 text-white/90 bg-white/15 backdrop-blur-md">
+                Автокамп Отешево
+            </span>
+            <h1 class="text-4xl md:text-6xl text-white font-serif mb-4 drop-shadow-md">
+                Новости & Понуди
+            </h1>
+            <p class="text-white/70 text-base md:text-lg max-w-lg mx-auto">
+                Останете во тек со сè ново на Преспа — вести, настани и ексклузивни понуди
+            </p>
+        </div>
+    </section>
+
+    <!-- Back Navigation Bar -->
+    <div class="bg-white border-b border-slate-100">
+        <div class="max-w-5xl mx-auto px-6 h-12 flex items-center">
+            <a href="@Url.Action("Index", "Home")"
+               class="text-sm text-slate-400 hover:text-slate-700 transition flex items-center gap-1">
+                &larr; Назад на почетна
+            </a>
+        </div>
+    </div>
+
+    <!-- Combined Feed Section -->
+    <section class="py-14 px-6 bg-[#FAF8F5]">
+        <div class="max-w-5xl mx-auto">
+
+            @* ── FEATURED NEWS ITEM (LARGE CARD) ── *@
+            @if (Model.FeaturedNews != null)
+            {
+                var featured = Model.FeaturedNews;
+                <div x-data="{ expanded: false }"
+                     class="group rounded-2xl overflow-hidden mb-10 cursor-pointer transition-all duration-300 hover:shadow-2xl shadow-lg bg-white">
+                    <div class="relative h-72 md:h-96 bg-slate-200 overflow-hidden" @@click="expanded = !expanded">
+                        <img src="@featured.ImageUrl"
+                             alt="@featured.Title"
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+
+                        <!-- Category Label -->
+                        <span class="absolute top-5 left-5 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full bg-white text-[#1a4a6b] shadow-sm">
+                            @(!string.IsNullOrEmpty(featured.LabelBadge) ? featured.LabelBadge : "Новост")
+                        </span>
+
+                        <div class="absolute bottom-0 left-0 right-0 p-7 text-white">
+                            <p class="text-xs text-white/70 mb-2">
+                                @featured.CreatedOn.ToString("dd MMMM yyyy")
+                            </p>
+                            <h2 class="text-2xl md:text-3xl font-serif leading-snug">
+                                @featured.Title
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="bg-white px-7 py-5">
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            @featured.Subtitle
+                        </p>
+
+                        <div x-show="expanded" x-collapse x-cloak class="text-slate-500 text-sm leading-relaxed mt-4 border-t border-slate-100 pt-4">
+                            @Html.Raw(featured.Description)
+                        </div>
+
+                        <button @@click="expanded = !expanded" class="inline-flex items-center gap-1 mt-4 text-xs font-semibold text-emerald-800 hover:text-emerald-900">
+                            <span x-text="expanded ? 'Затвори ↑' : 'Прочитај повеќе &rarr;'"></span>
+                        </button>
+                    </div>
+                </div>
+            }
+
+            @* ── 3-COLUMN NEWS & EVENTS GRID ── *@
+            @if (Model.GridNews != null && Model.GridNews.Any())
+            {
+                <div class="grid md:grid-cols-3 gap-6 mb-14">
+                    @foreach (var item in Model.GridNews)
+                    {
+                        var isEvent = item.Category == FeedCategory.Event;
+                        var tagColorClass = isEvent ? "text-[#6b3a1a]" : "text-[#1a4a6b]";
+
+                        <div x-data="{ expanded: false }"
+                             class="group bg-white rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-sm border border-slate-100 flex flex-col justify-between">
+                            <div>
+                                <div class="relative h-48 bg-slate-200 overflow-hidden" @@click="expanded = !expanded">
+                                    <img src="@item.ImageUrl"
+                                         alt="@item.Title"
+                                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                    <span class="absolute top-3 left-3 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white @tagColorClass shadow-xs">
+                                        @(!string.IsNullOrEmpty(item.LabelBadge) ? item.LabelBadge : (isEvent ? "Настан" : "Новост"))
+                                    </span>
+                                </div>
+                                <div class="p-5">
+                                    <p class="text-xs text-slate-400 mb-2">@item.CreatedOn.ToString("dd MMMM yyyy")</p>
+                                    <h3 class="text-base font-semibold font-serif text-slate-800 mb-2 leading-snug">
+                                        @item.Title
+                                    </h3>
+                                    <p class="text-xs text-slate-500 leading-relaxed line-clamp-3">
+                                        @item.Subtitle
+                                    </p>
+
+                                    <div x-show="expanded" x-collapse x-cloak class="text-xs text-slate-500 leading-relaxed mt-3 border-t border-slate-100 pt-3">
+                                        @Html.Raw(item.Description)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="px-5 pb-5 pt-0">
+                                <button @@click="expanded = !expanded" class="inline-flex items-center gap-1 text-xs font-semibold text-emerald-800 hover:text-emerald-900">
+                                    <span x-text="expanded ? 'Затвори ↑' : 'Прочитај &rarr;'"></span>
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+
+            @* ── SPECIAL OFFERS LIST ── *@
+            @if (Model.Offers != null && Model.Offers.Any())
+            {
+                <div class="flex flex-col gap-8">
+                    @for (int i = 0; i < Model.Offers.Count; i++)
+                    {
+                        var offer = Model.Offers[i];
+                        var isEven = i % 2 == 0;
+                        var flexRowClass = isEven ? "md:flex-row" : "md:flex-row-reverse";
+
+                        <div class="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl shadow-md border border-slate-100">
+                            <div class="flex flex-col @flexRowClass">
+
+                                <!-- Offer Image Container -->
+                                <div class="relative md:w-2/5 h-56 md:h-auto bg-slate-200 shrink-0 overflow-hidden">
+                                    <img src="@offer.ImageUrl" alt="@offer.Title" class="w-full h-full object-cover" />
+                                    <div class="absolute inset-0 bg-black/10"></div>
+
+                                    <!-- Highlight Badge (e.g., -30%, 7+1 ГРАТИС) -->
+                                    @if (!string.IsNullOrEmpty(offer.LabelBadge))
+                                    {
+                                        <span class="absolute top-4 left-4 text-sm font-black px-4 py-2 rounded-full text-white bg-[#c0392b] shadow-md">
+                                            @offer.LabelBadge
+                                        </span>
+                                    }
+
+                                    <!-- Category Overlay Tag -->
+                                    <span class="absolute bottom-4 left-4 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white text-[#1a4a6b]">
+                                        Специјална Понуда
+                                    </span>
+                                </div>
+
+                                <!-- Offer Content -->
+                                <div class="flex-1 p-7 md:p-10 flex flex-col justify-between">
+                                    <div>
+                                        @if (offer.ValidTo.HasValue)
+                                        {
+                                            <p class="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2">
+                                                Важи до: @offer.ValidTo.Value.ToString("dd MMMM yyyy")
+                                            </p>
+                                        }
+                                        <h3 class="text-2xl font-serif text-slate-800 mb-1">
+                                            @offer.Title
+                                        </h3>
+                                        <p class="text-sm text-slate-400 mb-4 italic">@offer.Subtitle</p>
+                                        <p class="text-slate-600 text-sm leading-relaxed mb-5">
+                                            @offer.Description
+                                        </p>
+                                    </div>
+
+                                    <div class="flex items-center justify-between flex-wrap gap-4 border-t border-slate-100 pt-5">
+                                        <div class="flex items-baseline gap-2">
+                                            <span class="text-3xl font-bold font-serif text-slate-800">
+                                                @(!string.IsNullOrEmpty(offer.OfferText) ? offer.OfferText : "Понуда")
+                                            </span>
+                                        </div>
+
+                                        <a href="@(!string.IsNullOrEmpty(offer.ActionUrl) ? offer.ActionUrl : Url.Action("New", "Reservations"))"
+                                           class="px-6 py-3 rounded-full text-sm font-semibold text-white transition-all hover:opacity-90 hover:shadow-lg active:scale-95 bg-gradient-to-r from-[#1a3d2b] to-[#2d6a46] shadow-md">
+                                            @(!string.IsNullOrEmpty(offer.ButtonText) ? offer.ButtonText : "Искористи ја понудата &rarr;")
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+
+            @* Pager Controls *@
+            @if (Model.TotalPages > 1)
+            {
+                <div class="flex justify-center items-center gap-2 mt-12">
+                    @if (Model.HasPreviousPage)
+                    {
+                        <a href="@Url.Action("Index", "News", new { page = Model.CurrentPage - 1 })"
+                           class="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 text-sm font-semibold">
+                            &larr; Претходна
+                        </a>
+                    }
+                    <span class="px-4 py-2 text-sm text-slate-600">
+                        Страна @Model.CurrentPage од @Model.TotalPages
+                    </span>
+                    @if (Model.HasNextPage)
+                    {
+                        <a href="@Url.Action("Index", "News", new { page = Model.CurrentPage + 1 })"
+                           class="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 text-sm font-semibold">
+                            Следна &rarr;
+                        </a>
+                    }
+                </div>
+            }
+
+            <p class="text-center text-xs text-slate-400 mt-10">
+                * Сите понуди важат до назначениот датум и се достапни само за директни резервации преку нашата веб страна.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer Banner CTA -->
+    <div class="py-14 px-6 bg-white text-center border-t border-slate-100">
+        <h3 class="text-3xl font-serif text-slate-800 mb-3">Подготвени за незаборавен одмор?</h3>
+        <p class="text-slate-500 text-sm mb-7 max-w-md mx-auto">
+            Резервирајте го вашиот престој денес и доживејте ја убавината на Преспанското Езеро.
+        </p>
+        <a href="@Url.Action("New", "Reservations")"
+           class="inline-block px-8 py-4 rounded-full text-white font-semibold transition-all hover:opacity-90 hover:shadow-lg bg-gradient-to-r from-[#1a3d2b] to-[#2d6a46] shadow-md">
+            Резервирај сега &nearr;
+        </a>
+    </div>
+
+</div>
