@@ -96,7 +96,7 @@
                     Полињата означени со * се задолжителни.
                 </p>
                 <button type="button" id="isprati"
-                        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl text-white font-semibold text-sm transition-all duration-200 hover:opacity-90 hover:shadow-xl active:scale-95 cursor-pointer bg-brand-gradient shadow-md font-body"
+                        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl text-white font-semibold text-sm transition-all duration-200 hover:opacity-90 hover:shadow-xl active:scale-95 cursor-pointer bg-brand-gradient shadow-md font-body disabled:opacity-50 disabled:cursor-not-allowed"
                         style="box-shadow: 0 4px 14px rgba(26,61,43,0.35);">
                     Испрати барање ↗
                 </button>
@@ -205,6 +205,11 @@
                     `;
                 }, (err) => {
                     btn.value = 'Send Email';
+                    const ispratiBtn = document.getElementById('isprati');
+                    if (ispratiBtn) {
+                        ispratiBtn.disabled = false;
+                        ispratiBtn.innerHTML = 'Испрати барање ↗';
+                    }
                     alert(JSON.stringify(err));
                 });
         });
@@ -288,6 +293,18 @@
 
             if (ime.value == "" || email.value == "" || telefon.value == "" || lica.value == "") {
                 return;
+            }
+
+            const ispratiBtn = document.getElementById('isprati');
+            if (ispratiBtn) {
+                ispratiBtn.disabled = true;
+                ispratiBtn.innerHTML = `
+                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Испраќање...
+                `;
             }
 
             document.getElementById("from_name").value = " Име и презиме: " + ime.value +
