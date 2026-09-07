@@ -1,61 +1,54 @@
-﻿@using Project_IT.Models
+@using Project_IT.Models
 @model LoginViewModel
 @{
     ViewBag.Title = "Најава";
 }
 
-<h2>@ViewBag.Title</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Најави се" class="btn btn-default" />
-                    </div>
-                </div>
-                <p>
-                    @Html.ActionLink("Регистрирај нов корисник", "Register")
-                    
-                </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
-            }
-        </section>
-    </div>
-    <div class="col-md-4">
-        @section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
+<div class="max-w-md mx-auto px-6 py-12 font-sans">
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 space-y-6">
+        <div class="text-center">
+            <h1 class="text-3xl font-serif text-slate-800">Најави се</h1>
+            <p class="text-slate-500 text-sm mt-1">Внесете ги вашите податоци за да се најавите</p>
+        </div>
+
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "space-y-5" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-rose-600 text-xs font-semibold" })
+
+            <div>
+                @Html.LabelFor(m => m.Email, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm", placeholder = "email@example.com" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-rose-600 text-xs mt-1" })
+            </div>
+
+            <div>
+                @Html.LabelFor(m => m.Password, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+                @Html.PasswordFor(m => m.Password, new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm", placeholder = "••••••••" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-rose-600 text-xs mt-1" })
+            </div>
+
+            <div class="flex items-center justify-between">
+                <label class="flex items-center gap-2 text-sm text-slate-600 cursor-pointer">
+                    @Html.CheckBoxFor(m => m.RememberMe, new { @class = "rounded text-emerald-700 focus:ring-emerald-600" })
+                    Запомни ме
+                </label>
+            </div>
+
+            <button type="submit" class="w-full py-3 rounded-full text-sm font-semibold text-white bg-brand-gradient shadow-md hover:opacity-90 transition">
+                Најави се
+            </button>
+
+            <div class="text-center pt-2 text-sm text-slate-500">
+                Немате сметка?
+                <a href="@Url.Action("Register")" class="text-emerald-800 hover:text-emerald-900 font-semibold no-underline ml-1">
+                    Регистрирајте се
+                </a>
+            </div>
         }
     </div>
 </div>
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

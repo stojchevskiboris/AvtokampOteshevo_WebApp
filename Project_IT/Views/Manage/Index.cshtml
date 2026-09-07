@@ -1,82 +1,55 @@
-﻿@model Project_IT.Models.IndexViewModel
+@model Project_IT.Models.IndexViewModel
 @{
-    ViewBag.Title = "Поставки";
+    ViewBag.Title = "Поставки на сметката";
 }
 
-<h2>@ViewBag.Title.</h2>
+<div class="max-w-2xl mx-auto px-6 py-12 font-sans">
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 space-y-6">
+        <div>
+            <h1 class="text-3xl font-serif text-slate-800">@ViewBag.Title</h1>
+            <p class="text-slate-500 text-sm mt-1">Управувајте со сите подесувања на вашата корисничка сметка</p>
+        </div>
 
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>Подесувања на корисничката сметка</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Лозинка:</dt>
-        <dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Промени ја лозинката", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Направи лозинка", "SetPassword")
-            }
-            ]
-        </dd>
-        <dt>Надворешни најави:</dt>
-        <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Подеси", "ManageLogins") ]
-        </dd>
-        @*
-            Phone Numbers can used as a second factor of verification in a two-factor authentication system.
-             
-             See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication using SMS.
-             
-             Uncomment the following block after you have set up two-factor authentication
-        *@
-        @*  
-            <dt>Phone Number:</dt>
-            <dd>
-                @(Model.PhoneNumber ?? "None")
-                @if (Model.PhoneNumber != null)
-                {
-                    <br />
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
-                    using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
-                    }
-                }
-                else
-                {
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
-                }
-            </dd>
-        *@
+        @if (!string.IsNullOrEmpty(ViewBag.StatusMessage))
+        {
+            <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-800 text-sm font-semibold">
+                @ViewBag.StatusMessage
+            </div>
+        }
 
-            @*@if (Model.TwoFactor)
-                {
-                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        <div class="divide-y divide-slate-100">
+            <div class="py-4 flex items-center justify-between">
+                <div>
+                    <h3 class="text-sm font-semibold text-slate-800">Лозинка</h3>
+                    <p class="text-xs text-slate-400">Променете ја вашата лозинка за најава</p>
+                </div>
+                <div>
+                    @if (Model.HasPassword)
                     {
-                        @Html.AntiForgeryToken()
-                        <text>Enabled
-                        <input type="submit" value="Disable" class="btn btn-link" />
-                        </text>
+                        <a href="@Url.Action("ChangePassword")" class="px-4 py-2 rounded-full border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs font-semibold no-underline transition">
+                            Промени лозинка
+                        </a>
                     }
-                }
-                else
-                {
-                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    else
                     {
-                        @Html.AntiForgeryToken()
-                        <text>Disabled
-                        <input type="submit" value="Enable" class="btn btn-link" />
-                        </text>
+                        <a href="@Url.Action("SetPassword")" class="px-4 py-2 rounded-full bg-brand-gradient text-white text-xs font-semibold no-underline transition shadow-sm">
+                            Креирај лозинка
+                        </a>
                     }
-                }*@
-        </dd>
-    </dl>
+                </div>
+            </div>
+
+            <div class="py-4 flex items-center justify-between">
+                <div>
+                    <h3 class="text-sm font-semibold text-slate-800">Надворешни најави</h3>
+                    <p class="text-xs text-slate-400">Поврзани сметки: @Model.Logins.Count</p>
+                </div>
+                <div>
+                    <a href="@Url.Action("ManageLogins")" class="px-4 py-2 rounded-full border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs font-semibold no-underline transition">
+                        Уреди
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

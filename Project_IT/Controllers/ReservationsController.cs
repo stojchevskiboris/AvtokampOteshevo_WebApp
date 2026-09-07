@@ -18,14 +18,14 @@ namespace Project_IT.Controllers
         ILog log = log4net.LogManager.GetLogger(typeof(ReservationsController));
 
         // GET: Reservations
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Reservations.ToList());
         }
 
         // GET: Reservations/Details/5
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -89,7 +89,7 @@ namespace Project_IT.Controllers
 
 
         // GET: Reservations/Edit/5
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -107,7 +107,7 @@ namespace Project_IT.Controllers
         // POST: Reservations/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Email,Ime,Prezime,Denovi,Lica,Cena,Telefon,DataNaPristignuvanje,DataNaZaminuvanje,VremeRezervacija,Info")] Reservation reservation)
@@ -122,7 +122,7 @@ namespace Project_IT.Controllers
         }
 
         // GET: Reservations/Delete/5
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -138,7 +138,7 @@ namespace Project_IT.Controllers
         }
 
         // POST: Reservations/Delete/5
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

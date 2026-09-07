@@ -117,15 +117,15 @@
                     Новости & Понуди
                 </a>
 
-                @if (User.IsInRole("Admin"))
+                @if (Request.IsAuthenticated || User.IsInRole("Admin"))
                 {
                     <a href='@Url.Action("Index", "Reservations")'
                        class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-amber-700 bg-amber-50 hover:bg-amber-100 @(currentController == "Reservations" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
-                        Резервации (Admin)
+                        Резервации
                     </a>
                     <a href='@Url.Action("Index", "FeedItems")'
                        class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-amber-700 bg-amber-50 hover:bg-amber-100 @(currentController == "FeedItems" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
-                        Уреди Новости (Admin)
+                        Уреди Новости
                     </a>
                 }
 
@@ -167,15 +167,15 @@
                 Новости & Понуди
             </a>
 
-            @if (User.IsInRole("Admin"))
+            @if (Request.IsAuthenticated || User.IsInRole("Admin"))
             {
                 <a href='@Url.Action("Index", "Reservations")'
                    class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "Reservations" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
-                    Резервации (Admin)
+                    Резервации
                 </a>
                 <a href='@Url.Action("Index", "FeedItems")'
                    class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "FeedItems" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
-                    Уреди Новости (Admin)
+                    Уреди Новости
                 </a>
             }
 

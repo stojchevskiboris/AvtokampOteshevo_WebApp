@@ -7,7 +7,7 @@ using Project_IT.Models;
 
 namespace Project_IT.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class FeedItemsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
