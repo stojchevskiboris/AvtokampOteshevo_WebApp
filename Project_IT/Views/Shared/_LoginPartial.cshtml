@@ -1,53 +1,37 @@
-﻿@using Microsoft.AspNet.Identity
-
-@{
-    if (User.IsInRole("Admin"))
-    {
-        <style>
-            #zdr {
-                color: red
-            }
-
-            #zdr:hover {
-                color: white
-            }
-        </style>
-    }
-}
+@using Microsoft.AspNet.Identity
 
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "inline-flex items-center gap-3" }))
     {
         @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-nav navbar-right">
+        <div class="flex items-center gap-3 text-sm">
             @if (User.IsInRole("Admin"))
             {
-                <li>
-                    @Html.ActionLink("Додај Admin", "AddUserToRole", "Account", routeValues: null, htmlAttributes: new { id = "addToRoleLink" })
-                </li>
+                <a href="@Url.Action("AddUserToRole", "Account")" class="text-xs px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 hover:bg-amber-100 transition no-underline">
+                    Додај Admin
+                </a>
             }
 
+            <a href="@Url.Action("Index", "Manage")" class="font-medium text-slate-700 hover:text-slate-900 transition no-underline">
+                Здраво, @User.Identity.GetUserName()!
+            </a>
 
-            <li>
-
-                @Html.ActionLink("Здраво " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @id = "zdr" })
-
-            </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Одјави се</a></li>
-        </ul>
+            <button type="submit" class="text-xs px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 transition font-medium border-0 cursor-pointer">
+                Одјави се
+            </button>
+        </div>
     }
 }
 else
 {
-    <!--
-
-
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Регистрација", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Најава", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-
-    -->
+    <div class="flex items-center gap-2 text-sm font-medium">
+        <a href="@Url.Action("Login", "Account")" class="px-3 py-1.5 rounded-full text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition no-underline">
+            Најави се
+        </a>
+        <a href="@Url.Action("Register", "Account")" class="px-3 py-1.5 rounded-full text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition no-underline">
+            Регистрација
+        </a>
+    </div>
 }

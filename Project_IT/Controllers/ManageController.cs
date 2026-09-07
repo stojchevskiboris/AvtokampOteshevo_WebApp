@@ -54,6 +54,7 @@ namespace Project_IT.Controllers
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
+            return RedirectToAction("Index", "Home");
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Вашата лозинка е променета."
                 : message == ManageMessageId.SetPasswordSuccess ? "Вашата лозинка е поставена."
@@ -81,6 +82,7 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
         {
+            return RedirectToAction("Index", "Home");
             ManageMessageId? message;
             var result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
             if (result.Succeeded)
@@ -103,6 +105,7 @@ namespace Project_IT.Controllers
         // GET: /Manage/AddPhoneNumber
         public ActionResult AddPhoneNumber()
         {
+            return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -112,6 +115,7 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
         {
+            return RedirectToAction("Index", "Home");
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -136,6 +140,7 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EnableTwoFactorAuthentication()
         {
+            return RedirectToAction("Index", "Home");
             await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), true);
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user != null)
@@ -151,6 +156,7 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DisableTwoFactorAuthentication()
         {
+            return RedirectToAction("Index", "Home");
             await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), false);
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user != null)
@@ -164,6 +170,7 @@ namespace Project_IT.Controllers
         // GET: /Manage/VerifyPhoneNumber
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
         {
+            return RedirectToAction("Index", "Home");
             var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), phoneNumber);
             // Send an SMS through the SMS provider to verify the phone number
             return phoneNumber == null ? View("Error") : View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
@@ -175,6 +182,7 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyPhoneNumber(VerifyPhoneNumberViewModel model)
         {
+            return RedirectToAction("Index", "Home");
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -200,6 +208,7 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RemovePhoneNumber()
         {
+            return RedirectToAction("Index", "Home");
             var result = await UserManager.SetPhoneNumberAsync(User.Identity.GetUserId(), null);
             if (!result.Succeeded)
             {
@@ -217,6 +226,7 @@ namespace Project_IT.Controllers
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
+            return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -226,6 +236,7 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
         {
+            return RedirectToAction("Index", "Home");
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -248,6 +259,7 @@ namespace Project_IT.Controllers
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
         {
+            return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -257,6 +269,7 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SetPassword(SetPasswordViewModel model)
         {
+            return RedirectToAction("Index", "Home");
             if (ModelState.IsValid)
             {
                 var result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
@@ -280,6 +293,7 @@ namespace Project_IT.Controllers
         // GET: /Manage/ManageLogins
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
         {
+            return RedirectToAction("Index", "Home");
             ViewBag.StatusMessage =
                 message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
                 : message == ManageMessageId.Error ? "An error has occurred."
@@ -305,6 +319,7 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LinkLogin(string provider)
         {
+            return RedirectToAction("Index", "Home");
             // Request a redirect to the external login provider to link a login for the current user
             return new AccountController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Manage"), User.Identity.GetUserId());
         }
@@ -313,6 +328,7 @@ namespace Project_IT.Controllers
         // GET: /Manage/LinkLoginCallback
         public async Task<ActionResult> LinkLoginCallback()
         {
+            return RedirectToAction("Index", "Home");
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
             if (loginInfo == null)
             {
