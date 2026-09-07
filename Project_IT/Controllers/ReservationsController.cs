@@ -21,6 +21,7 @@ namespace Project_IT.Controllers
         [Authorize]
         public ActionResult Index()
         {
+            return RedirectToAction("New", "Reservations");
             return View(db.Reservations.ToList());
         }
 
