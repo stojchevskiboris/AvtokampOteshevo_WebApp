@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -58,7 +58,6 @@ namespace Project_IT.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -69,7 +68,6 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            return RedirectToAction("Index", "Home");
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -98,7 +96,6 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
-            return RedirectToAction("Index", "Home");
             if (!await SignInManager.HasBeenVerifiedAsync())
             {
                 return View("Error");
@@ -113,7 +110,6 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
         {
-            return RedirectToAction("Index", "Home");
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -139,7 +135,6 @@ namespace Project_IT.Controllers
 
         public ActionResult AddUserToRole()
         {
-            return RedirectToAction("Index", "Home");
             AddToRoleModel model = new AddToRoleModel();
             model.Roles = new List<string>() { "Admin" };
             return View(model);
@@ -149,7 +144,6 @@ namespace Project_IT.Controllers
         [HttpPost]
         public ActionResult AddUserToRole(AddToRoleModel model)
         {
-            return RedirectToAction("Index", "Home");
             if (ModelState.IsValid)
             {
                 var email = model.Email;
@@ -169,7 +163,6 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -180,7 +173,6 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            return RedirectToAction("Index", "Home");
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
@@ -208,7 +200,6 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
-            return RedirectToAction("Index", "Home");
             if (userId == null || code == null)
             {
                 return View("Error");
@@ -222,7 +213,6 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
-            return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -233,7 +223,6 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
-            return RedirectToAction("Index", "Home");
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByNameAsync(model.Email);
@@ -258,7 +247,6 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
         {
-            return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -267,7 +255,6 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            return RedirectToAction("Index", "Home");
             return code == null ? View("Error") : View();
         }
 
@@ -278,7 +265,6 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
         {
-            return RedirectToAction("Index", "Home");
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -302,7 +288,6 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
-            return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -313,7 +298,6 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
-            return RedirectToAction("Index", "Home");
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
@@ -322,7 +306,6 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
-            return RedirectToAction("Index", "Home");
             var userId = await SignInManager.GetVerifiedUserIdAsync();
             if (userId == null)
             {
@@ -340,7 +323,6 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SendCode(SendCodeViewModel model)
         {
-            return RedirectToAction("Index", "Home");
             if (!ModelState.IsValid)
             {
                 return View();
@@ -358,7 +340,6 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
-            return RedirectToAction("Index", "Home");
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
@@ -389,7 +370,6 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
         {
-            return RedirectToAction("Index", "Home");
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Manage");
@@ -426,7 +406,6 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            return RedirectToAction("Index", "Home");
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
@@ -436,7 +415,6 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
         {
-            return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -481,7 +459,6 @@ namespace Project_IT.Controllers
 
         private ActionResult RedirectToLocal(string returnUrl)
         {
-            return RedirectToAction("Index", "Home");
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
