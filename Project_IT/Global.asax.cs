@@ -24,10 +24,27 @@ namespace Project_IT
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             log4net.Config.XmlConfigurator.Configure();
-            
         }
+
+        // Redirects requests from the old bsite.net domain to the new otesevo.com domain
+        // Comment out when publishing to stage
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            string currentHost = Request.Url.Host;
+            // Intercepts any request hitting the old bsite.net domain
+            if (currentHost.Equals("otesevo.bsite.net", StringComparison.OrdinalIgnoreCase))
+            {
+                string newUrl = "https://otesevo.com" + Request.Url.PathAndQuery;
+                                Response.Clear();
+                Response.StatusCode = 301;
+                Response.Status = "301 Moved Permanently";
+                Response.RedirectLocation = newUrl;
+                Response.End();
+            }
+        }
+
         protected void Application_Error(object sender, EventArgs e)
-        {        
+        {
             var ex = Server.GetLastError();
             if (ex == null) return;
             log.Error(ex.Message);
