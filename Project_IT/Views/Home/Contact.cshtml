@@ -17,8 +17,90 @@
         </p>
     </div>
 
-    <!-- Main Grid: Info Cards Left & Google Map Right -->
+    <!-- Main Grid: Contact Form Left & Info Cards Right -->
     <div class="grid lg:grid-cols-12 gap-8 items-start mb-16">
+        <!-- Contact Form Column (7 cols) -->
+        <div class="lg:col-span-7">
+            <div id="contactFormCard" class="bg-white rounded-3xl p-6 md:p-8 border border-slate-100 shadow-md">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-slate-800 font-display mb-2">
+                        Испратете ни порака
+                    </h2>
+                    <p class="text-slate-600 text-sm font-body">
+                        Пополнете ја формата подолу и ќе ве контактираме во најкраток можен рок.
+                    </p>
+                </div>
+
+                <form id="contactForm" class="space-y-6">
+                    <!-- Hidden inputs for alternate variable names in EmailJS template -->
+                    <input type="hidden" name="email" id="email" />
+                    <input type="hidden" name="reply_to" id="reply_to" />
+                    <input type="hidden" name="name" id="name" />
+                    <input type="hidden" name="phone_number" id="phone_number" />
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Name -->
+                        <div class="flex flex-col gap-1.5">
+                            <label for="from_name" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                                * Име и презиме
+                            </label>
+                            <input type="text" name="from_name" id="from_name" required placeholder="Пр. Петар Петровски"
+                                   class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                        </div>
+
+                        <!-- Email -->
+                        <div class="flex flex-col gap-1.5">
+                            <label for="from_email" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                                * E-mail адреса
+                            </label>
+                            <input type="email" name="from_email" id="from_email" required placeholder="vasiot@email.com"
+                                   class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Phone -->
+                        <div class="flex flex-col gap-1.5">
+                            <label for="phone" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                                Телефон
+                            </label>
+                            <input type="tel" name="phone" id="phone" placeholder="07X XXX XXX"
+                                   class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                        </div>
+
+                        <!-- Subject -->
+                        <div class="flex flex-col gap-1.5">
+                            <label for="subject" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                                Наслов / Тема
+                            </label>
+                            <input type="text" name="subject" id="subject" placeholder="Прашање за..."
+                                   class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                        </div>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="flex flex-col gap-1.5">
+                        <label for="message" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                            * Порака
+                        </label>
+                        <textarea name="message" id="message" rows="4" required placeholder="Вашата порака..."
+                                  class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body resize-y"></textarea>
+                    </div>
+
+                    <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
+                        <p class="text-xs text-slate-400 font-body">
+                            Полињата означени со * се задолжителни.
+                        </p>
+                        <button type="submit" id="submitBtn"
+                                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl text-white font-semibold text-sm transition-all duration-200 hover:opacity-90 hover:shadow-xl active:scale-95 cursor-pointer bg-brand-gradient shadow-md font-body disabled:opacity-50 disabled:cursor-not-allowed"
+                                style="box-shadow: 0 4px 14px rgba(26,61,43,0.35);">
+                            Испрати порака ↗
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <!-- Contact Details Column (5 cols) -->
         <div class="lg:col-span-5 space-y-6">
             <!-- Address Card -->
@@ -71,7 +153,7 @@
             <!-- Social Links & Logo Card -->
             <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
                 <h3 class="text-base font-semibold text-slate-800 font-body mb-4">Следете нè на социјалните мрежи</h3>
-                <div class="flex items-center gap-4 mb-6">
+                <div class="flex items-center gap-4">
                     <a href="https://www.instagram.com/autocampotesevo/" target="_blank" rel="noopener" class="transition-transform hover:scale-110">
                         <img src="~/Content/insta_Logo.png" alt="Instagram" class="w-11 h-11 object-contain" />
                     </a>
@@ -81,17 +163,85 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Google Map Column (7 cols) -->
-        <div class="lg:col-span-7 h-full min-h-[450px] lg:min-h-[620px]">
-            <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-md h-full min-h-[450px] lg:min-h-[620px] relative">
-                <iframe class="w-full h-full min-h-[450px] lg:min-h-[620px] border-0"
-                        src="https://maps.google.com/maps?q=%D0%B0%D0%B2%D1%82%D0%BE%D0%BA%D0%B0%D0%BC%D0%BF%20%D0%BE%D1%82%D0%B5%D1%88%D0%B5%D0%B2%D0%BE&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
+    <!-- Google Map Section (Full Width) -->
+    <div class="w-full min-h-[450px]">
+        <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-md min-h-[450px] relative">
+            <iframe class="w-full min-h-[450px] border-0"
+                    src="https://maps.google.com/maps?q=%D0%B0%D0%B2%D1%82%D0%BE%D0%BA%D0%B0%D0%BC%D0%BF%20%D0%BE%D1%82%D0%B5%D1%88%D0%B5%D0%B2%D0%BE&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
     </div>
 </div>
+
+<script src="~/Content/email.min.js"></script>
+
+<script type="text/javascript">
+    emailjs.init('0YVQaG2ITtZEM__Mt');
+</script>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        const contactForm = document.getElementById('contactForm');
+        if (!contactForm) return;
+
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const fromNameVal = document.getElementById('from_name').value.trim();
+            const fromEmailVal = document.getElementById('from_email').value.trim();
+            const phoneVal = document.getElementById('phone').value.trim();
+
+            // Populate hidden inputs for alternate variable names in EmailJS templates
+            document.getElementById('email').value = fromEmailVal;
+            document.getElementById('reply_to').value = fromEmailVal;
+            document.getElementById('name').value = fromNameVal;
+            document.getElementById('phone_number').value = phoneVal;
+
+            const submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `
+                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Испраќање...
+                `;
+            }
+
+            const serviceID = 'default_service';
+            const templateID = 'template_ufh4xh4';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    const formCard = document.getElementById('contactFormCard');
+                    if (formCard) {
+                        formCard.innerHTML = `
+                            <div class="text-center py-12 px-4 space-y-4">
+                                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-sm">
+                                    ✓
+                                </div>
+                                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-display">
+                                    Ви благодариме!
+                                </h2>
+                                <p class="text-slate-600 font-body text-base max-w-md mx-auto leading-relaxed">
+                                    Вашата порака е успешно испратена. Ќе ве контактираме во најкраток можен рок.
+                                </p>
+                            </div>
+                        `;
+                    }
+                }, (err) => {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = 'Испрати порака ↗';
+                    }
+                    alert('Грешка при испраќање на пораката: ' + (err.text || JSON.stringify(err)));
+                });
+        });
+    });
+</script>
