@@ -31,9 +31,9 @@
                 <td>@item.AccommodationType</td>
                 <td>@item.Status</td>
                 <td>
-                    @item.CheckInDate.ToString("dd.MM.yyyy")
+                    @item.CheckInDate?.ToString("dd.MM.yyyy")
                     -
-                    @item.CheckOutDate.ToString("dd.MM.yyyy")
+                    @item.CheckOutDate?.ToString("dd.MM.yyyy")
                 </td>
                 <td>
                     @Html.ActionLink("Детали", "Details", new { id = item.Id }) |
