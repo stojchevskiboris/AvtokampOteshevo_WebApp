@@ -25,14 +25,14 @@
         </div>
 
         <!-- Reservation Form Card -->
-        <div id="f1" class="bg-white/95 backdrop-blur-md rounded-2xl p-6 md:p-10 border border-slate-100 shadow-2xl space-y-6">
+        <div id="formCard" class="bg-white/95 backdrop-blur-md rounded-2xl p-6 md:p-10 border border-slate-100 shadow-2xl space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Name -->
                 <div class="flex flex-col gap-1.5">
-                    <label for="ime" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                    <label for="fullName" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
                         * Име и презиме
                     </label>
-                    <input type="text" id="ime" required="required" placeholder="Пр. Петар Петровски"
+                    <input type="text" id="fullName" required="required" placeholder="Пр. Петар Петровски"
                            class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
                 </div>
 
@@ -48,28 +48,28 @@
 
                 <!-- Phone -->
                 <div class="flex flex-col gap-1.5">
-                    <label for="telefon" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                    <label for="phone" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
                         * Телефон
                     </label>
-                    <input type="tel" id="telefon" required="required" placeholder="07X XXX XXX"
+                    <input type="tel" id="phone" required="required" placeholder="07X XXX XXX"
                            class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
                 </div>
 
                 <!-- Guests -->
                 <div class="flex flex-col gap-1.5">
-                    <label for="lica" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                    <label for="guests" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
                         * Број на лица
                     </label>
-                    <input type="number" id="lica" min="1" max="10" required="required" placeholder="2"
+                    <input type="number" id="guests" min="1" max="10" required="required" placeholder="2"
                            class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
                 </div>
 
                 <!-- Accommodation -->
                 <div class="flex flex-col gap-1.5 md:col-span-2">
-                    <label for="smestuvanje" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                    <label for="accommodationType" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
                         * Сместување
                     </label>
-                    <select id="smestuvanje" required="required"
+                    <select id="accommodationType" required="required"
                             class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body bg-white">
                         <option value="Bungalov" selected="selected">Бунгалов</option>
                         <option value="Prikolka">Приколка</option>
@@ -79,29 +79,29 @@
 
                 <!-- Check-in Date -->
                 <div class="flex flex-col gap-1.5">
-                    <label for="dataP" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                    <label for="checkInDate" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
                         Дата на пристигнување
                     </label>
-                    <input type="date" id="dataP"
+                    <input type="date" id="checkInDate"
                            class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer font-body" />
                 </div>
 
                 <!-- Check-out Date -->
                 <div class="flex flex-col gap-1.5">
-                    <label for="dataZ" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                    <label for="checkOutDate" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
                         Дата на заминување
                     </label>
-                    <input type="date" id="dataZ"
+                    <input type="date" id="checkOutDate"
                            class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer font-body" />
                 </div>
             </div>
 
             <!-- Message -->
             <div class="flex flex-col gap-1.5">
-                <label for="poraka" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                <label for="info" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
                     Дополнителни барања
                 </label>
-                <textarea id="poraka" rows="3" placeholder="Напомени или дополнителни барања..."
+                <textarea id="info" rows="3" placeholder="Напомени или дополнителни барања..."
                           class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body resize-y"></textarea>
             </div>
 
@@ -114,7 +114,7 @@
                 <p class="text-xs text-slate-400 font-body">
                     Полињата означени со * се задолжителни.
                 </p>
-                <button type="button" id="isprati"
+                <button type="button" id="submitBtn"
                         class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl text-white font-semibold text-sm transition-all duration-200 hover:opacity-90 hover:shadow-xl active:scale-95 cursor-pointer bg-brand-gradient shadow-md font-body disabled:opacity-50 disabled:cursor-not-allowed"
                         style="box-shadow: 0 4px 14px rgba(26,61,43,0.35);">
                     Испрати барање ↗
@@ -180,12 +180,12 @@
             var mm = parseInt(parts[1], 10);
             var dd = parseInt(parts[2], 10);
 
-            var minZdate = new Date(yyyy, mm - 1, dd).addDays(1);
-            var Tdd = String(minZdate.getDate()).padStart(2, '0');
-            var Tmm = String(minZdate.getMonth() + 1).padStart(2, '0');
-            var Tyyyy = minZdate.getFullYear();
+            var minDate = new Date(yyyy, mm - 1, dd).addDays(1);
+            var formattedDd = String(minDate.getDate()).padStart(2, '0');
+            var formattedMm = String(minDate.getMonth() + 1).padStart(2, '0');
+            var formattedYyyy = minDate.getFullYear();
 
-            document.getElementById('dataZ').setAttribute('min', Tyyyy + '-' + Tmm + '-' + Tdd);
+            document.getElementById('checkOutDate').setAttribute('min', formattedYyyy + '-' + formattedMm + '-' + formattedDd);
         }
     }
 
@@ -221,29 +221,29 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-        const dataP = document.getElementById('dataP');
-        const dataZ = document.getElementById('dataZ');
-        const ime = document.getElementById('ime');
-        const email = document.getElementById('email');
-        const telefon = document.getElementById('telefon');
-        const lica = document.getElementById('lica');
-        const smestuvanje = document.getElementById('smestuvanje');
-        const poraka = document.getElementById('poraka');
-        const emailError = document.getElementById('emailError');
-        const globalError = document.getElementById('globalError');
-        const ispratiBtn = document.getElementById('isprati');
+        const checkInDateElem = document.getElementById('checkInDate');
+        const checkOutDateElem = document.getElementById('checkOutDate');
+        const fullNameElem = document.getElementById('fullName');
+        const emailElem = document.getElementById('email');
+        const phoneElem = document.getElementById('phone');
+        const guestsElem = document.getElementById('guests');
+        const accommodationTypeElem = document.getElementById('accommodationType');
+        const infoElem = document.getElementById('info');
+        const emailErrorElem = document.getElementById('emailError');
+        const globalErrorElem = document.getElementById('globalError');
+        const submitBtnElem = document.getElementById('submitBtn');
 
         function resetSubmitState() {
-            if (ispratiBtn) {
-                ispratiBtn.disabled = false;
-                ispratiBtn.innerHTML = 'Испрати барање ↗';
+            if (submitBtnElem) {
+                submitBtnElem.disabled = false;
+                submitBtnElem.innerHTML = 'Испрати барање ↗';
             }
         }
 
         function showUIError() {
             resetSubmitState();
-            if (globalError) {
-                globalError.classList.remove('hidden');
+            if (globalErrorElem) {
+                globalErrorElem.classList.remove('hidden');
             }
         }
 
@@ -253,8 +253,8 @@
         var yyyy = today.getFullYear();
         var todayStr = yyyy + '-' + mm + '-' + dd;
 
-        dataP.setAttribute('min', todayStr);
-        dataZ.setAttribute('min', todayStr);
+        checkInDateElem.setAttribute('min', todayStr);
+        checkOutDateElem.setAttribute('min', todayStr);
 
         // Prepopulate parameters
         var urlParams = new URLSearchParams(window.location.search);
@@ -262,74 +262,74 @@
         var paramCheckOut = urlParams.get('checkOut');
         var paramGuests = urlParams.get('guests');
 
-        if (paramGuests) lica.value = paramGuests;
+        if (paramGuests) guestsElem.value = paramGuests;
         if (paramCheckIn) {
-            dataP.value = paramCheckIn;
+            checkInDateElem.value = paramCheckIn;
             updateMinCheckOut(paramCheckIn);
         }
-        if (paramCheckOut) dataZ.value = paramCheckOut;
+        if (paramCheckOut) checkOutDateElem.value = paramCheckOut;
 
-        dataP.addEventListener('change', function () {
-            var dtP = dataP.value;
+        checkInDateElem.addEventListener('change', function () {
+            var dtP = checkInDateElem.value;
             if (dtP) {
                 updateMinCheckOut(dtP);
-                var currentOut = dataZ.value;
+                var currentOut = checkOutDateElem.value;
                 if (currentOut && currentOut <= dtP) {
-                    dataZ.value = "";
+                    checkOutDateElem.value = "";
                 }
             }
         });
 
-        email.addEventListener('input', function () {
+        emailElem.addEventListener('input', function () {
             const emailRegex = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
-            if (email.value.trim() !== "" && emailRegex.test(email.value.trim())) {
-                email.classList.remove("danger");
-                emailError.classList.add("hidden");
+            if (emailElem.value.trim() !== "" && emailRegex.test(emailElem.value.trim())) {
+                emailElem.classList.remove("danger");
+                emailErrorElem.classList.add("hidden");
             }
         });
 
-        ispratiBtn.addEventListener('click', function () {
-            if (globalError) globalError.classList.add('hidden');
+        submitBtnElem.addEventListener('click', function () {
+            if (globalErrorElem) globalErrorElem.classList.add('hidden');
 
             let isValid = true;
 
-            if (ime.value.trim() == "") {
-                ime.classList.add("danger");
+            if (fullNameElem.value.trim() == "") {
+                fullNameElem.classList.add("danger");
                 isValid = false;
             } else {
-                ime.classList.remove("danger");
+                fullNameElem.classList.remove("danger");
             }
 
             const emailRegex = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
-            const emailVal = email.value.trim();
+            const emailVal = emailElem.value.trim();
             if (emailVal == "" || !emailRegex.test(emailVal)) {
-                email.classList.add("danger");
-                emailError.classList.remove("hidden");
+                emailElem.classList.add("danger");
+                emailErrorElem.classList.remove("hidden");
                 isValid = false;
             } else {
-                email.classList.remove("danger");
-                emailError.classList.add("hidden");
+                emailElem.classList.remove("danger");
+                emailErrorElem.classList.add("hidden");
             }
 
-            if (telefon.value.trim() == "") {
-                telefon.classList.add("danger");
+            if (phoneElem.value.trim() == "") {
+                phoneElem.classList.add("danger");
                 isValid = false;
             } else {
-                telefon.classList.remove("danger");
+                phoneElem.classList.remove("danger");
             }
 
-            if (lica.value.trim() == "") {
-                lica.classList.add("danger");
+            if (guestsElem.value.trim() == "") {
+                guestsElem.classList.add("danger");
                 isValid = false;
             } else {
-                lica.classList.remove("danger");
+                guestsElem.classList.remove("danger");
             }
 
             if (!isValid) return;
 
             // Lock submit button
-            ispratiBtn.disabled = true;
-            ispratiBtn.innerHTML = `
+            submitBtnElem.disabled = true;
+            submitBtnElem.innerHTML = `
                 <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -337,8 +337,8 @@
                 Испраќање...
             `;
 
-            var e1 = dataP.value ? dataP.value.substr(8, 2) + "." + dataP.value.substr(5, 2) + "." + dataP.value.substr(0, 4) : 'Null';
-            var e2 = dataZ.value ? dataZ.value.substr(8, 2) + "." + dataZ.value.substr(5, 2) + "." + dataZ.value.substr(0, 4) : 'Null';
+            var formattedCheckIn = checkInDateElem.value ? checkInDateElem.value.substr(8, 2) + "." + checkInDateElem.value.substr(5, 2) + "." + checkInDateElem.value.substr(0, 4) : 'Null';
+            var formattedCheckOut = checkOutDateElem.value ? checkOutDateElem.value.substr(8, 2) + "." + checkOutDateElem.value.substr(5, 2) + "." + checkOutDateElem.value.substr(0, 4) : 'Null';
 
             const osVal = getOS();
             const browserVal = getBrowserInfo();
@@ -349,27 +349,27 @@
             const userAgentVal = navigator.userAgent || "";
 
             // Populate hidden form for EmailJS
-            document.getElementById("form_customer_name").value = ime.value;
+            document.getElementById("form_customer_name").value = fullNameElem.value;
             document.getElementById("form_customer_email").value = emailVal;
-            document.getElementById("form_phone").value = telefon.value;
-            document.getElementById("form_guests").value = lica.value;
-            document.getElementById("form_smestuvanje").value = smestuvanje.value;
-            document.getElementById("form_check_in").value = e1;
-            document.getElementById("form_check_out").value = e2;
-            document.getElementById("form_message").value = poraka.value;
+            document.getElementById("form_phone").value = phoneElem.value;
+            document.getElementById("form_guests").value = guestsElem.value;
+            document.getElementById("form_smestuvanje").value = accommodationTypeElem.value;
+            document.getElementById("form_check_in").value = formattedCheckIn;
+            document.getElementById("form_check_out").value = formattedCheckOut;
+            document.getElementById("form_message").value = infoElem.value;
             document.getElementById("form_user_os").value = osVal;
             document.getElementById("form_user_platform").value = platformVal;
             document.getElementById("form_user_browser").value = browserVal;
             document.getElementById("form_user_version").value = versionVal;
             document.getElementById("form_user_referrer").value = referrerVal;
 
-            document.getElementById("from_name").value = " Име и презиме: " + ime.value +
+            document.getElementById("from_name").value = " Име и презиме: " + fullNameElem.value +
                 "\n Email: " + emailVal +
-                "\n Телефон: " + telefon.value +
-                "\n Број на лица: " + lica.value +
-                "\n Сместување: " + smestuvanje.value +
-                "\n Дата на пристигнување: " + e1 +
-                "\n Дата на заминување: " + e2;
+                "\n Телефон: " + phoneElem.value +
+                "\n Број на лица: " + guestsElem.value +
+                "\n Сместување: " + accommodationTypeElem.value +
+                "\n Дата на пристигнување: " + formattedCheckIn +
+                "\n Дата на заминување: " + formattedCheckOut;
             document.getElementById("reply_to").value = emailVal;
 
             const serviceID = 'default_service';
@@ -381,14 +381,14 @@
                 .then(function () {
                     // Step 2: Save to backend database
                     const modelPayload = {
-                        Ime: ime.value,
+                        FullName: fullNameElem.value,
                         Email: emailVal,
-                        Telefon: telefon.value,
-                        Lica: lica.value,
-                        Smestuvanje: smestuvanje.value,
-                        DataNaPristignuvanje: e1,
-                        DataNaZaminuvanje: e2,
-                        Poraka: poraka.value,
+                        Phone: phoneElem.value,
+                        Guests: guestsElem.value,
+                        AccommodationType: accommodationTypeElem.value,
+                        CheckInDate: formattedCheckIn,
+                        CheckOutDate: formattedCheckOut,
+                        Info: infoElem.value,
                         UserOs: osVal,
                         UserPlatform: platformVal,
                         UserBrowser: browserVal,
@@ -411,8 +411,8 @@
                         throw new Error('Database save failed');
                     }
                     // Step 3: Success UI
-                    const formCard = document.getElementById('f1');
-                    formCard.innerHTML = `
+                    const formCardElem = document.getElementById('formCard');
+                    formCardElem.innerHTML = `
                         <div class="text-center py-12 px-4 space-y-4">
                             <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-sm">
                                 ✓
