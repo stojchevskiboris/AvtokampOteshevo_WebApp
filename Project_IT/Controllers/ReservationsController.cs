@@ -74,6 +74,16 @@ namespace Project_IT.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult LogReservationData(ReservationSubmissionModel model)
+        {
+            if (model != null)
+            {
+                log.Info($"[NEW RESERVATION SUBMISSION] Email: {model.Email} | Name: {model.Ime} | Phone: {model.Telefon} | Guests: {model.Lica} | Accommodation: {model.Smestuvanje} | CheckIn: {model.DataNaPristignuvanje} | CheckOut: {model.DataNaZaminuvanje} | Message: {model.Poraka} | OS: {model.UserOs} | IP: {model.UserIp} | Platform: {model.UserPlatform} | Browser: {model.UserBrowser} | Version: {model.UserVersion} | Country: {model.UserCountry} | Referrer: {model.UserReferrer}");
+            }
+            return Json(new { status = "success" });
+        }
+
         public ActionResult Final(Reservation reservation)
         {
             return RedirectToAction("New", "Reservations");

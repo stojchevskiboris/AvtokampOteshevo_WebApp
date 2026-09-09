@@ -215,6 +215,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NewsPageViewModel.cs" />
     <Compile Include="Models\Reservation.cs" />
+    <Compile Include="Models\ReservationSubmissionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -234,6 +235,7 @@
     <Content Include="Content\Avtokamp_Logo_Transparent2.png" />
     <Content Include="Content\banner3.png" />
     <Content Include="Content\bannerVideo.mp4" />
+    <Content Include="Content\bungalows_1200x630.jpg" />
     <Content Include="Content\campervan.jpg" />
     <Content Include="Content\campervan2.jpg" />
     <Content Include="Content\camphome.jpg" />
@@ -419,6 +421,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="robots.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\boris210-001-site1 - FTP.pubxml" />
@@ -520,6 +523,7 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="sitemap.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
