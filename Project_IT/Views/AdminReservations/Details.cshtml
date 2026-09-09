@@ -23,10 +23,10 @@
     <dd>@Model.Guests</dd>
 
     <dt>Check-in</dt>
-    <dd>@Model.CheckInDate.ToString("dd.MM.yyyy")</dd>
+    <dd>@Model.CheckInDate?.ToString("dd.MM.yyyy")</dd>
 
     <dt>Check-out</dt>
-    <dd>@Model.CheckOutDate.ToString("dd.MM.yyyy")</dd>
+    <dd>@Model.CheckOutDate?.ToString("dd.MM.yyyy")</dd>
 
     <dt>Ноќевања</dt>
     <dd>@Model.Days</dd>
