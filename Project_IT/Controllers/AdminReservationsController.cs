@@ -22,6 +22,31 @@ namespace Project_IT.Controllers
             return View(new List<Reservation>());
         }
 
+
+        public ActionResult Create()
+        {
+            return View(new Reservation { CreatedOn = DateTime.UtcNow });
+        }
+
+        // POST: FeedItems/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Reservation reservation)
+        {
+            if (ModelState.IsValid)
+            {
+                if (reservation.CreatedOn == default(DateTime))
+                {
+                    reservation.CreatedOn = DateTime.UtcNow;
+                }
+                db.Reservations.Add(reservation);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(reservation);
+        }
+
         public ActionResult Details(int? id)
         {
             if (id == null)
