@@ -1,15 +1,16 @@
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using Project_IT.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Project_IT.Models;
 
 namespace Project_IT.Controllers
 {
@@ -96,6 +97,11 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home", new { returnUrl });
+            }
             if (!await SignInManager.HasBeenVerifiedAsync())
             {
                 return View("Error");
@@ -110,6 +116,11 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -135,6 +146,11 @@ namespace Project_IT.Controllers
 
         public ActionResult AddUserToRole()
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             AddToRoleModel model = new AddToRoleModel();
             model.Roles = new List<string>() { "Admin" };
             return View(model);
@@ -144,6 +160,11 @@ namespace Project_IT.Controllers
         [HttpPost]
         public ActionResult AddUserToRole(AddToRoleModel model)
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (ModelState.IsValid)
             {
                 var email = model.Email;
@@ -163,6 +184,11 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -173,6 +199,11 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
@@ -200,6 +231,11 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (userId == null || code == null)
             {
                 return View("Error");
@@ -213,6 +249,11 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -223,6 +264,11 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByNameAsync(model.Email);
@@ -247,6 +293,11 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -255,6 +306,11 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return code == null ? View("Error") : View();
         }
 
@@ -265,6 +321,11 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -288,6 +349,11 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -298,6 +364,11 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
@@ -306,6 +377,11 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var userId = await SignInManager.GetVerifiedUserIdAsync();
             if (userId == null)
             {
@@ -323,6 +399,11 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SendCode(SendCodeViewModel model)
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (!ModelState.IsValid)
             {
                 return View();
@@ -340,6 +421,11 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
@@ -370,6 +456,11 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
         {
+            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+            if (isRedirectEnabled)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Manage");
