@@ -33,7 +33,7 @@
                         * Име и презиме
                     </label>
                     <input type="text" id="ime" required="required" placeholder="Пр. Петар Петровски"
-                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                           class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
                 </div>
 
                 <!-- Email -->
@@ -42,7 +42,8 @@
                         * E-mail адреса
                     </label>
                     <input type="email" id="email" required="required" placeholder="vasiot@email.com"
-                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                           class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                    <span id="emailError" class="text-xs text-red-500 hidden font-body">Ве молиме внесете валидна е-маил адреса.</span>
                 </div>
 
                 <!-- Phone -->
@@ -51,7 +52,7 @@
                         * Телефон
                     </label>
                     <input type="tel" id="telefon" required="required" placeholder="07X XXX XXX"
-                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                           class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
                 </div>
 
                 <!-- Guests -->
@@ -60,7 +61,20 @@
                         * Број на лица
                     </label>
                     <input type="number" id="lica" min="1" max="10" required="required" placeholder="2"
-                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                           class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                </div>
+
+                <!-- Accommodation (Сместување) -->
+                <div class="flex flex-col gap-1.5 md:col-span-2">
+                    <label for="smestuvanje" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
+                        * Сместување
+                    </label>
+                    <select id="smestuvanje" required="required"
+                            class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body bg-white">
+                        <option value="Bungalov" selected="selected">Бунгалов</option>
+                        <option value="Prikolka">Приколка</option>
+                        <option value="Plac za shator">Плац за шатор</option>
+                    </select>
                 </div>
 
                 <!-- Check-in Date -->
@@ -69,7 +83,7 @@
                         Дата на пристигнување
                     </label>
                     <input type="date" id="dataP"
-                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer font-body" />
+                           class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer font-body" />
                 </div>
 
                 <!-- Check-out Date -->
@@ -78,7 +92,7 @@
                         Дата на заминување
                     </label>
                     <input type="date" id="dataZ"
-                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer font-body" />
+                           class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer font-body" />
                 </div>
             </div>
 
@@ -88,7 +102,7 @@
                     Дополнителни барања
                 </label>
                 <textarea id="poraka" rows="3" placeholder="Напомени или дополнителни барања..."
-                          class="max-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body resize-y"></textarea>
+                          class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body resize-y"></textarea>
             </div>
 
             <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
@@ -112,11 +126,28 @@
     </div>
 </div>
 
-<!-- Hidden EmailJS Form -->
+<!-- Hidden EmailJS Form with individual dynamic variable fields -->
 <form id="form" class="hidden">
+    <input type="text" name="customer_name" id="form_customer_name" />
+    <input type="email" name="customer_email" id="form_customer_email" />
+    <input type="text" name="phone" id="form_phone" />
+    <input type="text" name="guests" id="form_guests" />
+    <input type="text" name="smestuvanje" id="form_smestuvanje" />
+    <input type="text" name="check_in" id="form_check_in" />
+    <input type="text" name="check_out" id="form_check_out" />
+    <textarea name="message" id="form_message"></textarea>
+
+    <!-- Additional/Built-in template variables -->
+    <input type="text" name="user_os" id="form_user_os" />
+    <input type="text" name="user_platform" id="form_user_platform" />
+    <input type="text" name="user_browser" id="form_user_browser" />
+    <input type="text" name="user_version" id="form_user_version" />
+    <input type="text" name="user_referrer" id="form_user_referrer" />
+
+    <!-- Legacy / standard fallback fields -->
     <textarea name="from_name" id="from_name"></textarea>
     <input type="text" name="reply_to" id="reply_to" />
-    <textarea name="message" id="message"></textarea>
+
     <input type="submit" id="button" value="Send Email" />
 </form>
 
@@ -157,6 +188,37 @@
         }
     }
 
+    function getOS() {
+        var userAgent = window.navigator.userAgent,
+            platform = window.navigator.platform,
+            macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+            windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+            iosPlatforms = ['iPhone', 'iPad', 'iPod'];
+
+        if (macosPlatforms.indexOf(platform) !== -1) return 'Mac OS';
+        if (iosPlatforms.indexOf(platform) !== -1) return 'iOS';
+        if (windowsPlatforms.indexOf(platform) !== -1) return 'Windows';
+        if (/Android/.test(userAgent)) return 'Android';
+        if (/Linux/.test(platform)) return 'Linux';
+        return platform || 'Unknown OS';
+    }
+
+    function getBrowserInfo() {
+        var ua = navigator.userAgent, tem,
+            M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+        if (/trident/i.test(M[1])) {
+            tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+            return 'IE ' + (tem[1] || '');
+        }
+        if (M[1] === 'Chrome') {
+            tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
+            if (tem != null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+        }
+        M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+        if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
+        return M.join(' ');
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         const btn = document.getElementById('button');
         const dataP = document.getElementById('dataP');
@@ -165,7 +227,9 @@
         const email = document.getElementById('email');
         const telefon = document.getElementById('telefon');
         const lica = document.getElementById('lica');
+        const smestuvanje = document.getElementById('smestuvanje');
         const poraka = document.getElementById('poraka');
+        const emailError = document.getElementById('emailError');
 
         document.getElementById('form').addEventListener('submit', function (event) {
             event.preventDefault();
@@ -173,7 +237,8 @@
             btn.value = 'Sending...';
 
             const serviceID = 'default_service';
-            const templateID = 'template_ufh4xh4';
+            const templateIDOld = 'template_ufh4xh4';
+            const templateID = 'template_bjhyjh8';
 
             emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {
@@ -184,6 +249,7 @@
                     email.value = "";
                     telefon.value = "";
                     lica.value = "";
+                    smestuvanje.value = "Бунгалов";
                     dataP.value = "";
                     dataZ.value = "";
                     poraka.value = "";
@@ -253,6 +319,15 @@
             }
         });
 
+        // Real-time email validation on blur or input change
+        email.addEventListener('input', function () {
+            const emailRegex = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
+            if (email.value.trim() !== "" && emailRegex.test(email.value.trim())) {
+                email.classList.remove("danger");
+                emailError.classList.add("hidden");
+            }
+        });
+
         document.getElementById('isprati').addEventListener('click', function () {
             var e1 = dataP.value;
             var e2 = dataZ.value;
@@ -267,31 +342,45 @@
                 e2 = tmp;
             }
 
-            if (ime.value == "") {
+            let isValid = true;
+
+            // Name validation
+            if (ime.value.trim() == "") {
                 ime.classList.add("danger");
+                isValid = false;
             } else {
                 ime.classList.remove("danger");
             }
 
-            if (email.value == "") {
+            // Client-side Email validation
+            const emailRegex = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
+            const emailVal = email.value.trim();
+            if (emailVal == "" || !emailRegex.test(emailVal)) {
                 email.classList.add("danger");
+                emailError.classList.remove("hidden");
+                isValid = false;
             } else {
                 email.classList.remove("danger");
+                emailError.classList.add("hidden");
             }
 
-            if (telefon.value == "") {
+            // Phone validation
+            if (telefon.value.trim() == "") {
                 telefon.classList.add("danger");
+                isValid = false;
             } else {
                 telefon.classList.remove("danger");
             }
 
-            if (lica.value == "") {
+            // Guests validation
+            if (lica.value.trim() == "") {
                 lica.classList.add("danger");
+                isValid = false;
             } else {
                 lica.classList.remove("danger");
             }
 
-            if (ime.value == "" || email.value == "" || telefon.value == "" || lica.value == "") {
+            if (!isValid) {
                 return;
             }
 
@@ -307,14 +396,64 @@
                 `;
             }
 
+            const osVal = getOS();
+            const browserVal = getBrowserInfo();
+            const platformVal = navigator.platform || "";
+            const versionVal = navigator.appVersion || "";
+            const referrerVal = document.referrer || "";
+
+            // Populate individual dynamic template variables in hidden EmailJS form
+            document.getElementById("form_customer_name").value = ime.value;
+            document.getElementById("form_customer_email").value = emailVal;
+            document.getElementById("form_phone").value = telefon.value;
+            document.getElementById("form_guests").value = lica.value;
+            document.getElementById("form_smestuvanje").value = smestuvanje.value;
+            document.getElementById("form_check_in").value = e1;
+            document.getElementById("form_check_out").value = e2;
+            document.getElementById("form_message").value = poraka.value;
+            document.getElementById("form_user_os").value = osVal;
+            document.getElementById("form_user_platform").value = platformVal;
+            document.getElementById("form_user_browser").value = browserVal;
+            document.getElementById("form_user_version").value = versionVal;
+            document.getElementById("form_user_referrer").value = referrerVal;
+
+            // Legacy formatted fields for templates expecting from_name / reply_to
             document.getElementById("from_name").value = " Име и презиме: " + ime.value +
-                "\n Email: " + email.value +
+                "\n Email: " + emailVal +
                 "\n Телефон: " + telefon.value +
                 "\n Број на лица: " + lica.value +
+                "\n Сместување: " + smestuvanje.value +
                 "\n Дата на пристигнување: " + e1 +
                 "\n Дата на заминување: " + e2;
+            document.getElementById("reply_to").value = emailVal;
 
-            document.getElementById("message").value = poraka.value;
+            // Model payload for backend logging
+            const modelPayload = {
+                Ime: ime.value,
+                Email: emailVal,
+                Telefon: telefon.value,
+                Lica: lica.value,
+                Smestuvanje: smestuvanje.value,
+                DataNaPristignuvanje: e1,
+                DataNaZaminuvanje: e2,
+                Poraka: poraka.value,
+                UserOs: osVal,
+                UserPlatform: platformVal,
+                UserBrowser: browserVal,
+                UserVersion: versionVal,
+                UserReferrer: referrerVal
+            };
+
+            // Send full data model to backend for logging
+            fetch('@Url.Action("LogReservationData", "Reservations")', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(modelPayload)
+            }).catch(function (err) {
+                console.error("Logging error:", err);
+            });
 
             btn.click();
         });
