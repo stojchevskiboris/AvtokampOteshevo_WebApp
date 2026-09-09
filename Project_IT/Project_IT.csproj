@@ -181,35 +181,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202206301730466_init.cs" />
-    <Compile Include="Migrations\202206301730466_init.designer.cs">
-      <DependentUpon>202206301730466_init.cs</DependentUpon>
+    <Compile Include="Migrations\202609091907282_AddModels.cs" />
+    <Compile Include="Migrations\202609091907282_AddModels.Designer.cs">
+      <DependentUpon>202609091907282_AddModels.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202206301736147_migration1.cs" />
-    <Compile Include="Migrations\202206301736147_migration1.designer.cs">
-      <DependentUpon>202206301736147_migration1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202207011658400_addTelefon.cs" />
-    <Compile Include="Migrations\202207011658400_addTelefon.designer.cs">
-      <DependentUpon>202207011658400_addTelefon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202207031333090_AddDates.cs" />
-    <Compile Include="Migrations\202207031333090_AddDates.designer.cs">
-      <DependentUpon>202207031333090_AddDates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202207042052187_addVremeRezervacija.cs" />
-    <Compile Include="Migrations\202207042052187_addVremeRezervacija.designer.cs">
-      <DependentUpon>202207042052187_addVremeRezervacija.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202207122009134_AddInfoProperty.cs" />
-    <Compile Include="Migrations\202207122009134_AddInfoProperty.designer.cs">
-      <DependentUpon>202207122009134_AddInfoProperty.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405010000000_AddFeedItemsTable.cs" />
-    <Compile Include="Migrations\202405010000000_AddFeedItemsTable.designer.cs">
-      <DependentUpon>202405010000000_AddFeedItemsTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202609091430000_AddReservationAdminFields.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FeedItem.cs" />
@@ -560,20 +535,13 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Reservations\Create.cshtml" />
-    <Content Include="Views\Reservations\Delete.cshtml" />
-    <Content Include="Views\Reservations\Details.cshtml" />
-    <Content Include="Views\Reservations\Edit.cshtml" />
-    <Content Include="Views\Reservations\Index.cshtml" />
     <Content Include="Scripts\moment.min.js.map" />
     <Content Include="Scripts\moment-with-locales.min.js.map" />
-    <Content Include="Views\Reservations\Final.cshtml" />
     <Content Include="Views\Account\AddUserToRole.cshtml" />
     <Content Include="Views\AdminReservations\Delete.cshtml" />
     <Content Include="Views\AdminReservations\Details.cshtml" />
     <Content Include="Views\AdminReservations\Edit.cshtml" />
     <Content Include="Views\AdminReservations\Index.cshtml" />
-    <Content Include="Views\Reservations\Calendar.cshtml" />
     <Content Include="Views\Reservations\New.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\FeedItems\Create.cshtml" />
@@ -584,9 +552,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Home\css\" />
-    <Folder Include="Views\Manage\css\" />
-    <Folder Include="Views\Reservations\css\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -602,26 +567,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202206301730466_init.resx">
-      <DependentUpon>202206301730466_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202206301736147_migration1.resx">
-      <DependentUpon>202206301736147_migration1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202207011658400_addTelefon.resx">
-      <DependentUpon>202207011658400_addTelefon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202207031333090_AddDates.resx">
-      <DependentUpon>202207031333090_AddDates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202207042052187_addVremeRezervacija.resx">
-      <DependentUpon>202207042052187_addVremeRezervacija.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202207122009134_AddInfoProperty.resx">
-      <DependentUpon>202207122009134_AddInfoProperty.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405010000000_AddFeedItemsTable.resx">
-      <DependentUpon>202405010000000_AddFeedItemsTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202609091907282_AddModels.resx">
+      <DependentUpon>202609091907282_AddModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

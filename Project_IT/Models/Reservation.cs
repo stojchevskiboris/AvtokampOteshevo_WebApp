@@ -15,46 +15,36 @@ namespace Project_IT.Models
         public string Email { get; set; }
 
         [Display(Name = "Име")]
-        public string Ime { get; set; }
+        public string FirstName { get; set; }
 
         [Display(Name = "Презиме")]
-        public string Prezime { get; set; }
+        public string LastName { get; set; }
 
         [Display(Name = "Име и презиме")]
         public string FullName { get; set; }
 
-        [RegularExpression(@"^0(2|7)(\d{4,4}|[012345678]\d{3,3})\d{3,3}$",
-                           ErrorMessage = "Внесете валиден телефонски број<br/> 07XYYYYYY")]
         [Display(Name = "Телефон")]
-        [Required(ErrorMessage = "Полето е задолжително")]
-        public string Telefon { get; set; }
+        public string Phone { get; set; }
 
-        [Required(ErrorMessage = "Полето е задолжително")]
         [Display(Name = "Ноќевања")]
-        public int Denovi { get; set; }
+        public int Days { get; set; }
 
-        [Range(1, 10, ErrorMessage = "Во еден бунгалов може да <br>престојуваат макс. 10 лица")]
         [Display(Name = "Лица")]
-        [Required(ErrorMessage = "Полето е задолжително")]
-        public int Lica { get; set; }
+        public int Guests { get; set; }
 
         [Display(Name = "Дата на пристигнување")]
-        public DateTime DataNaPristignuvanje { get; set; }
+        public DateTime? CheckInDate { get; set; }
 
         [Display(Name = "Дата на заминување")]
-        public DateTime DataNaZaminuvanje { get; set; }
-
-        [Display(Name = "Резервирано на")]
-        public DateTime VremeRezervacija { get; set; }
+        public DateTime? CheckOutDate { get; set; }
 
         [Display(Name = "Цена")]
-        public int Cena { get; set; }
+        public int Price { get; set; }
 
         [Display(Name = "Тип на сместување")]
-        public string Smestuvanje { get; set; }
+        public string AccommodationType { get; set; }
 
         [Display(Name = "Статус")]
-        [Required]
         public string Status { get; set; } = "New";
 
         [Display(Name = "Забелешка")]

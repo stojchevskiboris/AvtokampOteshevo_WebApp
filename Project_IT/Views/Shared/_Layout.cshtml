@@ -152,13 +152,13 @@
 
                 @if (isAuthenticated)
                 {
-                    <div class="relative group">
-                        <button type="button"
-                                class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-amber-700 bg-amber-50 hover:bg-amber-100 inline-flex items-center gap-1">
+                    <div class="relative">
+                        <button id="adminDropdownBtn" type="button"
+                                class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-amber-700 bg-amber-50 hover:bg-amber-100 inline-flex items-center gap-1 cursor-pointer">
                             Администрација
                             <span class="text-xs">▾</span>
                         </button>
-                        <div class="absolute right-0 mt-2 w-56 rounded-xl border border-slate-100 bg-white shadow-lg hidden group-hover:block z-50">
+                        <div id="adminDropdownMenu" class="absolute right-0 mt-2 w-56 rounded-xl border border-slate-100 bg-white shadow-lg hidden z-50">
                             <a href='@Url.Action("Index", "AdminReservations")'
                                class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 rounded-t-xl @(currentController == "AdminReservations" ? "font-semibold text-emerald-700" : "")">
                                 Резервации
@@ -291,30 +291,53 @@
     @Scripts.Render("~/bundles/bootstrap")
 
     <script>
-        // Mobile Menu Toggle
-        var mobileMenu = document.getElementById('mobileMenu');
-        var mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu Toggle
+            var mobileMenu = document.getElementById('mobileMenu');
+            var mobileMenuBtn = document.getElementById('mobileMenuBtn');
 
-        mobileMenuBtn.addEventListener('click', function () {
-            mobileMenu.classList.toggle('hidden');
-        });
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function () {
+                    mobileMenu.classList.toggle('hidden');
+                });
 
-        // Close Mobile Menu when any link inside it is clicked
-        var mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(function (link) {
-            link.addEventListener('click', function () {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // Sticky Header scroll styling
-        window.addEventListener('scroll', function () {
-            var header = document.getElementById('mainHeader');
-            if (window.scrollY > 40) {
-                header.classList.add('shadow-md');
-            } else {
-                header.classList.remove('shadow-md');
+                // Close Mobile Menu when any link inside it is clicked
+                var mobileMenuLinks = mobileMenu.querySelectorAll('a');
+                mobileMenuLinks.forEach(function (link) {
+                    link.addEventListener('click', function () {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
             }
+
+            // Desktop Admin Dropdown Toggle
+            var adminBtn = document.getElementById('adminDropdownBtn');
+            var adminMenu = document.getElementById('adminDropdownMenu');
+
+            if (adminBtn && adminMenu) {
+                adminBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    adminMenu.classList.toggle('hidden');
+                });
+
+                document.addEventListener('click', function (e) {
+                    if (!adminMenu.contains(e.target) && !adminBtn.contains(e.target)) {
+                        adminMenu.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Sticky Header scroll styling
+            window.addEventListener('scroll', function () {
+                var header = document.getElementById('mainHeader');
+                if (header) {
+                    if (window.scrollY > 40) {
+                        header.classList.add('shadow-md');
+                    } else {
+                        header.classList.remove('shadow-md');
+                    }
+                }
+            });
         });
     </script>
 

@@ -32,45 +32,45 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Telefon, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Smestuvanje, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AccommodationType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Smestuvanje, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.AccommodationType, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DataNaPristignuvanje, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CheckInDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.DataNaPristignuvanje, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                @Html.TextBoxFor(model => model.CheckInDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DataNaZaminuvanje, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CheckOutDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.DataNaZaminuvanje, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                @Html.TextBoxFor(model => model.CheckOutDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Lica, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Guests, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Lica, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Guests, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Denovi, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Days, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Denovi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Days, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
 
