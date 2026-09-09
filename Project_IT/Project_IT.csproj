@@ -553,6 +553,7 @@
     <Content Include="Views\FeedItems\Details.cshtml" />
     <Content Include="Views\FeedItems\Edit.cshtml" />
     <Content Include="Views\FeedItems\Index.cshtml" />
+    <Content Include="Views\AdminReservations\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

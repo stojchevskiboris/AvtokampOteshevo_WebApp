@@ -43,7 +43,7 @@ namespace Project_IT.Controllers
         // POST: FeedItems/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Subtitle,Description,ImageUrl,Category,LabelBadge,OfferText,ButtonText,ActionUrl,ValidTo,IsFeatured,IsPublished,CreatedOn")] FeedItem feedItem)
+        public ActionResult Create( FeedItem feedItem)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +77,7 @@ namespace Project_IT.Controllers
         // POST: FeedItems/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Subtitle,Description,ImageUrl,Category,LabelBadge,OfferText,ButtonText,ActionUrl,ValidTo,IsFeatured,IsPublished,CreatedOn")] FeedItem feedItem)
+        public ActionResult Edit(FeedItem feedItem)
         {
             if (ModelState.IsValid)
             {

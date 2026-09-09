@@ -1,0 +1,108 @@
+@model Project_IT.Models.Reservation
+
+@{
+    ViewBag.Title = "Нова резервација — Администрација";
+}
+
+<div class="max-w-3xl mx-auto px-6 py-10 font-sans">
+    <div class="mb-6">
+        <a href="@Url.Action("Index")" class="text-sm text-slate-400 hover:text-slate-700 transition">&larr; Назад на листата</a>
+        <h1 class="text-3xl font-serif text-slate-800 mt-2">Креирај нова резервација</h1>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 space-y-6">
+            @Html.ValidationSummary(true, "", new { @class = "text-rose-600 text-sm" })
+
+            <div>
+                @Html.LabelFor(model => model.FullName, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+                @Html.TextBoxFor(model => model.FullName, new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
+                @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-rose-600 text-xs mt-1" })
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    @Html.LabelFor(model => model.Email, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+                    @Html.TextBoxFor(model => model.Email, new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-rose-600 text-xs mt-1" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.Phone, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+                    @Html.TextBoxFor(model => model.Phone, new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-rose-600 text-xs mt-1" })
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    @Html.LabelFor(model => model.AccommodationType, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+                    @Html.DropDownListFor(model => model.AccommodationType, new SelectList(new[] { "Bungalov", "Prikolka", "Plac za shator" }), "-- Избери сместување --", new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm bg-white" })
+                    @Html.ValidationMessageFor(model => model.AccommodationType, "", new { @class = "text-rose-600 text-xs mt-1" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.Status, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+                    @Html.DropDownListFor(model => model.Status, new SelectList(new[] { "New", "Accepted", "Denied" }), new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm bg-white" })
+                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-rose-600 text-xs mt-1" })
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    @Html.LabelFor(model => model.CheckInDate, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+                    @Html.TextBoxFor(model => model.CheckInDate, "{0:yyyy-MM-dd}", new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm", type = "date" })
+                    @Html.ValidationMessageFor(model => model.CheckInDate, "", new { @class = "text-rose-600 text-xs mt-1" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.CheckOutDate, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+                    @Html.TextBoxFor(model => model.CheckOutDate, "{0:yyyy-MM-dd}", new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm", type = "date" })
+                    @Html.ValidationMessageFor(model => model.CheckOutDate, "", new { @class = "text-rose-600 text-xs mt-1" })
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <div>
+                    @Html.LabelFor(model => model.Guests, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+                    @Html.TextBoxFor(model => model.Guests, new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm", type = "number" })
+                    @Html.ValidationMessageFor(model => model.Guests, "", new { @class = "text-rose-600 text-xs mt-1" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.Days, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+                    @Html.TextBoxFor(model => model.Days, new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm", type = "number" })
+                    @Html.ValidationMessageFor(model => model.Days, "", new { @class = "text-rose-600 text-xs mt-1" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.Price, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+                    @Html.TextBoxFor(model => model.Price, new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm", type = "number", step = "any" })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-rose-600 text-xs mt-1" })
+                </div>
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.Info, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+                @Html.TextAreaFor(model => model.Info, new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm h-32" })
+                @Html.ValidationMessageFor(model => model.Info, "", new { @class = "text-rose-600 text-xs mt-1" })
+            </div>
+
+            <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
+                <button type="submit" class="px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-brand-gradient shadow-md hover:opacity-90 transition">
+                    Креирај
+                </button>
+                <a href="@Url.Action("Index")" class="px-6 py-2.5 rounded-full text-sm font-semibold text-slate-600 border border-slate-200 hover:bg-slate-50 transition">
+                    Откажи
+                </a>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
