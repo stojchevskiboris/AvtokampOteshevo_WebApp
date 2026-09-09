@@ -172,6 +172,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminReservationsController.cs" />
     <Compile Include="Controllers\FeedItemsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -208,6 +209,7 @@
     <Compile Include="Migrations\202405010000000_AddFeedItemsTable.designer.cs">
       <DependentUpon>202405010000000_AddFeedItemsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202609091430000_AddReservationAdminFields.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FeedItem.cs" />
@@ -567,6 +569,10 @@
     <Content Include="Scripts\moment-with-locales.min.js.map" />
     <Content Include="Views\Reservations\Final.cshtml" />
     <Content Include="Views\Account\AddUserToRole.cshtml" />
+    <Content Include="Views\AdminReservations\Delete.cshtml" />
+    <Content Include="Views\AdminReservations\Details.cshtml" />
+    <Content Include="Views\AdminReservations\Edit.cshtml" />
+    <Content Include="Views\AdminReservations\Index.cshtml" />
     <Content Include="Views\Reservations\Calendar.cshtml" />
     <Content Include="Views\Reservations\New.cshtml" />
     <Content Include="Views\News\Index.cshtml" />

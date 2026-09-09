@@ -1,0 +1,35 @@
+@model Project_IT.Models.Reservation
+
+@{
+    ViewBag.Title = "Избриши резервација";
+}
+
+<h2>Избриши резервација</h2>
+
+<h4>Дали сте сигурни дека сакате да ја избришете оваа резервација?</h4>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Име</dt>
+        <dd>@(string.IsNullOrWhiteSpace(Model.FullName) ? (Model.Ime + " " + Model.Prezime).Trim() : Model.FullName)</dd>
+
+        <dt>Email</dt>
+        <dd>@Model.Email</dd>
+
+        <dt>Телефон</dt>
+        <dd>@Model.Telefon</dd>
+
+        <dt>Статус</dt>
+        <dd>@Model.Status</dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Избриши" class="btn btn-danger" /> |
+            @Html.ActionLink("Назад", "Index")
+        </div>
+    }
+</div>

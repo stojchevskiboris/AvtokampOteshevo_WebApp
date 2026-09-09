@@ -125,6 +125,7 @@
             @{
                 string currentController = ViewContext.RouteData.Values["controller"]?.ToString();
                 string currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+                bool isAuthenticated = User?.Identity != null && User.Identity.IsAuthenticated;
             }
 
             <!-- Desktop Nav Links -->
@@ -139,18 +140,6 @@
                     Новости
                 </a>
 
-                @if (Request.IsAuthenticated || User.IsInRole("Admin"))
-                {
-                    @*<a href='@Url.Action("Index", "Reservations")'
-                       class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-amber-700 bg-amber-50 hover:bg-amber-100 @(currentController == "Reservations" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
-                        Резервации
-                    </a>*@
-                    <a href='@Url.Action("Index", "FeedItems")'
-                       class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-amber-700 bg-amber-50 hover:bg-amber-100 @(currentController == "FeedItems" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
-                        Уреди Новости
-                    </a>
-                }
-
                 <a href='@Url.Action("About", "Home")'
                    class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-slate-700 hover:text-slate-900 hover:bg-slate-100 @(currentController == "Home" && currentAction == "About" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
                     За нас
@@ -160,6 +149,27 @@
                    class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-slate-700 hover:text-slate-900 hover:bg-slate-100 @(currentController == "Home" && currentAction == "Contact" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
                     Контакт
                 </a>
+
+                @if (isAuthenticated)
+                {
+                    <div class="relative group">
+                        <button type="button"
+                                class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-amber-700 bg-amber-50 hover:bg-amber-100 inline-flex items-center gap-1">
+                            Администрација
+                            <span class="text-xs">▾</span>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-56 rounded-xl border border-slate-100 bg-white shadow-lg hidden group-hover:block z-50">
+                            <a href='@Url.Action("Index", "AdminReservations")'
+                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 rounded-t-xl @(currentController == "AdminReservations" ? "font-semibold text-emerald-700" : "")">
+                                Резервации
+                            </a>
+                            <a href='@Url.Action("Index", "FeedItems")'
+                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 rounded-b-xl @(currentController == "FeedItems" ? "font-semibold text-emerald-700" : "")">
+                                Уреди Новости
+                            </a>
+                        </div>
+                    </div>
+                }
             </nav>
 
             <div class="max-sm:hidden sm:flex items-center gap-4">
@@ -189,10 +199,10 @@
                 Новости & Понуди
             </a>
 
-            @if (Request.IsAuthenticated || User.IsInRole("Admin"))
+            @if (isAuthenticated)
             {
-                <a href='@Url.Action("Index", "Reservations")'
-                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "Reservations" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
+                <a href='@Url.Action("Index", "AdminReservations")'
+                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "AdminReservations" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
                     Резервации
                 </a>
                 <a href='@Url.Action("Index", "FeedItems")'
