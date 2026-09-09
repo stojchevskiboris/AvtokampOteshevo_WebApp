@@ -11,40 +11,6 @@ namespace Project_IT.Controllers
     {
         private readonly ApplicationDbContext db = new ApplicationDbContext();
 
-        [Authorize]
-        public ActionResult Index()
-        {
-            return RedirectToAction("Index", "AdminReservations");
-        }
-
-        [Authorize]
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var reservation = db.Reservations.Find(id);
-            if (reservation == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(reservation);
-        }
-
-        public ActionResult Create()
-        {
-            return RedirectToAction("New", "Reservations");
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(Reservation reservation)
-        {
-            return RedirectToAction("New", "Reservations");
-        }
 
         public ActionResult New()
         {
@@ -52,7 +18,7 @@ namespace Project_IT.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogReservationData(ReservationSubmissionModel model)
+        public ActionResult Save(ReservationSubmissionModel model)
         {
             if (model == null)
             {
@@ -80,18 +46,17 @@ namespace Project_IT.Controllers
             var reservation = new Reservation
             {
                 FullName = fullName,
-                Ime = ime,
-                Prezime = prezime,
+                FirstName = ime,
+                LastName = prezime,
                 Email = email,
-                Telefon = phone,
-                Lica = guests < 0 ? 0 : guests,
-                Smestuvanje = model.Smestuvanje,
-                DataNaPristignuvanje = checkIn,
-                DataNaZaminuvanje = checkOut,
-                Denovi = CalculateDays(checkIn, checkOut),
+                Phone = phone,
+                Guests = guests < 0 ? 0 : guests,
+                AccommodationType = model.Smestuvanje,
+                CheckInDate = checkIn,
+                CheckOutDate = checkOut,
+                Days = CalculateDays(checkIn, checkOut),
                 Info = model.Poraka,
                 Status = "New",
-                VremeRezervacija = DateTime.UtcNow,
                 CreatedOn = DateTime.UtcNow,
                 ModifiedOn = null,
                 UserOs = model.UserOs,
@@ -103,7 +68,7 @@ namespace Project_IT.Controllers
                 UserVersion = model.UserVersion,
                 UserCountry = model.UserCountry,
                 UserReferrer = model.UserReferrer,
-                Cena = 0
+                Price = 0
             };
 
             if (!TryValidateModel(reservation))
@@ -120,16 +85,6 @@ namespace Project_IT.Controllers
             db.SaveChanges();
 
             return Json(new { status = "success" });
-        }
-
-        public ActionResult Final(Reservation reservation)
-        {
-            return RedirectToAction("New", "Reservations");
-        }
-
-        public ActionResult Calendar()
-        {
-            return RedirectToAction("New", "Reservations");
         }
 
         private static DateTime? ParseDate(string value)

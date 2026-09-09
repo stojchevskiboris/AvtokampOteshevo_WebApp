@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -13,8 +14,12 @@ namespace Project_IT.Controllers
 
         public ActionResult Index()
         {
-            var reservations = db.Reservations.OrderByDescending(r => r.CreatedOn).ToList();
-            return View(reservations);
+            var reservations = db.Reservations;
+            if (reservations != null && reservations.Any()) { 
+                var result = reservations.OrderByDescending(r => r.CreatedOn).ToList();
+                return View(result);
+            }
+            return View(new List<Reservation>());
         }
 
         public ActionResult Details(int? id)
@@ -51,7 +56,7 @@ namespace Project_IT.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,FullName,Denovi,Lica,Cena,Telefon,DataNaPristignuvanje,DataNaZaminuvanje,Smestuvanje,Status,Info")] Reservation reservation)
+        public ActionResult Edit(Reservation reservation)
         {
             if (!ModelState.IsValid)
             {
@@ -66,22 +71,22 @@ namespace Project_IT.Controllers
 
             existing.FullName = reservation.FullName;
             existing.Email = reservation.Email;
-            existing.Telefon = reservation.Telefon;
-            existing.Smestuvanje = reservation.Smestuvanje;
-            existing.DataNaPristignuvanje = reservation.DataNaPristignuvanje;
-            existing.DataNaZaminuvanje = reservation.DataNaZaminuvanje;
-            existing.Lica = reservation.Lica;
-            existing.Denovi = reservation.Denovi;
+            existing.Phone = reservation.Phone;
+            existing.AccommodationType = reservation.AccommodationType;
+            existing.CheckInDate = reservation.CheckInDate;
+            existing.CheckOutDate = reservation.CheckOutDate;
+            existing.Guests = reservation.Guests;
+            existing.Days = reservation.Days;
             existing.Status = reservation.Status;
             existing.Info = reservation.Info;
-            existing.Cena = reservation.Cena;
+            existing.Price = reservation.Price;
             existing.ModifiedOn = DateTime.UtcNow;
 
             if (!string.IsNullOrWhiteSpace(existing.FullName))
             {
                 var parts = existing.FullName.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                existing.Ime = parts.Length > 0 ? parts[0] : existing.FullName;
-                existing.Prezime = parts.Length > 1 ? string.Join(" ", parts.Skip(1)) : string.Empty;
+                existing.FirstName = parts.Length > 0 ? parts[0] : existing.FullName;
+                existing.LastName = parts.Length > 1 ? string.Join(" ", parts.Skip(1)) : string.Empty;
             }
 
             db.SaveChanges();

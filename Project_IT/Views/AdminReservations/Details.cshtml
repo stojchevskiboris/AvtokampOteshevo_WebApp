@@ -8,28 +8,28 @@
 
 <div class="dl-horizontal">
     <dt>Име</dt>
-    <dd>@(string.IsNullOrWhiteSpace(Model.FullName) ? (Model.Ime + " " + Model.Prezime).Trim() : Model.FullName)</dd>
+    <dd>@(string.IsNullOrWhiteSpace(Model.FullName) ? (Model.FirstName + " " + Model.LastName).Trim() : Model.FullName)</dd>
 
     <dt>Email</dt>
     <dd>@Model.Email</dd>
 
     <dt>Телефон</dt>
-    <dd>@Model.Telefon</dd>
+    <dd>@Model.Phone</dd>
 
     <dt>Сместување</dt>
-    <dd>@Model.Smestuvanje</dd>
+    <dd>@Model.AccommodationType</dd>
 
     <dt>Лица</dt>
-    <dd>@Model.Lica</dd>
+    <dd>@Model.Guests</dd>
 
     <dt>Check-in</dt>
-    <dd>@Model.DataNaPristignuvanje.ToString("dd.MM.yyyy")</dd>
+    <dd>@Model.CheckInDate.ToString("dd.MM.yyyy")</dd>
 
     <dt>Check-out</dt>
-    <dd>@Model.DataNaZaminuvanje.ToString("dd.MM.yyyy")</dd>
+    <dd>@Model.CheckOutDate.ToString("dd.MM.yyyy")</dd>
 
     <dt>Ноќевања</dt>
-    <dd>@Model.Denovi</dd>
+    <dd>@Model.Days</dd>
 
     <dt>Статус</dt>
     <dd>@Model.Status</dd>

@@ -7,7 +7,7 @@
 <div class="py-12 px-6 bg-cover bg-center bg-no-repeat relative"
      style="min-height: 80vh; background-image: url('@Url.Content("~/Content/reservationBackground.png")');">
 
-    <!-- Optional: Dark overlay to improve readability of white/dark text on top of the image -->
+    <!-- Dark overlay -->
     <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
 
     <div class="max-w-3xl mx-auto relative z-10">
@@ -64,7 +64,7 @@
                            class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
                 </div>
 
-                <!-- Accommodation (Сместување) -->
+                <!-- Accommodation -->
                 <div class="flex flex-col gap-1.5 md:col-span-2">
                     <label for="smestuvanje" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
                         * Сместување
@@ -105,6 +105,11 @@
                           class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body resize-y"></textarea>
             </div>
 
+            <!-- Global Error Banner -->
+            <div id="globalError" class="hidden p-4 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm font-body text-center">
+                Извинете, ве молиме обидете се повторно....
+            </div>
+
             <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
                 <p class="text-xs text-slate-400 font-body">
                     Полињата означени со * се задолжителни.
@@ -126,7 +131,7 @@
     </div>
 </div>
 
-<!-- Hidden EmailJS Form with individual dynamic variable fields -->
+<!-- Hidden EmailJS Form -->
 <form id="form" class="hidden">
     <input type="text" name="customer_name" id="form_customer_name" />
     <input type="email" name="customer_email" id="form_customer_email" />
@@ -137,18 +142,14 @@
     <input type="text" name="check_out" id="form_check_out" />
     <textarea name="message" id="form_message"></textarea>
 
-    <!-- Additional/Built-in template variables -->
     <input type="text" name="user_os" id="form_user_os" />
     <input type="text" name="user_platform" id="form_user_platform" />
     <input type="text" name="user_browser" id="form_user_browser" />
     <input type="text" name="user_version" id="form_user_version" />
     <input type="text" name="user_referrer" id="form_user_referrer" />
 
-    <!-- Legacy / standard fallback fields -->
     <textarea name="from_name" id="from_name"></textarea>
     <input type="text" name="reply_to" id="reply_to" />
-
-    <input type="submit" id="button" value="Send Email" />
 </form>
 
 <style>
@@ -220,7 +221,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-        const btn = document.getElementById('button');
         const dataP = document.getElementById('dataP');
         const dataZ = document.getElementById('dataZ');
         const ime = document.getElementById('ime');
@@ -230,55 +230,22 @@
         const smestuvanje = document.getElementById('smestuvanje');
         const poraka = document.getElementById('poraka');
         const emailError = document.getElementById('emailError');
+        const globalError = document.getElementById('globalError');
+        const ispratiBtn = document.getElementById('isprati');
 
-        document.getElementById('form').addEventListener('submit', function (event) {
-            event.preventDefault();
+        function resetSubmitState() {
+            if (ispratiBtn) {
+                ispratiBtn.disabled = false;
+                ispratiBtn.innerHTML = 'Испрати барање ↗';
+            }
+        }
 
-            btn.value = 'Sending...';
-
-            const serviceID = 'default_service';
-            const templateIDOld = 'template_ufh4xh4';
-            const templateID = 'template_bjhyjh8';
-
-            emailjs.sendForm(serviceID, templateID, this)
-                .then(() => {
-                    btn.value = 'Send Email';
-
-                    // Clear values
-                    ime.value = "";
-                    email.value = "";
-                    telefon.value = "";
-                    lica.value = "";
-                    smestuvanje.value = "Бунгалов";
-                    dataP.value = "";
-                    dataZ.value = "";
-                    poraka.value = "";
-
-                    // Replace form card with thank you state
-                    const formCard = document.getElementById('f1');
-                    formCard.innerHTML = `
-                        <div class="text-center py-12 px-4 space-y-4">
-                            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-sm">
-                                ✓
-                            </div>
-                            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-display">
-                                Ви благодариме!
-                            </h2>
-                            <p class="text-slate-600 font-body text-base max-w-md mx-auto leading-relaxed">
-                                Вашето барање за резервација е успешно испратено. Ќе ве контактираме во најкраток можен рок.
-                            </p>
-                        </div>
-                    `;
-                }, (err) => {
-                    btn.value = 'Send Email';
-                    const ispratiBtn = document.getElementById('isprati');
-                    if (ispratiBtn) {
-                        ispratiBtn.disabled = false;
-                        ispratiBtn.innerHTML = 'Испрати барање ↗';
-                    }
-                    alert(JSON.stringify(err));
-                });
-        });
+        function showUIError() {
+            resetSubmitState();
+            if (globalError) {
+                globalError.classList.remove('hidden');
+            }
+        }
 
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
@@ -289,24 +256,18 @@
         dataP.setAttribute('min', todayStr);
         dataZ.setAttribute('min', todayStr);
 
-        // Prepopulate from URL parameters
+        // Prepopulate parameters
         var urlParams = new URLSearchParams(window.location.search);
         var paramCheckIn = urlParams.get('checkIn');
         var paramCheckOut = urlParams.get('checkOut');
         var paramGuests = urlParams.get('guests');
 
-        if (paramGuests) {
-            lica.value = paramGuests;
-        }
-
+        if (paramGuests) lica.value = paramGuests;
         if (paramCheckIn) {
             dataP.value = paramCheckIn;
             updateMinCheckOut(paramCheckIn);
         }
-
-        if (paramCheckOut) {
-            dataZ.value = paramCheckOut;
-        }
+        if (paramCheckOut) dataZ.value = paramCheckOut;
 
         dataP.addEventListener('change', function () {
             var dtP = dataP.value;
@@ -319,7 +280,6 @@
             }
         });
 
-        // Real-time email validation on blur or input change
         email.addEventListener('input', function () {
             const emailRegex = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
             if (email.value.trim() !== "" && emailRegex.test(email.value.trim())) {
@@ -328,23 +288,11 @@
             }
         });
 
-        document.getElementById('isprati').addEventListener('click', function () {
-            var e1 = dataP.value;
-            var e2 = dataZ.value;
-            if (e1 == "") e1 = 'Null';
-            else {
-                var tmp = e1.substr(8, 2) + "." + e1.substr(5, 2) + "." + e1.substr(0, 4);
-                e1 = tmp;
-            }
-            if (e2 == "") e2 = 'Null';
-            else {
-                var tmp = e2.substr(8, 2) + "." + e2.substr(5, 2) + "." + e2.substr(0, 4);
-                e2 = tmp;
-            }
+        ispratiBtn.addEventListener('click', function () {
+            if (globalError) globalError.classList.add('hidden');
 
             let isValid = true;
 
-            // Name validation
             if (ime.value.trim() == "") {
                 ime.classList.add("danger");
                 isValid = false;
@@ -352,7 +300,6 @@
                 ime.classList.remove("danger");
             }
 
-            // Client-side Email validation
             const emailRegex = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
             const emailVal = email.value.trim();
             if (emailVal == "" || !emailRegex.test(emailVal)) {
@@ -364,7 +311,6 @@
                 emailError.classList.add("hidden");
             }
 
-            // Phone validation
             if (telefon.value.trim() == "") {
                 telefon.classList.add("danger");
                 isValid = false;
@@ -372,7 +318,6 @@
                 telefon.classList.remove("danger");
             }
 
-            // Guests validation
             if (lica.value.trim() == "") {
                 lica.classList.add("danger");
                 isValid = false;
@@ -380,21 +325,20 @@
                 lica.classList.remove("danger");
             }
 
-            if (!isValid) {
-                return;
-            }
+            if (!isValid) return;
 
-            const ispratiBtn = document.getElementById('isprati');
-            if (ispratiBtn) {
-                ispratiBtn.disabled = true;
-                ispratiBtn.innerHTML = `
-                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Испраќање...
-                `;
-            }
+            // Lock submit button
+            ispratiBtn.disabled = true;
+            ispratiBtn.innerHTML = `
+                <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Испраќање...
+            `;
+
+            var e1 = dataP.value ? dataP.value.substr(8, 2) + "." + dataP.value.substr(5, 2) + "." + dataP.value.substr(0, 4) : 'Null';
+            var e2 = dataZ.value ? dataZ.value.substr(8, 2) + "." + dataZ.value.substr(5, 2) + "." + dataZ.value.substr(0, 4) : 'Null';
 
             const osVal = getOS();
             const browserVal = getBrowserInfo();
@@ -404,7 +348,7 @@
             const localeVal = navigator.language || "";
             const userAgentVal = navigator.userAgent || "";
 
-            // Populate individual dynamic template variables in hidden EmailJS form
+            // Populate hidden form for EmailJS
             document.getElementById("form_customer_name").value = ime.value;
             document.getElementById("form_customer_email").value = emailVal;
             document.getElementById("form_phone").value = telefon.value;
@@ -419,7 +363,6 @@
             document.getElementById("form_user_version").value = versionVal;
             document.getElementById("form_user_referrer").value = referrerVal;
 
-            // Legacy formatted fields for templates expecting from_name / reply_to
             document.getElementById("from_name").value = " Име и презиме: " + ime.value +
                 "\n Email: " + emailVal +
                 "\n Телефон: " + telefon.value +
@@ -429,37 +372,64 @@
                 "\n Дата на заминување: " + e2;
             document.getElementById("reply_to").value = emailVal;
 
-            // Model payload for backend logging
-            const modelPayload = {
-                Ime: ime.value,
-                Email: emailVal,
-                Telefon: telefon.value,
-                Lica: lica.value,
-                Smestuvanje: smestuvanje.value,
-                DataNaPristignuvanje: e1,
-                DataNaZaminuvanje: e2,
-                Poraka: poraka.value,
-                UserOs: osVal,
-                UserPlatform: platformVal,
-                UserBrowser: browserVal,
-                UserVersion: versionVal,
-                UserAgent: userAgentVal,
-                UserCountry: localeVal,
-                UserReferrer: referrerVal
-            };
+            const serviceID = 'default_service';
+            const templateID = 'template_bjhyjh8';
+            const formElem = document.getElementById('form');
 
-            // Send full data model to backend for logging
-            fetch('@Url.Action("LogReservationData", "Reservations")', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(modelPayload)
-            }).catch(function (err) {
-                console.error("Logging error:", err);
-            });
+            // Step 1: Send via EmailJS
+            emailjs.sendForm(serviceID, templateID, formElem)
+                .then(function () {
+                    // Step 2: Save to backend database
+                    const modelPayload = {
+                        Ime: ime.value,
+                        Email: emailVal,
+                        Telefon: telefon.value,
+                        Lica: lica.value,
+                        Smestuvanje: smestuvanje.value,
+                        DataNaPristignuvanje: e1,
+                        DataNaZaminuvanje: e2,
+                        Poraka: poraka.value,
+                        UserOs: osVal,
+                        UserPlatform: platformVal,
+                        UserBrowser: browserVal,
+                        UserVersion: versionVal,
+                        UserAgent: userAgentVal,
+                        UserCountry: localeVal,
+                        UserReferrer: referrerVal
+                    };
 
-            btn.click();
+                    return fetch('@Url.Action("Save", "Reservations")', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(modelPayload)
+                    });
+                })
+                .then(function (response) {
+                    if (response && !response.ok) {
+                        throw new Error('Database save failed');
+                    }
+                    // Step 3: Success UI
+                    const formCard = document.getElementById('f1');
+                    formCard.innerHTML = `
+                        <div class="text-center py-12 px-4 space-y-4">
+                            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-sm">
+                                ✓
+                            </div>
+                            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-display">
+                                Ви благодариме!
+                            </h2>
+                            <p class="text-slate-600 font-body text-base max-w-md mx-auto leading-relaxed">
+                                Вашето барање за резервација е успешно испратено. Ќе ве контактираме во најкраток можен рок.
+                            </p>
+                        </div>
+                    `;
+                })
+                .catch(function (err) {
+                    console.error("Submission failed:", err);
+                    showUIError();
+                });
         });
     });
 </script>

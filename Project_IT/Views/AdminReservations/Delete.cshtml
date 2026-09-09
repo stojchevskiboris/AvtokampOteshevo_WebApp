@@ -11,13 +11,13 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>Име</dt>
-        <dd>@(string.IsNullOrWhiteSpace(Model.FullName) ? (Model.Ime + " " + Model.Prezime).Trim() : Model.FullName)</dd>
+        <dd>@(string.IsNullOrWhiteSpace(Model.FullName) ? (Model.FirstName + " " + Model.LastName).Trim() : Model.FullName)</dd>
 
         <dt>Email</dt>
         <dd>@Model.Email</dd>
 
         <dt>Телефон</dt>
-        <dd>@Model.Telefon</dd>
+        <dd>@Model.Phone</dd>
 
         <dt>Статус</dt>
         <dd>@Model.Status</dd>

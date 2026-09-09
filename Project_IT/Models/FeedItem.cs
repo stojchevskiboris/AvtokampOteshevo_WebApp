@@ -34,7 +34,7 @@ namespace Project_IT.Models
         [Display(Name = "Категорија")]
         public FeedCategory Category { get; set; }
 
-        [Display(Name = "Зчка / Баџ")]
+        [Display(Name = "Беџ")]
         public string LabelBadge { get; set; }
 
         [Display(Name = "Текст за понуда")]

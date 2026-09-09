@@ -3,10 +3,64 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class AddModels : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.FeedItems",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Title = c.String(nullable: false, maxLength: 200),
+                        Subtitle = c.String(maxLength: 500),
+                        Description = c.String(),
+                        ImageUrl = c.String(),
+                        Category = c.Int(nullable: false),
+                        LabelBadge = c.String(),
+                        OfferText = c.String(),
+                        ButtonText = c.String(),
+                        ActionUrl = c.String(),
+                        ValidTo = c.DateTime(),
+                        IsFeatured = c.Boolean(nullable: false),
+                        IsPublished = c.Boolean(nullable: false),
+                        CreatedOn = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Reservations",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Email = c.String(nullable: false),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        FullName = c.String(),
+                        Phone = c.String(),
+                        Denovi = c.Int(nullable: false),
+                        Lica = c.Int(nullable: false),
+                        DataNaPristignuvanje = c.DateTime(nullable: false),
+                        DataNaZaminuvanje = c.DateTime(nullable: false),
+                        VremeRezervacija = c.DateTime(nullable: false),
+                        Cena = c.Int(nullable: false),
+                        Smestuvanje = c.String(),
+                        Status = c.String(),
+                        Info = c.String(),
+                        UserPlatform = c.String(),
+                        UserOs = c.String(),
+                        UserAgent = c.String(),
+                        IPAddress = c.String(),
+                        UserIp = c.String(),
+                        UserBrowser = c.String(),
+                        UserVersion = c.String(),
+                        UserCountry = c.String(),
+                        UserReferrer = c.String(),
+                        CreatedOn = c.DateTime(nullable: false),
+                        ModifiedOn = c.DateTime(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -94,6 +148,8 @@
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Reservations");
+            DropTable("dbo.FeedItems");
         }
     }
 }
