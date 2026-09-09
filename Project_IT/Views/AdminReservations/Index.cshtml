@@ -1,46 +1,81 @@
 @model IEnumerable<Project_IT.Models.Reservation>
 
 @{
-    ViewBag.Title = "Админ - Резервации";
+    ViewBag.Title = "Администрација — Резервации";
 }
 
-<h2>Резервации</h2>
+<div class="max-w-7xl mx-auto px-6 py-10 font-sans">
+    <div class="flex items-center justify-between mb-8">
+        <div>
+            <h1 class="text-3xl font-serif text-slate-800">Управување со Резервации</h1>
+            <p class="text-slate-500 text-sm mt-1">Преглед и управување со сите пристигнати резервации</p>
+        </div>
+    </div>
 
-<table class="table table-striped table-bordered">
-    <thead>
-        <tr>
-            <th>Креирано</th>
-            <th>Клиент</th>
-            <th>Контакт</th>
-            <th>Сместување</th>
-            <th>Статус</th>
-            <th>Период</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.CreatedOn.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
-                <td>@(string.IsNullOrWhiteSpace(item.FullName) ? (item.FirstName + " " + item.LastName).Trim() : item.FullName)</td>
-                <td>
-                    <div>@item.Email</div>
-                    <div>@item.Phone</div>
-                </td>
-                <td>@item.AccommodationType</td>
-                <td>@item.Status</td>
-                <td>
-                    @item.CheckInDate?.ToString("dd.MM.yyyy")
-                    -
-                    @item.CheckOutDate?.ToString("dd.MM.yyyy")
-                </td>
-                <td>
-                    @Html.ActionLink("Детали", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Измени", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Избриши", "Delete", new { id = item.Id })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+        <table class="w-full text-left text-sm text-slate-600">
+            <thead class="bg-slate-50 border-b border-slate-100 text-slate-500 uppercase text-xs">
+                <tr>
+                    <th class="px-6 py-4 font-semibold">Креирано</th>
+                    <th class="px-6 py-4 font-semibold">Клиент</th>
+                    <th class="px-6 py-4 font-semibold">Контакт</th>
+                    <th class="px-6 py-4 font-semibold">Сместување</th>
+                    <th class="px-6 py-4 font-semibold">Период</th>
+                    <th class="px-6 py-4 font-semibold">Статус</th>
+                    <th class="px-6 py-4 font-semibold text-right">Акции</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+                @foreach (var item in Model)
+                {
+                    <tr class="hover:bg-slate-50/50 transition">
+                        <td class="px-6 py-4 text-xs text-slate-400">
+                            @item.CreatedOn.ToLocalTime().ToString("dd.MM.yyyy HH:mm")
+                        </td>
+                        <td class="px-6 py-4 font-medium text-slate-800">
+                            @(string.IsNullOrWhiteSpace(item.FullName) ? (item.FirstName + " " + item.LastName).Trim() : item.FullName)
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="text-slate-800 text-xs">@item.Email</div>
+                            <div class="text-slate-400 text-xs">@item.Phone</div>
+                        </td>
+                        <td class="px-6 py-4 text-xs">
+                            <span class="inline-block px-2.5 py-1 font-semibold rounded-full bg-slate-100 text-slate-700">
+                                @item.AccommodationType
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 text-xs">
+                            <div>@(item.CheckInDate?.ToString("dd.MM.yyyy") ?? "-") &mdash; @(item.CheckOutDate?.ToString("dd.MM.yyyy") ?? "-")</div>
+                            <div class="text-slate-400">@item.Days ноќевања, @item.Guests гости</div>
+                        </td>
+                        <td class="px-6 py-4 text-xs">
+                            @if (item.Status == "Accepted")
+                            {
+                                <span class="inline-block px-2.5 py-1 font-semibold rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                    Прифатенa
+                                </span>
+                            }
+                            else if (item.Status == "Denied")
+                            {
+                                <span class="inline-block px-2.5 py-1 font-semibold rounded-full bg-rose-50 text-rose-700 border border-rose-200">
+                                    Одбиенa
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="inline-block px-2.5 py-1 font-semibold rounded-full bg-amber-50 text-amber-700 border border-amber-200">
+                                    Новa
+                                </span>
+                            }
+                        </td>
+                        <td class="px-6 py-4 text-right space-x-2">
+                            <a href="@Url.Action("Edit", new { id = item.Id })" class="text-emerald-700 hover:text-emerald-900 font-semibold text-xs">Измени</a>
+                            <a href="@Url.Action("Details", new { id = item.Id })" class="text-slate-600 hover:text-slate-900 font-semibold text-xs">Детали</a>
+                            <a href="@Url.Action("Delete", new { id = item.Id })" class="text-rose-600 hover:text-rose-800 font-semibold text-xs">Избриши</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

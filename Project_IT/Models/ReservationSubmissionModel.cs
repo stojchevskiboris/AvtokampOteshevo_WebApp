@@ -4,14 +4,14 @@ namespace Project_IT.Models
 {
     public class ReservationSubmissionModel
     {
-        public string Ime { get; set; }
+        public string FullName { get; set; }
         public string Email { get; set; }
-        public string Telefon { get; set; }
-        public string Lica { get; set; }
-        public string Smestuvanje { get; set; }
-        public string DataNaPristignuvanje { get; set; }
-        public string DataNaZaminuvanje { get; set; }
-        public string Poraka { get; set; }
+        public string Phone { get; set; }
+        public string Guests { get; set; }
+        public string AccommodationType { get; set; }
+        public string CheckInDate { get; set; }
+        public string CheckOutDate { get; set; }
+        public string Info { get; set; }
 
         // Additional data / EmailJS built-in & browser context fields
         public string UserOs { get; set; }

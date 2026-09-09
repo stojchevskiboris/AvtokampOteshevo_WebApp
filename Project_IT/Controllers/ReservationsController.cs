@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Net;
@@ -10,7 +10,6 @@ namespace Project_IT.Controllers
     public class ReservationsController : Controller
     {
         private readonly ApplicationDbContext db = new ApplicationDbContext();
-
 
         public ActionResult New()
         {
@@ -26,36 +25,36 @@ namespace Project_IT.Controllers
             }
 
             var email = (model.Email ?? string.Empty).Trim();
-            var fullName = (model.Ime ?? string.Empty).Trim();
-            var phone = (model.Telefon ?? string.Empty).Trim();
+            var fullName = (model.FullName ?? string.Empty).Trim();
+            var phone = (model.Phone ?? string.Empty).Trim();
 
             if (string.IsNullOrWhiteSpace(fullName) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(phone))
             {
                 return Json(new { status = "error", message = "Missing required fields." });
             }
 
-            var checkIn = ParseDate(model.DataNaPristignuvanje) ?? DateTime.UtcNow.Date;
-            var checkOut = ParseDate(model.DataNaZaminuvanje) ?? checkIn;
-            var guests = ParseInt(model.Lica);
+            var checkIn = ParseDate(model.CheckInDate) ?? DateTime.UtcNow.Date;
+            var checkOut = ParseDate(model.CheckOutDate) ?? checkIn;
+            var guests = ParseInt(model.Guests);
 
             var nameParts = fullName.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var ime = nameParts.Length > 0 ? nameParts[0] : fullName;
-            var prezime = nameParts.Length > 1 ? string.Join(" ", nameParts.Skip(1)) : string.Empty;
+            var firstName = nameParts.Length > 0 ? nameParts[0] : fullName;
+            var lastName = nameParts.Length > 1 ? string.Join(" ", nameParts.Skip(1)) : string.Empty;
 
             var userAgent = Request?.UserAgent;
             var reservation = new Reservation
             {
                 FullName = fullName,
-                FirstName = ime,
-                LastName = prezime,
+                FirstName = firstName,
+                LastName = lastName,
                 Email = email,
                 Phone = phone,
                 Guests = guests < 0 ? 0 : guests,
-                AccommodationType = model.Smestuvanje,
+                AccommodationType = model.AccommodationType,
                 CheckInDate = checkIn,
                 CheckOutDate = checkOut,
                 Days = CalculateDays(checkIn, checkOut),
-                Info = model.Poraka,
+                Info = model.Info,
                 Status = "New",
                 CreatedOn = DateTime.UtcNow,
                 ModifiedOn = null,

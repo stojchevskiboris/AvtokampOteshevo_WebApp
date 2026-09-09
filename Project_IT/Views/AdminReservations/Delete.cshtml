@@ -1,35 +1,54 @@
 @model Project_IT.Models.Reservation
 
 @{
-    ViewBag.Title = "Избриши резервација";
+    ViewBag.Title = "Избриши резервација — Администрација";
 }
 
-<h2>Избриши резервација</h2>
+<div class="max-w-2xl mx-auto px-6 py-10 font-sans">
+    <div class="mb-6">
+        <a href="@Url.Action("Index")" class="text-sm text-slate-400 hover:text-slate-700 transition">&larr; Назад на листата</a>
+        <h1 class="text-3xl font-serif text-rose-700 mt-2">Избриши резервација</h1>
+        <p class="text-slate-500 text-sm mt-1">Дали сте сигурни дека сакате да ја избришете оваа резервација?</p>
+    </div>
 
-<h4>Дали сте сигурни дека сакате да ја избришете оваа резервација?</h4>
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Име</dt>
-        <dd>@(string.IsNullOrWhiteSpace(Model.FullName) ? (Model.FirstName + " " + Model.LastName).Trim() : Model.FullName)</dd>
-
-        <dt>Email</dt>
-        <dd>@Model.Email</dd>
-
-        <dt>Телефон</dt>
-        <dd>@Model.Phone</dd>
-
-        <dt>Статус</dt>
-        <dd>@Model.Status</dd>
-    </dl>
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 space-y-4 mb-6">
+        <h2 class="text-xl font-serif text-slate-800">
+            @(string.IsNullOrWhiteSpace(Model.FullName) ? (Model.FirstName + " " + Model.LastName).Trim() : Model.FullName)
+        </h2>
+        <div class="grid grid-cols-2 gap-4 text-sm text-slate-600">
+            <div>
+                <span class="text-xs text-slate-400 uppercase block font-semibold">Email</span>
+                @Model.Email
+            </div>
+            <div>
+                <span class="text-xs text-slate-400 uppercase block font-semibold">Телефон</span>
+                @Model.Phone
+            </div>
+            <div>
+                <span class="text-xs text-slate-400 uppercase block font-semibold">Сместување</span>
+                @Model.AccommodationType
+            </div>
+            <div>
+                <span class="text-xs text-slate-400 uppercase block font-semibold">Статус</span>
+                @Model.Status
+            </div>
+        </div>
+        <div class="text-xs text-slate-400 pt-2 border-t border-slate-100">
+            Креирано: @Model.CreatedOn.ToLocalTime().ToString("dd.MM.yyyy HH:mm")
+        </div>
+    </div>
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Избриши" class="btn btn-danger" /> |
-            @Html.ActionLink("Назад", "Index")
+        <div class="flex items-center gap-4">
+            <button type="submit" class="px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-rose-600 hover:bg-rose-700 shadow-md transition">
+                Избриши
+            </button>
+            <a href="@Url.Action("Index")" class="px-6 py-2.5 rounded-full text-sm font-semibold text-slate-600 border border-slate-200 hover:bg-slate-50 transition">
+                Откажи
+            </a>
         </div>
     }
 </div>
