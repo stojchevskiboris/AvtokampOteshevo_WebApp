@@ -33,7 +33,7 @@
                         * Име и презиме
                     </label>
                     <input type="text" id="ime" required="required" placeholder="Пр. Петар Петровски"
-                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                           class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
                 </div>
 
                 <!-- Email -->
@@ -42,7 +42,7 @@
                         * E-mail адреса
                     </label>
                     <input type="email" id="email" required="required" placeholder="vasiot@email.com"
-                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                           class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
                     <span id="emailError" class="text-xs text-red-500 hidden font-body">Ве молиме внесете валидна е-маил адреса.</span>
                 </div>
 
@@ -52,7 +52,7 @@
                         * Телефон
                     </label>
                     <input type="tel" id="telefon" required="required" placeholder="07X XXX XXX"
-                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                           class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
                 </div>
 
                 <!-- Guests -->
@@ -61,7 +61,7 @@
                         * Број на лица
                     </label>
                     <input type="number" id="lica" min="1" max="10" required="required" placeholder="2"
-                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
+                           class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
                 </div>
 
                 <!-- Accommodation (Сместување) -->
@@ -70,10 +70,10 @@
                         * Сместување
                     </label>
                     <select id="smestuvanje" required="required"
-                            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body bg-white">
-                        <option value="Бунгалов" selected="selected">Бунгалов</option>
-                        <option value="Приколка">Приколка</option>
-                        <option value="Плац за шатор">Плац за шатор</option>
+                            class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body bg-white">
+                        <option value="Bungalov" selected="selected">Бунгалов</option>
+                        <option value="Prikolka">Приколка</option>
+                        <option value="Plac za shator">Плац за шатор</option>
                     </select>
                 </div>
 
@@ -83,7 +83,7 @@
                         Дата на пристигнување
                     </label>
                     <input type="date" id="dataP"
-                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer font-body" />
+                           class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer font-body" />
                 </div>
 
                 <!-- Check-out Date -->
@@ -92,7 +92,7 @@
                         Дата на заминување
                     </label>
                     <input type="date" id="dataZ"
-                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer font-body" />
+                           class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer font-body" />
                 </div>
             </div>
 
@@ -102,7 +102,7 @@
                     Дополнителни барања
                 </label>
                 <textarea id="poraka" rows="3" placeholder="Напомени или дополнителни барања..."
-                          class="max-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body resize-y"></textarea>
+                          class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body resize-y"></textarea>
             </div>
 
             <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
@@ -237,7 +237,8 @@
             btn.value = 'Sending...';
 
             const serviceID = 'default_service';
-            const templateID = 'template_ufh4xh4';
+            const templateIDOld = 'template_ufh4xh4';
+            const templateID = 'template_bjhyjh8';
 
             emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {
@@ -320,7 +321,7 @@
 
         // Real-time email validation on blur or input change
         email.addEventListener('input', function () {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const emailRegex = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
             if (email.value.trim() !== "" && emailRegex.test(email.value.trim())) {
                 email.classList.remove("danger");
                 emailError.classList.add("hidden");
@@ -352,7 +353,7 @@
             }
 
             // Client-side Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const emailRegex = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
             const emailVal = email.value.trim();
             if (emailVal == "" || !emailRegex.test(emailVal)) {
                 email.classList.add("danger");
