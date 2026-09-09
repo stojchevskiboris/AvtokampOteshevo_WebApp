@@ -17,6 +17,7 @@ namespace Project_IT.Models
         public string UserOs { get; set; }
         public string UserIp { get; set; }
         public string UserPlatform { get; set; }
+        public string UserAgent { get; set; }
         public string UserBrowser { get; set; }
         public string UserVersion { get; set; }
         public string UserCountry { get; set; }

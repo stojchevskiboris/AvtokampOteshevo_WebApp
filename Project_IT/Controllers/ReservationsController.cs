@@ -1,31 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using log4net;
 using Project_IT.Models;
 
 namespace Project_IT.Controllers
 {
     public class ReservationsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-        private static log4net.ILog Log { get; set; }
-        ILog log = log4net.LogManager.GetLogger(typeof(ReservationsController));
+        private readonly ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Reservations
         [Authorize]
         public ActionResult Index()
         {
-            return RedirectToAction("New", "Reservations");
-            return View(db.Reservations.ToList());
+            return RedirectToAction("Index", "AdminReservations");
         }
 
-        // GET: Reservations/Details/5
         [Authorize]
         public ActionResult Details(int? id)
         {
@@ -33,40 +24,26 @@ namespace Project_IT.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reservation reservation = db.Reservations.Find(id);
+
+            var reservation = db.Reservations.Find(id);
             if (reservation == null)
             {
                 return HttpNotFound();
             }
+
             return View(reservation);
         }
-        
-        // GET: Reservations/Create
+
         public ActionResult Create()
         {
             return RedirectToAction("New", "Reservations");
-
-            return View();
         }
 
-        // POST: Reservations/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,Ime,Prezime,Denovi,Lica,Cena,Telefon,DataNaPristignuvanje,DataNaZaminuvanje,VremeRezervacija,Info")] Reservation reservation)
+        public ActionResult Create(Reservation reservation)
         {
-            // Redirect to new reservation page
             return RedirectToAction("New", "Reservations");
-
-            if (ModelState.IsValid)
-            {
-                db.Reservations.Add(reservation);
-                db.SaveChanges();
-                return RedirectToAction("Final", "Reservations", reservation);
-            }
-
-            return View(reservation);
         }
 
         public ActionResult New()
@@ -77,90 +54,129 @@ namespace Project_IT.Controllers
         [HttpPost]
         public ActionResult LogReservationData(ReservationSubmissionModel model)
         {
-            if (model != null)
+            if (model == null)
             {
-                log.Info($"[NEW RESERVATION SUBMISSION] Email: {model.Email} | Name: {model.Ime} | Phone: {model.Telefon} | Guests: {model.Lica} | Accommodation: {model.Smestuvanje} | CheckIn: {model.DataNaPristignuvanje} | CheckOut: {model.DataNaZaminuvanje} | Message: {model.Poraka} | OS: {model.UserOs} | IP: {model.UserIp} | Platform: {model.UserPlatform} | Browser: {model.UserBrowser} | Version: {model.UserVersion} | Country: {model.UserCountry} | Referrer: {model.UserReferrer}");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            var email = (model.Email ?? string.Empty).Trim();
+            var fullName = (model.Ime ?? string.Empty).Trim();
+            var phone = (model.Telefon ?? string.Empty).Trim();
+
+            if (string.IsNullOrWhiteSpace(fullName) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(phone))
+            {
+                return Json(new { status = "error", message = "Missing required fields." });
+            }
+
+            var checkIn = ParseDate(model.DataNaPristignuvanje) ?? DateTime.UtcNow.Date;
+            var checkOut = ParseDate(model.DataNaZaminuvanje) ?? checkIn;
+            var guests = ParseInt(model.Lica);
+
+            var nameParts = fullName.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var ime = nameParts.Length > 0 ? nameParts[0] : fullName;
+            var prezime = nameParts.Length > 1 ? string.Join(" ", nameParts.Skip(1)) : string.Empty;
+
+            var userAgent = Request?.UserAgent;
+            var reservation = new Reservation
+            {
+                FullName = fullName,
+                Ime = ime,
+                Prezime = prezime,
+                Email = email,
+                Telefon = phone,
+                Lica = guests < 0 ? 0 : guests,
+                Smestuvanje = model.Smestuvanje,
+                DataNaPristignuvanje = checkIn,
+                DataNaZaminuvanje = checkOut,
+                Denovi = CalculateDays(checkIn, checkOut),
+                Info = model.Poraka,
+                Status = "New",
+                VremeRezervacija = DateTime.UtcNow,
+                CreatedOn = DateTime.UtcNow,
+                ModifiedOn = null,
+                UserOs = model.UserOs,
+                UserPlatform = model.UserPlatform,
+                UserAgent = string.IsNullOrWhiteSpace(model.UserAgent) ? userAgent : model.UserAgent,
+                IPAddress = GetRequestIpAddress(),
+                UserIp = string.IsNullOrWhiteSpace(model.UserIp) ? GetRequestIpAddress() : model.UserIp,
+                UserBrowser = model.UserBrowser,
+                UserVersion = model.UserVersion,
+                UserCountry = model.UserCountry,
+                UserReferrer = model.UserReferrer,
+                Cena = 0
+            };
+
+            if (!TryValidateModel(reservation))
+            {
+                return Json(new
+                {
+                    status = "error",
+                    errors = ModelState.Where(kv => kv.Value.Errors.Any())
+                                       .ToDictionary(kv => kv.Key, kv => kv.Value.Errors.Select(e => e.ErrorMessage))
+                });
+            }
+
+            db.Reservations.Add(reservation);
+            db.SaveChanges();
+
             return Json(new { status = "success" });
         }
 
         public ActionResult Final(Reservation reservation)
         {
             return RedirectToAction("New", "Reservations");
-            
-            return View(reservation);
         }
 
         public ActionResult Calendar()
         {
             return RedirectToAction("New", "Reservations");
-
-            return View();
         }
 
-
-        // GET: Reservations/Edit/5
-        [Authorize]
-        public ActionResult Edit(int? id)
+        private static DateTime? ParseDate(string value)
         {
-            if (id == null)
+            if (string.IsNullOrWhiteSpace(value) || string.Equals(value, "Null", StringComparison.OrdinalIgnoreCase))
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return null;
             }
-            Reservation reservation = db.Reservations.Find(id);
-            if (reservation == null)
+
+            if (DateTime.TryParseExact(value, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var parsed))
             {
-                return HttpNotFound();
+                return parsed;
             }
-            return View(reservation);
+
+            if (DateTime.TryParse(value, out parsed))
+            {
+                return parsed;
+            }
+
+            return null;
         }
 
-        // POST: Reservations/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,Ime,Prezime,Denovi,Lica,Cena,Telefon,DataNaPristignuvanje,DataNaZaminuvanje,VremeRezervacija,Info")] Reservation reservation)
+        private static int ParseInt(string value)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(reservation).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(reservation);
+            return int.TryParse(value, out var parsed) ? parsed : 0;
         }
 
-        // GET: Reservations/Delete/5
-        [Authorize]
-        public ActionResult Delete(int? id)
+        private static int CalculateDays(DateTime checkIn, DateTime checkOut)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Reservation reservation = db.Reservations.Find(id);
-            if (reservation == null)
-            {
-                return HttpNotFound();
-            }
-            return View(reservation);
+            var days = (checkOut.Date - checkIn.Date).Days;
+            return days > 0 ? days : 0;
         }
 
-        // POST: Reservations/Delete/5
-        [Authorize]
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        private string GetRequestIpAddress()
         {
-            Reservation reservation = db.Reservations.Find(id);
-            db.Reservations.Remove(reservation);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+            var forwarded = Request?.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            if (!string.IsNullOrWhiteSpace(forwarded))
+            {
+                var firstIp = forwarded.Split(',').FirstOrDefault();
+                if (!string.IsNullOrWhiteSpace(firstIp))
+                {
+                    return firstIp.Trim();
+                }
+            }
 
-       
+            return Request?.UserHostAddress;
+        }
 
         protected override void Dispose(bool disposing)
         {
@@ -168,6 +184,7 @@ namespace Project_IT.Controllers
             {
                 db.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }

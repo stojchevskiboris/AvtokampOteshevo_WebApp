@@ -401,6 +401,8 @@
             const platformVal = navigator.platform || "";
             const versionVal = navigator.appVersion || "";
             const referrerVal = document.referrer || "";
+            const localeVal = navigator.language || "";
+            const userAgentVal = navigator.userAgent || "";
 
             // Populate individual dynamic template variables in hidden EmailJS form
             document.getElementById("form_customer_name").value = ime.value;
@@ -441,6 +443,8 @@
                 UserPlatform: platformVal,
                 UserBrowser: browserVal,
                 UserVersion: versionVal,
+                UserAgent: userAgentVal,
+                UserCountry: localeVal,
                 UserReferrer: referrerVal
             };
 
