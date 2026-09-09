@@ -49,3 +49,4 @@ INFO  2026-09-09 08:05:40,358 37733ms ReservationsController LogReservationData 
 ERROR 2026-09-09 20:33:20,202 198616ms ReservationsController Application_Error  - A public action method 'New' was not found on controller 'Project_IT.Controllers.AdminReservationsController'.
 ERROR 2026-09-09 20:33:29,781 208194ms ReservationsController Application_Error  - A public action method 'Create' was not found on controller 'Project_IT.Controllers.AdminReservationsController'.
 ERROR 2026-09-09 21:21:52,058 10485ms ReservationsController Application_Error  - A public action method 'Newk' was not found on controller 'Project_IT.Controllers.ReservationsController'.
+ERROR 2026-09-09 23:25:46,710 63025ms ReservationsController Application_Error  - A public action method 'Create' was not found on controller 'Project_IT.Controllers.AdminReservationsController'.
