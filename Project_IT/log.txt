@@ -35,3 +35,11 @@ ERROR 2026-09-05 15:13:39,074 564912ms ReservationsController Invoke            
 ERROR 2026-09-06 16:08:47,480 38655ms ReservationsController Invoke             - The controller for path '/Users' was not found or does not implement IController.
 ERROR 2026-09-06 16:08:53,502 44678ms ReservationsController Invoke             - The controller for path '/Users/Create' was not found or does not implement IController.
 ERROR 2026-09-06 16:17:07,355 22780ms ReservationsController Invoke             - The controller for path '/Users' was not found or does not implement IController.
+ERROR 2026-09-09 07:15:51,964 10063ms ReservationsController Invoke             - Directory lookup for the file "C:\Users\boriss\source\repos\AvtokampOteshevo_WebApp\Project_IT\App_Data\aspnet-Project_IT-20220630072121.mdf" failed with the operating system error 2(The system cannot find the file specified.).
+CREATE DATABASE failed. Some file names listed could not be created. Check related errors.
+ERROR 2026-09-09 07:15:53,150 11248ms ReservationsController Invoke             - Directory lookup for the file "C:\Users\boriss\source\repos\AvtokampOteshevo_WebApp\Project_IT\App_Data\aspnet-Project_IT-20220630072121.mdf" failed with the operating system error 2(The system cannot find the file specified.).
+CREATE DATABASE failed. Some file names listed could not be created. Check related errors.
+ERROR 2026-09-09 07:15:57,388 15486ms ReservationsController Invoke             - Directory lookup for the file "C:\Users\boriss\source\repos\AvtokampOteshevo_WebApp\Project_IT\App_Data\aspnet-Project_IT-20220630072121.mdf" failed with the operating system error 2(The system cannot find the file specified.).
+CREATE DATABASE failed. Some file names listed could not be created. Check related errors.
+ERROR 2026-09-09 07:19:56,144  9518ms ReservationsController Invoke             - The model backing the 'ApplicationDbContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).
+ERROR 2026-09-09 07:19:57,180 10553ms ReservationsController Invoke             - The model backing the 'ApplicationDbContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).
