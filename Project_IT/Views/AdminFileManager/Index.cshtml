@@ -70,7 +70,7 @@
                 }
             </div>
             <button type="button" onclick="copyPathToClipboard('@Model.CurrentPath')" title="Копирај патека" class="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition cursor-pointer">
-                📋 <span class="text-xs ml-0.5">Копирај</span>
+                📋 <span class="text-xs ml-0.5">Копирај Патека</span>
             </button>
         </div>
 
@@ -160,9 +160,12 @@
                         else
                         {
                             <div class="w-16 h-16 flex items-center justify-center text-4xl text-slate-400 mb-2 group-hover:scale-105 transition">
-                                @if (item.Extension == ".pdf") { <span>📄</span> }
-                                else if (item.Extension == ".css" || item.Extension == ".js") { <span>💻</span> }
-                                else { <span>📝</span> }
+                                @if (item.Extension == ".pdf")
+                                {<span>📄</span> }
+                                else if (item.Extension == ".css" || item.Extension == ".js")
+                                { <span>💻</span> }
+                                else
+                                { <span>📝</span>}
                             </div>
                         }
 
@@ -196,11 +199,16 @@
                         <tr class="hover:bg-slate-50/50 transition">
                             <td class="px-6 py-3 font-medium text-slate-800 flex items-center gap-3">
                                 <div class="w-8 h-8 rounded-lg flex items-center justify-center text-lg cursor-pointer" onclick="handleItemClick(event, '@item.IsDirectory', '@item.RelativePath', '@item.VirtualPath', '@item.IsImage', '@item.Name')">
-                                    @if (item.IsDirectory) { <span class="text-amber-500">📁</span> }
-                                    else if (item.IsImage) { <img src="@item.VirtualPath" class="w-8 h-8 rounded object-cover" /> }
-                                    else if (item.Extension == ".pdf") { <span>📄</span> }
-                                    else if (item.Extension == ".css" || item.Extension == ".js") { <span>💻</span> }
-                                    else { <span>📝</span> }
+                                    @if (item.IsDirectory)
+                                    {<span class="text-amber-500">📁</span> }
+                                    else if (item.IsImage)
+                                    { <img src="@item.VirtualPath" class="w-8 h-8 rounded object-cover" /> }
+                                    else if (item.Extension == ".pdf")
+                                    { <span>📄</span> }
+                                    else if (item.Extension == ".css" || item.Extension == ".js")
+                                    { <span>💻</span> }
+                                    else
+                                    { <span>📝</span>}
                                 </div>
                                 <span class="cursor-pointer hover:text-emerald-700 transition" onclick="handleItemClick(event, '@item.IsDirectory', '@item.RelativePath', '@item.VirtualPath', '@item.IsImage', '@item.Name')">
                                     @item.Name
@@ -445,14 +453,15 @@
 
 @section scripts {
     <script>
-        // Store image list for Lightbox Gallery navigation
-        var galleryImages = [
-            @for (int i = 0; i < imagesList.Count; i++)
-            {
-                var img = imagesList[i];
-                @:{ name: "@JavaScriptStringEncode(img.Name)", virtualPath: "@JavaScriptStringEncode(img.VirtualPath)", size: "@JavaScriptStringEncode(img.FormattedSize)", dimension: "@JavaScriptStringEncode(img.DimensionString ?? "-")" }@(i < imagesList.Count - 1 ? "," : "")
-            }
-        ];
+        // Store image list for Lightbox Gallery navigation safely using Json.Encode
+        var galleryImages = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(
+            imagesList.Select(img => new {
+                name = img.Name,
+                virtualPath = img.VirtualPath,
+                size = img.FormattedSize,
+                dimension = img.DimensionString ?? "-"
+            })
+        ));
         var currentGalleryIndex = 0;
 
         function handleItemClick(event, isDirectory, relativePath, virtualPath, isImage, name) {
@@ -571,11 +580,7 @@
 
         function copyPathToClipboard(path) {
             var fullVirtualPath = path.startsWith('/') ? path : '/' + path;
-            navigator.clipboard.writeText(fullVirtualPath).then(function() {
-                alert('Патеката е копирана во меморија: ' + fullVirtualPath);
-            }).catch(function(err) {
-                alert('Неуспешно копирање: ' + err);
-            });
+            navigator.clipboard.writeText(fullVirtualPath);
         }
 
         // Close dropdowns on outside click
