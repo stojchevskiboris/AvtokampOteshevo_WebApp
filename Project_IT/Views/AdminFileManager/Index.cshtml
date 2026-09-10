@@ -1,7 +1,7 @@
 @model Project_IT.Models.FileManagerViewModel
 
 @{
-    ViewBag.Title = "Администрација — Фајл Менаџер";
+    ViewBag.Title = "Администрација — File Manager";
     var imagesList = Model.Items.Where(i => !i.IsDirectory && i.IsImage).ToList();
 }
 
@@ -32,7 +32,7 @@
     <!-- Top Header -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
         <div>
-            <h1 class="text-2xl sm:text-3xl font-serif text-slate-800">Фајл Менаџер</h1>
+            <h1 class="text-2xl sm:text-3xl font-serif text-slate-800">File Manager</h1>
             <p class="text-slate-500 text-xs sm:text-sm mt-1">Управување со сите фајлови и директориуми во <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">~/Content</code></p>
         </div>
 
