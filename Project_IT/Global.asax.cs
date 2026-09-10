@@ -46,12 +46,11 @@ namespace Project_IT
             var ex = Server.GetLastError();
             if (ex == null)
             {
-                Response.Redirect($"~/Error/Index");
+                Response.Redirect($"~/Home/Error");
             }
             log.Error(ex.Message);
-            Response.Clear();
             Server.ClearError();
-            Response.Redirect($"~/Error/Index");
+            Response.Redirect($"~/Home/Error");
 
         }
 
