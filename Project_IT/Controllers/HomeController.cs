@@ -1,4 +1,4 @@
-﻿using log4net;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,25 +10,60 @@ namespace Project_IT.Controllers
     [AllowAnonymous]
     public class HomeController : Controller
     {
-        private static log4net.ILog Log { get; set; }
-        ILog log = log4net.LogManager.GetLogger(typeof(ReservationsController));
+        private static readonly ILog log = LogManager.GetLogger(typeof(HomeController));
 
         public ActionResult Index()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in Index: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            try
+            {
+                ViewBag.Message = "Your application description page.";
 
-            return View();
+                return View();
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in About: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            try
+            {
+                ViewBag.Message = "Your contact page.";
 
+                return View();
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in Contact: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
+        }
+
+        public ActionResult Error()
+        {
+            try
+            {
+                return View();
+            }
+            catch
+            {
+            }
             return View();
         }
     }

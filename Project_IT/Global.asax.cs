@@ -44,8 +44,15 @@ namespace Project_IT
         protected void Application_Error(object sender, EventArgs e)
         {
             var ex = Server.GetLastError();
-            if (ex == null) return;
+            if (ex == null)
+            {
+                Response.Redirect($"~/Home/Error");
+            }
             log.Error(ex.Message);
+            Server.ClearError();
+            Response.Redirect($"~/Home/Error");
+
         }
+
     }
 }

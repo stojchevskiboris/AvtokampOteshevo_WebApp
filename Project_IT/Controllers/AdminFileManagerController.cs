@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using log4net;
 using Project_IT.Models;
 
 namespace Project_IT.Controllers
@@ -12,6 +13,8 @@ namespace Project_IT.Controllers
     [Authorize]
     public class AdminFileManagerController : Controller
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(AdminFileManagerController));
+
         private const int PageSize = 30;
         private static readonly HashSet<string> AllowedUploadExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
@@ -28,291 +31,331 @@ namespace Project_IT.Controllers
         // GET: AdminFileManager
         public ActionResult Index(string currentPath = "Content", int page = 1, string viewType = "grid", string query = null)
         {
-            if (page < 1) page = 1;
-            viewType = string.Equals(viewType, "list", StringComparison.OrdinalIgnoreCase) ? "list" : "grid";
-
-            string rootPhysicalPath = GetNormalizedPath(Server.MapPath("~/Content/"));
-            string relativeCleanPath = SanitizeRelativePath(currentPath);
-            string targetPhysicalPath = GetNormalizedPath(Path.Combine(rootPhysicalPath, relativeCleanPath));
-
-            if (!IsPathWithinRoot(targetPhysicalPath, rootPhysicalPath))
+            try
             {
-                TempData["ErrorMessage"] = "Невалидна патека!";
-                return RedirectToAction("Index");
-            }
+                if (page < 1) page = 1;
+                viewType = string.Equals(viewType, "list", StringComparison.OrdinalIgnoreCase) ? "list" : "grid";
 
-            if (!Directory.Exists(targetPhysicalPath))
-            {
-                // Fallback to root Content if target directory does not exist
-                relativeCleanPath = "";
-                targetPhysicalPath = rootPhysicalPath;
-            }
+                string rootPhysicalPath = GetNormalizedPath(Server.MapPath("~/Content/"));
+                string relativeCleanPath = SanitizeRelativePath(currentPath);
+                string targetPhysicalPath = GetNormalizedPath(Path.Combine(rootPhysicalPath, relativeCleanPath));
 
-            var model = new FileManagerViewModel
-            {
-                CurrentPath = string.IsNullOrWhiteSpace(relativeCleanPath) ? "Content" : "Content/" + relativeCleanPath,
-                SearchQuery = query?.Trim(),
-                ViewType = viewType,
-                CurrentPage = page,
-                Breadcrumbs = BuildBreadcrumbs(relativeCleanPath)
-            };
+                if (!IsPathWithinRoot(targetPhysicalPath, rootPhysicalPath))
+                {
+                    TempData["ErrorMessage"] = "Невалидна патека!";
+                    return RedirectToAction("Index");
+                }
 
-            List<FileItemViewModel> allItems = new List<FileItemViewModel>();
+                if (!Directory.Exists(targetPhysicalPath))
+                {
+                    // Fallback to root Content if target directory does not exist
+                    relativeCleanPath = "";
+                    targetPhysicalPath = rootPhysicalPath;
+                }
 
-            if (!string.IsNullOrWhiteSpace(model.SearchQuery))
-            {
-                string searchPattern = model.SearchQuery.ToLower();
-                DirectoryInfo rootDir = new DirectoryInfo(rootPhysicalPath);
+                var model = new FileManagerViewModel
+                {
+                    CurrentPath = string.IsNullOrWhiteSpace(relativeCleanPath) ? "Content" : "Content/" + relativeCleanPath,
+                    SearchQuery = query?.Trim(),
+                    ViewType = viewType,
+                    CurrentPage = page,
+                    Breadcrumbs = BuildBreadcrumbs(relativeCleanPath)
+                };
 
-                SearchFilesRecursive(rootDir, rootPhysicalPath, searchPattern, allItems);
-            }
-            else
-            {
-                DirectoryInfo dir = new DirectoryInfo(targetPhysicalPath);
+                List<FileItemViewModel> allItems = new List<FileItemViewModel>();
 
-                var dirEntries = dir.GetDirectories()
-                    .OrderBy(d => d.Name)
-                    .Select(d => MapToViewModel(d, rootPhysicalPath))
+                if (!string.IsNullOrWhiteSpace(model.SearchQuery))
+                {
+                    string searchPattern = model.SearchQuery.ToLower();
+                    DirectoryInfo rootDir = new DirectoryInfo(rootPhysicalPath);
+
+                    SearchFilesRecursive(rootDir, rootPhysicalPath, searchPattern, allItems);
+                }
+                else
+                {
+                    DirectoryInfo dir = new DirectoryInfo(targetPhysicalPath);
+
+                    var dirEntries = dir.GetDirectories()
+                        .OrderBy(d => d.Name)
+                        .Select(d => MapToViewModel(d, rootPhysicalPath))
+                        .ToList();
+
+                    var fileEntries = dir.GetFiles()
+                        .OrderBy(f => f.Name)
+                        .Select(f => MapToViewModel(f, rootPhysicalPath))
+                        .ToList();
+
+                    allItems.AddRange(dirEntries);
+                    allItems.AddRange(fileEntries);
+                }
+
+                model.TotalItems = allItems.Count;
+                model.TotalPages = (int)Math.Ceiling((double)allItems.Count / PageSize);
+                if (model.TotalPages < 1) model.TotalPages = 1;
+
+                if (model.CurrentPage > model.TotalPages)
+                {
+                    model.CurrentPage = model.TotalPages;
+                }
+
+                model.Items = allItems
+                    .Skip((model.CurrentPage - 1) * PageSize)
+                    .Take(PageSize)
                     .ToList();
 
-                var fileEntries = dir.GetFiles()
-                    .OrderBy(f => f.Name)
-                    .Select(f => MapToViewModel(f, rootPhysicalPath))
-                    .ToList();
-
-                allItems.AddRange(dirEntries);
-                allItems.AddRange(fileEntries);
+                return View(model);
             }
-
-            model.TotalItems = allItems.Count;
-            model.TotalPages = (int)Math.Ceiling((double)allItems.Count / PageSize);
-            if (model.TotalPages < 1) model.TotalPages = 1;
-
-            if (model.CurrentPage > model.TotalPages)
+            catch (Exception ex)
             {
-                model.CurrentPage = model.TotalPages;
+                log.Error("Error in Index: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
             }
-
-            model.Items = allItems
-                .Skip((model.CurrentPage - 1) * PageSize)
-                .Take(PageSize)
-                .ToList();
-
-            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Upload(HttpPostedFileBase file, string targetPath)
         {
-            if (file == null || file.ContentLength == 0)
+            try
             {
-                TempData["ErrorMessage"] = "Ве молиме изберете фајл за прикачување.";
-                return RedirectToRouteOrPath(targetPath);
-            }
+                if (file == null || file.ContentLength == 0)
+                {
+                    TempData["ErrorMessage"] = "Ве молиме изберете фајл за прикачување.";
+                    return RedirectToRouteOrPath(targetPath);
+                }
 
-            string ext = Path.GetExtension(file.FileName);
-            if (string.IsNullOrEmpty(ext) || !AllowedUploadExtensions.Contains(ext))
+                string ext = Path.GetExtension(file.FileName);
+                if (string.IsNullOrEmpty(ext) || !AllowedUploadExtensions.Contains(ext))
+                {
+                    TempData["ErrorMessage"] = "Форматот на фајлот не е дозволен.";
+                    return RedirectToRouteOrPath(targetPath);
+                }
+
+                string rootPhysicalPath = GetNormalizedPath(Server.MapPath("~/Content/"));
+                string relativeCleanPath = SanitizeRelativePath(targetPath);
+                string targetDirPhysicalPath = GetNormalizedPath(Path.Combine(rootPhysicalPath, relativeCleanPath));
+
+                if (!IsPathWithinRoot(targetDirPhysicalPath, rootPhysicalPath))
+                {
+                    TempData["ErrorMessage"] = "Невалидна патека!";
+                    return RedirectToAction("Index");
+                }
+
+                if (!Directory.Exists(targetDirPhysicalPath))
+                {
+                    Directory.CreateDirectory(targetDirPhysicalPath);
+                }
+
+                string fileName = Path.GetFileName(file.FileName);
+                string savePath = Path.Combine(targetDirPhysicalPath, fileName);
+
+                if (!IsPathWithinRoot(savePath, rootPhysicalPath))
+                {
+                    TempData["ErrorMessage"] = "Невалидно име на фајл!";
+                    return RedirectToAction("Index");
+                }
+
+                file.SaveAs(savePath);
+                TempData["SuccessMessage"] = "Фајлот е успешно прикачен.";
+
+                return RedirectToRouteOrPath(relativeCleanPath);
+            }
+            catch (Exception ex)
             {
-                TempData["ErrorMessage"] = "Форматот на фајлот не е дозволен.";
-                return RedirectToRouteOrPath(targetPath);
+                log.Error("Error in Upload: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
             }
-
-            string rootPhysicalPath = GetNormalizedPath(Server.MapPath("~/Content/"));
-            string relativeCleanPath = SanitizeRelativePath(targetPath);
-            string targetDirPhysicalPath = GetNormalizedPath(Path.Combine(rootPhysicalPath, relativeCleanPath));
-
-            if (!IsPathWithinRoot(targetDirPhysicalPath, rootPhysicalPath))
-            {
-                TempData["ErrorMessage"] = "Невалидна патека!";
-                return RedirectToAction("Index");
-            }
-
-            if (!Directory.Exists(targetDirPhysicalPath))
-            {
-                Directory.CreateDirectory(targetDirPhysicalPath);
-            }
-
-            string fileName = Path.GetFileName(file.FileName);
-            string savePath = Path.Combine(targetDirPhysicalPath, fileName);
-
-            if (!IsPathWithinRoot(savePath, rootPhysicalPath))
-            {
-                TempData["ErrorMessage"] = "Невалидно име на фајл!";
-                return RedirectToAction("Index");
-            }
-
-            file.SaveAs(savePath);
-            TempData["SuccessMessage"] = "Фајлот е успешно прикачен.";
-
-            return RedirectToRouteOrPath(relativeCleanPath);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateFolder(string currentPath, string folderName)
         {
-            if (string.IsNullOrWhiteSpace(folderName))
+            try
             {
-                TempData["ErrorMessage"] = "Името на фолдерот е задолжително.";
-                return RedirectToRouteOrPath(currentPath);
-            }
+                if (string.IsNullOrWhiteSpace(folderName))
+                {
+                    TempData["ErrorMessage"] = "Името на фолдерот е задолжително.";
+                    return RedirectToRouteOrPath(currentPath);
+                }
 
-            string sanitizedFolderName = SanitizeFileName(folderName);
-            if (string.IsNullOrWhiteSpace(sanitizedFolderName))
+                string sanitizedFolderName = SanitizeFileName(folderName);
+                if (string.IsNullOrWhiteSpace(sanitizedFolderName))
+                {
+                    TempData["ErrorMessage"] = "Невалидно име на фолдер.";
+                    return RedirectToRouteOrPath(currentPath);
+                }
+
+                string rootPhysicalPath = GetNormalizedPath(Server.MapPath("~/Content/"));
+                string relativeCleanPath = SanitizeRelativePath(currentPath);
+                string targetDirPhysicalPath = GetNormalizedPath(Path.Combine(rootPhysicalPath, relativeCleanPath));
+
+                if (!IsPathWithinRoot(targetDirPhysicalPath, rootPhysicalPath))
+                {
+                    TempData["ErrorMessage"] = "Невалидна патека!";
+                    return RedirectToAction("Index");
+                }
+
+                string newFolderPath = Path.Combine(targetDirPhysicalPath, sanitizedFolderName);
+                if (!IsPathWithinRoot(newFolderPath, rootPhysicalPath))
+                {
+                    TempData["ErrorMessage"] = "Невалидна патека за фолдер!";
+                    return RedirectToAction("Index");
+                }
+
+                if (!Directory.Exists(newFolderPath))
+                {
+                    Directory.CreateDirectory(newFolderPath);
+                    TempData["SuccessMessage"] = "Фолдерот е успешно креиран.";
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Фолдер со тоа име веќе постои.";
+                }
+
+                return RedirectToRouteOrPath(relativeCleanPath);
+            }
+            catch (Exception ex)
             {
-                TempData["ErrorMessage"] = "Невалидно име на фолдер.";
-                return RedirectToRouteOrPath(currentPath);
+                log.Error("Error in CreateFolder: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
             }
-
-            string rootPhysicalPath = GetNormalizedPath(Server.MapPath("~/Content/"));
-            string relativeCleanPath = SanitizeRelativePath(currentPath);
-            string targetDirPhysicalPath = GetNormalizedPath(Path.Combine(rootPhysicalPath, relativeCleanPath));
-
-            if (!IsPathWithinRoot(targetDirPhysicalPath, rootPhysicalPath))
-            {
-                TempData["ErrorMessage"] = "Невалидна патека!";
-                return RedirectToAction("Index");
-            }
-
-            string newFolderPath = Path.Combine(targetDirPhysicalPath, sanitizedFolderName);
-            if (!IsPathWithinRoot(newFolderPath, rootPhysicalPath))
-            {
-                TempData["ErrorMessage"] = "Невалидна патека за фолдер!";
-                return RedirectToAction("Index");
-            }
-
-            if (!Directory.Exists(newFolderPath))
-            {
-                Directory.CreateDirectory(newFolderPath);
-                TempData["SuccessMessage"] = "Фолдерот е успешно креиран.";
-            }
-            else
-            {
-                TempData["ErrorMessage"] = "Фолдер со тоа име веќе постои.";
-            }
-
-            return RedirectToRouteOrPath(relativeCleanPath);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(string itemPath, string currentPath = "Content")
         {
-            if (string.IsNullOrWhiteSpace(itemPath))
-            {
-                TempData["ErrorMessage"] = "Невалидна патека.";
-                return RedirectToRouteOrPath(currentPath);
-            }
-
-            string rootPhysicalPath = GetNormalizedPath(Server.MapPath("~/Content/"));
-            string relativeCleanPath = SanitizeRelativePath(itemPath);
-            string physicalPath = GetNormalizedPath(Path.Combine(rootPhysicalPath, relativeCleanPath));
-
-            if (!IsPathWithinRoot(physicalPath, rootPhysicalPath) || physicalPath.Equals(rootPhysicalPath, StringComparison.OrdinalIgnoreCase))
-            {
-                TempData["ErrorMessage"] = "Не можете да го избришете коренот на Content!";
-                return RedirectToAction("Index");
-            }
-
             try
             {
-                if (Directory.Exists(physicalPath))
+                if (string.IsNullOrWhiteSpace(itemPath))
                 {
-                    Directory.Delete(physicalPath, true);
-                    TempData["SuccessMessage"] = "Фолдерот е успешно избришан.";
+                    TempData["ErrorMessage"] = "Невалидна патека.";
+                    return RedirectToRouteOrPath(currentPath);
                 }
-                else if (System.IO.File.Exists(physicalPath))
+
+                string rootPhysicalPath = GetNormalizedPath(Server.MapPath("~/Content/"));
+                string relativeCleanPath = SanitizeRelativePath(itemPath);
+                string physicalPath = GetNormalizedPath(Path.Combine(rootPhysicalPath, relativeCleanPath));
+
+                if (!IsPathWithinRoot(physicalPath, rootPhysicalPath) || physicalPath.Equals(rootPhysicalPath, StringComparison.OrdinalIgnoreCase))
                 {
-                    System.IO.File.Delete(physicalPath);
-                    TempData["SuccessMessage"] = "Фајлот е успешно избришан.";
+                    TempData["ErrorMessage"] = "Не можете да го избришете коренот на Content!";
+                    return RedirectToAction("Index");
                 }
-                else
+
+                try
                 {
-                    TempData["ErrorMessage"] = "Елементот не постои.";
+                    if (Directory.Exists(physicalPath))
+                    {
+                        Directory.Delete(physicalPath, true);
+                        TempData["SuccessMessage"] = "Фолдерот е успешно избришан.";
+                    }
+                    else if (System.IO.File.Exists(physicalPath))
+                    {
+                        System.IO.File.Delete(physicalPath);
+                        TempData["SuccessMessage"] = "Фајлот е успешно избришан.";
+                    }
+                    else
+                    {
+                        TempData["ErrorMessage"] = "Елементот не постои.";
+                    }
                 }
+                catch (Exception ex)
+                {
+                    TempData["ErrorMessage"] = "Грешка при бришење: " + ex.Message;
+                }
+
+                return RedirectToRouteOrPath(currentPath);
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = "Грешка при бришење: " + ex.Message;
+                log.Error("Error in Delete: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
             }
-
-            return RedirectToRouteOrPath(currentPath);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Rename(string itemPath, string newName, string currentPath = "Content")
         {
-            if (string.IsNullOrWhiteSpace(itemPath) || string.IsNullOrWhiteSpace(newName))
-            {
-                TempData["ErrorMessage"] = "Невалидни параметри за преименување.";
-                return RedirectToRouteOrPath(currentPath);
-            }
-
-            string sanitizedNewName = SanitizeFileName(newName);
-            if (string.IsNullOrWhiteSpace(sanitizedNewName))
-            {
-                TempData["ErrorMessage"] = "Невалидно ново име.";
-                return RedirectToRouteOrPath(currentPath);
-            }
-
-            string rootPhysicalPath = GetNormalizedPath(Server.MapPath("~/Content/"));
-            string relativeCleanPath = SanitizeRelativePath(itemPath);
-            string sourcePhysicalPath = GetNormalizedPath(Path.Combine(rootPhysicalPath, relativeCleanPath));
-
-            if (!IsPathWithinRoot(sourcePhysicalPath, rootPhysicalPath) || sourcePhysicalPath.Equals(rootPhysicalPath, StringComparison.OrdinalIgnoreCase))
-            {
-                TempData["ErrorMessage"] = "Невалидна патека за преименување.";
-                return RedirectToAction("Index");
-            }
-
-            string parentDirectory = Path.GetDirectoryName(sourcePhysicalPath);
-            string destinationPhysicalPath = Path.Combine(parentDirectory, sanitizedNewName);
-
-            if (!IsPathWithinRoot(destinationPhysicalPath, rootPhysicalPath))
-            {
-                TempData["ErrorMessage"] = "Невалидна дестинација за преименување.";
-                return RedirectToAction("Index");
-            }
-
             try
             {
-                if (Directory.Exists(sourcePhysicalPath))
+                if (string.IsNullOrWhiteSpace(itemPath) || string.IsNullOrWhiteSpace(newName))
                 {
-                    if (Directory.Exists(destinationPhysicalPath))
+                    TempData["ErrorMessage"] = "Невалидни параметри за преименување.";
+                    return RedirectToRouteOrPath(currentPath);
+                }
+
+                string sanitizedNewName = SanitizeFileName(newName);
+                if (string.IsNullOrWhiteSpace(sanitizedNewName))
+                {
+                    TempData["ErrorMessage"] = "Невалидно ново име.";
+                    return RedirectToRouteOrPath(currentPath);
+                }
+
+                string rootPhysicalPath = GetNormalizedPath(Server.MapPath("~/Content/"));
+                string relativeCleanPath = SanitizeRelativePath(itemPath);
+                string sourcePhysicalPath = GetNormalizedPath(Path.Combine(rootPhysicalPath, relativeCleanPath));
+
+                if (!IsPathWithinRoot(sourcePhysicalPath, rootPhysicalPath) || sourcePhysicalPath.Equals(rootPhysicalPath, StringComparison.OrdinalIgnoreCase))
+                {
+                    TempData["ErrorMessage"] = "Невалидна патека за преименување.";
+                    return RedirectToAction("Index");
+                }
+
+                string parentDirectory = Path.GetDirectoryName(sourcePhysicalPath);
+                string destinationPhysicalPath = Path.Combine(parentDirectory, sanitizedNewName);
+
+                if (!IsPathWithinRoot(destinationPhysicalPath, rootPhysicalPath))
+                {
+                    TempData["ErrorMessage"] = "Невалидна дестинација за преименување.";
+                    return RedirectToAction("Index");
+                }
+
+                try
+                {
+                    if (Directory.Exists(sourcePhysicalPath))
                     {
-                        TempData["ErrorMessage"] = "Фолдер со исто име веќе постои.";
+                        if (Directory.Exists(destinationPhysicalPath))
+                        {
+                            TempData["ErrorMessage"] = "Фолдер со исто име веќе постои.";
+                        }
+                        else
+                        {
+                            Directory.Move(sourcePhysicalPath, destinationPhysicalPath);
+                            TempData["SuccessMessage"] = "Фолдерот е успешно преименуван.";
+                        }
+                    }
+                    else if (System.IO.File.Exists(sourcePhysicalPath))
+                    {
+                        if (System.IO.File.Exists(destinationPhysicalPath))
+                        {
+                            TempData["ErrorMessage"] = "Фајл со исто име веќе постои.";
+                        }
+                        else
+                        {
+                            System.IO.File.Move(sourcePhysicalPath, destinationPhysicalPath);
+                            TempData["SuccessMessage"] = "Фајлот е успешно преименуван.";
+                        }
                     }
                     else
                     {
-                        Directory.Move(sourcePhysicalPath, destinationPhysicalPath);
-                        TempData["SuccessMessage"] = "Фолдерот е успешно преименуван.";
+                        TempData["ErrorMessage"] = "Елементот не постои.";
                     }
                 }
-                else if (System.IO.File.Exists(sourcePhysicalPath))
+                catch (Exception ex)
                 {
-                    if (System.IO.File.Exists(destinationPhysicalPath))
-                    {
-                        TempData["ErrorMessage"] = "Фајл со исто име веќе постои.";
-                    }
-                    else
-                    {
-                        System.IO.File.Move(sourcePhysicalPath, destinationPhysicalPath);
-                        TempData["SuccessMessage"] = "Фајлот е успешно преименуван.";
-                    }
+                    TempData["ErrorMessage"] = "Грешка при преименување: " + ex.Message;
                 }
-                else
-                {
-                    TempData["ErrorMessage"] = "Елементот не постои.";
-                }
+
+                return RedirectToRouteOrPath(currentPath);
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = "Грешка при преименување: " + ex.Message;
+                log.Error("Error in Rename: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
             }
-
-            return RedirectToRouteOrPath(currentPath);
         }
 
         #region Helper Methods
