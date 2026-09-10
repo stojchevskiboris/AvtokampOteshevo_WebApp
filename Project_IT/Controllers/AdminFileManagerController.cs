@@ -222,7 +222,7 @@ namespace Project_IT.Controllers
                     Directory.Delete(physicalPath, true);
                     TempData["SuccessMessage"] = "Фолдерот е успешно избришан.";
                 }
-                else if (File.Exists(physicalPath))
+                else if (System.IO.File.Exists(physicalPath))
                 {
                     System.IO.File.Delete(physicalPath);
                     TempData["SuccessMessage"] = "Фајлот е успешно избришан.";
@@ -290,9 +290,9 @@ namespace Project_IT.Controllers
                         TempData["SuccessMessage"] = "Фолдерот е успешно преименуван.";
                     }
                 }
-                else if (File.Exists(sourcePhysicalPath))
+                else if (System.IO.File.Exists(sourcePhysicalPath))
                 {
-                    if (File.Exists(destinationPhysicalPath))
+                    if (System.IO.File.Exists(destinationPhysicalPath))
                     {
                         TempData["ErrorMessage"] = "Фајл со исто име веќе постои.";
                     }
