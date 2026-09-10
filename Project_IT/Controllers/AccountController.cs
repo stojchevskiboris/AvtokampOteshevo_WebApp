@@ -11,11 +11,14 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using log4net;
 
 namespace Project_IT.Controllers
 {
     public class AccountController : Controller
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(AccountController));
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -58,8 +61,16 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
+            try
+            {
+                ViewBag.ReturnUrl = returnUrl;
+                return View();
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in Login: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         //
@@ -69,26 +80,34 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return View(model);
-            }
-
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                if (!ModelState.IsValid)
+                {
                     return View(model);
+                }
+
+                // This doesn't count login failures towards account lockout
+                // To enable password failures to trigger account lockout, change to shouldLockout: true
+                var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+                switch (result)
+                {
+                    case SignInStatus.Success:
+                        return RedirectToLocal(returnUrl);
+                    case SignInStatus.LockedOut:
+                        return View("Lockout");
+                    case SignInStatus.RequiresVerification:
+                        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    case SignInStatus.Failure:
+                    default:
+                        ModelState.AddModelError("", "Invalid login attempt.");
+                        return View(model);
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in Login [POST]: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
             }
         }
 
@@ -97,16 +116,24 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home", new { returnUrl });
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
+                {
+                    return RedirectToAction("Index", "Home", new { returnUrl });
+                }
+                if (!await SignInManager.HasBeenVerifiedAsync())
+                {
+                    return View("Error");
+                }
+                return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
             }
-            if (!await SignInManager.HasBeenVerifiedAsync())
+            catch (Exception ex)
             {
-                return View("Error");
+                log.Error("Error in VerifyCode: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
             }
-            return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
         //
@@ -116,67 +143,91 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home");
-            }
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            // The following code protects for brute force attacks against the two factor codes. 
-            // If a user enters incorrect codes for a specified amount of time then the user account 
-            // will be locked out for a specified amount of time. 
-            // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(model.ReturnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid code.");
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                if (!ModelState.IsValid)
+                {
                     return View(model);
+                }
+
+                // The following code protects for brute force attacks against the two factor codes.
+                // If a user enters incorrect codes for a specified amount of time then the user account
+                // will be locked out for a specified amount of time.
+                // You can configure the account lockout settings in IdentityConfig
+                var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+                switch (result)
+                {
+                    case SignInStatus.Success:
+                        return RedirectToLocal(model.ReturnUrl);
+                    case SignInStatus.LockedOut:
+                        return View("Lockout");
+                    case SignInStatus.Failure:
+                    default:
+                        ModelState.AddModelError("", "Invalid code.");
+                        return View(model);
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in VerifyCode [POST]: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
             }
         }
 
         public ActionResult AddUserToRole()
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home");
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                AddToRoleModel model = new AddToRoleModel();
+                model.Roles = new List<string>() { "Admin" };
+                return View(model);
             }
-            AddToRoleModel model = new AddToRoleModel();
-            model.Roles = new List<string>() { "Admin" };
-            return View(model);
+            catch (Exception ex)
+            {
+                log.Error("Error in AddUserToRole: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         [AllowAnonymous]
         [HttpPost]
         public ActionResult AddUserToRole(AddToRoleModel model)
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home");
-            }
-            if (ModelState.IsValid)
-            {
-                var email = model.Email;
-                var user = UserManager.FindByEmail(email);
-                if (user == null)
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
                 {
-                    return RedirectToAction("AddUserToRole", "Account");
+                    return RedirectToAction("Index", "Home");
                 }
-                UserManager.AddToRole(user.Id, model.SelectedRole);
-                return RedirectToAction("Index", "Home");
+                if (ModelState.IsValid)
+                {
+                    var email = model.Email;
+                    var user = UserManager.FindByEmail(email);
+                    if (user == null)
+                    {
+                        return RedirectToAction("AddUserToRole", "Account");
+                    }
+                    UserManager.AddToRole(user.Id, model.SelectedRole);
+                    return RedirectToAction("Index", "Home");
+                }
+                return RedirectToAction("AddUserToRole", "Account");
             }
-            return RedirectToAction("AddUserToRole", "Account");
+            catch (Exception ex)
+            {
+                log.Error("Error in AddUserToRole [POST]: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         //
@@ -184,12 +235,20 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home");
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                return View();
             }
-            return View();
+            catch (Exception ex)
+            {
+                log.Error("Error in Register: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         //
@@ -199,31 +258,49 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home");
-            }
-            if (ModelState.IsValid)
-            {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    return RedirectToAction("Index", "Home");
+                }
+
+                // Prevent registration if at least one user already exists in the database
+                if (UserManager.Users.Any())
+                {
+                    ModelState.AddModelError("", "Registration is disabled because a user account already exists.");
+                    //return View(model);
 
                     return RedirectToAction("Index", "Home");
                 }
-                AddErrors(result);
-            }
 
-            return View(model);
+                if (ModelState.IsValid)
+                {
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
+                        // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                    AddErrors(result);
+                }
+
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in Register [POST]: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         //
@@ -231,17 +308,25 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home");
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                if (userId == null || code == null)
+                {
+                    return View("Error");
+                }
+                var result = await UserManager.ConfirmEmailAsync(userId, code);
+                return View(result.Succeeded ? "ConfirmEmail" : "Error");
             }
-            if (userId == null || code == null)
+            catch (Exception ex)
             {
-                return View("Error");
+                log.Error("Error in ConfirmEmail: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
             }
-            var result = await UserManager.ConfirmEmailAsync(userId, code);
-            return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
         //
@@ -249,12 +334,20 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home");
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                return View();
             }
-            return View();
+            catch (Exception ex)
+            {
+                log.Error("Error in ForgotPassword: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         //
@@ -264,28 +357,36 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home");
-            }
-            if (ModelState.IsValid)
-            {
-                var user = await UserManager.FindByNameAsync(model.Email);
-                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
                 {
-                    return View("ForgotPasswordConfirmation");
+                    return RedirectToAction("Index", "Home");
+                }
+                if (ModelState.IsValid)
+                {
+                    var user = await UserManager.FindByNameAsync(model.Email);
+                    if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                    {
+                        return View("ForgotPasswordConfirmation");
+                    }
+
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    // return RedirectToAction("ForgotPasswordConfirmation", "Account");
                 }
 
-                // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                return View(model);
             }
-
-            return View(model);
+            catch (Exception ex)
+            {
+                log.Error("Error in ForgotPassword [POST]: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         //
@@ -293,12 +394,20 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home");
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                return View();
             }
-            return View();
+            catch (Exception ex)
+            {
+                log.Error("Error in ForgotPasswordConfirmation: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         //
@@ -306,12 +415,20 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home");
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                return code == null ? View("Error") : View();
             }
-            return code == null ? View("Error") : View();
+            catch (Exception ex)
+            {
+                log.Error("Error in ResetPassword: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         //
@@ -321,27 +438,35 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home");
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+                var user = await UserManager.FindByNameAsync(model.Email);
+                if (user == null)
+                {
+                    return RedirectToAction("ResetPasswordConfirmation", "Account");
+                }
+                var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ResetPasswordConfirmation", "Account");
+                }
+                AddErrors(result);
+                return View();
             }
-            if (!ModelState.IsValid)
+            catch (Exception ex)
             {
-                return View(model);
+                log.Error("Error in ResetPassword [POST]: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
             }
-            var user = await UserManager.FindByNameAsync(model.Email);
-            if (user == null)
-            {
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
-            }
-            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
-            if (result.Succeeded)
-            {
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
-            }
-            AddErrors(result);
-            return View();
         }
 
         //
@@ -349,12 +474,20 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home");
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                return View();
             }
-            return View();
+            catch (Exception ex)
+            {
+                log.Error("Error in ResetPasswordConfirmation: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         //
@@ -364,12 +497,20 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home");
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
             }
-            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+            catch (Exception ex)
+            {
+                log.Error("Error in ExternalLogin: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         //
@@ -377,19 +518,27 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home");
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                var userId = await SignInManager.GetVerifiedUserIdAsync();
+                if (userId == null)
+                {
+                    return View("Error");
+                }
+                var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
+                var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
+                return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
             }
-            var userId = await SignInManager.GetVerifiedUserIdAsync();
-            if (userId == null)
+            catch (Exception ex)
             {
-                return View("Error");
+                log.Error("Error in SendCode: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
             }
-            var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
-            var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
-            return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
         //
@@ -399,21 +548,29 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SendCode(SendCodeViewModel model)
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home");
-            }
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                if (!ModelState.IsValid)
+                {
+                    return View();
+                }
 
-            if (!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
-            {
-                return View("Error");
+                if (!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
+                {
+                    return View("Error");
+                }
+                return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
             }
-            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+            catch (Exception ex)
+            {
+                log.Error("Error in SendCode [POST]: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         //
@@ -421,31 +578,39 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home");
-            }
-            var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
-            if (loginInfo == null)
-            {
-                return RedirectToAction("Login");
-            }
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+                if (loginInfo == null)
+                {
+                    return RedirectToAction("Login");
+                }
 
-            var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
-            switch (result)
+                var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
+                switch (result)
+                {
+                    case SignInStatus.Success:
+                        return RedirectToLocal(returnUrl);
+                    case SignInStatus.LockedOut:
+                        return View("Lockout");
+                    case SignInStatus.RequiresVerification:
+                        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
+                    case SignInStatus.Failure:
+                    default:
+                        ViewBag.ReturnUrl = returnUrl;
+                        ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
+                        return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+                }
+            }
+            catch (Exception ex)
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
-                case SignInStatus.Failure:
-                default:
-                    ViewBag.ReturnUrl = returnUrl;
-                    ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+                log.Error("Error in ExternalLoginCallback: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
             }
         }
 
@@ -456,39 +621,47 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
         {
-            bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
-            if (isRedirectEnabled)
+            try
             {
-                return RedirectToAction("Index", "Home");
-            }
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Manage");
-            }
-
-            if (ModelState.IsValid)
-            {
-                var info = await AuthenticationManager.GetExternalLoginInfoAsync();
-                if (info == null)
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                if (isRedirectEnabled)
                 {
-                    return View("ExternalLoginFailure");
+                    return RedirectToAction("Index", "Home");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user);
-                if (result.Succeeded)
+                if (User.Identity.IsAuthenticated)
                 {
-                    result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                    return RedirectToAction("Index", "Manage");
+                }
+
+                if (ModelState.IsValid)
+                {
+                    var info = await AuthenticationManager.GetExternalLoginInfoAsync();
+                    if (info == null)
+                    {
+                        return View("ExternalLoginFailure");
+                    }
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                    var result = await UserManager.CreateAsync(user);
                     if (result.Succeeded)
                     {
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                        return RedirectToLocal(returnUrl);
+                        result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                        if (result.Succeeded)
+                        {
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                            return RedirectToLocal(returnUrl);
+                        }
                     }
+                    AddErrors(result);
                 }
-                AddErrors(result);
-            }
 
-            ViewBag.ReturnUrl = returnUrl;
-            return View(model);
+                ViewBag.ReturnUrl = returnUrl;
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in ExternalLoginConfirmation: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         //
@@ -497,8 +670,16 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            try
+            {
+                AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in LogOff: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         //
@@ -506,7 +687,15 @@ namespace Project_IT.Controllers
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in ExternalLoginFailure: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         protected override void Dispose(bool disposing)
