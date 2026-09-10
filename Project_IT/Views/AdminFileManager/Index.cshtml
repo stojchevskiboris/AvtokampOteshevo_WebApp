@@ -5,7 +5,7 @@
     var imagesList = Model.Items.Where(i => !i.IsDirectory && i.IsImage).ToList();
 }
 
-<div class="max-w-7xl mx-auto px-6 py-10 font-sans">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10 font-sans">
     <!-- Notifications -->
     @if (TempData["SuccessMessage"] != null)
     {
@@ -30,28 +30,28 @@
     }
 
     <!-- Top Header -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
         <div>
-            <h1 class="text-3xl font-serif text-slate-800">Фајл Менаџер</h1>
-            <p class="text-slate-500 text-sm mt-1">Управување со сите фајлови и директориуми во <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">~/Content</code></p>
+            <h1 class="text-2xl sm:text-3xl font-serif text-slate-800">Фајл Менаџер</h1>
+            <p class="text-slate-500 text-xs sm:text-sm mt-1">Управување со сите фајлови и директориуми во <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">~/Content</code></p>
         </div>
 
-        <div class="flex flex-wrap items-center gap-3">
-            <button onclick="openModal('uploadModal')" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white bg-brand-gradient shadow-md hover:opacity-90 transition cursor-pointer">
-                <span>📤</span> Прикачи Фајл
+        <div class="flex items-center gap-2 sm:gap-3">
+            <button onclick="openModal('uploadModal')" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-white bg-brand-gradient shadow-md hover:opacity-90 transition cursor-pointer">
+                <span>📤</span> Прикачи
             </button>
-            <button onclick="openModal('createFolderModal')" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-slate-700 bg-white border border-slate-200 shadow-sm hover:bg-slate-50 transition cursor-pointer">
+            <button onclick="openModal('createFolderModal')" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-slate-700 bg-white border border-slate-200 shadow-sm hover:bg-slate-50 transition cursor-pointer">
                 <span>📁</span> Нов Фолдер
             </button>
         </div>
     </div>
 
     <!-- Controls Bar & Breadcrumbs -->
-    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-4 mb-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-3.5 sm:p-4 mb-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <!-- Breadcrumb & Copy Path -->
-        <div class="flex items-center gap-2 flex-wrap text-sm font-medium">
+        <div class="flex items-center gap-2 flex-wrap text-xs sm:text-sm font-medium">
             <span class="text-slate-400">Патека:</span>
-            <div class="flex items-center gap-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 flex-wrap">
+            <div class="flex items-center gap-1 bg-slate-50 border border-slate-200 rounded-xl px-2.5 sm:px-3 py-1.5 flex-wrap max-w-full overflow-hidden">
                 @for (int i = 0; i < Model.Breadcrumbs.Count; i++)
                 {
                     var crumb = Model.Breadcrumbs[i];
@@ -61,42 +61,42 @@
                     }
                     if (i == Model.Breadcrumbs.Count - 1 && string.IsNullOrEmpty(Model.SearchQuery))
                     {
-                        <span class="text-emerald-700 font-semibold">@crumb.Name</span>
+                        <span class="text-emerald-700 font-semibold truncate max-w-[120px] sm:max-w-none">@crumb.Name</span>
                     }
                     else
                     {
-                        <a href="@Url.Action("Index", new { currentPath = crumb.Path, viewType = Model.ViewType })" class="text-slate-600 hover:text-emerald-700 no-underline transition">@crumb.Name</a>
+                        <a href="@Url.Action("Index", "AdminFileManager", new { currentPath = crumb.Path, viewType = Model.ViewType })" class="text-slate-600 hover:text-emerald-700 no-underline transition truncate max-w-[120px] sm:max-w-none">@crumb.Name</a>
                     }
                 }
             </div>
-            <button type="button" onclick="copyPathToClipboard('@Model.CurrentPath')" title="Копирај патека" class="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition cursor-pointer">
-                📋 <span class="text-xs ml-0.5">Копирај Патека</span>
+            <button type="button" onclick="copyPathToClipboard('@Model.CurrentPath')" title="Копирај патека" class="p-1.5 sm:p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition cursor-pointer">
+                📋 <span class="text-xs ml-0.5 hidden sm:inline">Копирај Патека</span>
             </button>
         </div>
 
         <!-- Right Side: Search & View Switcher -->
-        <div class="flex items-center gap-3 flex-wrap">
+        <div class="flex items-center gap-3 flex-wrap sm:flex-nowrap justify-between lg:justify-end w-full lg:w-auto">
             <!-- Search Form -->
-            <form method="get" action="@Url.Action("Index")" class="relative flex items-center">
+            <form method="get" action="@Url.Action("Index", "AdminFileManager")" class="relative flex items-center flex-1 sm:flex-none">
                 <input type="hidden" name="currentPath" value="@Model.CurrentPath" />
                 <input type="hidden" name="viewType" value="@Model.ViewType" />
                 <input type="text" name="query" value="@Model.SearchQuery" placeholder="Пребарај фајлови..."
-                       class="w-48 sm:w-64 pl-9 pr-8 py-1.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition" />
+                       class="w-full sm:w-64 pl-9 pr-8 py-1.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition" />
                 <span class="absolute left-3 text-slate-400 text-xs">🔍</span>
                 @if (!string.IsNullOrWhiteSpace(Model.SearchQuery))
                 {
-                    <a href="@Url.Action("Index", new { currentPath = Model.CurrentPath, viewType = Model.ViewType })" class="absolute right-2.5 text-slate-400 hover:text-slate-600 text-xs no-underline font-bold">✕</a>
+                    <a href="@Url.Action("Index", "AdminFileManager", new { currentPath = Model.CurrentPath, viewType = Model.ViewType })" class="absolute right-2.5 text-slate-400 hover:text-slate-600 text-xs no-underline font-bold">✕</a>
                 }
             </form>
 
             <!-- Layout Switcher -->
-            <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
-                <a href="@Url.Action("Index", new { currentPath = Model.CurrentPath, query = Model.SearchQuery, viewType = "grid" })"
-                   class="px-3 py-1 rounded-lg text-xs font-semibold transition no-underline @(Model.ViewType == "grid" ? "bg-white text-emerald-700 shadow-sm" : "text-slate-500 hover:text-slate-800")">
+            <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 shrink-0">
+                <a href="@Url.Action("Index", "AdminFileManager", new { currentPath = Model.CurrentPath, query = Model.SearchQuery, viewType = "grid" })"
+                   class="px-2.5 sm:px-3 py-1 rounded-lg text-xs font-semibold transition no-underline @(Model.ViewType == "grid" ? "bg-white text-emerald-700 shadow-sm" : "text-slate-500 hover:text-slate-800")">
                     ▦ Grid
                 </a>
-                <a href="@Url.Action("Index", new { currentPath = Model.CurrentPath, query = Model.SearchQuery, viewType = "list" })"
-                   class="px-3 py-1 rounded-lg text-xs font-semibold transition no-underline @(Model.ViewType == "list" ? "bg-white text-emerald-700 shadow-sm" : "text-slate-500 hover:text-slate-800")">
+                <a href="@Url.Action("Index", "AdminFileManager", new { currentPath = Model.CurrentPath, query = Model.SearchQuery, viewType = "list" })"
+                   class="px-2.5 sm:px-3 py-1 rounded-lg text-xs font-semibold transition no-underline @(Model.ViewType == "list" ? "bg-white text-emerald-700 shadow-sm" : "text-slate-500 hover:text-slate-800")">
                     ☰ List
                 </a>
             </div>
@@ -105,7 +105,7 @@
 
     @if (!string.IsNullOrWhiteSpace(Model.SearchQuery))
     {
-        <div class="mb-4 text-sm text-slate-600">
+        <div class="mb-4 text-xs sm:text-sm text-slate-600">
             Резултати од пребарување за: <span class="font-semibold text-slate-900">"@Model.SearchQuery"</span> (@Model.TotalItems пронајдени)
         </div>
     }
@@ -113,15 +113,15 @@
     <!-- Content Items Area -->
     @if (!Model.Items.Any())
     {
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-12 text-center text-slate-400">
-            <div class="text-4xl mb-3">📂</div>
-            <p class="text-base font-medium">Оваа папка е празна или нема фајлови што одговараат на пребарувањето.</p>
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 sm:p-12 text-center text-slate-400">
+            <div class="text-3xl sm:text-4xl mb-3">📂</div>
+            <p class="text-xs sm:text-base font-medium">Оваа папка е празна или нема фајлови што одговараат на пребарувањето.</p>
         </div>
     }
     else if (Model.ViewType == "grid")
     {
         <!-- Grid View -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 mb-8">
             @foreach (var item in Model.Items)
             {
                 <div class="group relative bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition p-3 flex flex-col justify-between">
@@ -144,22 +144,22 @@
                     </div>
 
                     <!-- Main Item Clickable Content -->
-                    <div class="flex flex-col items-center justify-center pt-3 pb-2 cursor-pointer" onclick="handleItemClick(event, '@item.IsDirectory', '@item.RelativePath', '@item.VirtualPath', '@item.IsImage', '@item.Name')">
+                    <div class="flex flex-col items-center justify-center pt-3 pb-2 cursor-pointer" onclick="handleItemClick(event, @(item.IsDirectory ? "true" : "false"), '@item.RelativePath', '@item.VirtualPath', @(item.IsImage ? "true" : "false"))">
                         @if (item.IsDirectory)
                         {
-                            <div class="w-16 h-16 flex items-center justify-center text-4xl text-amber-500 mb-2 group-hover:scale-105 transition">
+                            <div class="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-3xl sm:text-4xl text-amber-500 mb-2 group-hover:scale-105 transition">
                                 📁
                             </div>
                         }
                         else if (item.IsImage)
                         {
-                            <div class="w-24 h-20 rounded-xl overflow-hidden bg-slate-50 border border-slate-100 mb-2 flex items-center justify-center">
+                            <div class="w-20 h-16 sm:w-24 sm:h-20 rounded-xl overflow-hidden bg-slate-50 border border-slate-100 mb-2 flex items-center justify-center">
                                 <img src="@item.VirtualPath" alt="@item.Name" class="w-full h-full object-cover group-hover:scale-105 transition" />
                             </div>
                         }
                         else
                         {
-                            <div class="w-16 h-16 flex items-center justify-center text-4xl text-slate-400 mb-2 group-hover:scale-105 transition">
+                            <div class="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-3xl sm:text-4xl text-slate-400 mb-2 group-hover:scale-105 transition">
                                 @if (item.Extension == ".pdf")
                                 {<span>📄</span> }
                                 else if (item.Extension == ".css" || item.Extension == ".js")
@@ -181,28 +181,20 @@
     }
     else
     {
-        <!-- List View -->
+        <!-- Responsive List View -->
         <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden mb-8">
-            <table class="w-full text-left text-sm text-slate-600">
-                <thead class="bg-slate-50 border-b border-slate-100 text-slate-500 uppercase text-xs">
-                    <tr>
-                        <th class="px-6 py-4 font-semibold">Име</th>
-                        <th class="px-6 py-4 font-semibold">Тип</th>
-                        <th class="px-6 py-4 font-semibold">Големина</th>
-                        <th class="px-6 py-4 font-semibold">Изменето</th>
-                        <th class="px-6 py-4 font-semibold text-right">Акции</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-100">
-                    @foreach (var item in Model.Items)
-                    {
-                        <tr class="hover:bg-slate-50/50 transition">
-                            <td class="px-6 py-3 font-medium text-slate-800 flex items-center gap-3">
-                                <div class="w-8 h-8 rounded-lg flex items-center justify-center text-lg cursor-pointer" onclick="handleItemClick(event, '@item.IsDirectory', '@item.RelativePath', '@item.VirtualPath', '@item.IsImage', '@item.Name')">
+            <!-- Mobile List Layout (< sm) -->
+            <div class="block sm:hidden divide-y divide-slate-100">
+                @foreach (var item in Model.Items)
+                {
+                    <div class="p-3.5 flex flex-col gap-2 hover:bg-slate-50/50 transition">
+                        <div class="flex items-center justify-between gap-3">
+                            <div class="flex items-center gap-3 min-w-0 cursor-pointer flex-1" onclick="handleItemClick(event, @(item.IsDirectory ? "true" : "false"), '@item.RelativePath', '@item.VirtualPath', @(item.IsImage ? "true" : "false"))">
+                                <div class="w-9 h-9 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center text-lg shrink-0">
                                     @if (item.IsDirectory)
                                     {<span class="text-amber-500">📁</span> }
                                     else if (item.IsImage)
-                                    { <img src="@item.VirtualPath" class="w-8 h-8 rounded object-cover" /> }
+                                    { <img src="@item.VirtualPath" class="w-9 h-9 rounded-lg object-cover" /> }
                                     else if (item.Extension == ".pdf")
                                     { <span>📄</span> }
                                     else if (item.Extension == ".css" || item.Extension == ".js")
@@ -210,40 +202,107 @@
                                     else
                                     { <span>📝</span>}
                                 </div>
-                                <span class="cursor-pointer hover:text-emerald-700 transition" onclick="handleItemClick(event, '@item.IsDirectory', '@item.RelativePath', '@item.VirtualPath', '@item.IsImage', '@item.Name')">
-                                    @item.Name
-                                </span>
-                            </td>
-                            <td class="px-6 py-3 text-xs text-slate-400">
-                                @(item.IsDirectory ? "Фолдер" : (string.IsNullOrWhiteSpace(item.Extension) ? "Фајл" : item.Extension.ToUpper().TrimStart('.')))
-                            </td>
-                            <td class="px-6 py-3 text-xs text-slate-500">
-                                @item.FormattedSize
-                            </td>
-                            <td class="px-6 py-3 text-xs text-slate-400">
-                                @item.ModifiedOn.ToString("dd.MM.yyyy HH:mm")
-                            </td>
-                            <td class="px-6 py-3 text-right space-x-2">
-                                <button type="button" onclick="openDetailsModal('@item.Name', '@item.VirtualPath', '@item.FormattedSize', '@item.CreatedOn.ToString("dd.MM.yyyy HH:mm")', '@item.ModifiedOn.ToString("dd.MM.yyyy HH:mm")', '@item.DimensionString')" class="text-slate-600 hover:text-slate-900 font-semibold text-xs">Детали</button>
-                                <button type="button" onclick="openRenameModal('@item.RelativePath', '@item.Name')" class="text-emerald-700 hover:text-emerald-900 font-semibold text-xs">Преименувај</button>
-                                <button type="button" onclick="openDeleteModal('@item.RelativePath', '@item.Name')" class="text-rose-600 hover:text-rose-800 font-semibold text-xs">Избриши</button>
-                            </td>
+                                <div class="min-w-0 flex-1">
+                                    <div class="text-xs font-semibold text-slate-800 truncate" title="@item.Name">@item.Name</div>
+                                    <div class="text-[10px] text-slate-400 flex items-center gap-2 mt-0.5">
+                                        <span>@(item.IsDirectory ? "Фолдер" : (string.IsNullOrWhiteSpace(item.Extension) ? "Фајл" : item.Extension.ToUpper().TrimStart('.')))</span>
+                                        @if (!item.IsDirectory)
+                                        {
+                                            <span>•</span>
+                                            <span>@item.FormattedSize</span>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mobile Quick Menu -->
+                            <div class="relative shrink-0">
+                                <button type="button" onclick="toggleDropdown(event, 'dropdown-m-@item.GetHashCode()')" class="p-1.5 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-700 font-bold transition">
+                                    ⋮
+                                </button>
+                                <div id="dropdown-m-@item.GetHashCode()" class="hidden absolute right-0 mt-1 w-36 bg-white rounded-xl shadow-lg border border-slate-100 py-1 text-xs z-20">
+                                    <button type="button" onclick="openDetailsModal('@item.Name', '@item.VirtualPath', '@item.FormattedSize', '@item.CreatedOn.ToString("dd.MM.yyyy HH:mm")', '@item.ModifiedOn.ToString("dd.MM.yyyy HH:mm")', '@item.DimensionString')" class="w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700">
+                                        ℹ️ Детали
+                                    </button>
+                                    <button type="button" onclick="openRenameModal('@item.RelativePath', '@item.Name')" class="w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700">
+                                        ✏️ Преименувај
+                                    </button>
+                                    <button type="button" onclick="openDeleteModal('@item.RelativePath', '@item.Name')" class="w-full text-left px-3 py-1.5 hover:bg-rose-50 text-rose-600 font-medium">
+                                        🗑️ Избриши
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Desktop Table Layout (>= sm) -->
+            <div class="hidden sm:block overflow-x-auto">
+                <table class="w-full text-left text-sm text-slate-600">
+                    <thead class="bg-slate-50 border-b border-slate-100 text-slate-500 uppercase text-xs">
+                        <tr>
+                            <th class="px-4 md:px-6 py-4 font-semibold">Име</th>
+                            <th class="px-4 md:px-6 py-4 font-semibold">Тип</th>
+                            <th class="px-4 md:px-6 py-4 font-semibold">Големина</th>
+                            <th class="px-4 md:px-6 py-4 font-semibold">Изменето</th>
+                            <th class="px-4 md:px-6 py-4 font-semibold text-right">Акции</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        @foreach (var item in Model.Items)
+                        {
+                            <tr class="hover:bg-slate-50/50 transition">
+                                <td class="px-4 md:px-6 py-3 font-medium text-slate-800 max-w-[200px] md:max-w-xs">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg flex items-center justify-center text-lg cursor-pointer shrink-0" onclick="handleItemClick(event, @(item.IsDirectory ? "true" : "false"), '@item.RelativePath', '@item.VirtualPath', @(item.IsImage ? "true" : "false"))">
+                                            @if (item.IsDirectory)
+                                            {<span class="text-amber-500">📁</span> }
+                                            else if (item.IsImage)
+                                            { <img src="@item.VirtualPath" class="w-8 h-8 rounded object-cover" /> }
+                                            else if (item.Extension == ".pdf")
+                                            { <span>📄</span> }
+                                            else if (item.Extension == ".css" || item.Extension == ".js")
+                                            { <span>💻</span> }
+                                            else
+                                            { <span>📝</span>}
+                                        </div>
+                                        <span class="cursor-pointer hover:text-emerald-700 transition truncate" title="@item.Name" onclick="handleItemClick(event, @(item.IsDirectory ? "true" : "false"), '@item.RelativePath', '@item.VirtualPath', @(item.IsImage ? "true" : "false"))">
+                                            @item.Name
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="px-4 md:px-6 py-3 text-xs text-slate-400 whitespace-nowrap">
+                                    @(item.IsDirectory ? "Фолдер" : (string.IsNullOrWhiteSpace(item.Extension) ? "Фајл" : item.Extension.ToUpper().TrimStart('.')))
+                                </td>
+                                <td class="px-4 md:px-6 py-3 text-xs text-slate-500 whitespace-nowrap">
+                                    @item.FormattedSize
+                                </td>
+                                <td class="px-4 md:px-6 py-3 text-xs text-slate-400 whitespace-nowrap">
+                                    @item.ModifiedOn.ToString("dd.MM.yyyy HH:mm")
+                                </td>
+                                <td class="px-4 md:px-6 py-3 text-right space-x-2 whitespace-nowrap">
+                                    <button type="button" onclick="openDetailsModal('@item.Name', '@item.VirtualPath', '@item.FormattedSize', '@item.CreatedOn.ToString("dd.MM.yyyy HH:mm")', '@item.ModifiedOn.ToString("dd.MM.yyyy HH:mm")', '@item.DimensionString')" class="text-slate-600 hover:text-slate-900 font-semibold text-xs">Детали</button>
+                                    <button type="button" onclick="openRenameModal('@item.RelativePath', '@item.Name')" class="text-emerald-700 hover:text-emerald-900 font-semibold text-xs">Преименувај</button>
+                                    <button type="button" onclick="openDeleteModal('@item.RelativePath', '@item.Name')" class="text-rose-600 hover:text-rose-800 font-semibold text-xs">Избриши</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     }
 
     <!-- Pagination Controls -->
     @if (Model.TotalPages > 1)
     {
-        <div class="flex items-center justify-center gap-2 mt-6">
+        <div class="flex items-center justify-center gap-1.5 sm:gap-2 mt-6 flex-wrap">
             @if (Model.CurrentPage > 1)
             {
-                <a href="@Url.Action("Index", new { currentPath = Model.CurrentPath, page = Model.CurrentPage - 1, query = Model.SearchQuery, viewType = Model.ViewType })"
-                   class="px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-600 text-xs font-semibold hover:bg-slate-50 transition no-underline">
-                    ← Претходна
+                <a href="@Url.Action("Index", "AdminFileManager", new { currentPath = Model.CurrentPath, page = Model.CurrentPage - 1, query = Model.SearchQuery, viewType = Model.ViewType })"
+                   class="px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-600 text-xs font-semibold hover:bg-slate-50 transition no-underline">
+                    ← <span class="hidden sm:inline">Претходна</span>
                 </a>
             }
 
@@ -251,12 +310,12 @@
             {
                 if (p == Model.CurrentPage)
                 {
-                    <span class="px-3.5 py-1.5 rounded-xl bg-brand-gradient text-white text-xs font-semibold shadow-sm">@p</span>
+                    <span class="px-3 py-1.5 rounded-xl bg-brand-gradient text-white text-xs font-semibold shadow-sm">@p</span>
                 }
                 else if (p <= 3 || p >= Model.TotalPages - 2 || Math.Abs(p - Model.CurrentPage) <= 1)
                 {
-                    <a href="@Url.Action("Index", new { currentPath = Model.CurrentPath, page = p, query = Model.SearchQuery, viewType = Model.ViewType })"
-                       class="px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-600 text-xs font-semibold hover:bg-slate-50 transition no-underline">
+                    <a href="@Url.Action("Index", "AdminFileManager", new { currentPath = Model.CurrentPath, page = p, query = Model.SearchQuery, viewType = Model.ViewType })"
+                       class="px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-600 text-xs font-semibold hover:bg-slate-50 transition no-underline">
                         @p
                     </a>
                 }
@@ -272,9 +331,9 @@
 
             @if (Model.CurrentPage < Model.TotalPages)
             {
-                <a href="@Url.Action("Index", new { currentPath = Model.CurrentPath, page = Model.CurrentPage + 1, query = Model.SearchQuery, viewType = Model.ViewType })"
-                   class="px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-600 text-xs font-semibold hover:bg-slate-50 transition no-underline">
-                    Следна →
+                <a href="@Url.Action("Index", "AdminFileManager", new { currentPath = Model.CurrentPath, page = Model.CurrentPage + 1, query = Model.SearchQuery, viewType = Model.ViewType })"
+                   class="px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-600 text-xs font-semibold hover:bg-slate-50 transition no-underline">
+                    <span class="hidden sm:inline">Следна</span> →
                 </a>
             }
         </div>
@@ -282,7 +341,6 @@
 </div>
 
 <!-- ================= MODALS ================= -->
-
 <!-- Upload File Modal -->
 <div id="uploadModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-100 animate-fadeIn">
@@ -415,35 +473,35 @@
 
 <!-- Image Lightbox Modal -->
 <div id="imageModal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
-    <div class="relative bg-white rounded-2xl max-w-3xl w-full p-6 shadow-2xl border border-slate-800 flex flex-col max-h-[90vh]">
+    <div class="relative bg-white rounded-2xl max-w-3xl w-full p-4 sm:p-6 shadow-2xl border border-slate-800 flex flex-col max-h-[90vh]">
         <!-- Close Button -->
-        <button onclick="closeModal('imageModal')" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold transition">&times;</button>
+        <button onclick="closeModal('imageModal')" class="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold transition">&times;</button>
 
         <!-- Main Image Preview Container -->
-        <div class="relative flex-grow flex items-center justify-center bg-slate-900 rounded-xl overflow-hidden min-h-[300px] max-h-[55vh]">
+        <div class="relative flex-grow flex items-center justify-center bg-slate-900 rounded-xl overflow-hidden min-h-[250px] sm:min-h-[300px] max-h-[55vh]">
             <img id="lightboxImage" src="" alt="Preview" class="max-w-full max-h-[55vh] object-contain" />
 
             <!-- Left Arrow -->
-            <button id="lightboxPrev" type="button" onclick="navigateGallery(-1)" class="absolute left-3 p-3 rounded-full bg-slate-900/60 hover:bg-slate-900 text-white font-bold transition flex items-center justify-center cursor-pointer shadow-lg">
+            <button id="lightboxPrev" type="button" onclick="navigateGallery(-1)" class="absolute left-2 sm:left-3 p-2.5 sm:p-3 rounded-full bg-slate-900/60 hover:bg-slate-900 text-white font-bold transition flex items-center justify-center cursor-pointer shadow-lg text-xs sm:text-base">
                 ❮
             </button>
             <!-- Right Arrow -->
-            <button id="lightboxNext" type="button" onclick="navigateGallery(1)" class="absolute right-3 p-3 rounded-full bg-slate-900/60 hover:bg-slate-900 text-white font-bold transition flex items-center justify-center cursor-pointer shadow-lg">
+            <button id="lightboxNext" type="button" onclick="navigateGallery(1)" class="absolute right-2 sm:right-3 p-2.5 sm:p-3 rounded-full bg-slate-900/60 hover:bg-slate-900 text-white font-bold transition flex items-center justify-center cursor-pointer shadow-lg text-xs sm:text-base">
                 ❯
             </button>
         </div>
 
         <!-- Metadata & Link Footer -->
-        <div class="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-slate-100 pt-4 text-xs">
+        <div class="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 border-t border-slate-100 pt-4 text-xs">
             <div class="space-y-1">
-                <div><span class="font-semibold text-slate-400">Патека:</span> <span id="lightboxPath" class="font-mono text-slate-700"></span></div>
+                <div><span class="font-semibold text-slate-400">Патека:</span> <span id="lightboxPath" class="font-mono text-slate-700 break-all"></span></div>
                 <div class="flex gap-4">
                     <div><span class="font-semibold text-slate-400">Големина:</span> <span id="lightboxSize" class="text-slate-700"></span></div>
                     <div><span class="font-semibold text-slate-400">Резолуција:</span> <span id="lightboxResolution" class="text-slate-700"></span></div>
                 </div>
             </div>
-            <div>
-                <a id="lightboxOpenBtn" href="#" target="_blank" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-emerald-700 hover:bg-emerald-800 transition no-underline">
+            <div class="shrink-0">
+                <a id="lightboxOpenBtn" href="#" target="_blank" class="w-full sm:w-auto justify-center inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-emerald-700 hover:bg-emerald-800 transition no-underline">
                     Отвори фајл ↗
                 </a>
             </div>
@@ -464,15 +522,19 @@
         ));
         var currentGalleryIndex = 0;
 
-        function handleItemClick(event, isDirectory, relativePath, virtualPath, isImage, name) {
+        function handleItemClick(event, isDirectory, relativePath, virtualPath, isImage) {
             // Prevent execution if target is dropdown or action button
-            if (event.target.closest('button') || event.target.closest('.dropdown')) {
+            if (event.target.closest('button') || event.target.closest('[id^="dropdown-"]')) {
                 return;
             }
 
-            if (isDirectory === "True" || isDirectory === "true" || isDirectory === true) {
-                window.location.href = '@Url.Action("Index")?currentPath=' + encodeURIComponent(relativePath) + '&viewType=@Model.ViewType';
-            } else if (isImage === "True" || isImage === "true" || isImage === true) {
+            var isDir = (isDirectory === true || isDirectory === "true" || isDirectory === "True");
+            var isImg = (isImage === true || isImage === "true" || isImage === "True");
+
+            if (isDir) {
+                var targetUrl = '@Url.Action("Index", "AdminFileManager")' + '?currentPath=' + encodeURIComponent(relativePath) + '&viewType=' + encodeURIComponent('@Model.ViewType');
+                window.location.href = targetUrl;
+            } else if (isImg) {
                 openImageGallery(virtualPath);
             } else {
                 window.open(virtualPath, '_blank');
@@ -480,9 +542,19 @@
         }
 
         function openImageGallery(virtualPath) {
+            if (!galleryImages || galleryImages.length === 0) return;
+
+            // Normalize path strings to ensure matching across query string formats
+            var normalizePath = function(p) {
+                if (!p) return "";
+                return p.replace(/\\/g, '/').toLowerCase();
+            };
+
+            var normalizedTarget = normalizePath(virtualPath);
             var foundIndex = galleryImages.findIndex(function(img) {
-                return img.virtualPath === virtualPath;
+                return normalizePath(img.virtualPath) === normalizedTarget;
             });
+
             if (foundIndex !== -1) {
                 currentGalleryIndex = foundIndex;
             } else {
@@ -565,7 +637,6 @@
 
         function toggleDropdown(event, id) {
             event.stopPropagation();
-            // Close all open dropdowns
             var dropdowns = document.querySelectorAll('[id^="dropdown-"]');
             dropdowns.forEach(function(d) {
                 if (d.id !== id) {

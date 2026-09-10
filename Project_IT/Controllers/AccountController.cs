@@ -265,6 +265,16 @@ namespace Project_IT.Controllers
                 {
                     return RedirectToAction("Index", "Home");
                 }
+
+                // Prevent registration if at least one user already exists in the database
+                if (UserManager.Users.Any())
+                {
+                    ModelState.AddModelError("", "Registration is disabled because a user account already exists.");
+                    //return View(model);
+
+                    return RedirectToAction("Index", "Home");
+                }
+
                 if (ModelState.IsValid)
                 {
                     var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
