@@ -59,7 +59,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                Response.StatusCode = 500;
+                return View();
             }
             catch
             {
