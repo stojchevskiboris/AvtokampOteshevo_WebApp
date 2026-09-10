@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using log4net;
 using Project_IT.Models;
 
 namespace Project_IT.Controllers
@@ -10,22 +11,38 @@ namespace Project_IT.Controllers
     [Authorize]
     public class AdminReservationsController : Controller
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(AdminReservationsController));
         private readonly ApplicationDbContext db = new ApplicationDbContext();
 
         public ActionResult Index()
         {
-            var reservations = db.Reservations;
-            if (reservations != null && reservations.Any()) { 
-                var result = reservations.OrderByDescending(r => r.CreatedOn).ToList();
-                return View(result);
+            try
+            {
+                var reservations = db.Reservations;
+                if (reservations != null && reservations.Any()) {
+                    var result = reservations.OrderByDescending(r => r.CreatedOn).ToList();
+                    return View(result);
+                }
+                return View(new List<Reservation>());
             }
-            return View(new List<Reservation>());
+            catch (Exception ex)
+            {
+                log.Error("Error in Index: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
-
 
         public ActionResult Create()
         {
-            return View(new Reservation { CreatedOn = DateTime.UtcNow });
+            try
+            {
+                return View(new Reservation { CreatedOn = DateTime.UtcNow });
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in Create: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // POST: FeedItems/Create
@@ -33,120 +50,168 @@ namespace Project_IT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Reservation reservation)
         {
-            if (ModelState.IsValid)
+            try
             {
-                if (reservation.CreatedOn == default(DateTime))
+                if (ModelState.IsValid)
                 {
-                    reservation.CreatedOn = DateTime.UtcNow;
+                    if (reservation.CreatedOn == default(DateTime))
+                    {
+                        reservation.CreatedOn = DateTime.UtcNow;
+                    }
+                    db.Reservations.Add(reservation);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
-                db.Reservations.Add(reservation);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            return View(reservation);
+                return View(reservation);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in Create [POST]: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
 
-            var reservation = db.Reservations.Find(id);
-            if (reservation == null)
+                var reservation = db.Reservations.Find(id);
+                if (reservation == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return View(reservation);
+            }
+            catch (Exception ex)
             {
-                return HttpNotFound();
+                log.Error("Error in Details: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
             }
-
-            return View(reservation);
         }
 
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
 
-            var reservation = db.Reservations.Find(id);
-            if (reservation == null)
+                var reservation = db.Reservations.Find(id);
+                if (reservation == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return View(reservation);
+            }
+            catch (Exception ex)
             {
-                return HttpNotFound();
+                log.Error("Error in Edit: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
             }
-
-            return View(reservation);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Reservation reservation)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return View(reservation);
-            }
+                if (!ModelState.IsValid)
+                {
+                    return View(reservation);
+                }
 
-            var existing = db.Reservations.Find(reservation.Id);
-            if (existing == null)
+                var existing = db.Reservations.Find(reservation.Id);
+                if (existing == null)
+                {
+                    return HttpNotFound();
+                }
+
+                existing.FullName = reservation.FullName;
+                existing.Email = reservation.Email;
+                existing.Phone = reservation.Phone;
+                existing.AccommodationType = reservation.AccommodationType;
+                existing.CheckInDate = reservation.CheckInDate;
+                existing.CheckOutDate = reservation.CheckOutDate;
+                existing.Guests = reservation.Guests;
+                existing.Days = reservation.Days;
+                existing.Status = reservation.Status;
+                existing.Info = reservation.Info;
+                existing.Price = reservation.Price;
+                existing.ModifiedOn = DateTime.UtcNow;
+
+                if (!string.IsNullOrWhiteSpace(existing.FullName))
+                {
+                    var parts = existing.FullName.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    existing.FirstName = parts.Length > 0 ? parts[0] : existing.FullName;
+                    existing.LastName = parts.Length > 1 ? string.Join(" ", parts.Skip(1)) : string.Empty;
+                }
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
             {
-                return HttpNotFound();
+                log.Error("Error in Edit [POST]: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
             }
-
-            existing.FullName = reservation.FullName;
-            existing.Email = reservation.Email;
-            existing.Phone = reservation.Phone;
-            existing.AccommodationType = reservation.AccommodationType;
-            existing.CheckInDate = reservation.CheckInDate;
-            existing.CheckOutDate = reservation.CheckOutDate;
-            existing.Guests = reservation.Guests;
-            existing.Days = reservation.Days;
-            existing.Status = reservation.Status;
-            existing.Info = reservation.Info;
-            existing.Price = reservation.Price;
-            existing.ModifiedOn = DateTime.UtcNow;
-
-            if (!string.IsNullOrWhiteSpace(existing.FullName))
-            {
-                var parts = existing.FullName.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                existing.FirstName = parts.Length > 0 ? parts[0] : existing.FullName;
-                existing.LastName = parts.Length > 1 ? string.Join(" ", parts.Skip(1)) : string.Empty;
-            }
-
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
 
-            var reservation = db.Reservations.Find(id);
-            if (reservation == null)
+                var reservation = db.Reservations.Find(id);
+                if (reservation == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return View(reservation);
+            }
+            catch (Exception ex)
             {
-                return HttpNotFound();
+                log.Error("Error in Delete: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
             }
-
-            return View(reservation);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var reservation = db.Reservations.Find(id);
-            if (reservation == null)
+            try
             {
-                return HttpNotFound();
-            }
+                var reservation = db.Reservations.Find(id);
+                if (reservation == null)
+                {
+                    return HttpNotFound();
+                }
 
-            db.Reservations.Remove(reservation);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+                db.Reservations.Remove(reservation);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in DeleteConfirmed: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         protected override void Dispose(bool disposing)
