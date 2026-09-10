@@ -172,6 +172,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminFileManagerController.cs" />
+    <Compile Include="Models\FileManagerViewModels.cs" />
     <Compile Include="Controllers\AdminReservationsController.cs" />
     <Compile Include="Controllers\FeedItemsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -402,6 +404,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="googlec0200a6804ade3f6.html" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -545,6 +548,7 @@
     <Content Include="Views\AdminReservations\Delete.cshtml" />
     <Content Include="Views\AdminReservations\Details.cshtml" />
     <Content Include="Views\AdminReservations\Edit.cshtml" />
+    <Content Include="Views\AdminFileManager\Index.cshtml" />
     <Content Include="Views\AdminReservations\Index.cshtml" />
     <Content Include="Views\Reservations\New.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
