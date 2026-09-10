@@ -3,87 +3,105 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using log4net;
 using Project_IT.Models;
 
 namespace Project_IT.Controllers
 {
     public class ReservationsController : Controller
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(ReservationsController));
         private readonly ApplicationDbContext db = new ApplicationDbContext();
 
         public ActionResult New()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in New: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         [HttpPost]
         public ActionResult Save(ReservationSubmissionModel model)
         {
-            if (model == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var email = (model.Email ?? string.Empty).Trim();
-            var fullName = (model.FullName ?? string.Empty).Trim();
-            var phone = (model.Phone ?? string.Empty).Trim();
-
-            if (string.IsNullOrWhiteSpace(fullName) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(phone))
-            {
-                return Json(new { status = "error", message = "Missing required fields." });
-            }
-
-            var checkIn = ParseDate(model.CheckInDate) ?? DateTime.UtcNow.Date;
-            var checkOut = ParseDate(model.CheckOutDate) ?? checkIn;
-            var guests = ParseInt(model.Guests);
-
-            var nameParts = fullName.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var firstName = nameParts.Length > 0 ? nameParts[0] : fullName;
-            var lastName = nameParts.Length > 1 ? string.Join(" ", nameParts.Skip(1)) : string.Empty;
-
-            var userAgent = Request?.UserAgent;
-            var reservation = new Reservation
-            {
-                FullName = fullName,
-                FirstName = firstName,
-                LastName = lastName,
-                Email = email,
-                Phone = phone,
-                Guests = guests < 0 ? 0 : guests,
-                AccommodationType = model.AccommodationType,
-                CheckInDate = checkIn,
-                CheckOutDate = checkOut,
-                Days = CalculateDays(checkIn, checkOut),
-                Info = model.Info,
-                Status = "New",
-                CreatedOn = DateTime.UtcNow,
-                ModifiedOn = null,
-                UserOs = model.UserOs,
-                UserPlatform = model.UserPlatform,
-                UserAgent = string.IsNullOrWhiteSpace(model.UserAgent) ? userAgent : model.UserAgent,
-                IPAddress = GetRequestIpAddress(),
-                UserIp = string.IsNullOrWhiteSpace(model.UserIp) ? GetRequestIpAddress() : model.UserIp,
-                UserBrowser = model.UserBrowser,
-                UserVersion = model.UserVersion,
-                UserCountry = model.UserCountry,
-                UserReferrer = model.UserReferrer,
-                Price = 0
-            };
-
-            if (!TryValidateModel(reservation))
-            {
-                return Json(new
+                if (model == null)
                 {
-                    status = "error",
-                    errors = ModelState.Where(kv => kv.Value.Errors.Any())
-                                       .ToDictionary(kv => kv.Key, kv => kv.Value.Errors.Select(e => e.ErrorMessage))
-                });
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                var email = (model.Email ?? string.Empty).Trim();
+                var fullName = (model.FullName ?? string.Empty).Trim();
+                var phone = (model.Phone ?? string.Empty).Trim();
+
+                if (string.IsNullOrWhiteSpace(fullName) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(phone))
+                {
+                    return Json(new { status = "error", message = "Missing required fields." });
+                }
+
+                var checkIn = ParseDate(model.CheckInDate) ?? DateTime.UtcNow.Date;
+                var checkOut = ParseDate(model.CheckOutDate) ?? checkIn;
+                var guests = ParseInt(model.Guests);
+
+                var nameParts = fullName.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                var firstName = nameParts.Length > 0 ? nameParts[0] : fullName;
+                var lastName = nameParts.Length > 1 ? string.Join(" ", nameParts.Skip(1)) : string.Empty;
+
+                var userAgent = Request?.UserAgent;
+                var reservation = new Reservation
+                {
+                    FullName = fullName,
+                    FirstName = firstName,
+                    LastName = lastName,
+                    Email = email,
+                    Phone = phone,
+                    Guests = guests < 0 ? 0 : guests,
+                    AccommodationType = model.AccommodationType,
+                    CheckInDate = checkIn,
+                    CheckOutDate = checkOut,
+                    Days = CalculateDays(checkIn, checkOut),
+                    Info = model.Info,
+                    Status = "New",
+                    CreatedOn = DateTime.UtcNow,
+                    ModifiedOn = null,
+                    UserOs = model.UserOs,
+                    UserPlatform = model.UserPlatform,
+                    UserAgent = string.IsNullOrWhiteSpace(model.UserAgent) ? userAgent : model.UserAgent,
+                    IPAddress = GetRequestIpAddress(),
+                    UserIp = string.IsNullOrWhiteSpace(model.UserIp) ? GetRequestIpAddress() : model.UserIp,
+                    UserBrowser = model.UserBrowser,
+                    UserVersion = model.UserVersion,
+                    UserCountry = model.UserCountry,
+                    UserReferrer = model.UserReferrer,
+                    Price = 0
+                };
+
+                if (!TryValidateModel(reservation))
+                {
+                    return Json(new
+                    {
+                        status = "error",
+                        errors = ModelState.Where(kv => kv.Value.Errors.Any())
+                                           .ToDictionary(kv => kv.Key, kv => kv.Value.Errors.Select(e => e.ErrorMessage))
+                    });
+                }
+
+                db.Reservations.Add(reservation);
+                db.SaveChanges();
+
+                return Json(new { status = "success" });
             }
-
-            db.Reservations.Add(reservation);
-            db.SaveChanges();
-
-            return Json(new { status = "success" });
+            catch (Exception ex)
+            {
+                log.Error("Error in Save: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         private static DateTime? ParseDate(string value)
