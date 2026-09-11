@@ -88,6 +88,31 @@ namespace Project_IT.Controllers
             }
         }
 
+        // GET: News/5 or GET: News/Details/5
+        public ActionResult Details(int? id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                FeedItem feedItem = db.FeedItems.FirstOrDefault(x => x.Id == id && x.IsPublished);
+                if (feedItem == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return View(feedItem);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in Details: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

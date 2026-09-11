@@ -1,0 +1,190 @@
+@model Project_IT.Models.FeedItem
+@using Project_IT.Models
+
+@{
+    ViewBag.Title = Model.Title + " — Новости & Понуди — Автокамп Отешево";
+    var isEvent = Model.Category == FeedCategory.Event;
+    var isOffer = Model.Category == FeedCategory.Offer;
+
+    string categoryName = isOffer ? "Специјална Понуда" : (isEvent ? "Настан" : "Новост");
+    string badgeText = !string.IsNullOrEmpty(Model.LabelBadge) ? Model.LabelBadge : categoryName;
+    string categoryTagClass = isOffer ? "bg-amber-100 text-amber-900 border-amber-200" : (isEvent ? "bg-amber-50 text-[#6b3a1a] border-amber-100" : "bg-emerald-50 text-[#1a4a6b] border-emerald-100");
+}
+
+<div class="font-sans antialiased bg-[#FAF8F5] min-h-screen">
+
+    <!-- Hero Header Banner -->
+    <section class="relative flex flex-col items-center justify-center text-center px-6 pt-16 h-[38vh] min-h-[300px] max-h-[440px]">
+        <div class="absolute inset-0 bg-slate-900 overflow-hidden">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Model.ImageUrl" alt="@Model.Title" class="w-full h-full object-cover opacity-40 blur-sm scale-105" />
+            }
+            else
+            {
+                <img src="https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=1600&h=600&fit=crop&auto=format" alt="Автокамп Отешево" class="w-full h-full object-cover opacity-35" />
+            }
+            <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(10,25,18,0.7) 0%, rgba(10,25,18,0.75) 100%);"></div>
+        </div>
+        <div class="relative z-10 max-w-3xl mx-auto">
+            <span class="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 text-white/90 bg-white/15 backdrop-blur-md border border-white/20">
+                @badgeText
+            </span>
+            <h1 class="text-3xl md:text-5xl text-white font-serif mb-3 leading-tight drop-shadow-md">
+                @Model.Title
+            </h1>
+            <p class="text-white/70 text-sm md:text-base max-w-xl mx-auto flex items-center justify-center gap-3">
+                <span>Објавено: @Model.CreatedOn.ToString("dd MMMM yyyy")</span>
+                <span>•</span>
+                <span>Автокамп Отешево</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Navigation Sub-header Bar -->
+    <div class="bg-white border-b border-slate-100 shadow-xs">
+        <div class="max-w-4xl mx-auto px-6 h-12 flex items-center justify-between">
+            <a href="@Url.Action("Index", "News")"
+               class="text-sm font-semibold text-slate-600 hover:text-[#1a3d2b] transition flex items-center gap-1.5">
+                &larr; Назад на сите новости
+            </a>
+            <span class="text-xs text-slate-400">
+                Категорија: <strong class="text-slate-700 font-medium">@categoryName</strong>
+            </span>
+        </div>
+    </div>
+
+    <!-- Main Content Body -->
+    <section class="py-12 px-6">
+        <div class="max-w-4xl mx-auto">
+            <article class="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-100/80">
+
+                @* Main Image Banner *@
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <div class="relative w-full max-h-[480px] bg-slate-100 overflow-hidden">
+                        <img src="@Model.ImageUrl"
+                             alt="@Model.Title"
+                             class="w-full h-full object-cover" />
+
+                        @if (!string.IsNullOrEmpty(Model.LabelBadge))
+                        {
+                            <span class="absolute top-6 left-6 text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-[#1a4a6b] shadow-md border border-white/50">
+                                @Model.LabelBadge
+                            </span>
+                        }
+                    </div>
+                }
+
+                <div class="p-8 md:p-12">
+                    <!-- Title & Subtitle inside Article -->
+                    <div class="mb-8 border-b border-slate-100 pb-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full border @categoryTagClass">
+                                @categoryName
+                            </span>
+                            @if (Model.IsFeatured)
+                            {
+                                <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
+                                    ★ Истакнато
+                                </span>
+                            }
+                            <span class="text-xs text-slate-400 ml-auto">
+                                @Model.CreatedOn.ToString("dd MMMM yyyy, HH:mm")
+                            </span>
+                        </div>
+
+                        <h2 class="text-3xl md:text-4xl font-serif text-slate-900 leading-tight mb-4">
+                            @Model.Title
+                        </h2>
+
+                        @if (!string.IsNullOrEmpty(Model.Subtitle))
+                        {
+                            <p class="text-lg text-slate-600 leading-relaxed font-sans italic">
+                                @Model.Subtitle
+                            </p>
+                        }
+                    </div>
+
+                    <!-- Special Offer Banner Component (if Offer) -->
+                    @if (isOffer || Model.ValidTo.HasValue || !string.IsNullOrEmpty(Model.OfferText))
+                    {
+                        <div class="mb-10 p-6 md:p-8 rounded-2xl bg-gradient-to-br from-amber-50/80 via-white to-emerald-50/60 border border-amber-200/60 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-widest text-amber-800 bg-amber-100/80 px-3 py-1 rounded-full">
+                                    Специјална понуда
+                                </span>
+                                @if (Model.ValidTo.HasValue)
+                                {
+                                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-3">
+                                        Важи до: <span class="text-amber-800 font-bold">@Model.ValidTo.Value.ToString("dd MMMM yyyy")</span>
+                                    </p>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.OfferText))
+                                {
+                                    <div class="text-2xl md:text-3xl font-bold font-serif text-slate-800 mt-2">
+                                        @Model.OfferText
+                                    </div>
+                                }
+                            </div>
+                            <div>
+                                <a href="@(!string.IsNullOrEmpty(Model.ActionUrl) ? Model.ActionUrl : Url.Action("New", "Reservations"))"
+                                   class="inline-block px-7 py-3.5 rounded-full text-sm font-semibold text-white transition-all hover:opacity-90 hover:shadow-lg active:scale-95 bg-gradient-to-r from-[#1a3d2b] to-[#2d6a46] shadow-md whitespace-nowrap">
+                                    @(!string.IsNullOrEmpty(Model.ButtonText) ? Model.ButtonText : "Искористи ја понудата &rarr;")
+                                </a>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- Full Body / Description Content -->
+                    <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4 text-base md:text-lg">
+                        @if (!string.IsNullOrEmpty(Model.Description))
+                        {
+                            @Html.Raw(Model.Description)
+                        }
+                        else
+                        {
+                            <p class="text-slate-500 italic">Нема дополнителен опис за оваа новост.</p>
+                        }
+                    </div>
+
+                    <!-- Article Footer Info -->
+                    <div class="mt-12 pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-[#1a3d2b] flex items-center justify-center text-white font-bold text-sm shadow-sm">
+                                АО
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-slate-800">Автокамп Отешево</p>
+                                <p class="text-xs text-slate-400">Преспанско Езеро, Македонија</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <a href="@Url.Action("Index", "News")" class="px-5 py-2.5 rounded-full text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition">
+                                &larr; Сите новости
+                            </a>
+                            <a href="@Url.Action("New", "Reservations")" class="px-5 py-2.5 rounded-full text-xs font-semibold text-white bg-brand-gradient hover:opacity-90 transition shadow-sm">
+                                Резервирај престој &nearr;
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Footer Banner CTA -->
+    <div class="py-14 px-6 bg-white text-center border-t border-slate-100">
+        <h3 class="text-3xl font-serif text-slate-800 mb-3">Подготвени за незаборавен одмор?</h3>
+        <p class="text-slate-500 text-sm mb-7 max-w-md mx-auto">
+            Резервирајте го вашиот престој денес и доживејте ја убавината на Преспанското Езеро.
+        </p>
+        <a href="@Url.Action("New", "Reservations")"
+           class="inline-block px-8 py-4 rounded-full text-white font-semibold transition-all hover:opacity-90 hover:shadow-lg bg-gradient-to-r from-[#1a3d2b] to-[#2d6a46] shadow-md">
+            Резервирај сега &nearr;
+        </a>
+    </div>
+
+</div>
