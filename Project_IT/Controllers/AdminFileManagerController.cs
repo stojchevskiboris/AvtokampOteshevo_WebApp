@@ -17,16 +17,22 @@ namespace Project_IT.Controllers
 
         private const int PageSize = 30;
         private static readonly HashSet<string> AllowedUploadExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
-        {
-            ".jpg", ".jpeg", ".png", ".gif", ".webp", ".svg",
-            ".pdf",
-            ".css", ".js", ".txt"
-        };
+{
+    ".jpg", ".jpeg", ".png", ".gif", ".webp", ".svg",
+    ".mp4", ".webm", ".ogg",
+    ".pdf",
+    ".css", ".js", ".txt"
+};
 
         private static readonly HashSet<string> ImageExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
             ".jpg", ".jpeg", ".png", ".gif", ".webp", ".svg"
         };
+
+        private static readonly HashSet<string> VideoExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+       {
+           ".mp4", ".webm", ".ogg"
+       };
 
         // GET: AdminFileManager
         public ActionResult Index(string currentPath = "Content", int page = 1, string viewType = "grid", string query = null)

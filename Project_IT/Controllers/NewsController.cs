@@ -1,10 +1,12 @@
+using log4net;
+using Project_IT.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
-using log4net;
-using Project_IT.Models;
 
 namespace Project_IT.Controllers
 {
@@ -91,26 +93,54 @@ namespace Project_IT.Controllers
         // GET: News/5 or GET: News/Details/5
         public ActionResult Details(int? id)
         {
-            try
+            if (id == null)
             {
-                if (id == null)
+                return RedirectToAction("Index", "News");
+            }
+
+            FeedItem feedItem = db.FeedItems.Find(id);
+            if (feedItem == null || !feedItem.IsPublished)
+            {
+                return HttpNotFound();
+            }
+
+            // Use GalleryPath if specified by user, otherwise fallback to default /Content/Gallery/[Id]
+            string relativePath = !string.IsNullOrWhiteSpace(feedItem.GalleryPath)
+                ? feedItem.GalleryPath
+                : $"/Content/Gallery/{feedItem.Id}";
+
+            string absolutePath = Server.MapPath(relativePath);
+            var mediaList = new List<MediaItem>();
+
+            if (Directory.Exists(absolutePath))
+            {
+                var validExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".webp", ".mp4", ".webm" };
+                var videoExtensions = new[] { ".mp4", ".webm" };
+
+                var files = Directory.GetFiles(absolutePath)
+                    .Where(f => validExtensions.Contains(Path.GetExtension(f).ToLower()))
+                    .OrderBy(f => f);
+
+                foreach (var file in files)
                 {
-                    return RedirectToAction("Index");
+                    string fileName = Path.GetFileName(file);
+                    string ext = Path.GetExtension(file).ToLower();
+
+                    mediaList.Add(new MediaItem
+                    {
+                        Url = Url.Content($"{relativePath.TrimEnd('/')}/{fileName}"),
+                        IsVideo = videoExtensions.Contains(ext)
+                    });
+                }
                 }
 
-                FeedItem feedItem = db.FeedItems.FirstOrDefault(x => x.Id == id && x.IsPublished);
-                if (feedItem == null)
-                {
-                    return HttpNotFound();
-                }
-
-                return View(feedItem);
-            }
-            catch (Exception ex)
+            var viewModel = new FeedItemDetailsViewModel
             {
-                log.Error("Error in Details: " + ex.Message, ex);
-                return RedirectToAction("Error", "Home");
-            }
+                FeedItem = feedItem,
+                GalleryMedia = mediaList
+            };
+
+            return View(viewModel);
         }
 
         protected override void Dispose(bool disposing)
