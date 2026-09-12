@@ -57,7 +57,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                return View(new FeedItem { CreatedOn = DateTime.UtcNow, IsPublished = true });
+                return View(new FeedItem { IsPublished = true });
             }
             catch (Exception ex)
             {
@@ -75,10 +75,6 @@ namespace Project_IT.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if (feedItem.CreatedOn == default(DateTime))
-                    {
-                        feedItem.CreatedOn = DateTime.UtcNow;
-                    }
                     db.FeedItems.Add(feedItem);
                     db.SaveChanges();
                     return RedirectToAction("Index");
