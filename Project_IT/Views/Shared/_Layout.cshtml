@@ -41,10 +41,10 @@
     @Scripts.Render("~/bundles/modernizr")
 
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="~/Scripts/tailwind_3-4-17.min.js"></script>
 
     <!-- Alpine.js CDN for collapsible states (x-data, x-collapse) -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="~/Scripts/alpinejs.min.js"></script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -99,6 +99,39 @@
 
         .animate-fadeIn {
             animation: 0.5s ease-out fade_in_show;
+        }
+
+        /* Mobile menu open/close animation */
+        @@keyframes mobile_menu_in {
+            0% {
+                opacity: 0;
+                transform: translateY(-8px) scale(0.98);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @@keyframes mobile_menu_out {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-8px) scale(0.98);
+            }
+        }
+
+        .mobile-menu-anim-in {
+            animation: mobile_menu_in 220ms ease-out forwards;
+        }
+
+        .mobile-menu-anim-out {
+            animation: mobile_menu_out 180ms ease-in forwards;
         }
     </style>
 </head>
@@ -192,7 +225,7 @@
         </div>
 
         <!-- Mobile Menu Drawer -->
-        <div id="mobileMenu" class="hidden sm:hidden border-t border-slate-100 bg-white/95 backdrop-blur-md px-6 py-4 flex flex-col gap-2">
+        <div id="mobileMenu" class="hidden sm:hidden text-xl border-t border-slate-100 bg-white/95 backdrop-blur-md px-6 py-4 flex flex-col gap-2 overflow-y-auto max-h-[calc(100vh-4rem)]">
             <a href='@Url.Action("Index", "Home")#home'
                class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController == "Home" && currentAction == "Index" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
                 Дома
@@ -298,56 +331,80 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Mobile Menu Toggle
-            var mobileMenu = document.getElementById('mobileMenu');
-            var mobileMenuBtn = document.getElementById('mobileMenuBtn');
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Mobile Menu Toggle
+        var mobileMenu = document.getElementById('mobileMenu');
+        var mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        var mobileMenuIsAnimating = false;
 
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', function () {
-                    mobileMenu.classList.toggle('hidden');
-                });
+        function openMobileMenu() {
+            if (!mobileMenu || mobileMenuIsAnimating) return;
+            mobileMenu.classList.remove('hidden', 'mobile-menu-anim-out');
+            mobileMenu.classList.add('mobile-menu-anim-in');
+        }
 
-                // Close Mobile Menu when any link inside it is clicked
-                var mobileMenuLinks = mobileMenu.querySelectorAll('a');
-                mobileMenuLinks.forEach(function (link) {
-                    link.addEventListener('click', function () {
-                        mobileMenu.classList.add('hidden');
-                    });
-                });
-            }
+        function closeMobileMenu() {
+            if (!mobileMenu || mobileMenu.classList.contains('hidden') || mobileMenuIsAnimating) return;
+            mobileMenuIsAnimating = true;
+            mobileMenu.classList.remove('mobile-menu-anim-in');
+            mobileMenu.classList.add('mobile-menu-anim-out');
 
-            // Desktop Admin Dropdown Toggle
-            var adminBtn = document.getElementById('adminDropdownBtn');
-            var adminMenu = document.getElementById('adminDropdownMenu');
+            setTimeout(function () {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('mobile-menu-anim-out');
+                mobileMenuIsAnimating = false;
+            }, 180);
+        }
 
-            if (adminBtn && adminMenu) {
-                adminBtn.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    adminMenu.classList.toggle('hidden');
-                });
-
-                document.addEventListener('click', function (e) {
-                    if (!adminMenu.contains(e.target) && !adminBtn.contains(e.target)) {
-                        adminMenu.classList.add('hidden');
-                    }
-                });
-            }
-
-            // Sticky Header scroll styling
-            window.addEventListener('scroll', function () {
-                var header = document.getElementById('mainHeader');
-                if (header) {
-                    if (window.scrollY > 40) {
-                        header.classList.add('shadow-md');
-                    } else {
-                        header.classList.remove('shadow-md');
-                    }
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', function () {
+                if (mobileMenu.classList.contains('hidden')) {
+                    openMobileMenu();
+                } else {
+                    closeMobileMenu();
                 }
             });
+
+            // Close Mobile Menu when any link inside it is clicked
+            var mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(function (link) {
+                link.addEventListener('click', function () {
+                    closeMobileMenu();
+                });
+            });
+        }
+
+        // Desktop Admin Dropdown Toggle
+        var adminBtn = document.getElementById('adminDropdownBtn');
+        var adminMenu = document.getElementById('adminDropdownMenu');
+
+        if (adminBtn && adminMenu) {
+            adminBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                adminMenu.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!adminMenu.contains(e.target) && !adminBtn.contains(e.target)) {
+                    adminMenu.classList.add('hidden');
+                }
+            });
+        }
+
+        // Sticky Header scroll styling
+        window.addEventListener('scroll', function () {
+            var header = document.getElementById('mainHeader');
+            if (header) {
+                if (window.scrollY > 40) {
+                    header.classList.add('shadow-md');
+                } else {
+                    header.classList.remove('shadow-md');
+                }
+            }
         });
-    </script>
+    });
+</script>
 
     @RenderSection("scripts", required: false)
 </body>

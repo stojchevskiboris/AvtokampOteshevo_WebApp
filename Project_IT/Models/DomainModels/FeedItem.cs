@@ -58,5 +58,8 @@ namespace Project_IT.Models
 
         [Display(Name = "Датум на креирање")]
         public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
+
+        [Display(Name = "Патека до галерија")]
+        public string GalleryPath { get; set; }
     }
 }
