@@ -2,6 +2,34 @@
 
 @{
     ViewBag.Title = "Детали за запис — Новости & Понуди";
+
+    // Check if Model.ImageUrl exists
+    bool hasCustomImage = !string.IsNullOrWhiteSpace(Model.ImageUrl);
+
+    string absoluteImageUrl = "";
+    if (hasCustomImage)
+    {
+        // Ensure relative leading slash handling
+        string relativePath = Model.ImageUrl.StartsWith("/") ? Model.ImageUrl : "/" + Model.ImageUrl;
+
+        // Build full absolute URL: https://www.otesevo.com/Content/gallery/3/FB_IMG_1789513567697.jpg
+        absoluteImageUrl = $"{Request.Url.Scheme}://{Request.Url.Authority}{relativePath}";
+    }
+}
+
+@if (hasCustomImage)
+{
+    @section OGMeta {
+        <!-- News-Specific Open Graph Tags -->
+        <meta property="og:title" content="@Model.Title" />
+        <meta property="og:image" content="@absoluteImageUrl" />
+        <meta property="og:image:secure_url" content="@absoluteImageUrl" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="@Model.Title" />
+        <meta name="twitter:image" content="@absoluteImageUrl" />
+    }
 }
 
 <div class="max-w-3xl mx-auto px-6 py-10 font-sans">
