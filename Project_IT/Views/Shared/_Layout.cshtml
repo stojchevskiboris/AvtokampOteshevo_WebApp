@@ -7,25 +7,33 @@
 
     <!-- Basic Open Graph Tags -->
     <meta property="og:type" content="website" />
+    <meta property="article:author" content="Autocamp Otesevo" />
+    <meta property="article:published_time" content="2026-01-01" />
     <meta property="og:url" content="https://otesevo.com/" />
     <meta property="og:title" content="Autocamp Otesevo - Автокамп Отешево | Camping & RV Park Lake Prespa" />
     <meta property="og:description" content="Reserve your stay at Autocamp Otesevo on Lake Prespa. Enjoy lakeside camping, campervan pitches, and nature stays near Galicica National Park." />
     <meta property="og:site_name" content="Autocamp Otesevo" />
     <meta property="og:locale" content="mk_MK" />
 
-    <!-- Open Graph Image Specifications (Forces Wide Banner Card) -->
-    <meta property="og:image" content="https://www.otesevo.com/Content/bungalows_1200x630.jpg" />
-    <meta property="og:image:secure_url" content="https://www.otesevo.com/Content/bungalows_1200x630.jpg" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Autocamp Otesevo campsite on Lake Prespa" />
+    @if (IsSectionDefined("OGMeta"))
+    {
+        @RenderSection("OGMeta", required: false)
+    }
+    else
+    {
+        <!-- Default Open Graph Image -->
+        <meta property="og:image" content="https://www.otesevo.com/Content/bungalows_1200x630.jpg" />
+        <meta property="og:image:secure_url" content="https://www.otesevo.com/Content/bungalows_1200x630.jpg" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Autocamp Otesevo campsite on Lake Prespa" />
 
-    <!-- Twitter Card Fallback (Ensures Wide Cards Across Other Apps) -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Autocamp Otesevo | Camping Lake Prespa" />
-    <meta name="twitter:description" content="Lakeside camping and RV pitches at Autocamp Otesevo." />
-    <meta name="twitter:image" content="https://www.otesevo.com/Content/bungalows_1200x630.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Autocamp Otesevo | Camping Lake Prespa" />
+        <meta name="twitter:description" content="Lakeside camping and RV pitches at Autocamp Otesevo." />
+        <meta name="twitter:image" content="https://www.otesevo.com/Content/bungalows_1200x630.jpg" />
+    }
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FY6047P9JE"></script>

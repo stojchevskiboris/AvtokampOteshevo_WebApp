@@ -10,6 +10,34 @@
     string badgeText = !string.IsNullOrEmpty(Model.FeedItem.LabelBadge) ? Model.FeedItem.LabelBadge : categoryName;
     string categoryTagClass = isOffer ? "bg-amber-100 text-amber-900 border-amber-200" : (isEvent ? "bg-amber-50 text-[#6b3a1a] border-amber-100" : "bg-emerald-50 text-[#1a4a6b] border-emerald-100");
     bool hasMultipleMedia = Model.GalleryMedia != null && Model.GalleryMedia.Count > 1;
+
+    // Check if Model.ImageUrl exists
+    bool hasCustomImage = !string.IsNullOrWhiteSpace(Model.FeedItem.ImageUrl);
+
+    string absoluteImageUrl = "";
+    if (hasCustomImage)
+    {
+        // Ensure relative leading slash handling
+        string relativePath = Model.FeedItem.ImageUrl.StartsWith("/") ? Model.FeedItem.ImageUrl : "/" + Model.FeedItem.ImageUrl;
+
+        // Build full absolute URL: https://www.otesevo.com/Content/gallery/3/FB_IMG_1789513567697.jpg
+        absoluteImageUrl = $"{Request.Url.Scheme}://{Request.Url.Authority}{relativePath}";
+    }
+}
+
+@if (hasCustomImage)
+{
+    @section OGMeta {
+        <!-- News-Specific Open Graph Tags -->
+        <meta property="og:title" content="@Model.FeedItem.Title" />
+        <meta property="og:image" content="@absoluteImageUrl" />
+        <meta property="og:image:secure_url" content="@absoluteImageUrl" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="@Model.FeedItem.Title" />
+        <meta name="twitter:image" content="@absoluteImageUrl" />
+    }
 }
 
 <div class="font-sans antialiased bg-[#FAF8F5] min-h-screen">
@@ -257,13 +285,14 @@
     .swiper-wrapper {
         align-items: center;
     }
+
     .gallery-container .swiper-button-next,
     .gallery-container .swiper-button-prev {
         margin-top: -40px;
         color: #fff;
         width: 30px;
         height: 30px;
-/*        background: rgba(0,0,0,.35);
+        /*        background: rgba(0,0,0,.35);
         border-radius: 9999px;
         backdrop-filter: blur(2px);*/
     }
