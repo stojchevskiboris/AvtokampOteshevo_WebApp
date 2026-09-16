@@ -226,8 +226,8 @@
     <None Include="Properties\PublishProfiles\FTPProfile3.pubxml" />
     <None Include="Properties\PublishProfiles\FTPProfile4.pubxml" />
     <Content Include="Properties\PublishProfiles\otesevo.runasp.net-WebDeploy.publishSettings" />
-    <None Include="Properties\PublishProfiles\site91740-WebDeploy.pubxml" />
-    <None Include="Properties\PublishProfiles\site91803-WebDeploy.pubxml" />
+    <None Include="Properties\PublishProfiles\prod.pubxml" />
+    <None Include="Properties\PublishProfiles\stage.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
