@@ -24,7 +24,7 @@ namespace Project_IT.Models
         public DbSet<FeedItem> FeedItems { get; set; }
 
         public ApplicationDbContext()
-            : base("DefaultConnectionStage", throwIfV1Schema: false)
+            : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
