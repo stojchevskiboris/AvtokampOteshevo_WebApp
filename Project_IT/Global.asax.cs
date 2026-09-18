@@ -6,6 +6,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using log4net;
 using Project_IT.Controllers;
+using Project_IT.Services;
 
 namespace Project_IT
 {
@@ -22,6 +23,34 @@ namespace Project_IT
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             log4net.Config.XmlConfigurator.Configure();
+
+            // Generate initial sitemap on app startup
+            SitemapGenerator.RegenerateSitemap();
+
+            // Register 24-hour background task
+            RegisterDailySitemapTask();
+        }
+
+        private static void RegisterDailySitemapTask()
+        {
+            HttpRuntime.Cache.Insert(
+                "DailySitemapTask",
+                "dummy_value",
+                null,
+                DateTime.Now.AddDays(1), // Runs 24 hours from now
+                System.Web.Caching.Cache.NoSlidingExpiration,
+                System.Web.Caching.CacheItemPriority.NotRemovable,
+                new System.Web.Caching.CacheItemRemovedCallback(SitemapTaskCallback)
+            );
+        }
+
+        private static void SitemapTaskCallback(string key, object value, System.Web.Caching.CacheItemRemovedReason reason)
+        {
+            // Re-generate full sitemap (static views + dynamic news)
+            SitemapGenerator.RegenerateSitemap();
+
+            // Re-register the daily task loop
+            RegisterDailySitemapTask();
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
