@@ -69,7 +69,7 @@
                     }
                 }
             </div>
-            <button type="button" onclick="copyPathToClipboard('@Model.CurrentPath')" title="Копирај патека" class="p-1.5 sm:p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition cursor-pointer">
+            <button type="button" onclick="copyPathToClipboard('@Model.CurrentPath')" title="Копирај патека" class="border p-1.5 sm:p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition cursor-pointer">
                 📋 <span class="text-xs ml-0.5 hidden sm:inline">Копирај Патека</span>
             </button>
         </div>
@@ -495,7 +495,7 @@
         <!-- Metadata & Link Footer -->
         <div class="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 border-t border-slate-100 pt-4 text-xs">
             <div class="space-y-1">
-                <div><span class="font-semibold text-slate-400">Патека:</span> <span id="lightboxPath" class="font-mono text-slate-700 break-all"></span> <button type="button" onclick="copyPathToClipboard(document.getElementById('lightboxPath').textContent)" title="Копирај патека" class="p-1 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition cursor-pointer">📋</button></div>
+                <div><span class="font-semibold text-slate-400">Патека:</span> <span id="lightboxPath" class="font-mono text-slate-700 break-all"></span> <button type="button" onclick="copyPathToClipboard(document.getElementById('lightboxPath').textContent)" title="Копирај патека" class="border p-1 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition cursor-pointer">📋</button></div>
                 <div class="flex gap-4">
                     <div><span class="font-semibold text-slate-400">Големина:</span> <span id="lightboxSize" class="text-slate-700"></span></div>
                     <div><span class="font-semibold text-slate-400">Резолуција:</span> <span id="lightboxResolution" class="text-slate-700"></span></div>
