@@ -5,6 +5,7 @@ using System.Net;
 using System.Web.Mvc;
 using log4net;
 using Project_IT.Models;
+using Project_IT.Services;
 
 namespace Project_IT.Controllers
 {
@@ -77,6 +78,9 @@ namespace Project_IT.Controllers
                 {
                     db.FeedItems.Add(feedItem);
                     db.SaveChanges();
+
+                    SitemapGenerator.RegenerateSitemap();
+
                     return RedirectToAction("Index");
                 }
 
@@ -123,6 +127,9 @@ namespace Project_IT.Controllers
                 {
                     db.Entry(feedItem).State = EntityState.Modified;
                     db.SaveChanges();
+
+                    SitemapGenerator.RegenerateSitemap();
+
                     return RedirectToAction("Index");
                 }
                 return View(feedItem);
@@ -167,6 +174,9 @@ namespace Project_IT.Controllers
                 FeedItem feedItem = db.FeedItems.Find(id);
                 db.FeedItems.Remove(feedItem);
                 db.SaveChanges();
+
+                SitemapGenerator.RegenerateSitemap();
+
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
