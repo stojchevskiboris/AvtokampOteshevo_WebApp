@@ -1,13 +1,14 @@
+using log4net;
+using Project_IT.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
-using log4net;
-using Project_IT.Models;
 
 namespace Project_IT.Services
 {
@@ -22,8 +23,8 @@ namespace Project_IT.Services
             {
                 try
                 {
-                    XNamespace ns = "http://www.sitemaps.org/schemas/sitemap/0.9";
-                    string baseUrl = "https://www.otesevo.com";
+                    XNamespace ns = ConfigurationManager.AppSettings["Xmlns"];
+                    string baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
 
                     var root = new XElement(ns + "urlset");
 
@@ -109,11 +110,11 @@ namespace Project_IT.Services
                     }
                     else if (actionName.Equals("Index", StringComparison.OrdinalIgnoreCase))
                     {
-                        routes.Add($"/{controllerName}");
+                        routes.Add($"/{controllerName.ToLower()}");
                     }
                     else
                     {
-                        routes.Add($"/{controllerName}/{actionName}");
+                        routes.Add($"/{controllerName.ToLower()}/{actionName.ToLower()}");
                     }
                 }
             }
