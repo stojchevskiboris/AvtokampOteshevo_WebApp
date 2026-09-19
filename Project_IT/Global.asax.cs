@@ -35,7 +35,7 @@ namespace Project_IT
         {
             HttpRuntime.Cache.Insert(
                 "DailySitemapTask",
-                "dummy_value",
+                "SitemapTask",
                 null,
                 DateTime.Now.AddDays(1), // Runs 24 hours from now
                 System.Web.Caching.Cache.NoSlidingExpiration,
@@ -59,11 +59,12 @@ namespace Project_IT
 
             if (isRedirectEnabled)
             {
-                string currentHost = Request.Url.Host;
+                string legacyHost = ConfigurationManager.AppSettings["LegacyUrl"];
+                string primaryBaseUrl = ConfigurationManager.AppSettings["BaseUrl"];
 
-                if (currentHost.Equals("otesevo.bsite.net", StringComparison.OrdinalIgnoreCase))
+                if (!string.IsNullOrEmpty(legacyHost) && Request.Url.Host.Equals(legacyHost, StringComparison.OrdinalIgnoreCase))
                 {
-                    string newUrl = "https://otesevo.com" + Request.Url.PathAndQuery;
+                    string newUrl = primaryBaseUrl.TrimEnd('/') + Request.Url.PathAndQuery;
 
                     Response.RedirectPermanent(newUrl, endResponse: true);
                 }
