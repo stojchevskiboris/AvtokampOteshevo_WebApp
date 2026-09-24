@@ -1,10 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using log4net;
 using Project_IT.Models;
+using Project_IT.Services.Interfaces;
 
 namespace Project_IT.Controllers
 {
@@ -12,18 +11,19 @@ namespace Project_IT.Controllers
     public class AdminReservationsController : Controller
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(AdminReservationsController));
-        private readonly ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IReservationService _reservationService;
+
+        public AdminReservationsController(IReservationService reservationService)
+        {
+            _reservationService = reservationService;
+        }
 
         public ActionResult Index()
         {
             try
             {
-                var reservations = db.Reservations;
-                if (reservations != null && reservations.Any()) {
-                    var result = reservations.OrderByDescending(r => r.CreatedOn).ToList();
-                    return View(result);
-                }
-                return View(new List<Reservation>());
+                var reservations = _reservationService.GetAllReservations();
+                return View(reservations);
             }
             catch (Exception ex)
             {
@@ -45,7 +45,6 @@ namespace Project_IT.Controllers
             }
         }
 
-        // POST: FeedItems/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Reservation reservation)
@@ -54,12 +53,7 @@ namespace Project_IT.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if (reservation.CreatedOn == default(DateTime))
-                    {
-                        reservation.CreatedOn = DateTime.UtcNow;
-                    }
-                    db.Reservations.Add(reservation);
-                    db.SaveChanges();
+                    _reservationService.CreateReservation(reservation);
                     return RedirectToAction("Index");
                 }
 
@@ -81,7 +75,7 @@ namespace Project_IT.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
 
-                var reservation = db.Reservations.Find(id);
+                var reservation = _reservationService.GetReservationById(id.Value);
                 if (reservation == null)
                 {
                     return HttpNotFound();
@@ -105,7 +99,7 @@ namespace Project_IT.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
 
-                var reservation = db.Reservations.Find(id);
+                var reservation = _reservationService.GetReservationById(id.Value);
                 if (reservation == null)
                 {
                     return HttpNotFound();
@@ -131,33 +125,7 @@ namespace Project_IT.Controllers
                     return View(reservation);
                 }
 
-                var existing = db.Reservations.Find(reservation.Id);
-                if (existing == null)
-                {
-                    return HttpNotFound();
-                }
-
-                existing.FullName = reservation.FullName;
-                existing.Email = reservation.Email;
-                existing.Phone = reservation.Phone;
-                existing.AccommodationType = reservation.AccommodationType;
-                existing.CheckInDate = reservation.CheckInDate;
-                existing.CheckOutDate = reservation.CheckOutDate;
-                existing.Guests = reservation.Guests;
-                existing.Days = reservation.Days;
-                existing.Status = reservation.Status;
-                existing.Info = reservation.Info;
-                existing.Price = reservation.Price;
-                existing.ModifiedOn = DateTime.UtcNow;
-
-                if (!string.IsNullOrWhiteSpace(existing.FullName))
-                {
-                    var parts = existing.FullName.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    existing.FirstName = parts.Length > 0 ? parts[0] : existing.FullName;
-                    existing.LastName = parts.Length > 1 ? string.Join(" ", parts.Skip(1)) : string.Empty;
-                }
-
-                db.SaveChanges();
+                _reservationService.UpdateReservation(reservation);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -176,7 +144,7 @@ namespace Project_IT.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
 
-                var reservation = db.Reservations.Find(id);
+                var reservation = _reservationService.GetReservationById(id.Value);
                 if (reservation == null)
                 {
                     return HttpNotFound();
@@ -197,14 +165,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                var reservation = db.Reservations.Find(id);
-                if (reservation == null)
-                {
-                    return HttpNotFound();
-                }
-
-                db.Reservations.Remove(reservation);
-                db.SaveChanges();
+                _reservationService.DeleteReservation(id);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -212,16 +173,6 @@ namespace Project_IT.Controllers
                 log.Error("Error in DeleteConfirmed: " + ex.Message, ex);
                 return RedirectToAction("Error", "Home");
             }
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-
-            base.Dispose(disposing);
         }
     }
 }
