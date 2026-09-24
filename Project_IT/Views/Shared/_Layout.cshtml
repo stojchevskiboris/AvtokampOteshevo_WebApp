@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autocamp Otesevo - Автокамп Отешево | Camping | Otesevo, Macedonia</title>
 
+    <!-- Canonical Tag -->
+    @{
+        string rawPath = Request.Url.AbsolutePath.ToLowerInvariant();
+        if (rawPath.EndsWith("/home/index"))
+        {
+            rawPath = rawPath.Substring(0, rawPath.Length - 10); // Normalizes /home/index to /
+        }
+        string canonicalUrl = $"{Request.Url.Scheme}://{Request.Url.Authority}{rawPath}";
+    }
+    <link rel="canonical" href="@canonicalUrl" />
+
     <!-- Facebook App ID -->
     <meta property="fb:app_id" content="1219520254588206" />
 
