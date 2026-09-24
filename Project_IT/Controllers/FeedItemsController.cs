@@ -1,11 +1,9 @@
 using System;
-using System.Data.Entity;
-using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using log4net;
 using Project_IT.Models;
-using Project_IT.Services;
+using Project_IT.Services.Interfaces;
 
 namespace Project_IT.Controllers
 {
@@ -13,14 +11,19 @@ namespace Project_IT.Controllers
     public class FeedItemsController : Controller
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(FeedItemsController));
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IFeedItemService _feedItemService;
+
+        public FeedItemsController(IFeedItemService feedItemService)
+        {
+            _feedItemService = feedItemService;
+        }
 
         // GET: FeedItems
         public ActionResult Index()
         {
             try
             {
-                var feedItems = db.FeedItems.OrderByDescending(f => f.CreatedOn).ToList();
+                var feedItems = _feedItemService.GetAllFeedItems();
                 return View(feedItems);
             }
             catch (Exception ex)
@@ -39,7 +42,7 @@ namespace Project_IT.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                FeedItem feedItem = db.FeedItems.Find(id);
+                FeedItem feedItem = _feedItemService.GetFeedItemById(id.Value);
                 if (feedItem == null)
                 {
                     return HttpNotFound();
@@ -76,11 +79,7 @@ namespace Project_IT.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    db.FeedItems.Add(feedItem);
-                    db.SaveChanges();
-
-                    SitemapGenerator.RegenerateSitemap();
-
+                    _feedItemService.CreateFeedItem(feedItem);
                     return RedirectToAction("Index");
                 }
 
@@ -102,7 +101,7 @@ namespace Project_IT.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                FeedItem feedItem = db.FeedItems.Find(id);
+                FeedItem feedItem = _feedItemService.GetFeedItemById(id.Value);
                 if (feedItem == null)
                 {
                     return HttpNotFound();
@@ -125,11 +124,7 @@ namespace Project_IT.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    db.Entry(feedItem).State = EntityState.Modified;
-                    db.SaveChanges();
-
-                    SitemapGenerator.RegenerateSitemap();
-
+                    _feedItemService.UpdateFeedItem(feedItem);
                     return RedirectToAction("Index");
                 }
                 return View(feedItem);
@@ -150,7 +145,7 @@ namespace Project_IT.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                FeedItem feedItem = db.FeedItems.Find(id);
+                FeedItem feedItem = _feedItemService.GetFeedItemById(id.Value);
                 if (feedItem == null)
                 {
                     return HttpNotFound();
@@ -171,12 +166,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                FeedItem feedItem = db.FeedItems.Find(id);
-                db.FeedItems.Remove(feedItem);
-                db.SaveChanges();
-
-                SitemapGenerator.RegenerateSitemap();
-
+                _feedItemService.DeleteFeedItem(id);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -184,15 +174,6 @@ namespace Project_IT.Controllers
                 log.Error("Error in DeleteConfirmed: " + ex.Message, ex);
                 return RedirectToAction("Error", "Home");
             }
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

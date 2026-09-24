@@ -124,6 +124,15 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Abstractions, Version=5.11.7.0, Culture=neutral, PublicKeyToken=489b6acccaf206b2, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.10\lib\net48\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.11.0, Culture=neutral, PublicKeyToken=489b6acccaf206b2, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.10\lib\net48\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc5, Version=1.4.0.0, Culture=neutral, PublicKeyToken=43426d73d50c08a8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc5.1.4.0\lib\net45\Unity.Mvc5.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.AspNet.Identity.Core">
@@ -172,6 +181,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminFileManagerController.cs" />
     <Compile Include="Migrations\202609121210157_feedGallery.cs" />
@@ -206,6 +216,16 @@
     <Compile Include="Models\DomainModels\Reservation.cs" />
     <Compile Include="Models\ViewModels\ReservationSubmissionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Interfaces\IFeedItemService.cs" />
+    <Compile Include="Services\Interfaces\IFileManagerService.cs" />
+    <Compile Include="Services\Interfaces\INewsService.cs" />
+    <Compile Include="Services\Interfaces\IReservationService.cs" />
+    <Compile Include="Services\Interfaces\ISitemapService.cs" />
+    <Compile Include="Services\Implementations\FeedItemService.cs" />
+    <Compile Include="Services\Implementations\FileManagerService.cs" />
+    <Compile Include="Services\Implementations\NewsService.cs" />
+    <Compile Include="Services\Implementations\ReservationService.cs" />
+    <Compile Include="Services\Implementations\SitemapService.cs" />
     <Compile Include="Services\SitemapGenerator.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
