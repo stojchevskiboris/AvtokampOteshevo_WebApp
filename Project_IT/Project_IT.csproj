@@ -379,7 +379,6 @@
     <Content Include="Scripts\swiper-bundle.min.js" />
     <Content Include="Scripts\tailwind_3-4-17.min.js" />
     <Content Include="sitemap.xml" />
-    <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -426,12 +425,7 @@
     <Content Include="Views\AdminReservations\Create.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Web.config" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
+    <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
