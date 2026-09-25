@@ -1,35 +1,322 @@
-# Систем за резервации во Автокамп Отешево
 
-Веб-апликација изработена за потребите на **Автокамп Отешево**, која овозможува онлајн резервација на бунгалови за посетителите, како и административен панел за сопствениците за следење и управување со резервациите во реално време.
+# Reservation System - Autocamp Otesevo
 
----
+Web application built for **Autocamp Otesevo**, providing online bungalow reservations for visitors and a real-time administrative management panel for site owners.
 
-## 🚀 Функционалности
-
-### 👤 За корисници (Посетители)
-* **Преглед на бунгалови:** Детални информации и карактеристики за достапните капацитети.
-* **Онлајн резервација:** Лесен процес за избирање на датуми и резервирање бунгалов.
-* **Респонзивен дизајн:** Целосно оптимизиран за користење од мобилни уреди и десктоп компјутери.
-
-### 🛠 За администратори (Сопственици)
-* **Евиденција во реално време:** Инстантен преглед на сите направени и активни резервации.
-* **Управување со новости (Feed):** Објавување и управување со новости и соопштенија за автокампот.
-* **Управување со корисници и улоги:** Административна контрола врз пристапот и овластувањата.
 
 ---
 
-## 🛠 Технологии
+## Features
+
+### For Users (Visitors)
+
+* **Bungalow Overview:** Detailed information and specifications for available accommodations.
+* **Online Booking:** Simple process to select dates and book bungalows.
+* **Responsive Design:** Fully optimized for mobile devices and desktop screens.
+
+### For Administrators (Owners)
+
+* **Real-time Tracking:** Instant dashboard overview of active and past reservations.
+* **News & Feed Management:** Create and manage news posts and announcements.
+* **User & Role Management:** Administrative access control and authorization management.
+
+---
+
+## Technologies
 
 * **Framework:** ASP.NET MVC (.NET Framework 4.8)
 * **ORM:** Entity Framework 6 (EF6)
 * **Database:** Microsoft SQL Server
-* **Frontend:** HTML5, CSS3, JavaScript, Bootstrap (Mobile & Desktop Compatible)
+* **Frontend:** HTML5, CSS3, JavaScript, Bootstrap
 * **Authentication:** ASP.NET Identity
 
 ---
 
-## ⚙️ Подесување и стартување на проектот
+## Setup and Installation
 
-### Предуслови
-* Visual Studio 2022 (со инсталирана `.NET desktop development` и `ASP.NET and web development` работна околина)
+### Prerequisites
+
+* Visual Studio 2022 (with `.NET desktop development` and `ASP.NET and web development` workloads installed)
 * SQL Server Express / LocalDB
+
+---
+
+## Configuration (`web.config`)
+
+To run the application locally or deploy it to IIS, create a `web.config` file in the root directory of the project and paste the template below. Make sure to replace `MSSQL_DB_CONNECTION_STRING` with your actual database connection string.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  For more information on how to configure your ASP.NET application, please visit
+  https://go.microsoft.com/fwlink/?LinkId=301880
+  -->
+<configuration>
+	<configSections>
+		<section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+		<!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+		<section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false"/>
+	</configSections>
+	<log4net>
+		<appender name="RollingLogFileAppender" type="log4net.Appender.RollingFileAppender">
+			<file value="logs/log.txt"/>
+			<appendToFile value="true"/>
+			<rollingStyle value="Composite"/>
+			<datePattern value="-yyyy-MM-dd'.txt'"/>
+			<maxSizeRollBackups value="30"/>
+			<maximumFileSize value="10MB"/>
+			<staticLogFileName value="false"/>
+			<layout type="log4net.Layout.PatternLayout">
+				<conversionPattern value="%-5p %d %5rms %-22.22c{1} %-18.18M - %m%n"/>
+			</layout>
+		</appender>
+		<root>
+			<level value="ALL"/>
+			<appender-ref ref="RollingLogFileAppender"/>
+		</root>
+	</log4net>
+	<connectionStrings>
+		<add name="DefaultConnection" connectionString="MSSQL_DB_CONNECTION_STRING" providerName="System.Data.SqlClient"/>
+  </connectionStrings>
+	<appSettings>
+		<add key="webpages:Version" value="3.0.0.0"/>
+		<add key="webpages:Enabled" value="false"/>
+		<add key="ClientValidationEnabled" value="true"/>
+		<add key="UnobtrusiveJavaScriptEnabled" value="true"/>
+		<add key="log4net.Config.Watch" value="True"/>
+		<add key="EnableDomainRedirect" value="false"/>
+		<add key="AuthenticationRedirect" value="true"/>
+		<add key="LegacyUrl" value="otesevo.bsite.net"/>
+		<add key="BaseUrl" value="https://www.otesevo.com"/>
+		<add key="Xmlns" value="http://www.sitemaps.org/schemas/sitemap/0.9"/>
+	</appSettings>
+	<system.web>
+		<trust level="Full"/>
+		<authentication mode="None"/>
+		<customErrors mode="On" defaultRedirect="~/Home/Index">
+			<error statusCode="404" redirect="~/Home/Index"/>
+		</customErrors>
+		<compilation debug="true" targetFramework="4.8"/>
+		<httpRuntime targetFramework="4.8"/>
+		<globalization requestEncoding="utf-8" responseEncoding="utf-8" fileEncoding="utf-8" culture="mk-MK" uiCulture="mk-MK"/>
+	</system.web>
+	<system.webServer>
+		<validation validateIntegratedModeConfiguration="false"/>
+		<modules runAllManagedModulesForAllRequests="true">
+			<remove name="FormsAuthentication"/>
+		</modules>
+		<!-- Globally disable directory browsing for root and all other subfolders -->
+		<directoryBrowse enabled="false"/>
+		<httpErrors errorMode="Custom" existingResponse="Replace">
+			<remove statusCode="404"/>
+			<error statusCode="404" responseMode="Redirect" path="/Home/Index"/>
+		</httpErrors>
+	<handlers>
+      <remove name="ExtensionlessUrlHandler-Integrated-4.0"/>
+      <remove name="OPTIONSVerbHandler"/>
+      <remove name="TRACEVerbHandler"/>
+      <add name="ExtensionlessUrlHandler-Integrated-4.0" path="*." verb="*" type="System.Web.Handlers.TransferRequestHandler" preCondition="integratedMode,runtimeVersionv4.0"/>
+    </handlers></system.webServer>
+
+	<!-- Allow directory browsing ONLY under Content -->
+	<location path="Content">
+		<system.webServer>
+			<directoryBrowse enabled="true"/>
+		</system.webServer>
+	</location>
+
+	<!-- Block direct HTTP static file execution & access to sensitive source code directories -->
+	<location path="Controllers">
+		<system.webServer>
+			<handlers>
+				<clear/>
+			</handlers>
+		</system.webServer>
+		<system.web>
+			<authorization>
+				<deny users="*"/>
+			</authorization>
+		</system.web>
+	</location>
+
+	<location path="App_Start">
+		<system.webServer>
+			<handlers>
+				<clear/>
+			</handlers>
+		</system.webServer>
+		<system.web>
+			<authorization>
+				<deny users="*"/>
+			</authorization>
+		</system.web>
+	</location>
+
+	<location path="Models">
+		<system.webServer>
+			<handlers>
+				<clear/>
+			</handlers>
+		</system.webServer>
+		<system.web>
+			<authorization>
+				<deny users="*"/>
+			</authorization>
+		</system.web>
+	</location>
+
+	<location path="Migrations">
+		<system.webServer>
+			<handlers>
+				<clear/>
+			</handlers>
+		</system.webServer>
+		<system.web>
+			<authorization>
+				<deny users="*"/>
+			</authorization>
+		</system.web>
+	</location>
+
+	<location path="obj">
+		<system.webServer>
+			<handlers>
+				<clear/>
+			</handlers>
+		</system.webServer>
+		<system.web>
+			<authorization>
+				<deny users="*"/>
+			</authorization>
+		</system.web>
+	</location>
+
+	<location path="Properties">
+		<system.webServer>
+			<handlers>
+				<clear/>
+			</handlers>
+		</system.webServer>
+		<system.web>
+			<authorization>
+				<deny users="*"/>
+			</authorization>
+		</system.web>
+	</location>
+
+	<location path="bin">
+		<system.webServer>
+			<handlers>
+				<clear/>
+			</handlers>
+		</system.webServer>
+		<system.web>
+			<authorization>
+				<deny users="*"/>
+			</authorization>
+		</system.web>
+	</location>
+
+	<location path="logs">
+		<system.webServer>
+			<handlers>
+				<clear/>
+			</handlers>
+		</system.webServer>
+		<system.web>
+			<authorization>
+				<deny users="*"/>
+			</authorization>
+		</system.web>
+	</location>
+	<runtime>
+		<assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+			<dependentAssembly>
+				<assemblyIdentity name="Unity.Abstractions" publicKeyToken="489B6ACCFAF20EF0" culture="neutral"/>
+				<bindingRedirect oldVersion="0.0.0.0-5.11.6.0" newVersion="5.11.6.0"/>
+			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="Microsoft.Owin.Security" publicKeyToken="31bf3856ad364e35"/>
+				<bindingRedirect oldVersion="0.0.0.0-4.0.1.0" newVersion="4.0.1.0"/>
+			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="Microsoft.Owin.Security.OAuth" publicKeyToken="31bf3856ad364e35"/>
+				<bindingRedirect oldVersion="0.0.0.0-4.0.1.0" newVersion="4.0.1.0"/>
+			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="Microsoft.Owin.Security.Cookies" publicKeyToken="31bf3856ad364e35"/>
+				<bindingRedirect oldVersion="0.0.0.0-4.0.1.0" newVersion="4.0.1.0"/>
+			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="Microsoft.Owin" publicKeyToken="31bf3856ad364e35"/>
+				<bindingRedirect oldVersion="0.0.0.0-4.0.1.0" newVersion="4.0.1.0"/>
+			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="Antlr3.Runtime" publicKeyToken="eb42632606e9261f"/>
+				<bindingRedirect oldVersion="0.0.0.0-3.5.0.2" newVersion="3.5.0.2"/>
+			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="System.Web.Optimization" publicKeyToken="31bf3856ad364e35"/>
+				<bindingRedirect oldVersion="0.0.0.0-1.1.0.0" newVersion="1.1.0.0"/>
+			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="WebGrease" publicKeyToken="31bf3856ad364e35"/>
+				<bindingRedirect oldVersion="0.0.0.0-1.6.5135.21930" newVersion="1.6.5135.21930"/>
+			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed"/>
+				<bindingRedirect oldVersion="0.0.0.0-12.0.0.0" newVersion="12.0.0.0"/>
+			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35"/>
+				<bindingRedirect oldVersion="0.0.0.0-3.0.0.0" newVersion="3.0.0.0"/>
+			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35"/>
+				<bindingRedirect oldVersion="0.0.0.0-5.2.7.0" newVersion="5.2.7.0"/>
+			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35"/>
+				<bindingRedirect oldVersion="0.0.0.0-3.0.0.0" newVersion="3.0.0.0"/>
+			</dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Unity.Abstractions" publicKeyToken="489b6acccaf206b2" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-5.11.1.0" newVersion="5.11.1.0"/>
+      </dependentAssembly>
+    </assemblyBinding>
+	</runtime>
+	<entityFramework>
+		<providers>
+			<provider invariantName="System.Data.SqlClient" type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer"/>
+		</providers>
+		<defaultConnectionFactory type="System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework">
+			<parameters>
+				<parameter value="mssqllocaldb"/>
+			</parameters>
+		</defaultConnectionFactory>
+	</entityFramework>
+	<system.codedom>
+		<compilers>
+			<compiler language="c#;cs;csharp" extension=".cs" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:1659;1699;1701"/>
+			<compiler language="vb;vbs;visualbasic;vbscript" extension=".vb" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.VBCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:41008 /define:_MYTYPE=\&quot;Web\&quot; /optionInfer+"/>
+		</compilers>
+	</system.codedom>
+</configuration>
+
+```
+
+
+---
+
+### Custom AppSettings Explanation
+
+Below is the description of every custom configuration key defined under the `` node in `web.config`:
+
+| Key Name | Sample Value | Description |
+| --- | --- | --- |
+| `log4net.Config.Watch` | `True` | Instructs the `log4net` logging framework to dynamically monitor `web.config` for logging configuration changes at runtime without requiring an Application Pool restart. |
+| `EnableDomainRedirect` | `false` | Boolean flag (`true`/`false`) determining whether incoming web traffic should be forcibly redirected from legacy domains to the primary domain. |
+| `AuthenticationRedirect` | `true` | Controls whether unauthenticated users attempting to access protected resources are automatically redirected to the login flow. |
+| `LegacyUrl` | `otesevo.bsite.net` | The previous or staging domain address used for matching incoming requests that require canonical domain redirection. |
+| `BaseUrl` | `https://www.otesevo.com` | The primary production domain URL used to generate absolute links across the application and inside XML sitemaps. |
+| `Xmlns` | `http://www.sitemaps.org/schemas/sitemap/0.9` | The XML namespace schema definition used during automated XML sitemap generation for search engine optimization. |
