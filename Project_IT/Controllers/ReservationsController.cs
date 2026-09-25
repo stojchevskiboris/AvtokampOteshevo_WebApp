@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using log4net;
 using Project_IT.Models;
@@ -12,16 +13,28 @@ namespace Project_IT.Controllers
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(ReservationsController));
         private readonly IReservationService _reservationService;
+        private readonly ISettingService _settingService;
 
-        public ReservationsController(IReservationService reservationService)
+        public ReservationsController(IReservationService reservationService, ISettingService settingService)
         {
             _reservationService = reservationService;
+            _settingService = settingService;
         }
 
-        public ActionResult New()
+        public async Task<ActionResult> New()
         {
             try
             {
+                var prices = await _settingService.GetSettingAsync("BookingPrices", new BookingPricesViewModel
+                {
+                    PricePerNightBungalow1 = 10.00m,
+                    PricePerNightBungalow2 = 12.00m,
+                    PricePerNightBungalow3 = 15.00m,
+                    PricePerNightTrailer = 8.00m,
+                    PitchFee = 5.00m
+                });
+
+                ViewBag.Prices = prices;
                 return View();
             }
             catch (Exception ex)

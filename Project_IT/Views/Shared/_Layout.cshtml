@@ -138,6 +138,10 @@
                                class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 @(currentController == "FeedItems" ? "font-semibold text-emerald-700" : "")">
                                 Новости
                             </a>
+                            <a href='@Url.Action("BookingPrices", "AdminSettings")'
+                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 @(currentController == "AdminSettings" ? "font-semibold text-emerald-700" : "")">
+                                Подесувања
+                            </a>
                             <a href='@Url.Action("Index", "AdminFileManager")'
                                class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 rounded-b-xl @(currentController == "AdminFileManager" ? "font-semibold text-emerald-700" : "")">
                                 File Manager
@@ -183,6 +187,10 @@
                 <a href='@Url.Action("Index", "FeedItems")'
                    class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "FeedItems" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
                     Уреди Новости
+                </a>
+                <a href='@Url.Action("BookingPrices", "AdminSettings")'
+                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "AdminSettings" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
+                    Подесувања
                 </a>
                 <a href='@Url.Action("Index", "AdminFileManager")'
                    class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "AdminFileManager" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">

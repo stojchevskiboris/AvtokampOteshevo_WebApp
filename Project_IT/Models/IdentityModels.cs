@@ -22,6 +22,7 @@ namespace Project_IT.Models
     {
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<FeedItem> FeedItems { get; set; }
+        public DbSet<SystemSetting> SystemSettings { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

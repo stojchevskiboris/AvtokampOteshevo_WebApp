@@ -1,0 +1,80 @@
+@model Project_IT.Models.BookingPricesViewModel
+
+@{
+    ViewBag.Title = "Администрација — Цени за Резервација";
+}
+
+<div class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-10 font-sans">
+    <div class="mb-6 sm:mb-8">
+        <h1 class="text-2xl sm:text-3xl font-serif text-slate-800">Подесувања на Цени</h1>
+        <p class="text-slate-500 text-xs sm:text-sm mt-1">Измена на ценовникот за сите типови на сместување</p>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-medium flex items-center justify-between shadow-sm">
+            <span>✓ @TempData["SuccessMessage"]</span>
+        </div>
+    }
+
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8">
+        @using (Html.BeginForm("BookingPrices", "AdminSettings", FormMethod.Post, new { @class = "space-y-6" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-red-500 text-sm font-medium mb-4" })
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Bungalow 1 -->
+                <div class="flex flex-col gap-1.5">
+                    @Html.LabelFor(m => m.PricePerNightBungalow1, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-600 font-body" })
+                    <div class="relative rounded-xl shadow-sm">
+                        @Html.TextBoxFor(m => m.PricePerNightBungalow1, new { type = "number", step = "0.01", @class = "w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.PricePerNightBungalow1, "", new { @class = "text-xs text-red-500" })
+                </div>
+
+                <!-- Bungalow 2 -->
+                <div class="flex flex-col gap-1.5">
+                    @Html.LabelFor(m => m.PricePerNightBungalow2, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-600 font-body" })
+                    <div class="relative rounded-xl shadow-sm">
+                        @Html.TextBoxFor(m => m.PricePerNightBungalow2, new { type = "number", step = "0.01", @class = "w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.PricePerNightBungalow2, "", new { @class = "text-xs text-red-500" })
+                </div>
+
+                <!-- Bungalow 3 -->
+                <div class="flex flex-col gap-1.5">
+                    @Html.LabelFor(m => m.PricePerNightBungalow3, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-600 font-body" })
+                    <div class="relative rounded-xl shadow-sm">
+                        @Html.TextBoxFor(m => m.PricePerNightBungalow3, new { type = "number", step = "0.01", @class = "w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.PricePerNightBungalow3, "", new { @class = "text-xs text-red-500" })
+                </div>
+
+                <!-- Trailer -->
+                <div class="flex flex-col gap-1.5">
+                    @Html.LabelFor(m => m.PricePerNightTrailer, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-600 font-body" })
+                    <div class="relative rounded-xl shadow-sm">
+                        @Html.TextBoxFor(m => m.PricePerNightTrailer, new { type = "number", step = "0.01", @class = "w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.PricePerNightTrailer, "", new { @class = "text-xs text-red-500" })
+                </div>
+
+                <!-- Pitch Fee -->
+                <div class="flex flex-col gap-1.5 md:col-span-2">
+                    @Html.LabelFor(m => m.PitchFee, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-600 font-body" })
+                    <div class="relative rounded-xl shadow-sm">
+                        @Html.TextBoxFor(m => m.PitchFee, new { type = "number", step = "0.01", @class = "w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.PitchFee, "", new { @class = "text-xs text-red-500" })
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-100 flex items-center justify-end gap-4">
+                <button type="submit" class="px-8 py-3.5 rounded-xl text-white font-semibold text-sm transition-all duration-200 hover:opacity-90 hover:shadow-xl active:scale-95 cursor-pointer bg-brand-gradient shadow-md font-body">
+                    Зачувај промени
+                </button>
+            </div>
+        }
+    </div>
+</div>

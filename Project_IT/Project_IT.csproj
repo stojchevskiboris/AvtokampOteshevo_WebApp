@@ -208,11 +208,17 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminFileManagerController.cs" />
+    <Compile Include="Controllers\AdminSettingsController.cs" />
     <Compile Include="Migrations\202609121210157_feedGallery.cs" />
     <Compile Include="Migrations\202609121210157_feedGallery.Designer.cs">
       <DependentUpon>202609121210157_feedGallery.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202609121500000_AddSystemSettingsTable.cs" />
+    <Compile Include="Migrations\202609121500000_AddSystemSettingsTable.Designer.cs">
+      <DependentUpon>202609121500000_AddSystemSettingsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ViewModels\FeedItemDetailsViewModel.cs" />
+    <Compile Include="Models\ViewModels\BookingPricesViewModel.cs" />
     <Compile Include="Models\ViewModels\FileManagerViewModels.cs" />
     <Compile Include="Controllers\AdminReservationsController.cs" />
     <Compile Include="Controllers\FeedItemsController.cs" />
@@ -234,6 +240,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\DomainModels\FeedItem.cs" />
+    <Compile Include="Models\DomainModels\SystemSetting.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels\NewsPageViewModel.cs" />
@@ -244,11 +251,13 @@
     <Compile Include="Services\Interfaces\IFileManagerService.cs" />
     <Compile Include="Services\Interfaces\INewsService.cs" />
     <Compile Include="Services\Interfaces\IReservationService.cs" />
+    <Compile Include="Services\Interfaces\ISettingService.cs" />
     <Compile Include="Services\Interfaces\ISitemapService.cs" />
     <Compile Include="Services\Implementations\FeedItemService.cs" />
     <Compile Include="Services\Implementations\FileManagerService.cs" />
     <Compile Include="Services\Implementations\NewsService.cs" />
     <Compile Include="Services\Implementations\ReservationService.cs" />
+    <Compile Include="Services\Implementations\SettingService.cs" />
     <Compile Include="Services\Implementations\SitemapService.cs" />
     <Compile Include="Services\SitemapGenerator.cs" />
     <Compile Include="Startup.cs" />
@@ -405,6 +414,7 @@
     <Content Include="Views\AdminReservations\Edit.cshtml" />
     <Content Include="Views\AdminFileManager\Index.cshtml" />
     <Content Include="Views\AdminReservations\Index.cshtml" />
+    <Content Include="Views\AdminSettings\BookingPrices.cshtml" />
     <Content Include="Views\Reservations\New.cshtml" />
     <Content Include="Views\News\Details.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
@@ -444,6 +454,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202609121210157_feedGallery.resx">
       <DependentUpon>202609121210157_feedGallery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202609121500000_AddSystemSettingsTable.resx">
+      <DependentUpon>202609121500000_AddSystemSettingsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
