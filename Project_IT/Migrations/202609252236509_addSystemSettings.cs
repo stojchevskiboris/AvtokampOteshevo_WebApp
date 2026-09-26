@@ -1,9 +1,9 @@
-namespace Project_IT.Migrations
+﻿namespace Project_IT.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-
-    public partial class AddSystemSettingsTable : DbMigration
+    
+    public partial class addSystemSettings : DbMigration
     {
         public override void Up()
         {
@@ -17,8 +17,9 @@ namespace Project_IT.Migrations
                         LastModified = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Key);
+            
         }
-
+        
         public override void Down()
         {
             DropTable("dbo.SystemSettings");

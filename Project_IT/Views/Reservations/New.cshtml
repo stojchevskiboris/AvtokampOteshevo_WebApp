@@ -30,29 +30,56 @@
 
         @if (prices != null)
         {
+
+
             <div class="mb-6 bg-white/95 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-slate-100 shadow-xl font-body">
                 <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">Ценовник</h3>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 text-center">
-                    <div class="bg-slate-50/80 rounded-xl p-3 border border-slate-100">
-                        <span class="block text-[11px] text-slate-500">Бунгалов 1</span>
-                        <span class="text-sm font-bold text-emerald-800">@prices.PricePerNightBungalow1.ToString("N0") ден.</span>
-                    </div>
-                    <div class="bg-slate-50/80 rounded-xl p-3 border border-slate-100">
-                        <span class="block text-[11px] text-slate-500">Бунгалов 2</span>
-                        <span class="text-sm font-bold text-emerald-800">@prices.PricePerNightBungalow2.ToString("N0") ден.</span>
-                    </div>
-                    <div class="bg-slate-50/80 rounded-xl p-3 border border-slate-100">
-                        <span class="block text-[11px] text-slate-500">Бунгалов 3</span>
-                        <span class="text-sm font-bold text-emerald-800">@prices.PricePerNightBungalow3.ToString("N0") ден.</span>
-                    </div>
-                    <div class="bg-slate-50/80 rounded-xl p-3 border border-slate-100">
-                        <span class="block text-[11px] text-slate-500">Приколка</span>
-                        <span class="text-sm font-bold text-emerald-800">@prices.PricePerNightTrailer.ToString("N0") ден.</span>
-                    </div>
-                    <div class="bg-slate-50/80 rounded-xl p-3 border border-slate-100 col-span-2 sm:col-span-1">
-                        <span class="block text-[11px] text-slate-500">Такса за плац</span>
-                        <span class="text-sm font-bold text-emerald-800">@prices.PitchFee.ToString("N0") ден.</span>
-                    </div>
+                @{
+                    var visiblePriceCount =
+                        (prices.PriceBoxVisible1 ? 1 : 0) +
+                        (prices.PriceBoxVisible2 ? 1 : 0) +
+                        (prices.PriceBoxVisible3 ? 1 : 0) +
+                        (prices.PriceBoxVisible4 ? 1 : 0) +
+                        (prices.PriceBoxVisible5 ? 1 : 0);
+                }
+
+                <div class="grid gap-3 text-center"
+                     style="grid-template-columns: repeat(@Math.Min(visiblePriceCount, 3), minmax(0, 1fr));">
+                    @if (prices.PriceBoxVisible1)
+                    {
+                        <div class="bg-slate-50/80 rounded-xl p-3 border border-slate-100">
+                            <span class="block text-[11px] text-slate-500">@prices.LabelBungalow1.Name</span>
+                            <span class="text-sm font-bold text-emerald-800">@prices.PricePerNightBungalow1.ToString("N0") ден. / ноќ</span>
+                        </div>
+                    }
+                    @if (prices.PriceBoxVisible2)
+                    {
+                        <div class="bg-slate-50/80 rounded-xl p-3 border border-slate-100">
+                            <span class="block text-[11px] text-slate-500">@prices.LabelBungalow2.Name</span>
+                            <span class="text-sm font-bold text-emerald-800">@prices.PricePerNightBungalow2.ToString("N0") ден. / ноќ</span>
+                        </div>
+                    }
+                    @if (prices.PriceBoxVisible3)
+                    {
+                        <div class="bg-slate-50/80 rounded-xl p-3 border border-slate-100">
+                            <span class="block text-[11px] text-slate-500">@prices.LabelBungalow3.Name</span>
+                            <span class="text-sm font-bold text-emerald-800">@prices.PricePerNightBungalow3.ToString("N0") ден. / ноќ</span>
+                        </div>
+                    }
+                    @if (prices.PriceBoxVisible4)
+                    {
+                        <div class="bg-slate-50/80 rounded-xl p-3 border border-slate-100">
+                            <span class="block text-[11px] text-slate-500">@prices.LabelTrailer.Name</span>
+                            <span class="text-sm font-bold text-emerald-800">@prices.PricePerNightTrailer.ToString("N0") ден. / ноќ</span>
+                        </div>
+                    }
+                    @if (prices.PriceBoxVisible5)
+                    {
+                        <div class="bg-slate-50/80 rounded-xl p-3 border border-slate-100 col-span-2 sm:col-span-1">
+                            <span class="block text-[11px] text-slate-500">@prices.LabelPitch.Name</span>
+                            <span class="text-sm font-bold text-emerald-800">@prices.PitchFee.ToString("N0") ден. / ноќ</span>
+                        </div>
+                    }
                 </div>
             </div>
         }
