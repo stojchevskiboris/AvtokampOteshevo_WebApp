@@ -19,6 +19,81 @@ namespace Project_IT.Controllers
             _settingService = settingService;
         }
 
+        // GET: AdminSettings
+        public ActionResult Index()
+        {
+            try
+            {
+                var model = GetSettingsDashboardModel();
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in AdminSettings Index [GET]: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
+        }
+
+        private SettingsDashboardViewModel GetSettingsDashboardModel()
+        {
+            return new SettingsDashboardViewModel
+            {
+                Title = "Табла со Подесувања",
+                Description = "Централизирана платформа за управување со сите конфигурациски модули и опции на апликацијата.",
+                Modules = new System.Collections.Generic.List<SettingsModuleViewModel>
+                {
+                    new SettingsModuleViewModel
+                    {
+                        Key = "BookingPrices",
+                        Title = "Цени за Резервација",
+                        Description = "Конфигурација на ценовникот за сите типови сместување (бунгалови, приколки) и дополнителни такси.",
+                        Category = "Резервации и Ценовник",
+                        ActionName = "BookingPrices",
+                        ControllerName = "AdminSettings",
+                        IsEnabled = true,
+                        BadgeText = "Активно",
+                        BadgeClass = "bg-emerald-50 text-emerald-700 border-emerald-200"
+                    },
+                    new SettingsModuleViewModel
+                    {
+                        Key = "EmailSettings",
+                        Title = "Подесувања за Е-пошта",
+                        Description = "Управување со шаблони, известувања за нови резервации и е-пошта извештаи.",
+                        Category = "Систем и Известувања",
+                        ActionName = "EmailSettings",
+                        ControllerName = "AdminSettings",
+                        IsEnabled = false,
+                        BadgeText = "Наскоро",
+                        BadgeClass = "bg-slate-100 text-slate-600 border-slate-200"
+                    },
+                    new SettingsModuleViewModel
+                    {
+                        Key = "PaymentGatewayIntegrations",
+                        Title = "Интеграција за Плаќање",
+                        Description = "Конфигурација на платежни картички, гишеа и процесори за онлајн плаќања.",
+                        Category = "Плаќања и Финансии",
+                        ActionName = "PaymentGateway",
+                        ControllerName = "AdminSettings",
+                        IsEnabled = false,
+                        BadgeText = "Наскоро",
+                        BadgeClass = "bg-slate-100 text-slate-600 border-slate-200"
+                    },
+                    new SettingsModuleViewModel
+                    {
+                        Key = "GeneralAppPreferences",
+                        Title = "Општи Опции на Апликацијата",
+                        Description = "Конфигурација на контакт информации, работни часови, социјални мрежи и основни поставки.",
+                        Category = "Општо",
+                        ActionName = "GeneralPreferences",
+                        ControllerName = "AdminSettings",
+                        IsEnabled = false,
+                        BadgeText = "Наскоро",
+                        BadgeClass = "bg-slate-100 text-slate-600 border-slate-200"
+                    }
+                }
+            };
+        }
+
         // GET: AdminSettings/BookingPrices
         public async Task<ActionResult> BookingPrices()
         {

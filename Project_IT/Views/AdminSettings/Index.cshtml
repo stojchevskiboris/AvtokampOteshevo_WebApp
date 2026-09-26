@@ -1,0 +1,156 @@
+@model Project_IT.Models.ViewModels.SettingsDashboardViewModel
+
+@{
+    ViewBag.Title = "Администрација — Подесувања на Апликацијата";
+}
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10 font-sans" x-data="{ searchQuery: '', selectedCategory: 'All' }">
+
+    <!-- Header & Hero Section -->
+    <div class="mb-8 p-6 sm:p-8 rounded-2xl bg-white shadow-sm border border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-brand-gradient shadow-md flex items-center justify-center flex-shrink-0 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+            </div>
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-serif text-slate-800 font-bold">@Model.Title</h1>
+                <p class="text-slate-500 text-xs sm:text-sm mt-1 max-w-2xl font-body">@Model.Description</p>
+            </div>
+        </div>
+
+        <!-- System Stats Quick Glance -->
+        <div class="flex items-center gap-3 shrink-0 self-start md:self-auto border-t md:border-t-0 md:border-l border-slate-100 pt-4 md:pt-0 md:pl-6">
+            <div class="px-4 py-2 rounded-xl bg-emerald-50/80 border border-emerald-100 text-center">
+                <span class="block text-xl font-bold text-emerald-800 font-serif">@Model.Modules.Count(m => m.IsEnabled)</span>
+                <span class="text-[11px] font-medium text-emerald-600 uppercase tracking-wider font-body">Активни модули</span>
+            </div>
+            <div class="px-4 py-2 rounded-xl bg-slate-50 border border-slate-100 text-center">
+                <span class="block text-xl font-bold text-slate-700 font-serif">@Model.Modules.Count</span>
+                <span class="text-[11px] font-medium text-slate-500 uppercase tracking-wider font-body">Вкупно модули</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search & Filters -->
+    <div class="mb-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+        <!-- Search bar -->
+        <div class="relative flex-1 max-w-md">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </div>
+            <input type="text"
+                   x-model="searchQuery"
+                   placeholder="Пребарај подесувања..."
+                   class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors shadow-sm" />
+        </div>
+
+        <!-- Filter tabs -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
+            <button type="button"
+                    @@click="selectedCategory = 'All'"
+                    :class="selectedCategory === 'All' ? 'bg-slate-800 text-white shadow-sm' : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'"
+                    class="px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer">
+                Сите модули
+            </button>
+            <button type="button"
+                    @@click="selectedCategory = 'Active'"
+                    :class="selectedCategory === 'Active' ? 'bg-slate-800 text-white shadow-sm' : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'"
+                    class="px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer">
+                Само активни
+            </button>
+        </div>
+    </div>
+
+    <!-- Modules Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        @foreach (var module in Model.Modules)
+        {
+            bool isBookingPrices = module.Key == "BookingPrices";
+
+            <div x-show="(selectedCategory === 'All' || (selectedCategory === 'Active' && @(module.IsEnabled.ToString().ToLower()))) && ('@module.Title'.toLowerCase().includes(searchQuery.toLowerCase()) || '@module.Description'.toLowerCase().includes(searchQuery.toLowerCase()) || '@module.Category'.toLowerCase().includes(searchQuery.toLowerCase()))"
+                 class="group relative bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md hover:border-slate-200 transition-all duration-200 flex flex-col justify-between">
+
+                <div>
+                    <!-- Top row: Category & Badge -->
+                    <div class="flex items-center justify-between gap-3 mb-4">
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-slate-100 text-slate-600 text-[11px] font-semibold uppercase tracking-wider font-body">
+                            @module.Category
+                        </span>
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border @module.BadgeClass font-body">
+                            @module.BadgeText
+                        </span>
+                    </div>
+
+                    <!-- Icon & Title -->
+                    <div class="flex items-start gap-3.5 mb-3">
+                        <div class="w-10 h-10 rounded-xl @(module.IsEnabled ? "bg-emerald-50 text-emerald-700 border border-emerald-100" : "bg-slate-100 text-slate-500") flex items-center justify-center shrink-0">
+                            @if (isBookingPrices)
+                            {
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                </svg>
+                            }
+                            else if (module.Key == "EmailSettings")
+                            {
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            }
+                            else if (module.Key == "PaymentGatewayIntegrations")
+                            {
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                                </svg>
+                            }
+                            else
+                            {
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                </svg>
+                            }
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-serif font-semibold text-slate-800 group-hover:text-emerald-800 transition-colors">
+                                @module.Title
+                            </h3>
+                            <p class="text-slate-500 text-xs sm:text-sm mt-1 leading-relaxed font-body">
+                                @module.Description
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Action Link -->
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                    @if (module.IsEnabled)
+                    {
+                        <a href="@Url.Action(module.ActionName, module.ControllerName)"
+                           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-brand-gradient hover:opacity-90 transition-all duration-200 no-underline shadow-sm">
+                            Уреди подесувања
+                            <span>→</span>
+                        </a>
+                        <span class="text-xs text-slate-400 font-body">Подготвено за измена</span>
+                    }
+                    else
+                    {
+                        <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 bg-slate-50 border border-slate-100 cursor-not-allowed">
+                            Во изработка
+                        </span>
+                        <span class="text-xs text-slate-400 font-body">Планиран модул</span>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
