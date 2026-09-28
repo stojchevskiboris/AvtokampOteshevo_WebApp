@@ -54,30 +54,30 @@ namespace Project_IT.Controllers
                         BadgeText = "Активно",
                         BadgeClass = "bg-emerald-50 text-emerald-700 border-emerald-200"
                     },
-                    new SettingsModuleViewModel
-                    {
-                        Key = "EmailSettings",
-                        Title = "Подесувања за Е-пошта",
-                        Description = "Управување со шаблони, известувања за нови резервации и е-пошта извештаи.",
-                        Category = "Систем и Известувања",
-                        ActionName = "EmailSettings",
-                        ControllerName = "AdminSettings",
-                        IsEnabled = false,
-                        BadgeText = "Наскоро",
-                        BadgeClass = "bg-slate-100 text-slate-600 border-slate-200"
-                    },
-                    new SettingsModuleViewModel
-                    {
-                        Key = "PaymentGatewayIntegrations",
-                        Title = "Интеграција за Плаќање",
-                        Description = "Конфигурација на платежни картички, гишеа и процесори за онлајн плаќања.",
-                        Category = "Плаќања и Финансии",
-                        ActionName = "PaymentGateway",
-                        ControllerName = "AdminSettings",
-                        IsEnabled = false,
-                        BadgeText = "Наскоро",
-                        BadgeClass = "bg-slate-100 text-slate-600 border-slate-200"
-                    },
+                    //new SettingsModuleViewModel
+                    //{
+                    //    Key = "EmailSettings",
+                    //    Title = "Подесувања за Е-пошта",
+                    //    Description = "Управување со шаблони, известувања за нови резервации и е-пошта извештаи.",
+                    //    Category = "Систем и Известувања",
+                    //    ActionName = "EmailSettings",
+                    //    ControllerName = "AdminSettings",
+                    //    IsEnabled = false,
+                    //    BadgeText = "Наскоро",
+                    //    BadgeClass = "bg-slate-100 text-slate-600 border-slate-200"
+                    //},
+                    //new SettingsModuleViewModel
+                    //{
+                    //    Key = "PaymentGatewayIntegrations",
+                    //    Title = "Интеграција за Плаќање",
+                    //    Description = "Конфигурација на платежни картички, гишеа и процесори за онлајн плаќања.",
+                    //    Category = "Плаќања и Финансии",
+                    //    ActionName = "PaymentGateway",
+                    //    ControllerName = "AdminSettings",
+                    //    IsEnabled = false,
+                    //    BadgeText = "Наскоро",
+                    //    BadgeClass = "bg-slate-100 text-slate-600 border-slate-200"
+                    //},
                     new SettingsModuleViewModel
                     {
                         Key = "GeneralAppPreferences",
