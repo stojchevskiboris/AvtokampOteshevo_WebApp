@@ -1,10 +1,10 @@
-using System;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 using log4net;
 using Project_IT.Models;
 using Project_IT.Models.ViewModels;
 using Project_IT.Services.Interfaces;
+using System;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Project_IT.Controllers
 {
@@ -153,7 +153,7 @@ namespace Project_IT.Controllers
             {
                 var model = await _settingService.GetSettingAsync("GeneralAppPreferences", new GeneralAppPreferencesViewModel
                 {
-                    AboutUsGalleryPath = "/Content/gallery/1"
+                    AboutUsGalleryPath = ""
                 });
 
                 return View(model);

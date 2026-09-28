@@ -1,14 +1,13 @@
 using log4net;
+using Project_IT.Models;
+using Project_IT.Models.ViewModels;
+using Project_IT.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using Project_IT.Models;
-using Project_IT.Models.ViewModels;
-using Project_IT.Services.Interfaces;
 
 namespace Project_IT.Controllers
 {
@@ -28,6 +27,7 @@ namespace Project_IT.Controllers
         }
 
         public ActionResult Index()
+        {
             try
             {
                 return View();
