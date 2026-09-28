@@ -18,6 +18,7 @@ namespace Project_IT
 
             // 1. Force Unity to use the parameterless constructor for AccountController
             container.RegisterType<AccountController>(new InjectionConstructor());
+            container.RegisterType<ManageController>(new InjectionConstructor());
 
             // 2. Register DbContext (Per HTTP Request)
             container.RegisterType<ApplicationDbContext>(new HierarchicalLifetimeManager());
