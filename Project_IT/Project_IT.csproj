@@ -220,6 +220,7 @@
     <Compile Include="Models\ViewModels\FeedItemDetailsViewModel.cs" />
     <Compile Include="Models\ViewModels\BookingPricesViewModel.cs" />
     <Compile Include="Models\ViewModels\FileManagerViewModels.cs" />
+    <Compile Include="Models\ViewModels\SettingsDashboardViewModel.cs" />
     <Compile Include="Controllers\AdminReservationsController.cs" />
     <Compile Include="Controllers\FeedItemsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -414,6 +415,7 @@
     <Content Include="Views\AdminReservations\Edit.cshtml" />
     <Content Include="Views\AdminFileManager\Index.cshtml" />
     <Content Include="Views\AdminReservations\Index.cshtml" />
+    <Content Include="Views\AdminSettings\Index.cshtml" />
     <Content Include="Views\AdminSettings\BookingPrices.cshtml" />
     <Content Include="Views\Reservations\New.cshtml" />
     <Content Include="Views\News\Details.cshtml" />
