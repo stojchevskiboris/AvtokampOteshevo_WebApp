@@ -1,10 +1,10 @@
-using System;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 using log4net;
 using Project_IT.Models;
 using Project_IT.Models.ViewModels;
 using Project_IT.Services.Interfaces;
+using System;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Project_IT.Controllers
 {
@@ -82,13 +82,13 @@ namespace Project_IT.Controllers
                     {
                         Key = "GeneralAppPreferences",
                         Title = "Општи Опции на Апликацијата",
-                        Description = "Конфигурација на контакт информации, работни часови, социјални мрежи и основни поставки.",
+                        Description = "Конфигурација на галерија за 'За нас', контакт информации и основни поставки.",
                         Category = "Општо",
                         ActionName = "GeneralPreferences",
                         ControllerName = "AdminSettings",
-                        IsEnabled = false,
-                        BadgeText = "Наскоро",
-                        BadgeClass = "bg-slate-100 text-slate-600 border-slate-200"
+                        IsEnabled = true,
+                        BadgeText = "Активно",
+                        BadgeClass = "bg-emerald-50 text-emerald-700 border-emerald-200"
                     }
                 }
             };
@@ -142,6 +142,49 @@ namespace Project_IT.Controllers
             catch (Exception ex)
             {
                 log.Error("Error in BookingPrices [POST]: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
+        }
+
+        // GET: AdminSettings/GeneralPreferences
+        public async Task<ActionResult> GeneralPreferences()
+        {
+            try
+            {
+                var model = await _settingService.GetSettingAsync("GeneralAppPreferences", new GeneralAppPreferencesViewModel
+                {
+                    AboutUsGalleryPath = ""
+                });
+
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in GeneralPreferences [GET]: " + ex.Message, ex);
+                return RedirectToAction("Error", "Home");
+            }
+        }
+
+        // POST: AdminSettings/GeneralPreferences
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> GeneralPreferences(GeneralAppPreferencesViewModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+
+                await _settingService.SaveSettingAsync("GeneralAppPreferences", model, "Configures general application preferences like About Us gallery path.");
+                TempData["SuccessMessage"] = "Општите опции на апликацијата се успешно ажурирани!";
+
+                return RedirectToAction("GeneralPreferences");
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error in GeneralPreferences [POST]: " + ex.Message, ex);
                 return RedirectToAction("Error", "Home");
             }
         }
