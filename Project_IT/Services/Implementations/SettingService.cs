@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Caching;
 using Newtonsoft.Json;
 using Project_IT.Models;
+using Project_IT.Models.ViewModels;
 using Project_IT.Services.Interfaces;
 
 namespace Project_IT.Services.Implementations
@@ -16,6 +17,67 @@ namespace Project_IT.Services.Implementations
         public SettingService(ApplicationDbContext db)
         {
             _db = db;
+        }
+
+        public SettingsDashboardViewModel GetDashboard()
+        {
+            var dashboard = new SettingsDashboardViewModel
+            {
+                Title = "Табла со Подесувања",
+                Description = "Централизирана платформа за управување со сите конфигурациски модули и опции на апликацијата.",
+                Modules = new System.Collections.Generic.List<SettingsModuleViewModel>
+                {
+                    new SettingsModuleViewModel
+                    {
+                        Key = "BookingPrices",
+                        Title = "Цени за Резервација",
+                        Description = "Конфигурација на ценовникот за сите типови сместување (бунгалови, приколки) и дополнителни такси.",
+                        Category = "Резервации и Ценовник",
+                        ActionName = "BookingPrices",
+                        ControllerName = "AdminSettings",
+                        IsEnabled = true,
+                        BadgeText = "Активно",
+                        BadgeClass = "bg-emerald-50 text-emerald-700 border-emerald-200"
+                    },
+                    //new SettingsModuleViewModel
+                    //{
+                    //    Key = "EmailSettings",
+                    //    Title = "Подесувања за Е-пошта",
+                    //    Description = "Управување со шаблони, известувања за нови резервации и е-пошта извештаи.",
+                    //    Category = "Систем и Известувања",
+                    //    ActionName = "EmailSettings",
+                    //    ControllerName = "AdminSettings",
+                    //    IsEnabled = false,
+                    //    BadgeText = "Наскоро",
+                    //    BadgeClass = "bg-slate-100 text-slate-600 border-slate-200"
+                    //},
+                    //new SettingsModuleViewModel
+                    //{
+                    //    Key = "PaymentGatewayIntegrations",
+                    //    Title = "Интеграција за Плаќање",
+                    //    Description = "Конфигурација на платежни картички, гишеа и процесори за онлајн плаќања.",
+                    //    Category = "Плаќања и Финансии",
+                    //    ActionName = "PaymentGateway",
+                    //    ControllerName = "AdminSettings",
+                    //    IsEnabled = false,
+                    //    BadgeText = "Наскоро",
+                    //    BadgeClass = "bg-slate-100 text-slate-600 border-slate-200"
+                    //},
+                    new SettingsModuleViewModel
+                    {
+                        Key = "GeneralAppPreferences",
+                        Title = "Општи Опции на Апликацијата",
+                        Description = "Конфигурација на галерија за 'За нас', контакт информации и основни поставки.",
+                        Category = "Општо",
+                        ActionName = "GeneralPreferences",
+                        ControllerName = "AdminSettings",
+                        IsEnabled = true,
+                        BadgeText = "Активно",
+                        BadgeClass = "bg-emerald-50 text-emerald-700 border-emerald-200"
+                    }
+                }
+            };
+            return dashboard;
         }
 
         public async Task<T> GetSettingAsync<T>(string key, T defaultValue = default) where T : class, new()
