@@ -155,18 +155,18 @@
 </section>
 
 <!-- ── Stats Bar ────────────────────────────────────────────────────────── -->
-<div class="py-12 px-6 bg-brand-gradient">
+<div id="statsSection" class="py-12 px-6 bg-brand-gradient">
     <div class="max-w-4xl mx-auto grid grid-cols-3 gap-8 text-center text-white">
         <div>
-            <div class="text-3xl md:text-4xl font-bold mb-1 font-display">50+</div>
+            <div class="text-3xl md:text-4xl font-bold mb-1 font-display stat-number" data-target="50" data-suffix="+">0+</div>
             <div class="text-white/70 text-xs uppercase tracking-wider font-body">Години искуство</div>
         </div>
         <div>
-            <div class="text-3xl md:text-4xl font-bold mb-1 font-display">10+</div>
+            <div class="text-3xl md:text-4xl font-bold mb-1 font-display stat-number" data-target="10" data-suffix="+">0+</div>
             <div class="text-white/70 text-xs uppercase tracking-wider font-body">Бунгалови</div>
         </div>
         <div>
-            <div class="text-3xl md:text-4xl font-bold mb-1 font-display">5000+</div>
+            <div class="text-3xl md:text-4xl font-bold mb-1 font-display stat-number" data-target="5000" data-suffix="+">0+</div>
             <div class="text-white/70 text-xs uppercase tracking-wider font-body">Задоволни гости</div>
         </div>
     </div>
@@ -401,6 +401,62 @@
             });
 
             startTimer();
+
+            // Stats Increment Counter Animation (Triggered on Scroll Into View)
+            var statsSection = document.getElementById('statsSection');
+            var statNumbers = document.querySelectorAll('.stat-number');
+
+            function animateCounters() {
+                var duration = 4000; // Animation duration in ms
+                var startTime = null;
+
+                function step(currentTime) {
+                    if (!startTime) startTime = currentTime;
+                    var elapsed = currentTime - startTime;
+                    var progress = Math.min(elapsed / duration, 1);
+
+                    // Smooth Ease-Out function
+                    var easeOut = 1 - Math.pow(1 - progress, 3);
+
+                    statNumbers.forEach(function (el) {
+                        var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+                        var suffix = el.getAttribute('data-suffix') || '';
+                        var currentValue = Math.floor(easeOut * target);
+                        el.textContent = currentValue + suffix;
+                    });
+
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        // Ensure final values match target exactly
+                        statNumbers.forEach(function (el) {
+                            var target = el.getAttribute('data-target');
+                            var suffix = el.getAttribute('data-suffix') || '';
+                            el.textContent = target + suffix;
+                        });
+                    }
+                }
+
+                requestAnimationFrame(step);
+            }
+
+            if (statsSection && statNumbers.length > 0) {
+                if ('IntersectionObserver' in window) {
+                    var observer = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                animateCounters();
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.2 });
+
+                    observer.observe(statsSection);
+                } else {
+                    // Fallback for browsers that don't support IntersectionObserver
+                    animateCounters();
+                }
+            }
         });
     </script>
 }
