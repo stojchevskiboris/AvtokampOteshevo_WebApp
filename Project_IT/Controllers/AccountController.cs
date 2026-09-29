@@ -118,7 +118,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home", new { returnUrl });
@@ -145,7 +145,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home");
@@ -183,7 +183,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home");
@@ -205,7 +205,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home");
@@ -237,7 +237,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home");
@@ -260,7 +260,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home");
@@ -310,7 +310,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home");
@@ -336,7 +336,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home");
@@ -359,7 +359,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home");
@@ -396,7 +396,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home");
@@ -417,7 +417,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home");
@@ -440,7 +440,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home");
@@ -476,7 +476,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home");
@@ -499,7 +499,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home");
@@ -520,7 +520,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home");
@@ -550,7 +550,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home");
@@ -580,7 +580,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home");
@@ -623,7 +623,7 @@ namespace Project_IT.Controllers
         {
             try
             {
-                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out var enabled) && enabled;
+                bool isRedirectEnabled = bool.TryParse(ConfigurationManager.AppSettings["AuthenticationRedirect"], out bool enabled) && enabled;
                 if (isRedirectEnabled)
                 {
                     return RedirectToAction("Index", "Home");
