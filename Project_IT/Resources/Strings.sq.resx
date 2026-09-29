@@ -1,0 +1,426 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data xml:space="preserve" name="Site_Name">
+    <value>Autokamp Oteshevë</value>
+  </data>
+  <data xml:space="preserve" name="Site_Tagline">
+    <value>Kampim dhe Park RV në Liqenin e Prespës</value>
+  </data>
+  <data xml:space="preserve" name="Site_Footer_Desc">
+    <value>Parajsë natyrore në bregun e Liqenit të Prespës. Eja dhe përjeto bukurinë e Autokampit tonë.</value>
+  </data>
+  <data xml:space="preserve" name="Site_Footer_Rights">
+    <value>Autokamp Oteshevë. Të gjitha të drejtat të rezervuara.</value>
+  </data>
+  <data xml:space="preserve" name="Site_Footer_Location">
+    <value>Liqeni i Prespës, R. e Maqedonisë së Veriut</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Home">
+    <value>Ballina</value>
+  </data>
+  <data xml:space="preserve" name="Nav_News">
+    <value>Lajme &amp; Oferta</value>
+  </data>
+  <data xml:space="preserve" name="Nav_About">
+    <value>Rreth nesh</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Contact">
+    <value>Kontakt</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Book">
+    <value>Rezervo tani</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Admin">
+    <value>Administrimi</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Reservations">
+    <value>Rezervimet</value>
+  </data>
+  <data xml:space="preserve" name="Nav_EditNews">
+    <value>Redakto Lajmet</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Settings">
+    <value>Cilësimet</value>
+  </data>
+  <data xml:space="preserve" name="Nav_FileManager">
+    <value>Menaxheri i skedarëve</value>
+  </data>
+  <data xml:space="preserve" name="Nav_LogIn">
+    <value>Identifikohu</value>
+  </data>
+  <data xml:space="preserve" name="Nav_LogOff">
+    <value>Dil</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Register">
+    <value>Regjistrohu</value>
+  </data>
+  <data xml:space="preserve" name="Home_Meta_Title">
+    <value>Autokamp Oteshevë - Ballina | Kampim në Liqenin e Prespës</value>
+  </data>
+  <data xml:space="preserve" name="Home_Meta_Desc">
+    <value>Rezervoni qëndrimin tuaj në Autokamp Oteshevë në Liqenin e Prespës. Shijoni kampimin pranë liqenit dhe natyrën.</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Badge">
+    <value>Liqeni i Prespës, Maqedonia e Veriut</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Title_1">
+    <value>Mirë se vini në</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Title_2">
+    <value>Autokamp Oteshevë</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Sub_1">
+    <value>Streha juaj natyrore në bregun e</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Sub_2">
+    <value>Liqenit të Prespës</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Cta">
+    <value>Eksploro kampin</value>
+  </data>
+  <data xml:space="preserve" name="Home_CheckIn">
+    <value>Mbërritja</value>
+  </data>
+  <data xml:space="preserve" name="Home_CheckOut">
+    <value>Largimi</value>
+  </data>
+  <data xml:space="preserve" name="Home_Guests">
+    <value>Musafirët</value>
+  </data>
+  <data xml:space="preserve" name="Home_Guest_Singular">
+    <value>1 musafir</value>
+  </data>
+  <data xml:space="preserve" name="Home_Guest_Plural">
+    <value>{0} musafirë</value>
+  </data>
+  <data xml:space="preserve" name="Home_Search">
+    <value>Kërko</value>
+  </data>
+  <data xml:space="preserve" name="About_Badge">
+    <value>Rreth nesh</value>
+  </data>
+  <data xml:space="preserve" name="About_Hero_Title_1">
+    <value>Ku natyra</value>
+  </data>
+  <data xml:space="preserve" name="About_Hero_Title_2">
+    <value>takon komfordin</value>
+  </data>
+  <data xml:space="preserve" name="About_Meta_Title">
+    <value>Rreth nesh - Autokamp Oteshevë</value>
+  </data>
+  <data xml:space="preserve" name="About_Meta_Desc">
+    <value>Zbuloni historinë dhe natyrën e Autokamp Oteshevë në Liqenin e Prespës. Dekada traditë kampimi.</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_P1">
+    <value>Autokamp Oteshevë shtrihet në bregun perëndimor të Liqenit të Prespës, i rrethuar nga pyje shekullore dhe florë endemike.</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_P2">
+    <value>Me më shumë se 50 vjet traditë, ne ofrojmë tarraca, parcela të pajisura kampimi dhe hyrje direkte në plazh.</value>
+  </data>
+  <data xml:space="preserve" name="About_View_Prices">
+    <value>Shiko çmimet</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_Badge">
+    <value>Historia Jonë</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_Heading">
+    <value>Traditë dhe dashuri për natyrën</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_Full1">
+    <value>Autokamp Oteshevë u therua me vizionin për t'u ofruar të gjithë dashuruesve të natyrës një përvojë autentike pranë Liqenit të Prespës.</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_Full2">
+    <value>Ne vazhdimisht përmirësojmë kapacitetet tona — nga tarracat komode deri tek parcelat moderne të kampimit.</value>
+  </data>
+  <data xml:space="preserve" name="About_Contact_Us">
+    <value>Na kontaktoni</value>
+  </data>
+  <data xml:space="preserve" name="About_Offerings_Title">
+    <value>Çfarë ofrojmë në Autokamp Oteshevë</value>
+  </data>
+  <data xml:space="preserve" name="About_Offerings_Sub">
+    <value>Kushte moderne dhe mjedis natyror për kujtime të paharrueshme.</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Nature_Title">
+    <value>Natyrë e paprekur</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Nature_Desc">
+    <value>Të rrethuar nga pyje shekullore dhe ajër i pastër malor</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Bungalows_Title">
+    <value>Tarraca komode</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Bungalows_Desc">
+    <value>Tarraca komode dhe të pajisura për një pushim të paharrueshëm</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Health_Title">
+    <value>Klimë natyrore shëruese</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Health_Desc">
+    <value>Mikroklimë unike dhe ajër malor për rigjenerimin e trupit dhe mendjes</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Peace_Title">
+    <value>Mjedis i qetë</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Peace_Desc">
+    <value>Arratisje ideale nga zhurma e qytetit dhe stresi i përditshëm</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Beach_Title">
+    <value>Plazh Privat</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Beach_Desc">
+    <value>Hyrje direkte në plazhin e Liqenit të Prespës për rrezitje dhe not</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Pitches_Title">
+    <value>Vende Kampimi</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Pitches_Desc">
+    <value>Vende të rregulluara për çadra dhe autokamperë me energji elektrike</value>
+  </data>
+  <data xml:space="preserve" name="About_CTA_Title">
+    <value>Gati për pushime të paharrueshme?</value>
+  </data>
+  <data xml:space="preserve" name="About_CTA_Sub">
+    <value>Rezervoni vendin tuaj të preferuar sot. Nëse keni pyetje, jemi në dispozicion.</value>
+  </data>
+  <data xml:space="preserve" name="Stats_Years">
+    <value>Vite Përvojë</value>
+  </data>
+  <data xml:space="preserve" name="Stats_Bungalows">
+    <value>Tarraca</value>
+  </data>
+  <data xml:space="preserve" name="Stats_Guests">
+    <value>Musafirë të kënaqur</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Badge">
+    <value>Galeria</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Title">
+    <value>Shihni bukuritë tona</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide1_Title">
+    <value>Tarraca</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide1_Desc">
+    <value>Gjeni qetësinë tuaj mes malit dhe valëve</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide2_Title">
+    <value>Tarraca</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide2_Desc">
+    <value>Shijoni erën e trëndafilave dhe qetësinë e Prespës</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide3_Title">
+    <value>Kampim në gjelbërim të pastër</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide3_Desc">
+    <value>Vendosni çadrën tuaj nën kurorën e pemëve dhe shijoni natyrën</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide4_Title">
+    <value>E përshtatshme për autokamperin tuaj</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide4_Desc">
+    <value>Gjeni vendin tuaj ideal të kampimit</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide5_Title">
+    <value>Aventurë pa kufij</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide5_Desc">
+    <value>Vendi perfekt për kamperin tuaj me pamje nga liqeni</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide6_Title">
+    <value>Momente për t'u mbajtur mend</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide6_Desc">
+    <value>Ku buzëqeshjet familjare krijojnë kujtime të përkryera</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Meta_Title">
+    <value>Kontakt - Autokamp Oteshevë</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Meta_Desc">
+    <value>Kontaktoni Autokamp Oteshevë në Liqenin e Prespës për rezervime dhe pyetje.</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Badge">
+    <value>Informatat e Kontaktit</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Title_1">
+    <value>Na kontaktoni dhe</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Title_2">
+    <value>na vizitoni</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Sub">
+    <value>Jemi këtu për t'ju përgjigjur të gjitha pyetjeve tuaja dhe rezervimeve.</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Address_Label">
+    <value>Adresa</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Address_Val">
+    <value>Vendbanimi turistik Oteshevë p.n., Resen 7310, Maqedonia e Veriut</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Email_Label">
+    <value>Informatat dhe Rezervimet</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Phone_Label">
+    <value>Telefoni i kontaktit</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Social_Label">
+    <value>Na ndiqni në rrjetet sociale</value>
+  </data>
+  <data xml:space="preserve" name="Res_Meta_Title">
+    <value>Rezervo - Autokamp Oteshevë</value>
+  </data>
+  <data xml:space="preserve" name="Res_Meta_Desc">
+    <value>Dërgoni kërkesë për rezervim për tarraca ose parcela kampimi në Autokamp Oteshevë.</value>
+  </data>
+  <data xml:space="preserve" name="Res_Badge">
+    <value>Rezervimi</value>
+  </data>
+  <data xml:space="preserve" name="Res_Title">
+    <value>Dërgo kërkesë për rezervim</value>
+  </data>
+  <data xml:space="preserve" name="Res_Sub">
+    <value>Plotësoni të dhënat më poshtë për të dërguar kërkesën tuaj për rezervim.</value>
+  </data>
+  <data xml:space="preserve" name="Res_Prices_Title">
+    <value>Lista e çmimeve</value>
+  </data>
+  <data xml:space="preserve" name="Res_FullName">
+    <value>Emri dhe Mbiemri</value>
+  </data>
+  <data xml:space="preserve" name="Res_Email">
+    <value>Adresa e Email-it</value>
+  </data>
+  <data xml:space="preserve" name="Res_Phone">
+    <value>Numri i telefonit</value>
+  </data>
+  <data xml:space="preserve" name="Res_Guests">
+    <value>Numri i personave</value>
+  </data>
+  <data xml:space="preserve" name="Res_Accommodation">
+    <value>Akomodimi</value>
+  </data>
+  <data xml:space="preserve" name="Res_CheckIn">
+    <value>Data e mbërritjes</value>
+  </data>
+  <data xml:space="preserve" name="Res_CheckOut">
+    <value>Data e largimit</value>
+  </data>
+  <data xml:space="preserve" name="Res_Info">
+    <value>Kërkesa shtesë</value>
+  </data>
+  <data xml:space="preserve" name="Res_Submit">
+    <value>Dërgo kërkesën</value>
+  </data>
+  <data xml:space="preserve" name="Res_Sending">
+    <value>Duke dërguar...</value>
+  </data>
+  <data xml:space="preserve" name="Res_Success_Title">
+    <value>Faleminderit!</value>
+  </data>
+  <data xml:space="preserve" name="Res_Success_Msg">
+    <value>Kërkesa juaj për rezervim u dërgua me sukses. Do t'ju kontaktojmë së shpejti.</value>
+  </data>
+  <data xml:space="preserve" name="Res_Required_Notice">
+    <value>Fushat e shënuara me * janë të detyrueshme.</value>
+  </data>
+  <data xml:space="preserve" name="Res_Back_Home">
+    <value>← Kthehu në Ballinë</value>
+  </data>
+  <data xml:space="preserve" name="Res_Placeholder_Name">
+    <value>shm. Agim Gashi</value>
+  </data>
+  <data xml:space="preserve" name="Res_Placeholder_Email">
+    <value>emaili@juaj.com</value>
+  </data>
+  <data xml:space="preserve" name="Res_Placeholder_Phone">
+    <value>+389 7X XXX XXX</value>
+  </data>
+  <data xml:space="preserve" name="Res_Placeholder_Info">
+    <value>Shënime ose kërkesa të veçanta...</value>
+  </data>
+  <data xml:space="preserve" name="News_Meta_Title">
+    <value>Lajme &amp; Oferta - Autokamp Oteshevë</value>
+  </data>
+  <data xml:space="preserve" name="News_Meta_Desc">
+    <value>Lajmet më të fundit dhe ofertat speciale nga Autokamp Oteshevë.</value>
+  </data>
+  <data xml:space="preserve" name="News_Badge">
+    <value>Lajme &amp; Oferta</value>
+  </data>
+  <data xml:space="preserve" name="News_Title">
+    <value>Qëndroni të informuar</value>
+  </data>
+  <data xml:space="preserve" name="News_Sub">
+    <value>Zbuloni lajmet më të fundit dhe ofertat speciale në Autokamp Oteshevë.</value>
+  </data>
+  <data xml:space="preserve" name="News_ReadMore">
+    <value>Lexo më shumë →</value>
+  </data>
+  <data xml:space="preserve" name="News_NoItems">
+    <value>Momentalisht nuk ka lajme të publikuara.</value>
+  </data>
+  <data xml:space="preserve" name="News_PublishedOn">
+    <value>Publikuar më</value>
+  </data>
+  <data xml:space="preserve" name="Acc_Bungalow">
+    <value>Tarracë</value>
+  </data>
+  <data xml:space="preserve" name="Acc_Trailer">
+    <value>Rimorkio / Autokamper</value>
+  </data>
+  <data xml:space="preserve" name="Acc_Pitch">
+    <value>Vendi për çadër</value>
+  </data>
+  <data xml:space="preserve" name="Currency_MKD">
+    <value>MKD</value>
+  </data>
+  <data xml:space="preserve" name="PerNight">
+    <value>/ natë</value>
+  </data>
+  <data xml:space="preserve" name="Val_Required">
+    <value>{0} është fushë e detyrueshme.</value>
+  </data>
+  <data xml:space="preserve" name="Val_Email">
+    <value>Ju lutemi vendosni një email të vlefshëm.</value>
+  </data>
+  <data xml:space="preserve" name="Val_Generic_Error">
+    <value>Na vjen keq, ju lutemi provoni përsëri....</value>
+  </data>
+  <data xml:space="preserve" name="Js_Sending">
+    <value>Duke dërguar...</value>
+  </data>
+  <data xml:space="preserve" name="Js_SendRequest">
+    <value>Dërgo kërkesën ↗</value>
+  </data>
+  <data xml:space="preserve" name="Login_Title">
+    <value>Identifikimi</value>
+  </data>
+  <data xml:space="preserve" name="Register_Title">
+    <value>Regjistrimi</value>
+  </data>
+  <data xml:space="preserve" name="Email">
+    <value>Email</value>
+  </data>
+  <data xml:space="preserve" name="Password">
+    <value>Fjalëkalimi</value>
+  </data>
+  <data xml:space="preserve" name="ConfirmPassword">
+    <value>Konfirmo fjalëkalimin</value>
+  </data>
+  <data xml:space="preserve" name="RememberMe">
+    <value>Më mbaj mend?</value>
+  </data>
+</root>

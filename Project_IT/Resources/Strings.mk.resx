@@ -1,0 +1,426 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data xml:space="preserve" name="Site_Name">
+    <value>Автокамп Отешево</value>
+  </data>
+  <data xml:space="preserve" name="Site_Tagline">
+    <value>Кампување и камп-приколки на Преспанско Езеро</value>
+  </data>
+  <data xml:space="preserve" name="Site_Footer_Desc">
+    <value>Природен рај на брегот на Преспанското Езеро. Дојдете и доживејте ја убавината на нашиот Автокамп.</value>
+  </data>
+  <data xml:space="preserve" name="Site_Footer_Rights">
+    <value>Автокамп Отешево. Сите права задржани.</value>
+  </data>
+  <data xml:space="preserve" name="Site_Footer_Location">
+    <value>Преспанско Езеро, Р. Северна Македонија</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Home">
+    <value>Дома</value>
+  </data>
+  <data xml:space="preserve" name="Nav_News">
+    <value>Новости и понуди</value>
+  </data>
+  <data xml:space="preserve" name="Nav_About">
+    <value>За нас</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Contact">
+    <value>Контакт</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Book">
+    <value>Резервирај</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Admin">
+    <value>Администрација</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Reservations">
+    <value>Резервации</value>
+  </data>
+  <data xml:space="preserve" name="Nav_EditNews">
+    <value>Уреди Новости</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Settings">
+    <value>Подесувања</value>
+  </data>
+  <data xml:space="preserve" name="Nav_FileManager">
+    <value>Управувач со датотеки</value>
+  </data>
+  <data xml:space="preserve" name="Nav_LogIn">
+    <value>Најави се</value>
+  </data>
+  <data xml:space="preserve" name="Nav_LogOff">
+    <value>Одјави се</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Register">
+    <value>Регистрирај се</value>
+  </data>
+  <data xml:space="preserve" name="Home_Meta_Title">
+    <value>Автокамп Отешево - Почетна | Кампување Преспанско Езеро</value>
+  </data>
+  <data xml:space="preserve" name="Home_Meta_Desc">
+    <value>Резервирајте престој во Автокамп Отешево на Преспанското Езеро. Уживајте во кампување покрај езерото, парцели за камп-приколки и природа.</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Badge">
+    <value>Преспанско Езеро, Македонија</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Title_1">
+    <value>Добредојдовте во</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Title_2">
+    <value>Автокамп Отешево</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Sub_1">
+    <value>Вашето природно засолниште на брегот на</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Sub_2">
+    <value>Преспанското Езеро</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Cta">
+    <value>Истражете го кампот</value>
+  </data>
+  <data xml:space="preserve" name="Home_CheckIn">
+    <value>Пристигнување</value>
+  </data>
+  <data xml:space="preserve" name="Home_CheckOut">
+    <value>Заминување</value>
+  </data>
+  <data xml:space="preserve" name="Home_Guests">
+    <value>Гости</value>
+  </data>
+  <data xml:space="preserve" name="Home_Guest_Singular">
+    <value>1 гостин</value>
+  </data>
+  <data xml:space="preserve" name="Home_Guest_Plural">
+    <value>{0} гости</value>
+  </data>
+  <data xml:space="preserve" name="Home_Search">
+    <value>Пребарај</value>
+  </data>
+  <data xml:space="preserve" name="About_Badge">
+    <value>За нас</value>
+  </data>
+  <data xml:space="preserve" name="About_Hero_Title_1">
+    <value>Каде природата</value>
+  </data>
+  <data xml:space="preserve" name="About_Hero_Title_2">
+    <value>се среќава со комфорот</value>
+  </data>
+  <data xml:space="preserve" name="About_Meta_Title">
+    <value>За нас - Автокамп Отешево</value>
+  </data>
+  <data xml:space="preserve" name="About_Meta_Desc">
+    <value>Откријте ја историјата и природата на Автокамп Отешево на Преспанското Езеро. Децении кампинг традиција и гостопримство.</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_P1">
+    <value>Автокамп Отешево лежи на западниот брег на Преспанското Езеро, опкружен со вековни шуми и растителен свет со ендемичен карактер, кои го прават овој простор уникатен и погоден за одмор, рекреација и целосна регенерација.</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_P2">
+    <value>Со повеќе од 50 години традиција, нудиме бунгалови, опремени кампинг места, директен пристап до езерската плажа и незаборавни залези на сонцето над Преспа.</value>
+  </data>
+  <data xml:space="preserve" name="About_View_Prices">
+    <value>Види ценовник</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_Badge">
+    <value>Нашата Приказна</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_Heading">
+    <value>Традиција и љубов кон природата</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_Full1">
+    <value>Автокамп Отешево е основан со визија да им овоможи на сите љубители на природата автентично доживување покрај Преспанското Езеро. Со децении наназад, нашиот камп е омилена дестинација за семејства, авантуристи и сите оние кои бараат бегство од секојдневниот градски метеж.</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_Full2">
+    <value>Ние постојано ги подобруваме нашите капацитети — од комфорни бунгалови и современи кампинг парцели до подобрени содржини за рекреација и одмор.</value>
+  </data>
+  <data xml:space="preserve" name="About_Contact_Us">
+    <value>Контактирајте нè</value>
+  </data>
+  <data xml:space="preserve" name="About_Offerings_Title">
+    <value>Што нудиме во Автокамп Отешево</value>
+  </data>
+  <data xml:space="preserve" name="About_Offerings_Sub">
+    <value>Современи услови и природно опкружување за нешта што се паметат.</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Nature_Title">
+    <value>Недопрена природа</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Nature_Desc">
+    <value>Опкружени со вековни шуми и чист планински воздух</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Bungalows_Title">
+    <value>Удобни бунгалови</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Bungalows_Desc">
+    <value>Комфорни и современо опремени бунгалови за незаборавен одмор</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Health_Title">
+    <value>Природни лечилиште</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Health_Desc">
+    <value>Уникатна микроклима и чист планински воздух за регенерација на телото и умот</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Peace_Title">
+    <value>Мирна средина</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Peace_Desc">
+    <value>Идеален бегство од градскиот метеж и секојдневниот стрес</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Beach_Title">
+    <value>Приватна Плажа</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Beach_Desc">
+    <value>Директен пристап до плажата на Преспанското Езеро за сончање, капење и уживање во сонцевите залези</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Pitches_Title">
+    <value>Кампинг Места</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Pitches_Desc">
+    <value>Уредени места за шатори и автокампери со обезбеден пристап до електрична енергија и санитарни јазли</value>
+  </data>
+  <data xml:space="preserve" name="About_CTA_Title">
+    <value>Подготвени за незаборавен одмор?</value>
+  </data>
+  <data xml:space="preserve" name="About_CTA_Sub">
+    <value>Зачувајте го вашето омилено место денес. Доколку имате прашања или посебни барања, стоиме на располагање.</value>
+  </data>
+  <data xml:space="preserve" name="Stats_Years">
+    <value>Години искуство</value>
+  </data>
+  <data xml:space="preserve" name="Stats_Bungalows">
+    <value>Бунгалови</value>
+  </data>
+  <data xml:space="preserve" name="Stats_Guests">
+    <value>Задоволни гости</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Badge">
+    <value>Галерија</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Title">
+    <value>Погледнете ги нашите убавини</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide1_Title">
+    <value>Бунгалови</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide1_Desc">
+    <value>Пронајдете го Вашиот мир меѓу планината и брановите</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide2_Title">
+    <value>Бунгалови</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide2_Desc">
+    <value>Уживајте во мирисот на розите и спокојот на Преспа</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide3_Title">
+    <value>Кампување во чисто зеленило</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide3_Desc">
+    <value>Поставете го вашиот шатор под густите крошни и уживајте во природата</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide4_Title">
+    <value>Погодно за вашата камп-приколка</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide4_Desc">
+    <value>Најдете ја вашата идеална локација за кампинг</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide5_Title">
+    <value>Авантура без граници</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide5_Desc">
+    <value>Совршено место за вашиот кампер со поглед кон езерото</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide6_Title">
+    <value>Моменти за паметење</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide6_Desc">
+    <value>Место каде што семејните насмевки и верноста на миленичињата создаваат совршени моменти</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Meta_Title">
+    <value>Контакт - Автокамп Отешево</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Meta_Desc">
+    <value>Контактирајте го Автокамп Отешево на Преспанското Езеро за резервации и прашања.</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Badge">
+    <value>Контакт Информации</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Title_1">
+    <value>Контактирајте нè и</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Title_2">
+    <value>посетете нè</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Sub">
+    <value>Тука сме да одговориме на сите Ваши прашања, информации за слободни термини и резервации.</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Address_Label">
+    <value>Адреса</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Address_Val">
+    <value>Туристичка населба Отешево бб, Ресен 7310, Република Северна Македонија</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Email_Label">
+    <value>Информации и резервации</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Phone_Label">
+    <value>Телефон за контакт</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Social_Label">
+    <value>Следете нè на социјалните мрежи</value>
+  </data>
+  <data xml:space="preserve" name="Res_Meta_Title">
+    <value>Резервирај - Автокамп Отешево</value>
+  </data>
+  <data xml:space="preserve" name="Res_Meta_Desc">
+    <value>Испратете барање за резервација за бунгалови, кампер парцели или места за шатори во Автокамп Отешево.</value>
+  </data>
+  <data xml:space="preserve" name="Res_Badge">
+    <value>Резервација</value>
+  </data>
+  <data xml:space="preserve" name="Res_Title">
+    <value>Испрати барање за резервација</value>
+  </data>
+  <data xml:space="preserve" name="Res_Sub">
+    <value>Пополнете ги податоците подолу за да испратите барање за резервација во Автокамп Отешево.</value>
+  </data>
+  <data xml:space="preserve" name="Res_Prices_Title">
+    <value>Ценовник</value>
+  </data>
+  <data xml:space="preserve" name="Res_FullName">
+    <value>Име и презиме</value>
+  </data>
+  <data xml:space="preserve" name="Res_Email">
+    <value>E-mail адреса</value>
+  </data>
+  <data xml:space="preserve" name="Res_Phone">
+    <value>Телефон</value>
+  </data>
+  <data xml:space="preserve" name="Res_Guests">
+    <value>Број на лица</value>
+  </data>
+  <data xml:space="preserve" name="Res_Accommodation">
+    <value>Сместување</value>
+  </data>
+  <data xml:space="preserve" name="Res_CheckIn">
+    <value>Дата на пристигнување</value>
+  </data>
+  <data xml:space="preserve" name="Res_CheckOut">
+    <value>Дата на заминување</value>
+  </data>
+  <data xml:space="preserve" name="Res_Info">
+    <value>Дополнителни барања</value>
+  </data>
+  <data xml:space="preserve" name="Res_Submit">
+    <value>Испрати барање</value>
+  </data>
+  <data xml:space="preserve" name="Res_Sending">
+    <value>Испраќање...</value>
+  </data>
+  <data xml:space="preserve" name="Res_Success_Title">
+    <value>Ви благодариме!</value>
+  </data>
+  <data xml:space="preserve" name="Res_Success_Msg">
+    <value>Вашето барање за резервација е успешно испратено. Ќе ве контактираме во најкраток можен рок.</value>
+  </data>
+  <data xml:space="preserve" name="Res_Required_Notice">
+    <value>Полињата означени со * се задолжителни.</value>
+  </data>
+  <data xml:space="preserve" name="Res_Back_Home">
+    <value>← Назад до Почетна</value>
+  </data>
+  <data xml:space="preserve" name="Res_Placeholder_Name">
+    <value>Пр. Петар Петровски</value>
+  </data>
+  <data xml:space="preserve" name="Res_Placeholder_Email">
+    <value>vasiot@email.com</value>
+  </data>
+  <data xml:space="preserve" name="Res_Placeholder_Phone">
+    <value>07X XXX XXX</value>
+  </data>
+  <data xml:space="preserve" name="Res_Placeholder_Info">
+    <value>Напомени или дополнителни барања...</value>
+  </data>
+  <data xml:space="preserve" name="News_Meta_Title">
+    <value>Новости и понуди - Автокамп Отешево</value>
+  </data>
+  <data xml:space="preserve" name="News_Meta_Desc">
+    <value>Најнови новости, известувања и специјални понуди од Автокамп Отешево на Преспанското Езеро.</value>
+  </data>
+  <data xml:space="preserve" name="News_Badge">
+    <value>Новости и понуди</value>
+  </data>
+  <data xml:space="preserve" name="News_Title">
+    <value>Бидете информирани</value>
+  </data>
+  <data xml:space="preserve" name="News_Sub">
+    <value>Откријте ги најновите вести, настани и специјални понуди во Автокамп Отешево.</value>
+  </data>
+  <data xml:space="preserve" name="News_ReadMore">
+    <value>Прочитај повеќе →</value>
+  </data>
+  <data xml:space="preserve" name="News_NoItems">
+    <value>Моментално нема објавени новости.</value>
+  </data>
+  <data xml:space="preserve" name="News_PublishedOn">
+    <value>Објавено на</value>
+  </data>
+  <data xml:space="preserve" name="Acc_Bungalow">
+    <value>Бунгалов</value>
+  </data>
+  <data xml:space="preserve" name="Acc_Trailer">
+    <value>Приколка</value>
+  </data>
+  <data xml:space="preserve" name="Acc_Pitch">
+    <value>Плац за шатор</value>
+  </data>
+  <data xml:space="preserve" name="Currency_MKD">
+    <value>ден.</value>
+  </data>
+  <data xml:space="preserve" name="PerNight">
+    <value>/ ноќ</value>
+  </data>
+  <data xml:space="preserve" name="Val_Required">
+    <value>{0} е задолжително поле.</value>
+  </data>
+  <data xml:space="preserve" name="Val_Email">
+    <value>Ве молиме внесете валидна е-маил адреса.</value>
+  </data>
+  <data xml:space="preserve" name="Val_Generic_Error">
+    <value>Извинете, ве молиме обидете се повторно....</value>
+  </data>
+  <data xml:space="preserve" name="Js_Sending">
+    <value>Испраќање...</value>
+  </data>
+  <data xml:space="preserve" name="Js_SendRequest">
+    <value>Испрати барање ↗</value>
+  </data>
+  <data xml:space="preserve" name="Login_Title">
+    <value>Најава</value>
+  </data>
+  <data xml:space="preserve" name="Register_Title">
+    <value>Регистрација</value>
+  </data>
+  <data xml:space="preserve" name="Email">
+    <value>Е-пошта</value>
+  </data>
+  <data xml:space="preserve" name="Password">
+    <value>Лозинка</value>
+  </data>
+  <data xml:space="preserve" name="ConfirmPassword">
+    <value>Потврди лозинка</value>
+  </data>
+  <data xml:space="preserve" name="RememberMe">
+    <value>Запомни ме?</value>
+  </data>
+</root>

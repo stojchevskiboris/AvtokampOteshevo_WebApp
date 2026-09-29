@@ -1,0 +1,426 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data xml:space="preserve" name="Site_Name">
+    <value>Autocamp Otesevo</value>
+  </data>
+  <data xml:space="preserve" name="Site_Tagline">
+    <value>Camping &amp; RV Park Λίμνη Πρέσπα</value>
+  </data>
+  <data xml:space="preserve" name="Site_Footer_Desc">
+    <value>Фυσικός παράδεισος στις όχθες της Λίμνης Πρέσπας. Ελάτε να ζήσετε την ομορφιά του Autocamp μας.</value>
+  </data>
+  <data xml:space="preserve" name="Site_Footer_Rights">
+    <value>Autocamp Otesevo. Όλα τα δικαιώματα διατηρούνται.</value>
+  </data>
+  <data xml:space="preserve" name="Site_Footer_Location">
+    <value>Λίμνη Πρέσπα, Βόρεια Μακεδονία</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Home">
+    <value>Αρχική</value>
+  </data>
+  <data xml:space="preserve" name="Nav_News">
+    <value>Νέα &amp; Προσφορές</value>
+  </data>
+  <data xml:space="preserve" name="Nav_About">
+    <value>Σχετικά με εμάς</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Contact">
+    <value>Επικοινωνία</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Book">
+    <value>Кάνте κράτηση</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Admin">
+    <value>Διαχείριση</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Reservations">
+    <value>Κρατήσεις</value>
+  </data>
+  <data xml:space="preserve" name="Nav_EditNews">
+    <value>Επεξεργασία Νέων</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Settings">
+    <value>Ρυθμίσεις</value>
+  </data>
+  <data xml:space="preserve" name="Nav_FileManager">
+    <value>Διαχειριστής Αρχείων</value>
+  </data>
+  <data xml:space="preserve" name="Nav_LogIn">
+    <value>Σύνδεση</value>
+  </data>
+  <data xml:space="preserve" name="Nav_LogOff">
+    <value>Αпоσύνδεση</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Register">
+    <value>Εγγραφή</value>
+  </data>
+  <data xml:space="preserve" name="Home_Meta_Title">
+    <value>Autocamp Otesevo - Αρχική | Camping Λίμνη Πρέσπα</value>
+  </data>
+  <data xml:space="preserve" name="Home_Meta_Desc">
+    <value>Κάντε κράτηση για τη διαμονή σας στο Autocamp Otesevo στη Λίμνη Πρέσπα. Απολαύστε camping δίπλα στη λίμνη.</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Badge">
+    <value>Λίμνη Πρέσπα, Βόρεια Μακεδονία</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Title_1">
+    <value>Καλώς ορίσατε στο</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Title_2">
+    <value>Autocamp Otesevo</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Sub_1">
+    <value>Το φυσικό σας καταφύγιο στις όχθες της</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Sub_2">
+    <value>Λίμνης Πρέσπας</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Cta">
+    <value>Εξερευνήστε το camping</value>
+  </data>
+  <data xml:space="preserve" name="Home_CheckIn">
+    <value>Άφιξη</value>
+  </data>
+  <data xml:space="preserve" name="Home_CheckOut">
+    <value>Αναχώρηση</value>
+  </data>
+  <data xml:space="preserve" name="Home_Guests">
+    <value>Επισκέπτες</value>
+  </data>
+  <data xml:space="preserve" name="Home_Guest_Singular">
+    <value>1 επισκέπτης</value>
+  </data>
+  <data xml:space="preserve" name="Home_Guest_Plural">
+    <value>{0} επισκέπτες</value>
+  </data>
+  <data xml:space="preserve" name="Home_Search">
+    <value>Αναζήτηση</value>
+  </data>
+  <data xml:space="preserve" name="About_Badge">
+    <value>Σχετικά με εμάς</value>
+  </data>
+  <data xml:space="preserve" name="About_Hero_Title_1">
+    <value>Εκεί που η φύση</value>
+  </data>
+  <data xml:space="preserve" name="About_Hero_Title_2">
+    <value>συναντά την άνεση</value>
+  </data>
+  <data xml:space="preserve" name="About_Meta_Title">
+    <value>Σχετικά με εμάς - Autocamp Otesevo</value>
+  </data>
+  <data xml:space="preserve" name="About_Meta_Desc">
+    <value>Ανακαλύψτε την ιστορία και τη φύση του Autocamp Otesevo στη Λίμνη Πρέσπα.</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_P1">
+    <value>Το Autocamp Otesevo βρίσκεται στη δυτική όχθη της Λίμνης Πρέσπας, περιβαλλόμενο από αιωνόβια δάση.</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_P2">
+    <value>Με πάνω από 50 χρόνια παράδοσης, προσφέρουμε μπανγκαλόου, οργανωμένες θέσεις camping και πρόσβαση στην παραλία.</value>
+  </data>
+  <data xml:space="preserve" name="About_View_Prices">
+    <value>Δείτε τον τιμοκατάλογο</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_Badge">
+    <value>Η ιστορία μας</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_Heading">
+    <value>Παράδοση και αγάπη για τη φύση</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_Full1">
+    <value>Το Autocamp Otesevo ιδρύθηκε με το όραμα να προσφέρει σε όλους τους λάτρεις της φύσης μια αυθεντική εμπειρία στη Λίμνη Πρέσπα.</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_Full2">
+    <value>Βελτιώνουμε συνεχώς τις εγκαταστάσεις μας — από άνετα μπανγκαλόου μέχρι σύγχρονες θέσεις camping.</value>
+  </data>
+  <data xml:space="preserve" name="About_Contact_Us">
+    <value>Επικοινωνήστε μαζί μας</value>
+  </data>
+  <data xml:space="preserve" name="About_Offerings_Title">
+    <value>Τι προσφέρουμε στο Autocamp Otesevo</value>
+  </data>
+  <data xml:space="preserve" name="About_Offerings_Sub">
+    <value>Σύγχρονες ανέσεις και φυσικό περιβάλλον για στιγμές που μένουν αξέχαστες.</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Nature_Title">
+    <value>Ανέγγιχτη φύση</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Nature_Desc">
+    <value>Περιβαλλόμενο από αρχαία δάση και καθαρό βουνίσιο αέρα</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Bungalows_Title">
+    <value>Άνετα μπανγκαλόου</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Bungalows_Desc">
+    <value>Άνετα και σύγχρονα εξοπλισμένα μπανγκαλόου για αξέχαστες διακοπές</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Health_Title">
+    <value>Φυσικό θεραπευτικό κλίμα</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Health_Desc">
+    <value>Μοναδικό μικρόκλιμα για την αναζωογόνηση σώματος και πνεύματος</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Peace_Title">
+    <value>Ήσυχο περιβάλλον</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Peace_Desc">
+    <value>Ιδανική απόδραση από το θόρυβο της πόλης και το καθημερινό άγχος</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Beach_Title">
+    <value>Ιδιωτική παραλία</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Beach_Desc">
+    <value>Άμεση πρόσβαση στην παραλία της Λίμνης Πρέσπας για μπάνιο και ηλιοθεραπεία</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Pitches_Title">
+    <value>Θέσεις Camping</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Pitches_Desc">
+    <value>Οργανωμένες θέσεις για σκηνές και τροχόσπιτα με ρεύμα και εξυπηρετήσεις</value>
+  </data>
+  <data xml:space="preserve" name="About_CTA_Title">
+    <value>Έτοιμοι για αξέχαστες διακοπές;</value>
+  </data>
+  <data xml:space="preserve" name="About_CTA_Sub">
+    <value>Κρατήστε την αγαπημένη σας θέση σήμερα. Είμαστε στη διάθεσή σας για απορίες.</value>
+  </data>
+  <data xml:space="preserve" name="Stats_Years">
+    <value>Χρόνια εμπειρίας</value>
+  </data>
+  <data xml:space="preserve" name="Stats_Bungalows">
+    <value>Μпанγκαλόу</value>
+  </data>
+  <data xml:space="preserve" name="Stats_Guests">
+    <value>Ικανοποιημένοι επισκέπτες</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Badge">
+    <value>Συλλογή</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Title">
+    <value>Δείτε τις ομορφιές μας</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide1_Title">
+    <value>Μпанγκαλόу</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide1_Desc">
+    <value>Βρείτε την ηρεμία σας ανάμεσα στο βουνό και τα κύματα</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide2_Title">
+    <value>Μпанγκαλόу</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide2_Desc">
+    <value>Απολαύστε το άρωμα των τριαντάφυλλων και τη γαλήνη της Πρέσπας</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide3_Title">
+    <value>Camping μέσα στο πράσινο</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide3_Desc">
+    <value>Στήστε τη σκηνή σας κάτω από τη σκιά των δέντρων</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide4_Title">
+    <value>Ιδανικό για το τροχόσπιτό σας</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide4_Desc">
+    <value>Βρείτε την ιδανική θέση για camping</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide5_Title">
+    <value>Περιπέτεια χωρίς όρια</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide5_Desc">
+    <value>Τέλεια θέση για το camper σας με θέα τη λίμνη</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide6_Title">
+    <value>Στιγμές για να θυμάστε</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide6_Desc">
+    <value>Εκεί που τα χαμόγελα της οικογένειας δημιουργούν όμορφες αναμνήσεις</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Meta_Title">
+    <value>Επικοινωνία - Autocamp Otesevo</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Meta_Desc">
+    <value>Επικοινωνήστε με το Autocamp Otesevo για κρατήσεις και πληροφορίες.</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Badge">
+    <value>Πληροφορίες Επικοινωνίας</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Title_1">
+    <value>Επικοινωνήστε μαζί μας και</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Title_2">
+    <value>επισκεφθείτε μας</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Sub">
+    <value>Είμαστε εδώ για να απαντήσουμε σε όλες τις ερωτήσεις και τις κρατήσεις σας.</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Address_Label">
+    <value>Διεύθυνση</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Address_Val">
+    <value>Τουριστικός οικισμός Οτέσεβο, Ρέσεν 7310, Βόρεια Μακεδονία</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Email_Label">
+    <value>Πληροφορίες &amp; Κρατήσεις</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Phone_Label">
+    <value>Τηλέφωνο Επικοινωνίας</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Social_Label">
+    <value>Ακολουθήστε μας στα κοινωνικά δίκτυα</value>
+  </data>
+  <data xml:space="preserve" name="Res_Meta_Title">
+    <value>Κάντε κράτηση - Autocamp Otesevo</value>
+  </data>
+  <data xml:space="preserve" name="Res_Meta_Desc">
+    <value>Στείλτε αίτημα κράτησης για μπανγκαλόου ή θέσεις camping στο Autocamp Otesevo.</value>
+  </data>
+  <data xml:space="preserve" name="Res_Badge">
+    <value>Κράτηση</value>
+  </data>
+  <data xml:space="preserve" name="Res_Title">
+    <value>Στείλτε αίτημα κράτησης</value>
+  </data>
+  <data xml:space="preserve" name="Res_Sub">
+    <value>Συμπληρώστε τα παρακάτω στοιχεία για να στείλετε το αίτημά σας.</value>
+  </data>
+  <data xml:space="preserve" name="Res_Prices_Title">
+    <value>Τιμοκατάλογος</value>
+  </data>
+  <data xml:space="preserve" name="Res_FullName">
+    <value>Ονοματεπώνυμο</value>
+  </data>
+  <data xml:space="preserve" name="Res_Email">
+    <value>Διεύθυνση Email</value>
+  </data>
+  <data xml:space="preserve" name="Res_Phone">
+    <value>Τηλέφωνο</value>
+  </data>
+  <data xml:space="preserve" name="Res_Guests">
+    <value>Αριθμός ατόμων</value>
+  </data>
+  <data xml:space="preserve" name="Res_Accommodation">
+    <value>Διαμονή</value>
+  </data>
+  <data xml:space="preserve" name="Res_CheckIn">
+    <value>Ημερομηνία άφιξης</value>
+  </data>
+  <data xml:space="preserve" name="Res_CheckOut">
+    <value>Ημερομηνία αναχώρησης</value>
+  </data>
+  <data xml:space="preserve" name="Res_Info">
+    <value>Επιπλέον αιτήματα</value>
+  </data>
+  <data xml:space="preserve" name="Res_Submit">
+    <value>Αποστολή αιτήματος</value>
+  </data>
+  <data xml:space="preserve" name="Res_Sending">
+    <value>Αποστολή...</value>
+  </data>
+  <data xml:space="preserve" name="Res_Success_Title">
+    <value>Σας ευχαριστούμε!</value>
+  </data>
+  <data xml:space="preserve" name="Res_Success_Msg">
+    <value>Το αίτημα κράτησής σας στάλθηκε με επιτυχία. Θα επικοινωνήσουμε μαζί σας σύντομα.</value>
+  </data>
+  <data xml:space="preserve" name="Res_Required_Notice">
+    <value>Τα πεδία με * είναι υποχρεωτικά.</value>
+  </data>
+  <data xml:space="preserve" name="Res_Back_Home">
+    <value>← Πίσω στην Αρχική</value>
+  </data>
+  <data xml:space="preserve" name="Res_Placeholder_Name">
+    <value>π.χ. Γιώργος Παπαδόπουλος</value>
+  </data>
+  <data xml:space="preserve" name="Res_Placeholder_Email">
+    <value>topalio@email.gr</value>
+  </data>
+  <data xml:space="preserve" name="Res_Placeholder_Phone">
+    <value>+389 7X XXX XXX</value>
+  </data>
+  <data xml:space="preserve" name="Res_Placeholder_Info">
+    <value>Σημειώσεις ή ειδικά αιτήματα...</value>
+  </data>
+  <data xml:space="preserve" name="News_Meta_Title">
+    <value>Νέα &amp; Προσφορές - Autocamp Otesevo</value>
+  </data>
+  <data xml:space="preserve" name="News_Meta_Desc">
+    <value>Τελευταία νέα και προσφορές από το Autocamp Otesevo.</value>
+  </data>
+  <data xml:space="preserve" name="News_Badge">
+    <value>Νέα &amp; Προσφορές</value>
+  </data>
+  <data xml:space="preserve" name="News_Title">
+    <value>Μείνετε ενημερωμένοι</value>
+  </data>
+  <data xml:space="preserve" name="News_Sub">
+    <value>Ανακαλύψτε τα τελευταία νέα και προσφορές στο Autocamp Otesevo.</value>
+  </data>
+  <data xml:space="preserve" name="News_ReadMore">
+    <value>Διαβάστε περισσότερα →</value>
+  </data>
+  <data xml:space="preserve" name="News_NoItems">
+    <value>Δεν υπάρχουν δημοσιευμένα νέα αυτή τη στιγμή.</value>
+  </data>
+  <data xml:space="preserve" name="News_PublishedOn">
+    <value>Δημοσιεύτηκε στις</value>
+  </data>
+  <data xml:space="preserve" name="Acc_Bungalow">
+    <value>Μпанγκαλόу</value>
+  </data>
+  <data xml:space="preserve" name="Acc_Trailer">
+    <value>Τроχόσπιτο / Camper</value>
+  </data>
+  <data xml:space="preserve" name="Acc_Pitch">
+    <value>Θέση σκηνής</value>
+  </data>
+  <data xml:space="preserve" name="Currency_MKD">
+    <value>MKD</value>
+  </data>
+  <data xml:space="preserve" name="PerNight">
+    <value>/ διανυκτέρευση</value>
+  </data>
+  <data xml:space="preserve" name="Val_Required">
+    <value>То πεδίο {0} είναι υποχρεωτικό.</value>
+  </data>
+  <data xml:space="preserve" name="Val_Email">
+    <value>Παρακαλούμε εισάγετε μια έγκυρη διεύθυνση email.</value>
+  </data>
+  <data xml:space="preserve" name="Val_Generic_Error">
+    <value>Λυπούμαστε, παρακαλούμε δοκιμάστε ξανά....</value>
+  </data>
+  <data xml:space="preserve" name="Js_Sending">
+    <value>Αποστολή...</value>
+  </data>
+  <data xml:space="preserve" name="Js_SendRequest">
+    <value>Αποστολή αιτήματος ↗</value>
+  </data>
+  <data xml:space="preserve" name="Login_Title">
+    <value>Σύνδεση</value>
+  </data>
+  <data xml:space="preserve" name="Register_Title">
+    <value>Εγγραφή</value>
+  </data>
+  <data xml:space="preserve" name="Email">
+    <value>Email</value>
+  </data>
+  <data xml:space="preserve" name="Password">
+    <value>Kωδικός πρόσβασης</value>
+  </data>
+  <data xml:space="preserve" name="ConfirmPassword">
+    <value>Επιβεβαίωση κωδικού</value>
+  </data>
+  <data xml:space="preserve" name="RememberMe">
+    <value>Να με θυμάσαι;</value>
+  </data>
+</root>

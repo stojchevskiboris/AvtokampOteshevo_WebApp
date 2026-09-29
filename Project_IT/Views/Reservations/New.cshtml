@@ -1,7 +1,9 @@
 @model Project_IT.Models.Reservation
 
 @{
-    ViewBag.Title = "Резервирај - Автокамп Отешево";
+    ViewBag.Title = Strings.Res_Meta_Title;
+    ViewBag.Description = Strings.Res_Meta_Desc;
+    var lang = CultureHelper.Current;
 }
 
 <div class="py-12 px-6 bg-cover bg-center bg-no-repeat relative"
@@ -14,13 +16,13 @@
         <!-- Header -->
         <div class="text-center mb-10">
             <span class="inline-block text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 font-body bg-black/40 text-emerald-300 backdrop-blur-md border border-white/10">
-                Резервација
+                @Strings.Res_Badge
             </span>
             <h1 class="text-3xl md:text-4xl text-white font-display font-bold drop-shadow-md">
-                Испрати барање за резервација
+                @Strings.Res_Title
             </h1>
             <p class="text-slate-100 mt-3 text-sm md:text-base font-body font-normal drop-shadow">
-                Пополнете ги податоците подолу за да испратите барање за резервација во Автокамп Отешево.
+                @Strings.Res_Sub
             </p>
         </div>
 
@@ -32,66 +34,76 @@
         {
             <div id="pricesCard" class="mb-6 bg-white/95 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-slate-100 shadow-xl font-body">
                 <div class="flex items-center justify-center mb-4">
-                    <span class="text-[11px] text-slate-400">Ценовник</span>
+                    <span class="text-[11px] text-slate-400">@Strings.Res_Prices_Title</span>
                 </div>
 
-                <div class="grid grid-cols-2  gap-3">
+                <div class="grid grid-cols-2 gap-3">
                     @if (prices.PriceBoxVisible1)
                     {
+                        string label = (lang == "en" && !string.IsNullOrEmpty(prices.LabelBungalow1.NameEn)) ? prices.LabelBungalow1.NameEn : prices.LabelBungalow1.Name;
+                        int eur = (int)Math.Round(prices.PricePerNightBungalow1 / 61.5m);
                         <div class="group relative overflow-hidden rounded-xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 text-center transition-all duration-200 hover:border-emerald-300 hover:shadow-md hover:-translate-y-0.5">
                             <div class="mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 group-hover:bg-emerald-100 transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;">
                                     <path d="M3 21h18M4 21V10l8-6 8 6v11M9 21v-6h6v6" />
                                 </svg>
                             </div>
-                            <span class="block text-[11px] text-slate-500 leading-tight mb-1">@prices.LabelBungalow1.Name</span>
-                            <span class="block text-base font-bold text-emerald-800">@prices.PricePerNightBungalow1.ToString("N0")<span class="text-[11px] font-medium text-slate-400"> ден.</span></span>
+                            <span class="block text-[11px] text-slate-500 leading-tight mb-1">@label</span>
+                            <span class="block text-base font-bold text-emerald-800">@prices.PricePerNightBungalow1.ToString("N0") <span class="text-[11px] font-medium text-slate-400">@Strings.Currency_MKD</span> <span class="text-xs text-slate-400 font-normal">(~@eur €)</span></span>
                         </div>
                     }
                     @if (prices.PriceBoxVisible2)
                     {
+                        string label = (lang == "en" && !string.IsNullOrEmpty(prices.LabelBungalow2.NameEn)) ? prices.LabelBungalow2.NameEn : prices.LabelBungalow2.Name;
+                        int eur = (int)Math.Round(prices.PricePerNightBungalow2 / 61.5m);
                         <div class="group relative overflow-hidden rounded-xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 text-center transition-all duration-200 hover:border-emerald-300 hover:shadow-md hover:-translate-y-0.5">
                             <div class="mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 group-hover:bg-emerald-100 transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;">
                                     <path d="M3 21h18M4 21V10l8-6 8 6v11M9 21v-6h6v6" />
                                 </svg>
                             </div>
-                            <span class="block text-[11px] text-slate-500 leading-tight mb-1">@prices.LabelBungalow2.Name</span>
-                            <span class="block text-base font-bold text-emerald-800">@prices.PricePerNightBungalow2.ToString("N0")<span class="text-[11px] font-medium text-slate-400"> ден.</span></span>
+                            <span class="block text-[11px] text-slate-500 leading-tight mb-1">@label</span>
+                            <span class="block text-base font-bold text-emerald-800">@prices.PricePerNightBungalow2.ToString("N0") <span class="text-[11px] font-medium text-slate-400">@Strings.Currency_MKD</span> <span class="text-xs text-slate-400 font-normal">(~@eur €)</span></span>
                         </div>
                     }
                     @if (prices.PriceBoxVisible3)
                     {
+                        string label = (lang == "en" && !string.IsNullOrEmpty(prices.LabelBungalow3.NameEn)) ? prices.LabelBungalow3.NameEn : prices.LabelBungalow3.Name;
+                        int eur = (int)Math.Round(prices.PricePerNightBungalow3 / 61.5m);
                         <div class="group relative overflow-hidden rounded-xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 text-center transition-all duration-200 hover:border-emerald-300 hover:shadow-md hover:-translate-y-0.5">
                             <div class="mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 group-hover:bg-emerald-100 transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;">
                                     <path d="M3 21h18M4 21V10l8-6 8 6v11M9 21v-6h6v6" />
                                 </svg>
                             </div>
-                            <span class="block text-[11px] text-slate-500 leading-tight mb-1">@prices.LabelBungalow3.Name</span>
-                            <span class="block text-base font-bold text-emerald-800">@prices.PricePerNightBungalow3.ToString("N0")<span class="text-[11px] font-medium text-slate-400"> ден.</span></span>
+                            <span class="block text-[11px] text-slate-500 leading-tight mb-1">@label</span>
+                            <span class="block text-base font-bold text-emerald-800">@prices.PricePerNightBungalow3.ToString("N0") <span class="text-[11px] font-medium text-slate-400">@Strings.Currency_MKD</span> <span class="text-xs text-slate-400 font-normal">(~@eur €)</span></span>
                         </div>
                     }
                     @if (prices.PriceBoxVisible4)
                     {
+                        string label = (lang == "en" && !string.IsNullOrEmpty(prices.LabelTrailer.NameEn)) ? prices.LabelTrailer.NameEn : prices.LabelTrailer.Name;
+                        int eur = (int)Math.Round(prices.PricePerNightTrailer / 61.5m);
                         <div class="group relative overflow-hidden rounded-xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 text-center transition-all duration-200 hover:border-emerald-300 hover:shadow-md hover:-translate-y-0.5">
                             <div class="mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 group-hover:bg-emerald-100 transition-colors">
                                 <svg fill="#047857" height="200px" width="200px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-46.08 -46.08 604.16 604.16" xml:space="preserve" stroke="#047857" stroke-width="5.12"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g transform="translate(1 1)"> <g> <g> <path d="M502.467,353.133h-55.625c17.451-24.241,27.566-52.678,29.628-82.439c0.482-0.886,0.903-1.853,1.25-2.895v-1.707 c0-1.707,0-4.267,0-6.827c0-4.267-0.853-8.533-0.853-12.8c-1.707-17.067-6.827-34.133-14.507-50.347 c-0.121-0.242-0.256-0.456-0.385-0.68c-0.968-2.049-1.966-4.098-3.028-6.146c-13.653-25.6-40.107-40.96-69.12-40.96H263.533 V139.8c0-14.507-11.093-25.6-25.6-25.6h-68.267c-14.507,0-25.6,11.093-25.6,25.6v8.533h-79.36 c-19.627,0-36.693,9.387-45.227,25.6C5.827,199.533-1,227.693-1,259.267C-1,290.84,5.827,319,19.48,344.6 c9.387,15.36,26.453,25.6,45.227,25.6h97.514c3.814,14.679,17.216,25.6,33.046,25.6c15.83,0,29.232-10.921,33.046-25.6h35.221 h102.4h63.147h64.853v17.067c0,5.12,3.413,8.533,8.533,8.533s8.533-3.413,8.533-8.533v-25.6 C511,356.547,507.587,353.133,502.467,353.133z M448.707,208.067c5.12,13.653,9.387,26.453,10.24,40.107 c0.853,3.413,0.853,7.68,0.853,11.093h-34.133c-5.12,0-8.533-3.413-8.533-8.533V216.6c0-5.12,3.413-8.533,8.533-8.533H448.707z M161.133,139.8c0-5.12,3.413-8.533,8.533-8.533h68.267c5.12,0,8.533,3.413,8.533,8.533v8.533h-85.333V139.8z M34.84,336.067 c-4.624-8.015-8.344-16.593-11.226-25.6H255v42.667h-26.453c-1.244-4.229-3.217-8.164-5.784-11.622 c-0.125-0.17-0.252-0.337-0.38-0.505c-0.139-0.181-0.281-0.36-0.423-0.538c-0.196-0.246-0.394-0.492-0.596-0.733 c-0.057-0.067-0.116-0.133-0.173-0.199c-0.733-0.857-1.508-1.677-2.322-2.458c-0.173-0.167-0.346-0.335-0.523-0.498 c-0.145-0.133-0.292-0.264-0.439-0.394c-0.276-0.247-0.556-0.49-0.84-0.729c-0.075-0.063-0.151-0.126-0.226-0.188 c-4.975-4.101-11.106-6.829-17.968-7.542c-0.071-0.008-0.141-0.016-0.212-0.023c-0.461-0.045-0.925-0.08-1.392-0.107 c-0.111-0.007-0.221-0.016-0.332-0.021c-0.553-0.026-1.109-0.043-1.67-0.043c-0.562,0-1.12,0.016-1.675,0.043 c-0.101,0.005-0.202,0.014-0.303,0.019c-0.489,0.027-0.976,0.065-1.46,0.112c-0.032,0.003-0.065,0.007-0.097,0.01 c-14.632,1.475-26.584,11.977-29.746,25.416h-97.28C51.907,353.133,40.813,346.307,34.84,336.067z M195.267,378.733 c-9.387,0-17.067-7.68-17.067-17.067s7.68-17.067,17.067-17.067s17.067,7.68,17.067,17.067S204.653,378.733,195.267,378.733z M272.067,225.133c0-5.12,3.413-8.533,8.533-8.533h68.267c5.12,0,8.533,3.413,8.533,8.533v128h-85.333V225.133z M374.467,353.133 v-128c0-14.507-11.093-25.6-25.6-25.6H280.6c-14.507,0-25.6,11.093-25.6,25.6V293.4H19.259 c-2.138-10.96-3.192-22.395-3.192-34.133c0-28.16,5.973-54.613,18.773-76.8c5.973-10.24,17.067-17.067,29.867-17.067H152.6H255 h134.827c20.597,0,39.142,9.553,50.77,25.6h-14.93c-14.507,0-25.6,11.093-25.6,25.6v34.133c0,14.507,11.093,25.6,25.6,25.6 h33.915c-3.493,28.033-15.448,54.782-33.915,76.8H374.467z"></path> <path d="M92.867,191H58.733c-14.507,0-25.6,11.093-25.6,25.6v34.133c0,14.507,11.093,25.6,25.6,25.6h34.133 c14.507,0,25.6-11.093,25.6-25.6V216.6C118.467,202.093,107.373,191,92.867,191z M101.4,250.733c0,5.12-3.413,8.533-8.533,8.533 H58.733c-5.12,0-8.533-3.413-8.533-8.533V216.6c0-5.12,3.413-8.533,8.533-8.533h34.133c5.12,0,8.533,3.413,8.533,8.533V250.733z"></path> <path d="M195.267,191h-34.133c-14.507,0-25.6,11.093-25.6,25.6v34.133c0,14.507,11.093,25.6,25.6,25.6h34.133 c14.507,0,25.6-11.093,25.6-25.6V216.6C220.867,202.093,209.773,191,195.267,191z M203.8,250.733c0,5.12-3.413,8.533-8.533,8.533 h-34.133c-5.12,0-8.533-3.413-8.533-8.533V216.6c0-5.12,3.413-8.533,8.533-8.533h34.133c5.12,0,8.533,3.413,8.533,8.533V250.733z "></path> <path d="M340.333,276.333H331.8c-5.12,0-8.533,3.413-8.533,8.533c0,5.12,3.413,8.533,8.533,8.533h8.533 c5.12,0,8.533-3.413,8.533-8.533C348.867,279.747,345.453,276.333,340.333,276.333z"></path> </g> </g> </g> </g></svg>
                             </div>
-                            <span class="block text-[11px] text-slate-500 leading-tight mb-1">@prices.LabelTrailer.Name</span>
-                            <span class="block text-base font-bold text-emerald-800">@prices.PricePerNightTrailer.ToString("N0")<span class="text-[11px] font-medium text-slate-400"> ден.</span></span>
+                            <span class="block text-[11px] text-slate-500 leading-tight mb-1">@label</span>
+                            <span class="block text-base font-bold text-emerald-800">@prices.PricePerNightTrailer.ToString("N0") <span class="text-[11px] font-medium text-slate-400">@Strings.Currency_MKD</span> <span class="text-xs text-slate-400 font-normal">(~@eur €)</span></span>
                         </div>
                     }
                     @if (prices.PriceBoxVisible5)
                     {
+                        string label = (lang == "en" && !string.IsNullOrEmpty(prices.LabelPitch.NameEn)) ? prices.LabelPitch.NameEn : prices.LabelPitch.Name;
+                        int eur = (int)Math.Round(prices.PitchFee / 61.5m);
                         <div class="group relative overflow-hidden rounded-xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 text-center transition-all duration-200 hover:border-emerald-300 hover:shadow-md hover:-translate-y-0.5">
                             <div class="mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 group-hover:bg-emerald-100 transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;">
                                     <path d="M12 3 3 21h18L12 3Zm0 6 5 12H7l5-12Z" />
                                 </svg>
                             </div>
-                            <span class="block text-[11px] text-slate-500 leading-tight mb-1">@prices.LabelPitch.Name</span>
-                            <span class="block text-base font-bold text-emerald-800">@prices.PitchFee.ToString("N0")<span class="text-[11px] font-medium text-slate-400"> ден.</span></span>
+                            <span class="block text-[11px] text-slate-500 leading-tight mb-1">@label</span>
+                            <span class="block text-base font-bold text-emerald-800">@prices.PitchFee.ToString("N0") <span class="text-[11px] font-medium text-slate-400">@Strings.Currency_MKD</span> <span class="text-xs text-slate-400 font-normal">(~@eur €)</span></span>
                         </div>
                     }
                 </div>
@@ -104,35 +116,35 @@
                 <!-- Name -->
                 <div class="flex flex-col gap-1.5">
                     <label for="fullName" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
-                        * Име и презиме
+                        * @Strings.Res_FullName
                     </label>
-                    <input type="text" id="fullName" required="required" placeholder="Пр. Петар Петровски"
+                    <input type="text" id="fullName" required="required" placeholder="@Strings.Res_Placeholder_Name"
                            class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
                 </div>
 
                 <!-- Email -->
                 <div class="flex flex-col gap-1.5">
                     <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
-                        * E-mail адреса
+                        * @Strings.Res_Email
                     </label>
-                    <input type="email" id="email" required="required" placeholder="vasiot@email.com"
+                    <input type="email" id="email" required="required" placeholder="@Strings.Res_Placeholder_Email"
                            class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
-                    <span id="emailError" class="text-xs text-red-500 hidden font-body">Ве молиме внесете валидна е-маил адреса.</span>
+                    <span id="emailError" class="text-xs text-red-500 hidden font-body">@Strings.Val_Email</span>
                 </div>
 
                 <!-- Phone -->
                 <div class="flex flex-col gap-1.5">
                     <label for="phone" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
-                        * Телефон
+                        * @Strings.Res_Phone
                     </label>
-                    <input type="tel" id="phone" required="required" placeholder="07X XXX XXX"
+                    <input type="tel" id="phone" required="required" placeholder="@Strings.Res_Placeholder_Phone"
                            class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
                 </div>
 
                 <!-- Guests -->
                 <div class="flex flex-col gap-1.5">
                     <label for="guests" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
-                        * Број на лица
+                        * @Strings.Res_Guests
                     </label>
                     <input type="number" id="guests" min="1" max="10" required="required" placeholder="2"
                            class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body" />
@@ -141,20 +153,20 @@
                 <!-- Accommodation -->
                 <div class="flex flex-col gap-1.5 md:col-span-2">
                     <label for="accommodationType" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
-                        * Сместување
+                        * @Strings.Res_Accommodation
                     </label>
                     <select id="accommodationType" required="required"
                             class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body bg-white">
-                        <option value="Bungalov" selected="selected">Бунгалов</option>
-                        <option value="Prikolka">Приколка</option>
-                        <option value="Plac za shator">Плац за шатор</option>
+                        <option value="Bungalov" selected="selected">@Strings.Acc_Bungalow</option>
+                        <option value="Prikolka">@Strings.Acc_Trailer</option>
+                        <option value="Plac za shator">@Strings.Acc_Pitch</option>
                     </select>
                 </div>
 
                 <!-- Check-in Date -->
                 <div class="flex flex-col gap-1.5">
                     <label for="checkInDate" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
-                        Дата на пристигнување
+                        @Strings.Res_CheckIn
                     </label>
                     <input type="date" id="checkInDate"
                            class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer font-body" />
@@ -163,7 +175,7 @@
                 <!-- Check-out Date -->
                 <div class="flex flex-col gap-1.5">
                     <label for="checkOutDate" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
-                        Дата на заминување
+                        @Strings.Res_CheckOut
                     </label>
                     <input type="date" id="checkOutDate"
                            class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer font-body" />
@@ -173,25 +185,25 @@
             <!-- Message -->
             <div class="flex flex-col gap-1.5">
                 <label for="info" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 font-body">
-                    Дополнителни барања
+                    @Strings.Res_Info
                 </label>
-                <textarea id="info" rows="3" placeholder="Напомени или дополнителни барања..."
+                <textarea id="info" rows="3" placeholder="@Strings.Res_Placeholder_Info"
                           class="min-w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors font-body resize-y"></textarea>
             </div>
 
             <!-- Global Error Banner -->
             <div id="globalError" class="hidden p-4 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm font-body text-center">
-                Извинете, ве молиме обидете се повторно....
+                @Strings.Val_Generic_Error
             </div>
 
             <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
                 <p class="text-xs text-slate-400 font-body">
-                    Полињата означени со * се задолжителни.
+                    @Strings.Res_Required_Notice
                 </p>
                 <button type="button" id="submitBtn"
                         class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl text-white font-semibold text-sm transition-all duration-200 hover:opacity-90 hover:shadow-xl active:scale-95 cursor-pointer bg-brand-gradient shadow-md font-body disabled:opacity-50 disabled:cursor-not-allowed"
                         style="box-shadow: 0 4px 14px rgba(26,61,43,0.35);">
-                    Испрати барање ↗
+                    @Strings.Res_Submit ↗
                 </button>
             </div>
         </div>
@@ -199,7 +211,7 @@
         <!-- Back Link -->
         <div class="mt-6 text-center">
             <a href='@Url.Action("Index", "Home")' class="inline-flex items-center gap-2 text-slate-900 bg-white/80 hover:bg-white px-4 py-2 rounded-full text-sm font-semibold transition font-body no-underline shadow-sm backdrop-blur-sm">
-                ← Назад до Почетна
+                @Strings.Res_Back_Home
             </a>
         </div>
     </div>
@@ -310,7 +322,7 @@
         function resetSubmitState() {
             if (submitBtnElem) {
                 submitBtnElem.disabled = false;
-                submitBtnElem.innerHTML = 'Испрати барање ↗';
+                submitBtnElem.innerHTML = (window.i18n && window.i18n.sendRequest) ? window.i18n.sendRequest : 'Испрати барање ↗';
             }
         }
 
@@ -330,7 +342,6 @@
         checkInDateElem.setAttribute('min', todayStr);
         checkOutDateElem.setAttribute('min', todayStr);
 
-        // Prepopulate parameters
         var urlParams = new URLSearchParams(window.location.search);
         var paramCheckIn = urlParams.get('checkIn');
         var paramCheckOut = urlParams.get('checkOut');
@@ -401,14 +412,14 @@
 
             if (!isValid) return;
 
-            // Lock submit button
             submitBtnElem.disabled = true;
+            var sendingText = (window.i18n && window.i18n.sending) ? window.i18n.sending : 'Испраќање...';
             submitBtnElem.innerHTML = `
                 <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Испраќање...
+                ` + sendingText + `
             `;
 
             var formattedCheckIn = checkInDateElem.value ? checkInDateElem.value.substr(8, 2) + "." + checkInDateElem.value.substr(5, 2) + "." + checkInDateElem.value.substr(0, 4) : 'Null';
@@ -422,7 +433,6 @@
             const localeVal = navigator.language || "";
             const userAgentVal = navigator.userAgent || "";
 
-            // Populate hidden form for EmailJS
             document.getElementById("form_customer_name").value = fullNameElem.value;
             document.getElementById("form_customer_email").value = emailVal;
             document.getElementById("form_phone").value = phoneElem.value;
@@ -437,23 +447,21 @@
             document.getElementById("form_user_version").value = versionVal;
             document.getElementById("form_user_referrer").value = referrerVal;
 
-            document.getElementById("from_name").value = " Име и презиме: " + fullNameElem.value +
+            document.getElementById("from_name").value = " Name: " + fullNameElem.value +
                 "\n Email: " + emailVal +
-                "\n Телефон: " + phoneElem.value +
-                "\n Број на лица: " + guestsElem.value +
-                "\n Сместување: " + accommodationTypeElem.value +
-                "\n Дата на пристигнување: " + formattedCheckIn +
-                "\n Дата на заминување: " + formattedCheckOut;
+                "\n Phone: " + phoneElem.value +
+                "\n Guests: " + guestsElem.value +
+                "\n Accommodation: " + accommodationTypeElem.value +
+                "\n Check-in: " + formattedCheckIn +
+                "\n Check-out: " + formattedCheckOut;
             document.getElementById("reply_to").value = emailVal;
 
             const serviceID = 'default_service';
             const templateID = 'template_bjhyjh8';
             const formElem = document.getElementById('form');
 
-            // Step 1: Send via EmailJS
             emailjs.sendForm(serviceID, templateID, formElem)
                 .then(function () {
-                    // Step 2: Save to backend database
                     const modelPayload = {
                         FullName: fullNameElem.value,
                         Email: emailVal,
@@ -484,23 +492,24 @@
                     if (response && !response.ok) {
                         throw new Error('Database save failed');
                     }
-                    // Step 3: Success UI
                     const formCardElem = document.getElementById('formCard');
+                    var thankYouTitle = (window.i18n && window.i18n.thankYou) ? window.i18n.thankYou : 'Ви благодариме!';
+                    var successMessage = (window.i18n && window.i18n.successMsg) ? window.i18n.successMsg : 'Вашето барање е успешно испратено.';
                     formCardElem.innerHTML = `
                         <div class="text-center py-12 px-4 space-y-4">
                             <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-sm">
                                 ✓
                             </div>
                             <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-display">
-                                Ви благодариме!
+                                ` + thankYouTitle + `
                             </h2>
                             <p class="text-slate-600 font-body text-base max-w-md mx-auto leading-relaxed">
-                                Вашето барање за резервација е успешно испратено. Ќе ве контактираме во најкраток можен рок.
+                                ` + successMessage + `
                             </p>
                         </div>
                     `;
                     const pricesCardElem = document.getElementById('pricesCard');
-                    pricesCardElem.classList.add("hidden");
+                    if (pricesCardElem) pricesCardElem.classList.add("hidden");
 
                 })
                 .catch(function (err) {

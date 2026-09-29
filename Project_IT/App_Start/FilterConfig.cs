@@ -1,5 +1,6 @@
-﻿using System.Web;
+using System.Web;
 using System.Web.Mvc;
+using Project_IT.Filters;
 
 namespace Project_IT
 {
@@ -8,7 +9,7 @@ namespace Project_IT
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            //filters.Add(new AuthorizeAttribute());
+            filters.Add(new LocalizationAttribute());
         }
     }
 }

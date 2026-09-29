@@ -1,0 +1,426 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data xml:space="preserve" name="Site_Name">
+    <value>Autocamp Otesevo</value>
+  </data>
+  <data xml:space="preserve" name="Site_Tagline">
+    <value>Kemping i park kempingowy nad Jeziorem Prespa</value>
+  </data>
+  <data xml:space="preserve" name="Site_Footer_Desc">
+    <value>Naturalny raj na brzegu Jeziora Prespa. Przyjedź i doświadcz piękna naszego kempingu.</value>
+  </data>
+  <data xml:space="preserve" name="Site_Footer_Rights">
+    <value>Autocamp Otesevo. Wszelkie prawa zastrzeżone.</value>
+  </data>
+  <data xml:space="preserve" name="Site_Footer_Location">
+    <value>Jezioro Prespa, Macedonia Północna</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Home">
+    <value>Strona główna</value>
+  </data>
+  <data xml:space="preserve" name="Nav_News">
+    <value>Aktualności i oferty</value>
+  </data>
+  <data xml:space="preserve" name="Nav_About">
+    <value>O nas</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Contact">
+    <value>Kontakt</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Book">
+    <value>Zarezerwuj</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Admin">
+    <value>Administracja</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Reservations">
+    <value>Rezerwacje</value>
+  </data>
+  <data xml:space="preserve" name="Nav_EditNews">
+    <value>Edytuj wiadomości</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Settings">
+    <value>Ustawienia</value>
+  </data>
+  <data xml:space="preserve" name="Nav_FileManager">
+    <value>Menedżer plików</value>
+  </data>
+  <data xml:space="preserve" name="Nav_LogIn">
+    <value>Zaloguj się</value>
+  </data>
+  <data xml:space="preserve" name="Nav_LogOff">
+    <value>Wyloguj се</value>
+  </data>
+  <data xml:space="preserve" name="Nav_Register">
+    <value>Zarejestruj się</value>
+  </data>
+  <data xml:space="preserve" name="Home_Meta_Title">
+    <value>Autocamp Otesevo - Strona główna | Kemping Jezioro Prespa</value>
+  </data>
+  <data xml:space="preserve" name="Home_Meta_Desc">
+    <value>Zarezerwuj pobyt w Autocamp Otesevo nad Jeziorem Prespa. Ciesz się kempingiem nad brzegiem jeziora.</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Badge">
+    <value>Jezioro Prespa, Macedonia Północna</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Title_1">
+    <value>Witamy w</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Title_2">
+    <value>Autocamp Otesevo</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Sub_1">
+    <value>Twoje naturalne schronienie na brzegu</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Sub_2">
+    <value>Jeziora Prespa</value>
+  </data>
+  <data xml:space="preserve" name="Home_Hero_Cta">
+    <value>Odkryj kemping</value>
+  </data>
+  <data xml:space="preserve" name="Home_CheckIn">
+    <value>Przyjazd</value>
+  </data>
+  <data xml:space="preserve" name="Home_CheckOut">
+    <value>Wyjazd</value>
+  </data>
+  <data xml:space="preserve" name="Home_Guests">
+    <value>Goście</value>
+  </data>
+  <data xml:space="preserve" name="Home_Guest_Singular">
+    <value>1 gość</value>
+  </data>
+  <data xml:space="preserve" name="Home_Guest_Plural">
+    <value>{0} gości</value>
+  </data>
+  <data xml:space="preserve" name="Home_Search">
+    <value>Szukaj</value>
+  </data>
+  <data xml:space="preserve" name="About_Badge">
+    <value>O nas</value>
+  </data>
+  <data xml:space="preserve" name="About_Hero_Title_1">
+    <value>Gdzie natura</value>
+  </data>
+  <data xml:space="preserve" name="About_Hero_Title_2">
+    <value>spotyka się z komfortem</value>
+  </data>
+  <data xml:space="preserve" name="About_Meta_Title">
+    <value>O nas - Autocamp Otesevo</value>
+  </data>
+  <data xml:space="preserve" name="About_Meta_Desc">
+    <value>Odkryj historię i naturę Autocamp Otesevo nad Jeziorem Prespa.</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_P1">
+    <value>Autocamp Otesevo leży na zachodnim brzegu Jeziora Prespa, otoczony starymi lasami i unikalną roślinnością.</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_P2">
+    <value>Z ponad 50-letnią tradycją oferujemy domki, wyposażone parcele kempingowe i bezpośredni dostęp do plaży.</value>
+  </data>
+  <data xml:space="preserve" name="About_View_Prices">
+    <value>Zobacz cennik</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_Badge">
+    <value>Nasza historia</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_Heading">
+    <value>Tradycja i miłość do natury</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_Full1">
+    <value>Autocamp Otesevo powstał z wizją oferowania wszystkim miłośnikom przyrody autentycznych wrażeń nad Jeziorem Prespa.</value>
+  </data>
+  <data xml:space="preserve" name="About_Story_Full2">
+    <value>Stale ulepszamy nasze obiekty — od komfortowych domków po nowoczesne parcele kempingowe.</value>
+  </data>
+  <data xml:space="preserve" name="About_Contact_Us">
+    <value>Skontaktuj się z nami</value>
+  </data>
+  <data xml:space="preserve" name="About_Offerings_Title">
+    <value>Co oferujemy w Autocamp Otesevo</value>
+  </data>
+  <data xml:space="preserve" name="About_Offerings_Sub">
+    <value>Nowoczesne udogodnienia i naturalne otoczenie dla niezapomnianych chwil.</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Nature_Title">
+    <value>Nienaruszona natura</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Nature_Desc">
+    <value>W otoczeniu starych lasów i czystego górskiego powietrza</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Bungalows_Title">
+    <value>Komfortowe domki</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Bungalows_Desc">
+    <value>Przytulne i nowoczesnie wyposażone domki dla niezapomnianych wakacji</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Health_Title">
+    <value>Naturalne uzdrowisko</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Health_Desc">
+    <value>Unikalny mikroklimat i czyste powietrze regenerujące ciało i umysł</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Peace_Title">
+    <value>Spokojne otoczenie</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Peace_Desc">
+    <value>Idealna ucieczka od zgiełku miasta i codziennego stresu</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Beach_Title">
+    <value>Prywatna plaża</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Beach_Desc">
+    <value>Bezpośredni dostęp do plaży nad Jeziorem Prespa do kąpieli i odpoczynku</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Pitches_Title">
+    <value>Miejsca kempingowe</value>
+  </data>
+  <data xml:space="preserve" name="Feature_Pitches_Desc">
+    <value>Uporządkowane parcele na namioty i kampery z dostępem do prądu i sanitariatów</value>
+  </data>
+  <data xml:space="preserve" name="About_CTA_Title">
+    <value>Gotowy na niezapomniane wakacje?</value>
+  </data>
+  <data xml:space="preserve" name="About_CTA_Sub">
+    <value>Zarezerwuj swoje ulubione miejsce już dziś. Chętnie odpowiemy na Twoje pytania.</value>
+  </data>
+  <data xml:space="preserve" name="Stats_Years">
+    <value>Lata doświadczenia</value>
+  </data>
+  <data xml:space="preserve" name="Stats_Bungalows">
+    <value>Domki</value>
+  </data>
+  <data xml:space="preserve" name="Stats_Guests">
+    <value>Zadowoleni goście</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Badge">
+    <value>Galeria</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Title">
+    <value>Zobacz nasze piękno</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide1_Title">
+    <value>Domki</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide1_Desc">
+    <value>Znajdź swój spokój między górą a falami</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide2_Title">
+    <value>Domki</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide2_Desc">
+    <value>Ciesz się zapachem róż i spokojem Prespy</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide3_Title">
+    <value>Kemping w czystej zieleni</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide3_Desc">
+    <value>Rozbij swój namiot pod gęstym cieniem drzew</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide4_Title">
+    <value>Idealne dla Twojej przyczepy</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide4_Desc">
+    <value>Znajdź swoje idealne miejsce kempingowe</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide5_Title">
+    <value>Przygoda bez granic</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide5_Desc">
+    <value>Doskonałe miejsce na kamper z widokiem na jezioro</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide6_Title">
+    <value>Chwile do zapamiętania</value>
+  </data>
+  <data xml:space="preserve" name="Gallery_Slide6_Desc">
+    <value>Gdzie uśmiechy rodziny tworzą doskonałe wspomnienia</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Meta_Title">
+    <value>Kontakt - Autocamp Otesevo</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Meta_Desc">
+    <value>Skontaktuj się z Autocamp Otesevo w sprawie rezerwacji i pytań.</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Badge">
+    <value>Informacje kontaktowe</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Title_1">
+    <value>Skontaktuj się z nami i</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Title_2">
+    <value>Odwiedź nas</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Sub">
+    <value>Jesteśmy tu, aby odpowiedzieć na Twoje pytania dotyczące dostępności i rezerwacji.</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Address_Label">
+    <value>Adres</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Address_Val">
+    <value>Miejscowość turystyczna Otesevo, Resen 7310, Macedonia Północna</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Email_Label">
+    <value>Informacje i rezerwacje</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Phone_Label">
+    <value>Telefon kontaktowy</value>
+  </data>
+  <data xml:space="preserve" name="Contact_Social_Label">
+    <value>Śledź nas w mediach społecznościowych</value>
+  </data>
+  <data xml:space="preserve" name="Res_Meta_Title">
+    <value>Rezerwuj - Autocamp Otesevo</value>
+  </data>
+  <data xml:space="preserve" name="Res_Meta_Desc">
+    <value>Wyślij zapytanie o rezerwację domków lub miejsc kempingowych w Autocamp Otesevo.</value>
+  </data>
+  <data xml:space="preserve" name="Res_Badge">
+    <value>Rezerwacja</value>
+  </data>
+  <data xml:space="preserve" name="Res_Title">
+    <value>Wyślij zapytanie o rezerwację</value>
+  </data>
+  <data xml:space="preserve" name="Res_Sub">
+    <value>Wypełnij poniższe dane, aby wysłać zapytanie o rezerwację.</value>
+  </data>
+  <data xml:space="preserve" name="Res_Prices_Title">
+    <value>Cennik</value>
+  </data>
+  <data xml:space="preserve" name="Res_FullName">
+    <value>Imię i nazwisko</value>
+  </data>
+  <data xml:space="preserve" name="Res_Email">
+    <value>Adres e-mail</value>
+  </data>
+  <data xml:space="preserve" name="Res_Phone">
+    <value>Numer telefonu</value>
+  </data>
+  <data xml:space="preserve" name="Res_Guests">
+    <value>Liczba osób</value>
+  </data>
+  <data xml:space="preserve" name="Res_Accommodation">
+    <value>Zakwaterowanie</value>
+  </data>
+  <data xml:space="preserve" name="Res_CheckIn">
+    <value>Data przyjazdu</value>
+  </data>
+  <data xml:space="preserve" name="Res_CheckOut">
+    <value>Data wyjazdu</value>
+  </data>
+  <data xml:space="preserve" name="Res_Info">
+    <value>Dodatkowe uwagi</value>
+  </data>
+  <data xml:space="preserve" name="Res_Submit">
+    <value>Wyślij zapytanie</value>
+  </data>
+  <data xml:space="preserve" name="Res_Sending">
+    <value>Wysyłanie...</value>
+  </data>
+  <data xml:space="preserve" name="Res_Success_Title">
+    <value>Dziękujemy!</value>
+  </data>
+  <data xml:space="preserve" name="Res_Success_Msg">
+    <value>Twoje zapytanie o rezerwację zostało wysłane pomyślnie. Skontaktujemy się z Tobą.</value>
+  </data>
+  <data xml:space="preserve" name="Res_Required_Notice">
+    <value>Pola oznaczone * są wymagane.</value>
+  </data>
+  <data xml:space="preserve" name="Res_Back_Home">
+    <value>← Powrót do strony głównej</value>
+  </data>
+  <data xml:space="preserve" name="Res_Placeholder_Name">
+    <value>np. Jan Kowalski</value>
+  </data>
+  <data xml:space="preserve" name="Res_Placeholder_Email">
+    <value>twoj@email.pl</value>
+  </data>
+  <data xml:space="preserve" name="Res_Placeholder_Phone">
+    <value>+389 7X XXX XXX</value>
+  </data>
+  <data xml:space="preserve" name="Res_Placeholder_Info">
+    <value>Uwagi lub specjalne życzenia...</value>
+  </data>
+  <data xml:space="preserve" name="News_Meta_Title">
+    <value>Aktualności i oferty - Autocamp Otesevo</value>
+  </data>
+  <data xml:space="preserve" name="News_Meta_Desc">
+    <value>Najnowsze wiadomości i oferty z Autocamp Otesevo.</value>
+  </data>
+  <data xml:space="preserve" name="News_Badge">
+    <value>Aktualności i oferty</value>
+  </data>
+  <data xml:space="preserve" name="News_Title">
+    <value>Bądź na bieżąco</value>
+  </data>
+  <data xml:space="preserve" name="News_Sub">
+    <value>Odkryj najnowsze wiadomości i oferty w Autocamp Otesevo.</value>
+  </data>
+  <data xml:space="preserve" name="News_ReadMore">
+    <value>Czytaj więcej →</value>
+  </data>
+  <data xml:space="preserve" name="News_NoItems">
+    <value>Obecnie brak opublikowanych wiadomości.</value>
+  </data>
+  <data xml:space="preserve" name="News_PublishedOn">
+    <value>Opublikowano</value>
+  </data>
+  <data xml:space="preserve" name="Acc_Bungalow">
+    <value>Domek</value>
+  </data>
+  <data xml:space="preserve" name="Acc_Trailer">
+    <value>Przyczepa / Kamper</value>
+  </data>
+  <data xml:space="preserve" name="Acc_Pitch">
+    <value>Miejsce na namiot</value>
+  </data>
+  <data xml:space="preserve" name="Currency_MKD">
+    <value>MKD</value>
+  </data>
+  <data xml:space="preserve" name="PerNight">
+    <value>/ noc</value>
+  </data>
+  <data xml:space="preserve" name="Val_Required">
+    <value>Pole {0} jest wymagane.</value>
+  </data>
+  <data xml:space="preserve" name="Val_Email">
+    <value>Wprowadź prawidłowy adres e-mail.</value>
+  </data>
+  <data xml:space="preserve" name="Val_Generic_Error">
+    <value>Przepraszamy, spróbuj ponownie....</value>
+  </data>
+  <data xml:space="preserve" name="Js_Sending">
+    <value>Wysyłanie...</value>
+  </data>
+  <data xml:space="preserve" name="Js_SendRequest">
+    <value>Wyślij zapytanie ↗</value>
+  </data>
+  <data xml:space="preserve" name="Login_Title">
+    <value>Logowanie</value>
+  </data>
+  <data xml:space="preserve" name="Register_Title">
+    <value>Rejestracja</value>
+  </data>
+  <data xml:space="preserve" name="Email">
+    <value>E-mail</value>
+  </data>
+  <data xml:space="preserve" name="Password">
+    <value>Hasło</value>
+  </data>
+  <data xml:space="preserve" name="ConfirmPassword">
+    <value>Potwierdź hasło</value>
+  </data>
+  <data xml:space="preserve" name="RememberMe">
+    <value>Zapamiętaj mnie?</value>
+  </data>
+</root>
