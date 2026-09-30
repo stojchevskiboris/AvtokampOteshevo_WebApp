@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -422,5 +422,602 @@
   </data>
   <data xml:space="preserve" name="RememberMe">
     <value>Να με θυμάσαι;</value>
+  </data>
+  <data name="Nav_AddAdmin" xml:space="preserve">
+    <value>Προσθήκη διαχειριστή</value>
+  </data>
+  <data name="Nav_Hello" xml:space="preserve">
+    <value>Γεια σου, {0}!</value>
+  </data>
+  <data name="Error_Meta_Title" xml:space="preserve">
+    <value>Προέκυψε σφάλμα - Autocamp Otesevo</value>
+  </data>
+  <data name="Error_Title" xml:space="preserve">
+    <value>Προέκυψε σφάλμα</value>
+  </data>
+  <data name="Error_Message" xml:space="preserve">
+    <value>Ζητούμε συγγνώμη, προέκυψε ένα μη αναμενόμενο σφάλμα κατά την επεξεργασία του αιτήματός σας. Παρακαλούμε δοκιμάστε ξανά αργότερα ή επιστρέψτε στην αρχική σελίδα.</value>
+  </data>
+  <data name="Error_BackHome" xml:space="preserve">
+    <value>← Πίσω στην Αρχική</value>
+  </data>
+  <data name="Lockout_Meta_Title" xml:space="preserve">
+    <value>Κλειδωμένος λογαριασμός - Autocamp Otesevo</value>
+  </data>
+  <data name="Lockout_Title" xml:space="preserve">
+    <value>Κλειδωμένος λογαριασμός.</value>
+  </data>
+  <data name="Lockout_Message" xml:space="preserve">
+    <value>Αυτός ο λογαριασμός έχει κλειδωθεί, παρακαλούμε δοκιμάστε ξανά αργότερα.</value>
+  </data>
+  <data name="AdminFileManager_Meta_Title" xml:space="preserve">
+    <value>Διαχείριση — Διαχειριστής Αρχείων</value>
+  </data>
+  <data name="AdminFileManager_Heading" xml:space="preserve">
+    <value>Διαχειριστής Αρχείων</value>
+  </data>
+  <data name="AdminFileManager_Subheading" xml:space="preserve">
+    <value>Διαχείριση όλων των αρχείων και καταλόγων στο</value>
+  </data>
+  <data name="AdminFileManager_Path" xml:space="preserve">
+    <value>Διαδρομή:</value>
+  </data>
+  <data name="AdminFileManager_CopyPathTitle" xml:space="preserve">
+    <value>Αντιγραφή διαδρομής</value>
+  </data>
+  <data name="AdminFileManager_CopyPathBtn" xml:space="preserve">
+    <value>Αντιγραφή Διαδρομής</value>
+  </data>
+  <data name="AdminFileManager_SearchPlaceholder" xml:space="preserve">
+    <value>Αναζήτηση αρχείων...</value>
+  </data>
+  <data name="AdminFileManager_EmptyFolder" xml:space="preserve">
+    <value>Αυτός ο φάκελος είναι άδειος ή δεν βρέθηκαν αρχεία που να ταιριάζουν με την αναζήτησή σας.</value>
+  </data>
+  <data name="AdminFileManager_ColName" xml:space="preserve">
+    <value>Όνομα</value>
+  </data>
+  <data name="AdminFileManager_ColType" xml:space="preserve">
+    <value>Τύπος</value>
+  </data>
+  <data name="AdminFileManager_ColSize" xml:space="preserve">
+    <value>Μέγεθος</value>
+  </data>
+  <data name="AdminFileManager_ColModified" xml:space="preserve">
+    <value>Τροποποιήθηκε</value>
+  </data>
+  <data name="AdminFileManager_ColActions" xml:space="preserve">
+    <value>Ενέργειες</value>
+  </data>
+  <data name="AdminFileManager_ActionDetails" xml:space="preserve">
+    <value>Λεπτομέρειες</value>
+  </data>
+  <data name="AdminFileManager_ActionRename" xml:space="preserve">
+    <value>Μετονομασία</value>
+  </data>
+  <data name="AdminFileManager_ActionDelete" xml:space="preserve">
+    <value>Διαγραφή</value>
+  </data>
+  <data name="AdminFileManager_Prev" xml:space="preserve">
+    <value>Προηγούμενο</value>
+  </data>
+  <data name="AdminFileManager_Next" xml:space="preserve">
+    <value>Επόμενο</value>
+  </data>
+  <data name="AdminFileManager_UploadFile" xml:space="preserve">
+    <value>Μεταφόρτωση Αρχείου</value>
+  </data>
+  <data name="AdminFileManager_ChooseFile" xml:space="preserve">
+    <value>Επιλέξτε αρχείο (.jpg, .png, .gif, .webp, .mp4, .webm, .ogg, .pdf, .css, .js, .txt):</value>
+  </data>
+  <data name="AdminFileManager_Cancel" xml:space="preserve">
+    <value>Aκύρωση</value>
+  </data>
+  <data name="AdminFileManager_Upload" xml:space="preserve">
+    <value>Μεταφόρτωση</value>
+  </data>
+  <data name="AdminFileManager_CreateFolder" xml:space="preserve">
+    <value>Δημιουργία Νέου Φακέλου</value>
+  </data>
+  <data name="AdminFileManager_FolderName" xml:space="preserve">
+    <value>Όνομα φακέλου:</value>
+  </data>
+  <data name="AdminFileManager_FolderNamePlaceholder" xml:space="preserve">
+    <value>Παράδειγμα: gallery</value>
+  </data>
+  <data name="AdminFileManager_Create" xml:space="preserve">
+    <value>Δημιουργία</value>
+  </data>
+  <data name="AdminFileManager_NewName" xml:space="preserve">
+    <value>Νέο όνομα:</value>
+  </data>
+  <data name="AdminFileManager_Save" xml:space="preserve">
+    <value>Αποθήκευση</value>
+  </data>
+  <data name="AdminFileManager_ConfirmDeleteTitle" xml:space="preserve">
+    <value>Επιβεβαίωση Διαγραφής</value>
+  </data>
+  <data name="AdminFileManager_ConfirmDeleteMsg" xml:space="preserve">
+    <value>Είστε βέβαιοι ότι θέλετε να διαγράψετε</value>
+  </data>
+  <data name="AdminFileManager_FileDetailsTitle" xml:space="preserve">
+    <value>Λεπτομέρειες Αρχείου</value>
+  </data>
+  <data name="AdminFileManager_DetailName" xml:space="preserve">
+    <value>Όνομα:</value>
+  </data>
+  <data name="AdminFileManager_DetailPath" xml:space="preserve">
+    <value>Διαδρομή:</value>
+  </data>
+  <data name="AdminFileManager_DetailSize" xml:space="preserve">
+    <value>Μέγεθος:</value>
+  </data>
+  <data name="AdminFileManager_DetailResolution" xml:space="preserve">
+    <value>Ανάλυση:</value>
+  </data>
+  <data name="AdminFileManager_DetailCreated" xml:space="preserve">
+    <value>Δημιουργήθηκε στις:</value>
+  </data>
+  <data name="AdminFileManager_DetailModified" xml:space="preserve">
+    <value>Τροποποιήθηκε στις:</value>
+  </data>
+  <data name="AdminFileManager_Close" xml:space="preserve">
+    <value>Κλείσιμο</value>
+  </data>
+  <data name="AdminRes_Meta_Title" xml:space="preserve">
+    <value>Διαχείριση — Κρατήσεις</value>
+  </data>
+  <data name="AdminRes_Title" xml:space="preserve">
+    <value>Διαχείριση Κρατήσεων</value>
+  </data>
+  <data name="AdminRes_Subtitle" xml:space="preserve">
+    <value>Επισκόπηση και διαχείριση όλων των ληφθεισών κρατήσεων</value>
+  </data>
+  <data name="AdminRes_Empty" xml:space="preserve">
+    <value>Δεν βρέθηκαν κρατήσεις.</value>
+  </data>
+  <data name="AdminRes_Accommodation" xml:space="preserve">
+    <value>Διαμονή:</value>
+  </data>
+  <data name="AdminRes_Period" xml:space="preserve">
+    <value>Περίοδος:</value>
+  </data>
+  <data name="AdminRes_Details" xml:space="preserve">
+    <value>Λεπτομέρειες:</value>
+  </data>
+  <data name="AdminRes_Created" xml:space="preserve">
+    <value>Δημιουργήθηκε:</value>
+  </data>
+  <data name="AdminRes_Edit" xml:space="preserve">
+    <value>Επεξεργασία</value>
+  </data>
+  <data name="AdminRes_ViewDetails" xml:space="preserve">
+    <value>Λεπτομέρειες</value>
+  </data>
+  <data name="AdminRes_Delete" xml:space="preserve">
+    <value>Διαγραφή</value>
+  </data>
+  <data name="AdminRes_ColCreated" xml:space="preserve">
+    <value>Δημιουργήθηκε</value>
+  </data>
+  <data name="AdminRes_ColClient" xml:space="preserve">
+    <value>Πελάτης</value>
+  </data>
+  <data name="AdminRes_ColContact" xml:space="preserve">
+    <value>Επικοινωνία</value>
+  </data>
+  <data name="AdminRes_ColAccommodation" xml:space="preserve">
+    <value>Διαμονή</value>
+  </data>
+  <data name="AdminRes_ColPeriod" xml:space="preserve">
+    <value>Περίοδος</value>
+  </data>
+  <data name="AdminRes_ColStatus" xml:space="preserve">
+    <value>Κατάσταση</value>
+  </data>
+  <data name="AdminRes_ColActions" xml:space="preserve">
+    <value>Ενέργειες</value>
+  </data>
+  <data name="AdminRes_NightsGuestsFormat" xml:space="preserve">
+    <value>{0} διανυκτερεύσεις, {1} επισκέπτες</value>
+  </data>
+  <data name="AdminRes_Create_Meta_Title" xml:space="preserve">
+    <value>Δημιουργία Κράτησης — Διαχείριση</value>
+  </data>
+  <data name="AdminRes_BackToList" xml:space="preserve">
+    <value>← Πίσω στη Λίστα</value>
+  </data>
+  <data name="AdminRes_Create_Title" xml:space="preserve">
+    <value>Δημιουργία Νέας Κράτησης</value>
+  </data>
+  <data name="AdminRes_Edit_Meta_Title" xml:space="preserve">
+    <value>Επεξεργασία Κράτησης — Διαχείριση</value>
+  </data>
+  <data name="AdminRes_Edit_Title" xml:space="preserve">
+    <value>Επεξεργασία Κράτησης</value>
+  </data>
+  <data name="AdminRes_Delete_Meta_Title" xml:space="preserve">
+    <value>Διαγραφή Κράτησης — Διαχείριση</value>
+  </data>
+  <data name="AdminRes_Delete_Title" xml:space="preserve">
+    <value>Διαγραφή Κράτησης</value>
+  </data>
+  <data name="AdminRes_Delete_Confirm" xml:space="preserve">
+    <value>Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτήν την κράτηση;</value>
+  </data>
+  <data name="AdminRes_LabelEmail" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="AdminRes_LabelPhone" xml:space="preserve">
+    <value>Τηλέφωνο</value>
+  </data>
+  <data name="AdminRes_LabelGuests" xml:space="preserve">
+    <value>Επισκέπτες</value>
+  </data>
+  <data name="AdminRes_LabelNights" xml:space="preserve">
+    <value>Διανυκτερεύσεις</value>
+  </data>
+  <data name="AdminRes_LabelPrice" xml:space="preserve">
+    <value>Τιμή</value>
+  </data>
+  <data name="AdminRes_Details_Meta_Title" xml:space="preserve">
+    <value>Λεπτομέρειες Κράτησης — Διαχείριση</value>
+  </data>
+  <data name="AdminRes_Details_Title" xml:space="preserve">
+    <value>Λεπτομέρειες Κράτησης</value>
+  </data>
+  <data name="AdminRes_LabelClient" xml:space="preserve">
+    <value>Πελάτης</value>
+  </data>
+  <data name="AdminRes_AdditionalRequests" xml:space="preserve">
+    <value>Επιπλέον Αιτήματα</value>
+  </data>
+  <data name="AdminRes_TechnicalDetails" xml:space="preserve">
+    <value>Τεχνικές Λεπτομέρειες</value>
+  </data>
+  <data name="AdminRes_IpAddress" xml:space="preserve">
+    <value>Διεύθυνση IP:</value>
+  </data>
+  <data name="AdminRes_OS" xml:space="preserve">
+    <value>Λειτουργικό σύστημα:</value>
+  </data>
+  <data name="AdminRes_Platform" xml:space="preserve">
+    <value>Πλατφόρμα:</value>
+  </data>
+  <data name="AdminRes_Browser" xml:space="preserve">
+    <value>Περιηγητής:</value>
+  </data>
+  <data name="AdminRes_UserAgent" xml:space="preserve">
+    <value>User Agent:</value>
+  </data>
+  <data name="AdminRes_Referrer" xml:space="preserve">
+    <value>Referrer:</value>
+  </data>
+  <data name="AdminRes_Modified" xml:space="preserve">
+    <value>Τροποποιήθηκε:</value>
+  </data>
+  <data name="AdminSettings_Meta_Title" xml:space="preserve">
+    <value>Διαχείριση — Ρυθμίσεις Εφαρμογής</value>
+  </data>
+  <data name="AdminSettings_SearchPlaceholder" xml:space="preserve">
+    <value>Αναζήτηση ρυθμίσεων...</value>
+  </data>
+  <data name="AdminSettings_Prices_Meta_Title" xml:space="preserve">
+    <value>Διαχείριση — Τιμές Κρατήσεων</value>
+  </data>
+  <data name="AdminSettings_Prices_Title" xml:space="preserve">
+    <value>Ρυθμίσεις Τιμών</value>
+  </data>
+  <data name="AdminSettings_Prices_Subtitle" xml:space="preserve">
+    <value>Επεξεργασία τιμοκαταλόγου για όλους τους τύπους διαμονής</value>
+  </data>
+  <data name="AdminSettings_Prices_Accommodation" xml:space="preserve">
+    <value>Διαμονή</value>
+  </data>
+  <data name="AdminSettings_Prices_Den" xml:space="preserve">
+    <value>MKD</value>
+  </data>
+  <data name="AdminSettings_Prices_AdditionalFees" xml:space="preserve">
+    <value>Επιπλέον Χρεώσεις</value>
+  </data>
+  <data name="AdminSettings_General_Meta_Title" xml:space="preserve">
+    <value>Διαχείριση — Γενικές Επιλογές</value>
+  </data>
+  <data name="AdminSettings_General_Title" xml:space="preserve">
+    <value>Γενικές Επιλογές Εφαρμογής</value>
+  </data>
+  <data name="AdminSettings_General_Subtitle" xml:space="preserve">
+    <value>Διαμόρφωση βασικών ρυθμίσεων εφαρμογής</value>
+  </data>
+  <data name="AdminSettings_General_GalleryTitle" xml:space="preserve">
+    <value>Συλλογή 'Σχετικά με εμάς'</value>
+  </data>
+  <data name="AdminSettings_General_GalleryHelp" xml:space="preserve">
+    <value>Διαδρομή προς τον φάκελο που περιέχει φωτογραφίες/βίντεο για τη συλλογή Σχετικά με εμάς (π.χ. /Content/gallery/1). Εάν είναι κενό ή δεν υπάρχουν αρχεία, η συλλογή δεν θα εμφανιστεί.</value>
+  </data>
+  <data name="FeedItems_Index_Meta_Title" xml:space="preserve">
+    <value>Διαχείριση — Περιεχόμενο Feed</value>
+  </data>
+  <data name="FeedItems_Title" xml:space="preserve">
+    <value>Διαχείριση Νέων &amp; Προσφορών</value>
+  </data>
+  <data name="FeedItems_Subtitle" xml:space="preserve">
+    <value>Προσθέστε, επεξεργαστείτε ή διαγράψτε στοιχεία ροής</value>
+  </data>
+  <data name="FeedItems_Empty" xml:space="preserve">
+    <value>Δεν βρέθηκαν εγγραφές.</value>
+  </data>
+  <data name="FeedItems_FeaturedLabel" xml:space="preserve">
+    <value>Προβεβλημένο:</value>
+  </data>
+  <data name="FeedItems_PublishedLabel" xml:space="preserve">
+    <value>Δημοσιεύτηκε:</value>
+  </data>
+  <data name="FeedItems_ColTitle" xml:space="preserve">
+    <value>Τίτλος</value>
+  </data>
+  <data name="FeedItems_ColCategory" xml:space="preserve">
+    <value>Κατηγορία</value>
+  </data>
+  <data name="FeedItems_ColBadge" xml:space="preserve">
+    <value>Σήμα</value>
+  </data>
+  <data name="FeedItems_ColFeatured" xml:space="preserve">
+    <value>Προβεβλημένο</value>
+  </data>
+  <data name="FeedItems_ColPublished" xml:space="preserve">
+    <value>Δημοσιεύτηκε</value>
+  </data>
+  <data name="FeedItems_ColDate" xml:space="preserve">
+    <value>Ημερομηνία</value>
+  </data>
+  <data name="FeedItems_ColActions" xml:space="preserve">
+    <value>Ενέργειες</value>
+  </data>
+  <data name="FeedItems_Create_Meta_Title" xml:space="preserve">
+    <value>Δημιουργία Εγγραφής — Νέα &amp; Προσφορές</value>
+  </data>
+  <data name="FeedItems_BackToList" xml:space="preserve">
+    <value>← Πίσω στη Λίστα</value>
+  </data>
+  <data name="FeedItems_Create_Title" xml:space="preserve">
+    <value>Προσθήκη Νέας Εγγραφής</value>
+  </data>
+  <data name="FeedItems_Edit_Meta_Title" xml:space="preserve">
+    <value>Επεξεργασία Εγγραφής — Νέα &amp; Προσφορές</value>
+  </data>
+  <data name="FeedItems_Edit_Title" xml:space="preserve">
+    <value>Επεξεργασία Εγγραφής</value>
+  </data>
+  <data name="FeedItems_Delete_Meta_Title" xml:space="preserve">
+    <value>Διαγραφή Εγγραφής — Νέα &amp; Προσφορές</value>
+  </data>
+  <data name="FeedItems_Delete_Title" xml:space="preserve">
+    <value>Διαγραφή Εγγραφής</value>
+  </data>
+  <data name="FeedItems_Delete_Confirm" xml:space="preserve">
+    <value>Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτήν την εγγραφή;</value>
+  </data>
+  <data name="FeedItems_Details_Meta_Title" xml:space="preserve">
+    <value>Λεπτομέρειες Εγγραφής — Νέα &amp; Προσφορές</value>
+  </data>
+  <data name="FeedItems_Details_Title" xml:space="preserve">
+    <value>Λεπτομέρειες Εγγραφής</value>
+  </data>
+  <data name="FeedItems_LabelSubtitle" xml:space="preserve">
+    <value>Υπότιτλος</value>
+  </data>
+  <data name="FeedItems_LabelImage" xml:space="preserve">
+    <value>Εικόνα</value>
+  </data>
+  <data name="FeedItems_LabelDescription" xml:space="preserve">
+    <value>Περιγραφή</value>
+  </data>
+  <data name="News_Index_Meta_Title" xml:space="preserve">
+    <value>Νέα &amp; Προσφορές — Autocamp Otesevo</value>
+  </data>
+  <data name="News_Hero_Alt" xml:space="preserve">
+    <value>Κατασκήνωση κάτω από τα αστέρια</value>
+  </data>
+  <data name="News_Cta_Title" xml:space="preserve">
+    <value>Έτοιμοι για αξέχαστες διακοπές;</value>
+  </data>
+  <data name="News_Details_Published" xml:space="preserve">
+    <value>Δημοσιεύτηκε:</value>
+  </data>
+  <data name="News_Details_NoDesc" xml:space="preserve">
+    <value>Δεν υπάρχει επιπλέον περιγραφή για αυτό το νέο.</value>
+  </data>
+  <data name="News_Details_Location" xml:space="preserve">
+    <value>Λίμνη Πρέσπα, Βόρεια Μακεδονία</value>
+  </data>
+  <data name="Account_Login_Meta_Title" xml:space="preserve">
+    <value>Σύνδεση — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_Login_Heading" xml:space="preserve">
+    <value>Σύνδεση</value>
+  </data>
+  <data name="Account_Login_Subheading" xml:space="preserve">
+    <value>Εισαγάγετε τα στοιχεία σας για να συνδεθείτε</value>
+  </data>
+  <data name="Account_Register_Meta_Title" xml:space="preserve">
+    <value>Εγγραφή — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_Register_Heading" xml:space="preserve">
+    <value>Εγγραφή</value>
+  </data>
+  <data name="Account_Register_Subheading" xml:space="preserve">
+    <value>Δημιουργήστε έναν νέο λογαριασμό χρήστη</value>
+  </data>
+  <data name="Account_AddRole_Meta_Title" xml:space="preserve">
+    <value>Προσθήκη ρόλου χρήστη — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_AddRole_Heading" xml:space="preserve">
+    <value>Προσθήκη προνομίου</value>
+  </data>
+  <data name="Account_ConfirmEmail_Meta_Title" xml:space="preserve">
+    <value>Επιβεβαίωση E-mail — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_ExtConfirm_Meta_Title" xml:space="preserve">
+    <value>Εξωτερική Εγγραφή — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_ExtConfirm_Heading" xml:space="preserve">
+    <value>Συνδέστε τον λογαριασμό {0}.</value>
+  </data>
+  <data name="Account_ExtConfirm_FormTitle" xml:space="preserve">
+    <value>Φόρμα Σύνδεσης</value>
+  </data>
+  <data name="Account_ExtConfirm_Submit" xml:space="preserve">
+    <value>Εγγραφή</value>
+  </data>
+  <data name="Account_ExtFail_Meta_Title" xml:space="preserve">
+    <value>Aποτυχία Σύνδεσης — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_ExtFail_Heading" xml:space="preserve">
+    <value>Aνεπιτυχής σύνδεση με την υπηρεσία.</value>
+  </data>
+  <data name="Account_Forgot_Meta_Title" xml:space="preserve">
+    <value>Ξέχασα τον κωδικό πρόσβασης — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_Forgot_Heading" xml:space="preserve">
+    <value>Εισαγάγετε το e-mail σας.</value>
+  </data>
+  <data name="Account_Forgot_Submit" xml:space="preserve">
+    <value>Αποστολή Συνδέσμου</value>
+  </data>
+  <data name="Account_ForgotConfirm_Meta_Title" xml:space="preserve">
+    <value>Επιβεβαίωση Ξέχασα τον κωδικό — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_Reset_Meta_Title" xml:space="preserve">
+    <value>Επαναφορά Κωδικού — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_Reset_Heading" xml:space="preserve">
+    <value>Επαναφέρετε τον κωδικό πρόσβασής σας.</value>
+  </data>
+  <data name="Account_Reset_Submit" xml:space="preserve">
+    <value>Επαναφορά</value>
+  </data>
+  <data name="Account_ResetConfirm_Meta_Title" xml:space="preserve">
+    <value>Επιβεβαίωση Επαναφοράς Κωδικού — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_SendCode_Meta_Title" xml:space="preserve">
+    <value>Αποστολή Κωδικού Επιβεβαίωσης — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_SendCode_Heading" xml:space="preserve">
+    <value>Αποστολή κωδικού επιβεβαίωσης</value>
+  </data>
+  <data name="Account_SendCode_Submit" xml:space="preserve">
+    <value>Υποβολή</value>
+  </data>
+  <data name="Account_VerifyCode_Meta_Title" xml:space="preserve">
+    <value>Επαλήθευση Κωδικού — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_VerifyCode_Heading" xml:space="preserve">
+    <value>Εισαγάγετε τον κωδικό επαλήθευσης</value>
+  </data>
+  <data name="Account_ExtLogins_Heading" xml:space="preserve">
+    <value>Χρησιμοποιήστε μια άλλη υπηρεσία για να συνδεθείτε.</value>
+  </data>
+  <data name="Account_ExtLogins_Article" xml:space="preserve">
+    <value>αυτό το άρθρο</value>
+  </data>
+  <data name="Account_ExtLogins_BtnTitle" xml:space="preserve">
+    <value>Συνδεθείτε χρησιμοποιώντας τον λογαριασμό {0}</value>
+  </data>
+  <data name="Manage_Index_Meta_Title" xml:space="preserve">
+    <value>Ρυθμίσεις Λογαριασμού — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_Index_Subtitle" xml:space="preserve">
+    <value>Διαχειριστείτε όλες τις ρυθμίσεις του λογαριασμού χρήστη σας</value>
+  </data>
+  <data name="Manage_Password" xml:space="preserve">
+    <value>Κωδικός πρόσβασης</value>
+  </data>
+  <data name="Manage_ChangePasswordSub" xml:space="preserve">
+    <value>Aλλάξτε τον κωδικό πρόσβασης σύνδεσης</value>
+  </data>
+  <data name="Manage_ExternalLogins" xml:space="preserve">
+    <value>Εξωτερικές Συνδέσεις</value>
+  </data>
+  <data name="Manage_ExternalLoginsCountFormat" xml:space="preserve">
+    <value>Συνδεδεμένοι λογαριασμοί: {0}</value>
+  </data>
+  <data name="Manage_ChangePassword_Meta_Title" xml:space="preserve">
+    <value>Αλλαγή Κωδικού — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_BackToSettings" xml:space="preserve">
+    <value>← Πίσω στις Ρυθμίσεις</value>
+  </data>
+  <data name="Manage_ChangePassword_Heading" xml:space="preserve">
+    <value>Αλλαγή Κωδικού</value>
+  </data>
+  <data name="Manage_SetPassword_Meta_Title" xml:space="preserve">
+    <value>Ορισμός Κωδικού — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_SetPassword_Heading" xml:space="preserve">
+    <value>Ορισμός Κωδικού</value>
+  </data>
+  <data name="Manage_AddPhone_Meta_Title" xml:space="preserve">
+    <value>Προσθήκη Αριθμού Τηλεφώνου — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_AddPhone_Heading" xml:space="preserve">
+    <value>Προσθέστε έναν αριθμό τηλεφώνου</value>
+  </data>
+  <data name="Manage_VerifyPhone_Meta_Title" xml:space="preserve">
+    <value>Επαλήθευση Αριθμού Τηλεφώνου — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_Logins_Meta_Title" xml:space="preserve">
+    <value>Διαχείριση Εξωτερικών Συνδέσεων — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_Logins_Heading" xml:space="preserve">
+    <value>Εγγεγραμμένες Συνδέσεις</value>
+  </data>
+  <data name="Manage_Logins_Remove" xml:space="preserve">
+    <value>Aφαιρέση</value>
+  </data>
+  <data name="Manage_Logins_RemoveTitle" xml:space="preserve">
+    <value>Aφαιρέστε αυτήν τη σύνδεση {0} από τον λογαριασμό σας</value>
+  </data>
+  <data name="Contact_Alt_Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="Contact_Alt_Facebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="About_Alt_Thumbnail" xml:space="preserve">
+    <value>Μικρογραφία</value>
+  </data>
+  <data name="Gallery_Aria_Previous" xml:space="preserve">
+    <value>Προηγούμενο</value>
+  </data>
+  <data name="Gallery_Aria_Next" xml:space="preserve">
+    <value>Επόμενο</value>
+  </data>
+  <data name="Gallery_Aria_SlideFormat" xml:space="preserve">
+    <value>Διαφάνεια {0}</value>
+  </data>
+  <data name="Res_PerNight_Den_Eur_Format" xml:space="preserve">
+    <value>{0} MKD (~{1} €)</value>
+  </data>
+  <data name="Res_Yes" xml:space="preserve">
+    <value>Ναι</value>
+  </data>
+  <data name="Res_No" xml:space="preserve">
+    <value>Όχι</value>
+  </data>
+  <data name="AdminFileManager_Folder" xml:space="preserve">
+    <value>Φάκελος</value>
+  </data>
+  <data name="AdminFileManager_File" xml:space="preserve">
+    <value>Αρχείο</value>
+  </data>
+  <data name="Admin_NewEntry" xml:space="preserve">
+    <value>+ Νέα εγγραφή</value>
+  </data>
+  <data name="News_Cta_Desc" xml:space="preserve">
+    <value>Κάντε κράτηση για τη διαμονή σας σήμερα και ζήστε την ομορφιά της Λίμνης Πρέσπας.</value>
+  </data>
+  <data name="News_Cta_Button" xml:space="preserve">
+    <value>Κάντε κράτηση τώρα</value>
   </data>
 </root>

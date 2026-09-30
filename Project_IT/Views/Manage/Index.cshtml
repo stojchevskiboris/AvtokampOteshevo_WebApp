@@ -1,13 +1,13 @@
 @model Project_IT.Models.IndexViewModel
 @{
-    ViewBag.Title = "Поставки на сметката";
+    ViewBag.Title = Strings.Manage_Index_Meta_Title;
 }
 
 <div class="max-w-2xl mx-auto px-6 py-12 font-sans">
     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 space-y-6">
         <div>
             <h1 class="text-3xl font-serif text-slate-800">@ViewBag.Title</h1>
-            <p class="text-slate-500 text-sm mt-1">Управувајте со сите подесувања на вашата корисничка сметка</p>
+            <p class="text-slate-500 text-sm mt-1">@Strings.Manage_Index_Subtitle</p>
         </div>
 
         @if (!string.IsNullOrEmpty(ViewBag.StatusMessage))
@@ -20,8 +20,8 @@
         <div class="divide-y divide-slate-100">
             <div class="py-4 flex items-center justify-between">
                 <div>
-                    <h3 class="text-sm font-semibold text-slate-800">Лозинка</h3>
-                    <p class="text-xs text-slate-400">Променете ја вашата лозинка за најава</p>
+                    <h3 class="text-sm font-semibold text-slate-800">@Strings.Manage_Password</h3>
+                    <p class="text-xs text-slate-400">@Strings.Manage_ChangePasswordSub</p>
                 </div>
                 <div>
                     @if (Model.HasPassword)
@@ -41,8 +41,8 @@
 
             <div class="py-4 flex items-center justify-between">
                 <div>
-                    <h3 class="text-sm font-semibold text-slate-800">Надворешни најави</h3>
-                    <p class="text-xs text-slate-400">Поврзани сметки: @Model.Logins.Count</p>
+                    <h3 class="text-sm font-semibold text-slate-800">@Strings.Manage_ExternalLogins</h3>
+                    <p class="text-xs text-slate-400">@string.Format(Strings.Manage_ExternalLoginsCountFormat, Model.Logins.Count)</p>
                 </div>
                 <div>
                     <a href="@Url.Action("ManageLogins")" class="px-4 py-2 rounded-full border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs font-semibold no-underline transition">

@@ -1,14 +1,14 @@
 @model Project_IT.Models.Reservation
 
 @{
-    ViewBag.Title = "Избриши резервација — Администрација";
+    ViewBag.Title = Strings.AdminRes_Delete_Meta_Title;
 }
 
 <div class="max-w-2xl mx-auto px-6 py-10 font-sans">
     <div class="mb-6">
-        <a href="@Url.Action("Index")" class="text-sm text-slate-400 hover:text-slate-700 transition">&larr; Назад на листата</a>
-        <h1 class="text-3xl font-serif text-rose-700 mt-2">Избриши резервација</h1>
-        <p class="text-slate-500 text-sm mt-1">Дали сте сигурни дека сакате да ја избришете оваа резервација?</p>
+        <a href="@Url.Action("Index")" class="text-sm text-slate-400 hover:text-slate-700 transition">@Strings.AdminRes_BackToList</a>
+        <h1 class="text-3xl font-serif text-rose-700 mt-2">@Strings.AdminRes_Delete_Title</h1>
+        <p class="text-slate-500 text-sm mt-1">@Strings.AdminRes_Delete_Confirm</p>
     </div>
 
     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 space-y-4 mb-6">
@@ -17,19 +17,19 @@
         </h2>
         <div class="grid grid-cols-2 gap-4 text-sm text-slate-600">
             <div>
-                <span class="text-xs text-slate-400 uppercase block font-semibold">Email</span>
+                <span class="text-xs text-slate-400 uppercase block font-semibold">@Strings.AdminRes_LabelEmail</span>
                 @Model.Email
             </div>
             <div>
-                <span class="text-xs text-slate-400 uppercase block font-semibold">Телефон</span>
+                <span class="text-xs text-slate-400 uppercase block font-semibold">@Strings.AdminRes_LabelPhone</span>
                 @Model.Phone
             </div>
             <div>
-                <span class="text-xs text-slate-400 uppercase block font-semibold">Сместување</span>
+                <span class="text-xs text-slate-400 uppercase block font-semibold">@Strings.AdminRes_ColAccommodation</span>
                 @Model.AccommodationType
             </div>
             <div>
-                <span class="text-xs text-slate-400 uppercase block font-semibold">Статус</span>
+                <span class="text-xs text-slate-400 uppercase block font-semibold">@Strings.AdminRes_ColStatus</span>
                 @Model.Status
             </div>
         </div>

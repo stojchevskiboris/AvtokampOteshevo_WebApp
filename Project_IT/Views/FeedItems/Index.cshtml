@@ -2,17 +2,17 @@
 @using Project_IT.Models
 
 @{
-    ViewBag.Title = "Администрација — Новости & Понуди";
+    ViewBag.Title = Strings.FeedItems_Index_Meta_Title;
 }
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10 font-sans">
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
         <div>
-            <h1 class="text-2xl sm:text-3xl font-serif text-slate-800">Управување со Новости & Понуди</h1>
-            <p class="text-slate-500 text-xs sm:text-sm mt-1">Додавајте, менувајте или бришете содржини од федот</p>
+            <h1 class="text-2xl sm:text-3xl font-serif text-slate-800">@Strings.FeedItems_Title</h1>
+            <p class="text-slate-500 text-xs sm:text-sm mt-1">@Strings.FeedItems_Subtitle</p>
         </div>
         <a href="@Url.Action("Create")" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-brand-gradient shadow-md hover:opacity-90 transition self-start sm:self-auto no-underline">
-            + Нов запис
+            @Strings.Admin_NewEntry
         </a>
     </div>
 
@@ -21,7 +21,7 @@
         {
             <div class="p-8 sm:p-12 text-center text-slate-400">
                 <div class="text-3xl sm:text-4xl mb-3">📰</div>
-                <p class="text-xs sm:text-base font-medium">Нема пронајдено записи.</p>
+                <p class="text-xs sm:text-base font-medium">@Strings.FeedItems_Empty</p>
             </div>
         }
         else
@@ -50,17 +50,17 @@
                                 {
                                     <span class="px-2 py-0.5 bg-amber-50 text-amber-700 border border-amber-200 rounded-md font-semibold">@item.LabelBadge</span>
                                 }
-                                <span>Истакнато: <strong class="@(item.IsFeatured ? "text-emerald-700" : "text-slate-500")">@(item.IsFeatured ? "Да" : "Не")</strong></span>
+                                <span>@Strings.FeedItems_FeaturedLabel <strong class="@(item.IsFeatured ? "text-emerald-700" : "text-slate-500")">@(item.IsFeatured ? Strings.Res_Yes : Strings.Res_No)</strong></span>
                                 <span>•</span>
-                                <span>Објавено: <strong class="@(item.IsPublished ? "text-emerald-700" : "text-slate-500")">@(item.IsPublished ? "Да" : "Не")</strong></span>
+                                <span>@Strings.FeedItems_PublishedLabel <strong class="@(item.IsPublished ? "text-emerald-700" : "text-slate-500")">@(item.IsPublished ? Strings.Res_Yes : Strings.Res_No)</strong></span>
                             </div>
                             <span class="text-[11px] text-slate-400">@item.CreatedOn.ToString("dd.MM.yyyy")</span>
                         </div>
 
                         <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-100 text-xs font-semibold">
-                            <a href="@Url.Action("Edit", new { id = item.Id })" class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition no-underline">Измени</a>
-                            <a href="@Url.Action("Details", new { id = item.Id })" class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition no-underline">Детали</a>
-                            <a href="@Url.Action("Delete", new { id = item.Id })" class="px-3 py-1.5 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 transition no-underline">Избриши</a>
+                            <a href="@Url.Action("Edit", new { id = item.Id })" class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition no-underline">@Strings.AdminRes_Edit</a>
+                            <a href="@Url.Action("Details", new { id = item.Id })" class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition no-underline">@Strings.AdminRes_ViewDetails</a>
+                            <a href="@Url.Action("Delete", new { id = item.Id })" class="px-3 py-1.5 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 transition no-underline">@Strings.AdminRes_Delete</a>
                         </div>
                     </div>
                 }
@@ -71,13 +71,13 @@
                 <table class="w-full text-left text-sm text-slate-600">
                     <thead class="bg-slate-50 border-b border-slate-100 text-slate-500 uppercase text-xs">
                         <tr>
-                            <th class="px-6 py-4 font-semibold">Наслов</th>
-                            <th class="px-6 py-4 font-semibold">Категорија</th>
-                            <th class="px-6 py-4 font-semibold">Беџ</th>
-                            <th class="px-6 py-4 font-semibold">Истакнато</th>
-                            <th class="px-6 py-4 font-semibold">Објавено</th>
-                            <th class="px-6 py-4 font-semibold">Датум</th>
-                            <th class="px-6 py-4 font-semibold text-right">Акции</th>
+                            <th class="px-6 py-4 font-semibold">@Strings.FeedItems_ColTitle</th>
+                            <th class="px-6 py-4 font-semibold">@Strings.FeedItems_ColCategory</th>
+                            <th class="px-6 py-4 font-semibold">@Strings.FeedItems_ColBadge</th>
+                            <th class="px-6 py-4 font-semibold">@Strings.FeedItems_ColFeatured</th>
+                            <th class="px-6 py-4 font-semibold">@Strings.FeedItems_ColPublished</th>
+                            <th class="px-6 py-4 font-semibold">@Strings.FeedItems_ColDate</th>
+                            <th class="px-6 py-4 font-semibold text-right">@Strings.FeedItems_ColActions</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100">
@@ -100,18 +100,18 @@
                                     @(!string.IsNullOrEmpty(item.LabelBadge) ? item.LabelBadge : "-")
                                 </td>
                                 <td class="px-6 py-4 text-xs">
-                                    @(item.IsFeatured ? "Да" : "Не")
+                                    @(item.IsFeatured ? Strings.Res_Yes : Strings.Res_No)
                                 </td>
                                 <td class="px-6 py-4 text-xs">
-                                    @(item.IsPublished ? "Да" : "Не")
+                                    @(item.IsPublished ? Strings.Res_Yes : Strings.Res_No)
                                 </td>
                                 <td class="px-6 py-4 text-xs text-slate-400">
                                     @item.CreatedOn.ToString("dd.MM.yyyy")
                                 </td>
                                 <td class="px-6 py-4 text-right space-x-2 whitespace-nowrap">
-                                    <a href="@Url.Action("Edit", new { id = item.Id })" class="text-emerald-700 hover:text-emerald-900 font-semibold text-xs no-underline">Измени</a>
-                                    <a href="@Url.Action("Details", new { id = item.Id })" class="text-slate-600 hover:text-slate-900 font-semibold text-xs no-underline">Детали</a>
-                                    <a href="@Url.Action("Delete", new { id = item.Id })" class="text-rose-600 hover:text-rose-800 font-semibold text-xs no-underline">Избриши</a>
+                                    <a href="@Url.Action("Edit", new { id = item.Id })" class="text-emerald-700 hover:text-emerald-900 font-semibold text-xs no-underline">@Strings.AdminRes_Edit</a>
+                                    <a href="@Url.Action("Details", new { id = item.Id })" class="text-slate-600 hover:text-slate-900 font-semibold text-xs no-underline">@Strings.AdminRes_ViewDetails</a>
+                                    <a href="@Url.Action("Delete", new { id = item.Id })" class="text-rose-600 hover:text-rose-800 font-semibold text-xs no-underline">@Strings.AdminRes_Delete</a>
                                 </td>
                             </tr>
                         }

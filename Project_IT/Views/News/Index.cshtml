@@ -2,7 +2,7 @@
 @using Project_IT.Models
 
 @{
-    ViewBag.Title = "Новости & Понуди — Автокамп Отешево";
+    ViewBag.Title = Strings.News_Index_Meta_Title;
 }
 
 <div class="font-sans antialiased bg-[#FAF8F5]">
@@ -11,7 +11,7 @@
     <section class="relative flex flex-col items-center justify-center text-center px-6 pt-16 h-[46vh] min-h-[340px] max-h-[520px]">
         <div class="absolute inset-0 bg-slate-800">
             <img src="~/Content/newsBanner.png"
-                 alt="Камп под ѕвездите"
+                 alt="@Strings.News_Hero_Alt"
                  class="w-full h-full object-cover" />
             <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(10,25,18,0.6) 0%, rgba(10,25,18,0.55) 100%);"></div>
         </div>
@@ -244,13 +244,13 @@
 
     <!-- Footer Banner CTA -->
     <div class="py-14 px-6 bg-white text-center border-t border-slate-100">
-        <h3 class="text-3xl font-serif text-slate-800 mb-3">Подготвени за незаборавен одмор?</h3>
+        <h3 class="text-3xl font-serif text-slate-800 mb-3">@Strings.News_Cta_Title</h3>
         <p class="text-slate-500 text-sm mb-7 max-w-md mx-auto">
-            Резервирајте го вашиот престој денес и доживејте ја убавината на Преспанското Езеро.
+            @Strings.News_Cta_Desc
         </p>
         <a href="@Url.Action("New", "Reservations")"
            class="inline-block text-[10px] px-8 py-4 rounded-full text-white font-body transition-all hover:opacity-90 hover:shadow-lg bg-gradient-to-r from-[#1a3d2b] to-[#2d6a46] shadow-md">
-            Резервирај сега ↗
+            @Strings.News_Cta_Button ↗
         </a>
     </div>
 
