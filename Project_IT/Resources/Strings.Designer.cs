@@ -3092,5 +3092,185 @@ namespace Otesevo.Resources {
                 return ResourceManager.GetString("Val_Required", resourceCulture);
             }
         }
-    }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_BackHome.
+        /// </summary>
+        public static string News_BackHome {
+            get {
+                return ResourceManager.GetString("News_BackHome", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_Badge_News.
+        /// </summary>
+        public static string News_Badge_News {
+            get {
+                return ResourceManager.GetString("News_Badge_News", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_ReadMore_Arrow.
+        /// </summary>
+        public static string News_ReadMore_Arrow {
+            get {
+                return ResourceManager.GetString("News_ReadMore_Arrow", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_Badge_Event.
+        /// </summary>
+        public static string News_Badge_Event {
+            get {
+                return ResourceManager.GetString("News_Badge_Event", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_Read_Arrow.
+        /// </summary>
+        public static string News_Read_Arrow {
+            get {
+                return ResourceManager.GetString("News_Read_Arrow", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_Badge_Offer.
+        /// </summary>
+        public static string News_Badge_Offer {
+            get {
+                return ResourceManager.GetString("News_Badge_Offer", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_ValidTo.
+        /// </summary>
+        public static string News_ValidTo {
+            get {
+                return ResourceManager.GetString("News_ValidTo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_Offer.
+        /// </summary>
+        public static string News_Offer {
+            get {
+                return ResourceManager.GetString("News_Offer", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_Details_Arrow.
+        /// </summary>
+        public static string News_Details_Arrow {
+            get {
+                return ResourceManager.GetString("News_Details_Arrow", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_ClaimOffer_Arrow.
+        /// </summary>
+        public static string News_ClaimOffer_Arrow {
+            get {
+                return ResourceManager.GetString("News_ClaimOffer_Arrow", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_Prev_Page.
+        /// </summary>
+        public static string News_Prev_Page {
+            get {
+                return ResourceManager.GetString("News_Prev_Page", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_Page_Format.
+        /// </summary>
+        public static string News_Page_Format {
+            get {
+                return ResourceManager.GetString("News_Page_Format", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_Next_Page.
+        /// </summary>
+        public static string News_Next_Page {
+            get {
+                return ResourceManager.GetString("News_Next_Page", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_Offers_Disclaimer.
+        /// </summary>
+        public static string News_Offers_Disclaimer {
+            get {
+                return ResourceManager.GetString("News_Offers_Disclaimer", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_Og_Default_Desc.
+        /// </summary>
+        public static string News_Og_Default_Desc {
+            get {
+                return ResourceManager.GetString("News_Og_Default_Desc", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_BackToAll.
+        /// </summary>
+        public static string News_BackToAll {
+            get {
+                return ResourceManager.GetString("News_BackToAll", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_Category_Label.
+        /// </summary>
+        public static string News_Category_Label {
+            get {
+                return ResourceManager.GetString("News_Category_Label", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_Featured.
+        /// </summary>
+        public static string News_Featured {
+            get {
+                return ResourceManager.GetString("News_Featured", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_Gallery_Heading.
+        /// </summary>
+        public static string News_Gallery_Heading {
+            get {
+                return ResourceManager.GetString("News_Gallery_Heading", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to News_AllNews.
+        /// </summary>
+        public static string News_AllNews {
+            get {
+                return ResourceManager.GetString("News_AllNews", resourceCulture);
+            }
+        }
+}
 }

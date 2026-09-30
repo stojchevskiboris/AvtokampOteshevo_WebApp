@@ -1128,4 +1128,64 @@
   <data name="News_Hero_Desc" xml:space="preserve">
     <value>Resta aggiornato su tutte le novità a Prespa: notizie, eventi e offerte esclusive.</value>
   </data>
+  <data name="News_BackHome" xml:space="preserve">
+    <value>Torna alla pagina iniziale</value>
+  </data>
+  <data name="News_Badge_News" xml:space="preserve">
+    <value>Notizia</value>
+  </data>
+  <data name="News_ReadMore_Arrow" xml:space="preserve">
+    <value>Leggi di più →</value>
+  </data>
+  <data name="News_Badge_Event" xml:space="preserve">
+    <value>Evento</value>
+  </data>
+  <data name="News_Read_Arrow" xml:space="preserve">
+    <value>Leggi →</value>
+  </data>
+  <data name="News_Badge_Offer" xml:space="preserve">
+    <value>Offerta Speciale</value>
+  </data>
+  <data name="News_ValidTo" xml:space="preserve">
+    <value>Valido fino al:</value>
+  </data>
+  <data name="News_Offer" xml:space="preserve">
+    <value>Offerta</value>
+  </data>
+  <data name="News_Details_Arrow" xml:space="preserve">
+    <value>Dettagli →</value>
+  </data>
+  <data name="News_ClaimOffer_Arrow" xml:space="preserve">
+    <value>Approfitta dell&#x27;offerta →</value>
+  </data>
+  <data name="News_Prev_Page" xml:space="preserve">
+    <value>← Precedente</value>
+  </data>
+  <data name="News_Page_Format" xml:space="preserve">
+    <value>Pagina {0} di {1}</value>
+  </data>
+  <data name="News_Next_Page" xml:space="preserve">
+    <value>Successiva →</value>
+  </data>
+  <data name="News_Offers_Disclaimer" xml:space="preserve">
+    <value>* Tutte le offerte sono valide fino alla data indicata e sono disponibili solo per prenotazioni dirette tramite il nostro sito web.</value>
+  </data>
+  <data name="News_Og_Default_Desc" xml:space="preserve">
+    <value>Otesevo — Notizie e Offerte</value>
+  </data>
+  <data name="News_BackToAll" xml:space="preserve">
+    <value>← Torna a tutte le notizie</value>
+  </data>
+  <data name="News_Category_Label" xml:space="preserve">
+    <value>Categoria:</value>
+  </data>
+  <data name="News_Featured" xml:space="preserve">
+    <value>In evidenza</value>
+  </data>
+  <data name="News_Gallery_Heading" xml:space="preserve">
+    <value>Galleria</value>
+  </data>
+  <data name="News_AllNews" xml:space="preserve">
+    <value>← Tutte le notizie</value>
+  </data>
 </root>
