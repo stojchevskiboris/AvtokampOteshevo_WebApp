@@ -2635,6 +2635,15 @@ namespace Otesevo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stay up to date with everything new in Prespa — news, events, and exclusive offers..
+        /// </summary>
+        public static string News_Hero_Desc {
+            get {
+                return ResourceManager.GetString("News_Hero_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to News &amp; Offers — Autocamp Otesevo.
         /// </summary>
         public static string News_Index_Meta_Title {

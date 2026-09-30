@@ -1,5 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
   </resheader>
@@ -12,415 +117,415 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data xml:space="preserve" name="Site_Name">
+  <data name="Site_Name" xml:space="preserve">
     <value>Autocamp Otesevo</value>
   </data>
-  <data xml:space="preserve" name="Site_Tagline">
+  <data name="Site_Tagline" xml:space="preserve">
     <value>Camping &amp; RV Park Λίμνη Πρέσπα</value>
   </data>
-  <data xml:space="preserve" name="Site_Footer_Desc">
+  <data name="Site_Footer_Desc" xml:space="preserve">
     <value>Фυσικός παράδεισος στις όχθες της Λίμνης Πρέσπας. Ελάτε να ζήσετε την ομορφιά του Autocamp μας.</value>
   </data>
-  <data xml:space="preserve" name="Site_Footer_Rights">
+  <data name="Site_Footer_Rights" xml:space="preserve">
     <value>Autocamp Otesevo. Όλα τα δικαιώματα διατηρούνται.</value>
   </data>
-  <data xml:space="preserve" name="Site_Footer_Location">
+  <data name="Site_Footer_Location" xml:space="preserve">
     <value>Λίμνη Πρέσπα, Βόρεια Μακεδονία</value>
   </data>
-  <data xml:space="preserve" name="Nav_Home">
+  <data name="Nav_Home" xml:space="preserve">
     <value>Αρχική</value>
   </data>
-  <data xml:space="preserve" name="Nav_News">
+  <data name="Nav_News" xml:space="preserve">
     <value>Νέα &amp; Προσφορές</value>
   </data>
-  <data xml:space="preserve" name="Nav_About">
+  <data name="Nav_About" xml:space="preserve">
     <value>Σχετικά με εμάς</value>
   </data>
-  <data xml:space="preserve" name="Nav_Contact">
+  <data name="Nav_Contact" xml:space="preserve">
     <value>Επικοινωνία</value>
   </data>
-  <data xml:space="preserve" name="Nav_Book">
+  <data name="Nav_Book" xml:space="preserve">
     <value>Кάνте κράτηση</value>
   </data>
-  <data xml:space="preserve" name="Nav_Admin">
+  <data name="Nav_Admin" xml:space="preserve">
     <value>Διαχείριση</value>
   </data>
-  <data xml:space="preserve" name="Nav_Reservations">
+  <data name="Nav_Reservations" xml:space="preserve">
     <value>Κρατήσεις</value>
   </data>
-  <data xml:space="preserve" name="Nav_EditNews">
+  <data name="Nav_EditNews" xml:space="preserve">
     <value>Επεξεργασία Νέων</value>
   </data>
-  <data xml:space="preserve" name="Nav_Settings">
+  <data name="Nav_Settings" xml:space="preserve">
     <value>Ρυθμίσεις</value>
   </data>
-  <data xml:space="preserve" name="Nav_FileManager">
+  <data name="Nav_FileManager" xml:space="preserve">
     <value>Διαχειριστής Αρχείων</value>
   </data>
-  <data xml:space="preserve" name="Nav_LogIn">
+  <data name="Nav_LogIn" xml:space="preserve">
     <value>Σύνδεση</value>
   </data>
-  <data xml:space="preserve" name="Nav_LogOff">
+  <data name="Nav_LogOff" xml:space="preserve">
     <value>Αпоσύνδεση</value>
   </data>
-  <data xml:space="preserve" name="Nav_Register">
+  <data name="Nav_Register" xml:space="preserve">
     <value>Εγγραφή</value>
   </data>
-  <data xml:space="preserve" name="Home_Meta_Title">
+  <data name="Home_Meta_Title" xml:space="preserve">
     <value>Autocamp Otesevo - Αρχική | Camping Λίμνη Πρέσπα</value>
   </data>
-  <data xml:space="preserve" name="Home_Meta_Desc">
+  <data name="Home_Meta_Desc" xml:space="preserve">
     <value>Κάντε κράτηση για τη διαμονή σας στο Autocamp Otesevo στη Λίμνη Πρέσπα. Απολαύστε camping δίπλα στη λίμνη.</value>
   </data>
-  <data xml:space="preserve" name="Home_Hero_Badge">
+  <data name="Home_Hero_Badge" xml:space="preserve">
     <value>Λίμνη Πρέσπα, Βόρεια Μακεδονία</value>
   </data>
-  <data xml:space="preserve" name="Home_Hero_Title_1">
+  <data name="Home_Hero_Title_1" xml:space="preserve">
     <value>Καλώς ορίσατε στο</value>
   </data>
-  <data xml:space="preserve" name="Home_Hero_Title_2">
+  <data name="Home_Hero_Title_2" xml:space="preserve">
     <value>Autocamp Otesevo</value>
   </data>
-  <data xml:space="preserve" name="Home_Hero_Sub_1">
+  <data name="Home_Hero_Sub_1" xml:space="preserve">
     <value>Το φυσικό σας καταφύγιο στις όχθες της</value>
   </data>
-  <data xml:space="preserve" name="Home_Hero_Sub_2">
+  <data name="Home_Hero_Sub_2" xml:space="preserve">
     <value>Λίμνης Πρέσπας</value>
   </data>
-  <data xml:space="preserve" name="Home_Hero_Cta">
+  <data name="Home_Hero_Cta" xml:space="preserve">
     <value>Εξερευνήστε το camping</value>
   </data>
-  <data xml:space="preserve" name="Home_CheckIn">
+  <data name="Home_CheckIn" xml:space="preserve">
     <value>Άφιξη</value>
   </data>
-  <data xml:space="preserve" name="Home_CheckOut">
+  <data name="Home_CheckOut" xml:space="preserve">
     <value>Αναχώρηση</value>
   </data>
-  <data xml:space="preserve" name="Home_Guests">
+  <data name="Home_Guests" xml:space="preserve">
     <value>Επισκέπτες</value>
   </data>
-  <data xml:space="preserve" name="Home_Guest_Singular">
+  <data name="Home_Guest_Singular" xml:space="preserve">
     <value>1 επισκέπτης</value>
   </data>
-  <data xml:space="preserve" name="Home_Guest_Plural">
+  <data name="Home_Guest_Plural" xml:space="preserve">
     <value>{0} επισκέπτες</value>
   </data>
-  <data xml:space="preserve" name="Home_Search">
+  <data name="Home_Search" xml:space="preserve">
     <value>Αναζήτηση</value>
   </data>
-  <data xml:space="preserve" name="About_Badge">
+  <data name="About_Badge" xml:space="preserve">
     <value>Σχετικά με εμάς</value>
   </data>
-  <data xml:space="preserve" name="About_Hero_Title_1">
+  <data name="About_Hero_Title_1" xml:space="preserve">
     <value>Εκεί που η φύση</value>
   </data>
-  <data xml:space="preserve" name="About_Hero_Title_2">
+  <data name="About_Hero_Title_2" xml:space="preserve">
     <value>συναντά την άνεση</value>
   </data>
-  <data xml:space="preserve" name="About_Meta_Title">
+  <data name="About_Meta_Title" xml:space="preserve">
     <value>Σχετικά με εμάς - Autocamp Otesevo</value>
   </data>
-  <data xml:space="preserve" name="About_Meta_Desc">
+  <data name="About_Meta_Desc" xml:space="preserve">
     <value>Ανακαλύψτε την ιστορία και τη φύση του Autocamp Otesevo στη Λίμνη Πρέσπα.</value>
   </data>
-  <data xml:space="preserve" name="About_Story_P1">
+  <data name="About_Story_P1" xml:space="preserve">
     <value>Το Autocamp Otesevo βρίσκεται στη δυτική όχθη της Λίμνης Πρέσπας, περιβαλλόμενο από αιωνόβια δάση.</value>
   </data>
-  <data xml:space="preserve" name="About_Story_P2">
+  <data name="About_Story_P2" xml:space="preserve">
     <value>Με πάνω από 50 χρόνια παράδοσης, προσφέρουμε μπανγκαλόου, οργανωμένες θέσεις camping και πρόσβαση στην παραλία.</value>
   </data>
-  <data xml:space="preserve" name="About_View_Prices">
+  <data name="About_View_Prices" xml:space="preserve">
     <value>Δείτε τον τιμοκατάλογο</value>
   </data>
-  <data xml:space="preserve" name="About_Story_Badge">
+  <data name="About_Story_Badge" xml:space="preserve">
     <value>Η ιστορία μας</value>
   </data>
-  <data xml:space="preserve" name="About_Story_Heading">
+  <data name="About_Story_Heading" xml:space="preserve">
     <value>Παράδοση και αγάπη για τη φύση</value>
   </data>
-  <data xml:space="preserve" name="About_Story_Full1">
+  <data name="About_Story_Full1" xml:space="preserve">
     <value>Το Autocamp Otesevo ιδρύθηκε με το όραμα να προσφέρει σε όλους τους λάτρεις της φύσης μια αυθεντική εμπειρία στη Λίμνη Πρέσπα.</value>
   </data>
-  <data xml:space="preserve" name="About_Story_Full2">
+  <data name="About_Story_Full2" xml:space="preserve">
     <value>Βελτιώνουμε συνεχώς τις εγκαταστάσεις μας — από άνετα μπανγκαλόου μέχρι σύγχρονες θέσεις camping.</value>
   </data>
-  <data xml:space="preserve" name="About_Contact_Us">
+  <data name="About_Contact_Us" xml:space="preserve">
     <value>Επικοινωνήστε μαζί μας</value>
   </data>
-  <data xml:space="preserve" name="About_Offerings_Title">
+  <data name="About_Offerings_Title" xml:space="preserve">
     <value>Τι προσφέρουμε στο Autocamp Otesevo</value>
   </data>
-  <data xml:space="preserve" name="About_Offerings_Sub">
+  <data name="About_Offerings_Sub" xml:space="preserve">
     <value>Σύγχρονες ανέσεις και φυσικό περιβάλλον για στιγμές που μένουν αξέχαστες.</value>
   </data>
-  <data xml:space="preserve" name="Feature_Nature_Title">
+  <data name="Feature_Nature_Title" xml:space="preserve">
     <value>Ανέγγιχτη φύση</value>
   </data>
-  <data xml:space="preserve" name="Feature_Nature_Desc">
+  <data name="Feature_Nature_Desc" xml:space="preserve">
     <value>Περιβαλλόμενο από αρχαία δάση και καθαρό βουνίσιο αέρα</value>
   </data>
-  <data xml:space="preserve" name="Feature_Bungalows_Title">
+  <data name="Feature_Bungalows_Title" xml:space="preserve">
     <value>Άνετα μπανγκαλόου</value>
   </data>
-  <data xml:space="preserve" name="Feature_Bungalows_Desc">
+  <data name="Feature_Bungalows_Desc" xml:space="preserve">
     <value>Άνετα και σύγχρονα εξοπλισμένα μπανγκαλόου για αξέχαστες διακοπές</value>
   </data>
-  <data xml:space="preserve" name="Feature_Health_Title">
+  <data name="Feature_Health_Title" xml:space="preserve">
     <value>Φυσικό θεραπευτικό κλίμα</value>
   </data>
-  <data xml:space="preserve" name="Feature_Health_Desc">
+  <data name="Feature_Health_Desc" xml:space="preserve">
     <value>Μοναδικό μικρόκλιμα για την αναζωογόνηση σώματος και πνεύματος</value>
   </data>
-  <data xml:space="preserve" name="Feature_Peace_Title">
+  <data name="Feature_Peace_Title" xml:space="preserve">
     <value>Ήσυχο περιβάλλον</value>
   </data>
-  <data xml:space="preserve" name="Feature_Peace_Desc">
+  <data name="Feature_Peace_Desc" xml:space="preserve">
     <value>Ιδανική απόδραση από το θόρυβο της πόλης και το καθημερινό άγχος</value>
   </data>
-  <data xml:space="preserve" name="Feature_Beach_Title">
+  <data name="Feature_Beach_Title" xml:space="preserve">
     <value>Ιδιωτική παραλία</value>
   </data>
-  <data xml:space="preserve" name="Feature_Beach_Desc">
+  <data name="Feature_Beach_Desc" xml:space="preserve">
     <value>Άμεση πρόσβαση στην παραλία της Λίμνης Πρέσπας για μπάνιο και ηλιοθεραπεία</value>
   </data>
-  <data xml:space="preserve" name="Feature_Pitches_Title">
+  <data name="Feature_Pitches_Title" xml:space="preserve">
     <value>Θέσεις Camping</value>
   </data>
-  <data xml:space="preserve" name="Feature_Pitches_Desc">
+  <data name="Feature_Pitches_Desc" xml:space="preserve">
     <value>Οργανωμένες θέσεις για σκηνές και τροχόσπιτα με ρεύμα και εξυπηρετήσεις</value>
   </data>
-  <data xml:space="preserve" name="About_CTA_Title">
+  <data name="About_CTA_Title" xml:space="preserve">
     <value>Έτοιμοι για αξέχαστες διακοπές;</value>
   </data>
-  <data xml:space="preserve" name="About_CTA_Sub">
+  <data name="About_CTA_Sub" xml:space="preserve">
     <value>Κρατήστε την αγαπημένη σας θέση σήμερα. Είμαστε στη διάθεσή σας για απορίες.</value>
   </data>
-  <data xml:space="preserve" name="Stats_Years">
+  <data name="Stats_Years" xml:space="preserve">
     <value>Χρόνια εμπειρίας</value>
   </data>
-  <data xml:space="preserve" name="Stats_Bungalows">
+  <data name="Stats_Bungalows" xml:space="preserve">
     <value>Μпанγκαλόу</value>
   </data>
-  <data xml:space="preserve" name="Stats_Guests">
+  <data name="Stats_Guests" xml:space="preserve">
     <value>Ικανοποιημένοι επισκέπτες</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Badge">
+  <data name="Gallery_Badge" xml:space="preserve">
     <value>Συλλογή</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Title">
+  <data name="Gallery_Title" xml:space="preserve">
     <value>Δείτε τις ομορφιές μας</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide1_Title">
+  <data name="Gallery_Slide1_Title" xml:space="preserve">
     <value>Μпанγκαλόу</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide1_Desc">
+  <data name="Gallery_Slide1_Desc" xml:space="preserve">
     <value>Βρείτε την ηρεμία σας ανάμεσα στο βουνό και τα κύματα</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide2_Title">
+  <data name="Gallery_Slide2_Title" xml:space="preserve">
     <value>Μпанγκαλόу</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide2_Desc">
+  <data name="Gallery_Slide2_Desc" xml:space="preserve">
     <value>Απολαύστε το άρωμα των τριαντάφυλλων και τη γαλήνη της Πρέσπας</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide3_Title">
+  <data name="Gallery_Slide3_Title" xml:space="preserve">
     <value>Camping μέσα στο πράσινο</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide3_Desc">
+  <data name="Gallery_Slide3_Desc" xml:space="preserve">
     <value>Στήστε τη σκηνή σας κάτω από τη σκιά των δέντρων</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide4_Title">
+  <data name="Gallery_Slide4_Title" xml:space="preserve">
     <value>Ιδανικό για το τροχόσπιτό σας</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide4_Desc">
+  <data name="Gallery_Slide4_Desc" xml:space="preserve">
     <value>Βρείτε την ιδανική θέση για camping</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide5_Title">
+  <data name="Gallery_Slide5_Title" xml:space="preserve">
     <value>Περιπέτεια χωρίς όρια</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide5_Desc">
+  <data name="Gallery_Slide5_Desc" xml:space="preserve">
     <value>Τέλεια θέση για το camper σας με θέα τη λίμνη</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide6_Title">
+  <data name="Gallery_Slide6_Title" xml:space="preserve">
     <value>Στιγμές για να θυμάστε</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide6_Desc">
+  <data name="Gallery_Slide6_Desc" xml:space="preserve">
     <value>Εκεί που τα χαμόγελα της οικογένειας δημιουργούν όμορφες αναμνήσεις</value>
   </data>
-  <data xml:space="preserve" name="Contact_Meta_Title">
+  <data name="Contact_Meta_Title" xml:space="preserve">
     <value>Επικοινωνία - Autocamp Otesevo</value>
   </data>
-  <data xml:space="preserve" name="Contact_Meta_Desc">
+  <data name="Contact_Meta_Desc" xml:space="preserve">
     <value>Επικοινωνήστε με το Autocamp Otesevo για κρατήσεις και πληροφορίες.</value>
   </data>
-  <data xml:space="preserve" name="Contact_Badge">
+  <data name="Contact_Badge" xml:space="preserve">
     <value>Πληροφορίες Επικοινωνίας</value>
   </data>
-  <data xml:space="preserve" name="Contact_Title_1">
+  <data name="Contact_Title_1" xml:space="preserve">
     <value>Επικοινωνήστε μαζί μας και</value>
   </data>
-  <data xml:space="preserve" name="Contact_Title_2">
+  <data name="Contact_Title_2" xml:space="preserve">
     <value>επισκεφθείτε μας</value>
   </data>
-  <data xml:space="preserve" name="Contact_Sub">
+  <data name="Contact_Sub" xml:space="preserve">
     <value>Είμαστε εδώ για να απαντήσουμε σε όλες τις ερωτήσεις και τις κρατήσεις σας.</value>
   </data>
-  <data xml:space="preserve" name="Contact_Address_Label">
+  <data name="Contact_Address_Label" xml:space="preserve">
     <value>Διεύθυνση</value>
   </data>
-  <data xml:space="preserve" name="Contact_Address_Val">
+  <data name="Contact_Address_Val" xml:space="preserve">
     <value>Τουριστικός οικισμός Οτέσεβο, Ρέσεν 7310, Βόρεια Μακεδονία</value>
   </data>
-  <data xml:space="preserve" name="Contact_Email_Label">
+  <data name="Contact_Email_Label" xml:space="preserve">
     <value>Πληροφορίες &amp; Κρατήσεις</value>
   </data>
-  <data xml:space="preserve" name="Contact_Phone_Label">
+  <data name="Contact_Phone_Label" xml:space="preserve">
     <value>Τηλέφωνο Επικοινωνίας</value>
   </data>
-  <data xml:space="preserve" name="Contact_Social_Label">
+  <data name="Contact_Social_Label" xml:space="preserve">
     <value>Ακολουθήστε μας στα κοινωνικά δίκτυα</value>
   </data>
-  <data xml:space="preserve" name="Res_Meta_Title">
+  <data name="Res_Meta_Title" xml:space="preserve">
     <value>Κάντε κράτηση - Autocamp Otesevo</value>
   </data>
-  <data xml:space="preserve" name="Res_Meta_Desc">
+  <data name="Res_Meta_Desc" xml:space="preserve">
     <value>Στείλτε αίτημα κράτησης για μπανγκαλόου ή θέσεις camping στο Autocamp Otesevo.</value>
   </data>
-  <data xml:space="preserve" name="Res_Badge">
+  <data name="Res_Badge" xml:space="preserve">
     <value>Κράτηση</value>
   </data>
-  <data xml:space="preserve" name="Res_Title">
+  <data name="Res_Title" xml:space="preserve">
     <value>Στείλτε αίτημα κράτησης</value>
   </data>
-  <data xml:space="preserve" name="Res_Sub">
+  <data name="Res_Sub" xml:space="preserve">
     <value>Συμπληρώστε τα παρακάτω στοιχεία για να στείλετε το αίτημά σας.</value>
   </data>
-  <data xml:space="preserve" name="Res_Prices_Title">
+  <data name="Res_Prices_Title" xml:space="preserve">
     <value>Τιμοκατάλογος</value>
   </data>
-  <data xml:space="preserve" name="Res_FullName">
+  <data name="Res_FullName" xml:space="preserve">
     <value>Ονοματεπώνυμο</value>
   </data>
-  <data xml:space="preserve" name="Res_Email">
+  <data name="Res_Email" xml:space="preserve">
     <value>Διεύθυνση Email</value>
   </data>
-  <data xml:space="preserve" name="Res_Phone">
+  <data name="Res_Phone" xml:space="preserve">
     <value>Τηλέφωνο</value>
   </data>
-  <data xml:space="preserve" name="Res_Guests">
+  <data name="Res_Guests" xml:space="preserve">
     <value>Αριθμός ατόμων</value>
   </data>
-  <data xml:space="preserve" name="Res_Accommodation">
+  <data name="Res_Accommodation" xml:space="preserve">
     <value>Διαμονή</value>
   </data>
-  <data xml:space="preserve" name="Res_CheckIn">
+  <data name="Res_CheckIn" xml:space="preserve">
     <value>Ημερομηνία άφιξης</value>
   </data>
-  <data xml:space="preserve" name="Res_CheckOut">
+  <data name="Res_CheckOut" xml:space="preserve">
     <value>Ημερομηνία αναχώρησης</value>
   </data>
-  <data xml:space="preserve" name="Res_Info">
+  <data name="Res_Info" xml:space="preserve">
     <value>Επιπλέον αιτήματα</value>
   </data>
-  <data xml:space="preserve" name="Res_Submit">
+  <data name="Res_Submit" xml:space="preserve">
     <value>Αποστολή αιτήματος</value>
   </data>
-  <data xml:space="preserve" name="Res_Sending">
+  <data name="Res_Sending" xml:space="preserve">
     <value>Αποστολή...</value>
   </data>
-  <data xml:space="preserve" name="Res_Success_Title">
+  <data name="Res_Success_Title" xml:space="preserve">
     <value>Σας ευχαριστούμε!</value>
   </data>
-  <data xml:space="preserve" name="Res_Success_Msg">
+  <data name="Res_Success_Msg" xml:space="preserve">
     <value>Το αίτημα κράτησής σας στάλθηκε με επιτυχία. Θα επικοινωνήσουμε μαζί σας σύντομα.</value>
   </data>
-  <data xml:space="preserve" name="Res_Required_Notice">
+  <data name="Res_Required_Notice" xml:space="preserve">
     <value>Τα πεδία με * είναι υποχρεωτικά.</value>
   </data>
-  <data xml:space="preserve" name="Res_Back_Home">
+  <data name="Res_Back_Home" xml:space="preserve">
     <value>← Πίσω στην Αρχική</value>
   </data>
-  <data xml:space="preserve" name="Res_Placeholder_Name">
+  <data name="Res_Placeholder_Name" xml:space="preserve">
     <value>π.χ. Γιώργος Παπαδόπουλος</value>
   </data>
-  <data xml:space="preserve" name="Res_Placeholder_Email">
+  <data name="Res_Placeholder_Email" xml:space="preserve">
     <value>topalio@email.gr</value>
   </data>
-  <data xml:space="preserve" name="Res_Placeholder_Phone">
+  <data name="Res_Placeholder_Phone" xml:space="preserve">
     <value>+389 7X XXX XXX</value>
   </data>
-  <data xml:space="preserve" name="Res_Placeholder_Info">
+  <data name="Res_Placeholder_Info" xml:space="preserve">
     <value>Σημειώσεις ή ειδικά αιτήματα...</value>
   </data>
-  <data xml:space="preserve" name="News_Meta_Title">
+  <data name="News_Meta_Title" xml:space="preserve">
     <value>Νέα &amp; Προσφορές - Autocamp Otesevo</value>
   </data>
-  <data xml:space="preserve" name="News_Meta_Desc">
+  <data name="News_Meta_Desc" xml:space="preserve">
     <value>Τελευταία νέα και προσφορές από το Autocamp Otesevo.</value>
   </data>
-  <data xml:space="preserve" name="News_Badge">
+  <data name="News_Badge" xml:space="preserve">
     <value>Νέα &amp; Προσφορές</value>
   </data>
-  <data xml:space="preserve" name="News_Title">
+  <data name="News_Title" xml:space="preserve">
     <value>Μείνετε ενημερωμένοι</value>
   </data>
-  <data xml:space="preserve" name="News_Sub">
+  <data name="News_Sub" xml:space="preserve">
     <value>Ανακαλύψτε τα τελευταία νέα και προσφορές στο Autocamp Otesevo.</value>
   </data>
-  <data xml:space="preserve" name="News_ReadMore">
+  <data name="News_ReadMore" xml:space="preserve">
     <value>Διαβάστε περισσότερα →</value>
   </data>
-  <data xml:space="preserve" name="News_NoItems">
+  <data name="News_NoItems" xml:space="preserve">
     <value>Δεν υπάρχουν δημοσιευμένα νέα αυτή τη στιγμή.</value>
   </data>
-  <data xml:space="preserve" name="News_PublishedOn">
+  <data name="News_PublishedOn" xml:space="preserve">
     <value>Δημοσιεύτηκε στις</value>
   </data>
-  <data xml:space="preserve" name="Acc_Bungalow">
+  <data name="Acc_Bungalow" xml:space="preserve">
     <value>Μпанγκαλόу</value>
   </data>
-  <data xml:space="preserve" name="Acc_Trailer">
+  <data name="Acc_Trailer" xml:space="preserve">
     <value>Τроχόσπιτο / Camper</value>
   </data>
-  <data xml:space="preserve" name="Acc_Pitch">
+  <data name="Acc_Pitch" xml:space="preserve">
     <value>Θέση σκηνής</value>
   </data>
-  <data xml:space="preserve" name="Currency_MKD">
+  <data name="Currency_MKD" xml:space="preserve">
     <value>MKD</value>
   </data>
-  <data xml:space="preserve" name="PerNight">
+  <data name="PerNight" xml:space="preserve">
     <value>/ διανυκτέρευση</value>
   </data>
-  <data xml:space="preserve" name="Val_Required">
+  <data name="Val_Required" xml:space="preserve">
     <value>То πεδίο {0} είναι υποχρεωτικό.</value>
   </data>
-  <data xml:space="preserve" name="Val_Email">
+  <data name="Val_Email" xml:space="preserve">
     <value>Παρακαλούμε εισάγετε μια έγκυρη διεύθυνση email.</value>
   </data>
-  <data xml:space="preserve" name="Val_Generic_Error">
+  <data name="Val_Generic_Error" xml:space="preserve">
     <value>Λυπούμαστε, παρακαλούμε δοκιμάστε ξανά....</value>
   </data>
-  <data xml:space="preserve" name="Js_Sending">
+  <data name="Js_Sending" xml:space="preserve">
     <value>Αποστολή...</value>
   </data>
-  <data xml:space="preserve" name="Js_SendRequest">
+  <data name="Js_SendRequest" xml:space="preserve">
     <value>Αποστολή αιτήματος ↗</value>
   </data>
-  <data xml:space="preserve" name="Login_Title">
+  <data name="Login_Title" xml:space="preserve">
     <value>Σύνδεση</value>
   </data>
-  <data xml:space="preserve" name="Register_Title">
+  <data name="Register_Title" xml:space="preserve">
     <value>Εγγραφή</value>
   </data>
-  <data xml:space="preserve" name="Email">
+  <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
-  <data xml:space="preserve" name="Password">
+  <data name="Password" xml:space="preserve">
     <value>Kωδικός πρόσβασης</value>
   </data>
-  <data xml:space="preserve" name="ConfirmPassword">
+  <data name="ConfirmPassword" xml:space="preserve">
     <value>Επιβεβαίωση κωδικού</value>
   </data>
-  <data xml:space="preserve" name="RememberMe">
+  <data name="RememberMe" xml:space="preserve">
     <value>Να με θυμάσαι;</value>
   </data>
   <data name="Nav_AddAdmin" xml:space="preserve">
@@ -1019,5 +1124,8 @@
   </data>
   <data name="News_Cta_Button" xml:space="preserve">
     <value>Κάντε κράτηση τώρα</value>
+  </data>
+  <data name="News_Hero_Desc" xml:space="preserve">
+    <value>Μείνετε ενημερωμένοι για όλα τα νέα στην Πρέσπα — ειδήσεις, εκδηλώσεις και αποκλειστικές προσφορές.</value>
   </data>
 </root>

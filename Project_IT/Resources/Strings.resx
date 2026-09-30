@@ -1,5 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
   </resheader>
@@ -12,415 +117,415 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data xml:space="preserve" name="Site_Name">
+  <data name="Site_Name" xml:space="preserve">
     <value>Autocamp Otesevo</value>
   </data>
-  <data xml:space="preserve" name="Site_Tagline">
+  <data name="Site_Tagline" xml:space="preserve">
     <value>Camping &amp; RV Park Lake Prespa</value>
   </data>
-  <data xml:space="preserve" name="Site_Footer_Desc">
+  <data name="Site_Footer_Desc" xml:space="preserve">
     <value>Natural paradise on the shore of Lake Prespa. Come and experience the beauty of our Autocamp.</value>
   </data>
-  <data xml:space="preserve" name="Site_Footer_Rights">
+  <data name="Site_Footer_Rights" xml:space="preserve">
     <value>Autocamp Otesevo. All rights reserved.</value>
   </data>
-  <data xml:space="preserve" name="Site_Footer_Location">
+  <data name="Site_Footer_Location" xml:space="preserve">
     <value>Lake Prespa, R. North Macedonia</value>
   </data>
-  <data xml:space="preserve" name="Nav_Home">
+  <data name="Nav_Home" xml:space="preserve">
     <value>Home</value>
   </data>
-  <data xml:space="preserve" name="Nav_News">
+  <data name="Nav_News" xml:space="preserve">
     <value>News &amp; Offers</value>
   </data>
-  <data xml:space="preserve" name="Nav_About">
+  <data name="Nav_About" xml:space="preserve">
     <value>About Us</value>
   </data>
-  <data xml:space="preserve" name="Nav_Contact">
+  <data name="Nav_Contact" xml:space="preserve">
     <value>Contact</value>
   </data>
-  <data xml:space="preserve" name="Nav_Book">
+  <data name="Nav_Book" xml:space="preserve">
     <value>Book Now</value>
   </data>
-  <data xml:space="preserve" name="Nav_Admin">
+  <data name="Nav_Admin" xml:space="preserve">
     <value>Administration</value>
   </data>
-  <data xml:space="preserve" name="Nav_Reservations">
+  <data name="Nav_Reservations" xml:space="preserve">
     <value>Reservations</value>
   </data>
-  <data xml:space="preserve" name="Nav_EditNews">
+  <data name="Nav_EditNews" xml:space="preserve">
     <value>Edit News</value>
   </data>
-  <data xml:space="preserve" name="Nav_Settings">
+  <data name="Nav_Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data xml:space="preserve" name="Nav_FileManager">
+  <data name="Nav_FileManager" xml:space="preserve">
     <value>File Manager</value>
   </data>
-  <data xml:space="preserve" name="Nav_LogIn">
+  <data name="Nav_LogIn" xml:space="preserve">
     <value>Log In</value>
   </data>
-  <data xml:space="preserve" name="Nav_LogOff">
+  <data name="Nav_LogOff" xml:space="preserve">
     <value>Log Off</value>
   </data>
-  <data xml:space="preserve" name="Nav_Register">
+  <data name="Nav_Register" xml:space="preserve">
     <value>Register</value>
   </data>
-  <data xml:space="preserve" name="Home_Meta_Title">
+  <data name="Home_Meta_Title" xml:space="preserve">
     <value>Autocamp Otesevo - Home | Camping Lake Prespa</value>
   </data>
-  <data xml:space="preserve" name="Home_Meta_Desc">
+  <data name="Home_Meta_Desc" xml:space="preserve">
     <value>Reserve your stay at Autocamp Otesevo on Lake Prespa. Enjoy lakeside camping, campervan pitches, and nature stays near Galicica National Park.</value>
   </data>
-  <data xml:space="preserve" name="Home_Hero_Badge">
+  <data name="Home_Hero_Badge" xml:space="preserve">
     <value>Lake Prespa, North Macedonia</value>
   </data>
-  <data xml:space="preserve" name="Home_Hero_Title_1">
+  <data name="Home_Hero_Title_1" xml:space="preserve">
     <value>Welcome to</value>
   </data>
-  <data xml:space="preserve" name="Home_Hero_Title_2">
+  <data name="Home_Hero_Title_2" xml:space="preserve">
     <value>Autocamp Otesevo</value>
   </data>
-  <data xml:space="preserve" name="Home_Hero_Sub_1">
+  <data name="Home_Hero_Sub_1" xml:space="preserve">
     <value>Your natural sanctuary on the shore of</value>
   </data>
-  <data xml:space="preserve" name="Home_Hero_Sub_2">
+  <data name="Home_Hero_Sub_2" xml:space="preserve">
     <value>Lake Prespa</value>
   </data>
-  <data xml:space="preserve" name="Home_Hero_Cta">
+  <data name="Home_Hero_Cta" xml:space="preserve">
     <value>Explore the campsite</value>
   </data>
-  <data xml:space="preserve" name="Home_CheckIn">
+  <data name="Home_CheckIn" xml:space="preserve">
     <value>Arrival</value>
   </data>
-  <data xml:space="preserve" name="Home_CheckOut">
+  <data name="Home_CheckOut" xml:space="preserve">
     <value>Departure</value>
   </data>
-  <data xml:space="preserve" name="Home_Guests">
+  <data name="Home_Guests" xml:space="preserve">
     <value>Guests</value>
   </data>
-  <data xml:space="preserve" name="Home_Guest_Singular">
+  <data name="Home_Guest_Singular" xml:space="preserve">
     <value>1 guest</value>
   </data>
-  <data xml:space="preserve" name="Home_Guest_Plural">
+  <data name="Home_Guest_Plural" xml:space="preserve">
     <value>{0} guests</value>
   </data>
-  <data xml:space="preserve" name="Home_Search">
+  <data name="Home_Search" xml:space="preserve">
     <value>Search</value>
   </data>
-  <data xml:space="preserve" name="About_Badge">
+  <data name="About_Badge" xml:space="preserve">
     <value>About Us</value>
   </data>
-  <data xml:space="preserve" name="About_Hero_Title_1">
+  <data name="About_Hero_Title_1" xml:space="preserve">
     <value>Where nature</value>
   </data>
-  <data xml:space="preserve" name="About_Hero_Title_2">
+  <data name="About_Hero_Title_2" xml:space="preserve">
     <value>meets comfort</value>
   </data>
-  <data xml:space="preserve" name="About_Meta_Title">
+  <data name="About_Meta_Title" xml:space="preserve">
     <value>About Us - Autocamp Otesevo</value>
   </data>
-  <data xml:space="preserve" name="About_Meta_Desc">
+  <data name="About_Meta_Desc" xml:space="preserve">
     <value>Discover the history and nature of Autocamp Otesevo on Lake Prespa. Decades of camping tradition and hospitality.</value>
   </data>
-  <data xml:space="preserve" name="About_Story_P1">
+  <data name="About_Story_P1" xml:space="preserve">
     <value>Autocamp Otesevo lies on the western shore of Lake Prespa, surrounded by centuries-old forests and endemic flora that make this area unique for relaxation, recreation, and total regeneration.</value>
   </data>
-  <data xml:space="preserve" name="About_Story_P2">
+  <data name="About_Story_P2" xml:space="preserve">
     <value>With over 50 years of tradition, we offer bungalows, equipped camping pitches, direct access to the lake beach, and unforgettable sunsets over Prespa.</value>
   </data>
-  <data xml:space="preserve" name="About_View_Prices">
+  <data name="About_View_Prices" xml:space="preserve">
     <value>View Price List</value>
   </data>
-  <data xml:space="preserve" name="About_Story_Badge">
+  <data name="About_Story_Badge" xml:space="preserve">
     <value>Our Story</value>
   </data>
-  <data xml:space="preserve" name="About_Story_Heading">
+  <data name="About_Story_Heading" xml:space="preserve">
     <value>Tradition and love for nature</value>
   </data>
-  <data xml:space="preserve" name="About_Story_Full1">
+  <data name="About_Story_Full1" xml:space="preserve">
     <value>Autocamp Otesevo was founded with the vision to offer all nature lovers an authentic experience along Lake Prespa. For decades, our camp has been a favorite destination for families, adventurers, and all seeking escape from daily city hustle.</value>
   </data>
-  <data xml:space="preserve" name="About_Story_Full2">
+  <data name="About_Story_Full2" xml:space="preserve">
     <value>We constantly improve our facilities — from comfortable bungalows and modern camping pitches to enhanced recreational amenities.</value>
   </data>
-  <data xml:space="preserve" name="About_Contact_Us">
+  <data name="About_Contact_Us" xml:space="preserve">
     <value>Contact Us</value>
   </data>
-  <data xml:space="preserve" name="About_Offerings_Title">
+  <data name="About_Offerings_Title" xml:space="preserve">
     <value>What we offer at Autocamp Otesevo</value>
   </data>
-  <data xml:space="preserve" name="About_Offerings_Sub">
+  <data name="About_Offerings_Sub" xml:space="preserve">
     <value>Modern amenities and natural surroundings for memorable moments.</value>
   </data>
-  <data xml:space="preserve" name="Feature_Nature_Title">
+  <data name="Feature_Nature_Title" xml:space="preserve">
     <value>Untouched nature</value>
   </data>
-  <data xml:space="preserve" name="Feature_Nature_Desc">
+  <data name="Feature_Nature_Desc" xml:space="preserve">
     <value>Surrounded by ancient forests and clean mountain air</value>
   </data>
-  <data xml:space="preserve" name="Feature_Bungalows_Title">
+  <data name="Feature_Bungalows_Title" xml:space="preserve">
     <value>Comfortable bungalows</value>
   </data>
-  <data xml:space="preserve" name="Feature_Bungalows_Desc">
+  <data name="Feature_Bungalows_Desc" xml:space="preserve">
     <value>Cozy and modernly equipped bungalows for an unforgettable vacation</value>
   </data>
-  <data xml:space="preserve" name="Feature_Health_Title">
+  <data name="Feature_Health_Title" xml:space="preserve">
     <value>Natural climate spa</value>
   </data>
-  <data xml:space="preserve" name="Feature_Health_Desc">
+  <data name="Feature_Health_Desc" xml:space="preserve">
     <value>Unique microclimate and mountain air for body and mind regeneration</value>
   </data>
-  <data xml:space="preserve" name="Feature_Peace_Title">
+  <data name="Feature_Peace_Title" xml:space="preserve">
     <value>Peaceful environment</value>
   </data>
-  <data xml:space="preserve" name="Feature_Peace_Desc">
+  <data name="Feature_Peace_Desc" xml:space="preserve">
     <value>Ideal escape from city noise and everyday stress</value>
   </data>
-  <data xml:space="preserve" name="Feature_Beach_Title">
+  <data name="Feature_Beach_Title" xml:space="preserve">
     <value>Private Beach</value>
   </data>
-  <data xml:space="preserve" name="Feature_Beach_Desc">
+  <data name="Feature_Beach_Desc" xml:space="preserve">
     <value>Direct access to Lake Prespa beach for sunbathing, swimming, and sunsets</value>
   </data>
-  <data xml:space="preserve" name="Feature_Pitches_Title">
+  <data name="Feature_Pitches_Title" xml:space="preserve">
     <value>Camping Pitches</value>
   </data>
-  <data xml:space="preserve" name="Feature_Pitches_Desc">
+  <data name="Feature_Pitches_Desc" xml:space="preserve">
     <value>Organized pitches for tents and campervans with electricity and facilities</value>
   </data>
-  <data xml:space="preserve" name="About_CTA_Title">
+  <data name="About_CTA_Title" xml:space="preserve">
     <value>Ready for an unforgettable vacation?</value>
   </data>
-  <data xml:space="preserve" name="About_CTA_Sub">
+  <data name="About_CTA_Sub" xml:space="preserve">
     <value>Reserve your favorite spot today. If you have questions or special requests, we are at your service.</value>
   </data>
-  <data xml:space="preserve" name="Stats_Years">
+  <data name="Stats_Years" xml:space="preserve">
     <value>Years Experience</value>
   </data>
-  <data xml:space="preserve" name="Stats_Bungalows">
+  <data name="Stats_Bungalows" xml:space="preserve">
     <value>Bungalows</value>
   </data>
-  <data xml:space="preserve" name="Stats_Guests">
+  <data name="Stats_Guests" xml:space="preserve">
     <value>Satisfied Guests</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Badge">
+  <data name="Gallery_Badge" xml:space="preserve">
     <value>Gallery</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Title">
+  <data name="Gallery_Title" xml:space="preserve">
     <value>See our beauty</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide1_Title">
+  <data name="Gallery_Slide1_Title" xml:space="preserve">
     <value>Bungalows</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide1_Desc">
+  <data name="Gallery_Slide1_Desc" xml:space="preserve">
     <value>Find your peace between the mountain and the waves</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide2_Title">
+  <data name="Gallery_Slide2_Title" xml:space="preserve">
     <value>Bungalows</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide2_Desc">
+  <data name="Gallery_Slide2_Desc" xml:space="preserve">
     <value>Enjoy the scent of roses and the serenity of Prespa</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide3_Title">
+  <data name="Gallery_Slide3_Title" xml:space="preserve">
     <value>Pure Greenery Camping</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide3_Desc">
+  <data name="Gallery_Slide3_Desc" xml:space="preserve">
     <value>Pitch your tent under dense canopies and enjoy nature</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide4_Title">
+  <data name="Gallery_Slide4_Title" xml:space="preserve">
     <value>Ideal for your campervan</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide4_Desc">
+  <data name="Gallery_Slide4_Desc" xml:space="preserve">
     <value>Find your ideal camping pitch</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide5_Title">
+  <data name="Gallery_Slide5_Title" xml:space="preserve">
     <value>Boundless Adventure</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide5_Desc">
+  <data name="Gallery_Slide5_Desc" xml:space="preserve">
     <value>Perfect spot for your camper with a lake view</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide6_Title">
+  <data name="Gallery_Slide6_Title" xml:space="preserve">
     <value>Moments to remember</value>
   </data>
-  <data xml:space="preserve" name="Gallery_Slide6_Desc">
+  <data name="Gallery_Slide6_Desc" xml:space="preserve">
     <value>Where family smiles and pet loyalty create perfect memories</value>
   </data>
-  <data xml:space="preserve" name="Contact_Meta_Title">
+  <data name="Contact_Meta_Title" xml:space="preserve">
     <value>Contact - Autocamp Otesevo</value>
   </data>
-  <data xml:space="preserve" name="Contact_Meta_Desc">
+  <data name="Contact_Meta_Desc" xml:space="preserve">
     <value>Contact Autocamp Otesevo on Lake Prespa for reservations and inquiries.</value>
   </data>
-  <data xml:space="preserve" name="Contact_Badge">
+  <data name="Contact_Badge" xml:space="preserve">
     <value>Contact Information</value>
   </data>
-  <data xml:space="preserve" name="Contact_Title_1">
+  <data name="Contact_Title_1" xml:space="preserve">
     <value>Contact us and</value>
   </data>
-  <data xml:space="preserve" name="Contact_Title_2">
+  <data name="Contact_Title_2" xml:space="preserve">
     <value>visit us</value>
   </data>
-  <data xml:space="preserve" name="Contact_Sub">
+  <data name="Contact_Sub" xml:space="preserve">
     <value>We are here to answer all your questions, availability inquiries, and reservations.</value>
   </data>
-  <data xml:space="preserve" name="Contact_Address_Label">
+  <data name="Contact_Address_Label" xml:space="preserve">
     <value>Address</value>
   </data>
-  <data xml:space="preserve" name="Contact_Address_Val">
+  <data name="Contact_Address_Val" xml:space="preserve">
     <value>Tourist settlement Otesevo bb, Resen 7310, Republic of North Macedonia</value>
   </data>
-  <data xml:space="preserve" name="Contact_Email_Label">
+  <data name="Contact_Email_Label" xml:space="preserve">
     <value>Information &amp; Reservations</value>
   </data>
-  <data xml:space="preserve" name="Contact_Phone_Label">
+  <data name="Contact_Phone_Label" xml:space="preserve">
     <value>Contact Phone</value>
   </data>
-  <data xml:space="preserve" name="Contact_Social_Label">
+  <data name="Contact_Social_Label" xml:space="preserve">
     <value>Follow us on social networks</value>
   </data>
-  <data xml:space="preserve" name="Res_Meta_Title">
+  <data name="Res_Meta_Title" xml:space="preserve">
     <value>Book Now - Autocamp Otesevo</value>
   </data>
-  <data xml:space="preserve" name="Res_Meta_Desc">
+  <data name="Res_Meta_Desc" xml:space="preserve">
     <value>Send a reservation request for bungalows, camper pitches, or tent sites at Autocamp Otesevo.</value>
   </data>
-  <data xml:space="preserve" name="Res_Badge">
+  <data name="Res_Badge" xml:space="preserve">
     <value>Reservation</value>
   </data>
-  <data xml:space="preserve" name="Res_Title">
+  <data name="Res_Title" xml:space="preserve">
     <value>Send a reservation request</value>
   </data>
-  <data xml:space="preserve" name="Res_Sub">
+  <data name="Res_Sub" xml:space="preserve">
     <value>Fill in the details below to submit your reservation request to Autocamp Otesevo.</value>
   </data>
-  <data xml:space="preserve" name="Res_Prices_Title">
+  <data name="Res_Prices_Title" xml:space="preserve">
     <value>Price List</value>
   </data>
-  <data xml:space="preserve" name="Res_FullName">
+  <data name="Res_FullName" xml:space="preserve">
     <value>Full Name</value>
   </data>
-  <data xml:space="preserve" name="Res_Email">
+  <data name="Res_Email" xml:space="preserve">
     <value>Email Address</value>
   </data>
-  <data xml:space="preserve" name="Res_Phone">
+  <data name="Res_Phone" xml:space="preserve">
     <value>Phone Number</value>
   </data>
-  <data xml:space="preserve" name="Res_Guests">
+  <data name="Res_Guests" xml:space="preserve">
     <value>Number of Guests</value>
   </data>
-  <data xml:space="preserve" name="Res_Accommodation">
+  <data name="Res_Accommodation" xml:space="preserve">
     <value>Accommodation</value>
   </data>
-  <data xml:space="preserve" name="Res_CheckIn">
+  <data name="Res_CheckIn" xml:space="preserve">
     <value>Arrival Date</value>
   </data>
-  <data xml:space="preserve" name="Res_CheckOut">
+  <data name="Res_CheckOut" xml:space="preserve">
     <value>Departure Date</value>
   </data>
-  <data xml:space="preserve" name="Res_Info">
+  <data name="Res_Info" xml:space="preserve">
     <value>Additional Requests / Notes</value>
   </data>
-  <data xml:space="preserve" name="Res_Submit">
+  <data name="Res_Submit" xml:space="preserve">
     <value>Send Request</value>
   </data>
-  <data xml:space="preserve" name="Res_Sending">
+  <data name="Res_Sending" xml:space="preserve">
     <value>Sending...</value>
   </data>
-  <data xml:space="preserve" name="Res_Success_Title">
+  <data name="Res_Success_Title" xml:space="preserve">
     <value>Thank You!</value>
   </data>
-  <data xml:space="preserve" name="Res_Success_Msg">
+  <data name="Res_Success_Msg" xml:space="preserve">
     <value>Your reservation request has been successfully sent. We will contact you as soon as possible.</value>
   </data>
-  <data xml:space="preserve" name="Res_Required_Notice">
+  <data name="Res_Required_Notice" xml:space="preserve">
     <value>Fields marked with * are required.</value>
   </data>
-  <data xml:space="preserve" name="Res_Back_Home">
+  <data name="Res_Back_Home" xml:space="preserve">
     <value>← Back to Home</value>
   </data>
-  <data xml:space="preserve" name="Res_Placeholder_Name">
+  <data name="Res_Placeholder_Name" xml:space="preserve">
     <value>e.g. John Doe</value>
   </data>
-  <data xml:space="preserve" name="Res_Placeholder_Email">
+  <data name="Res_Placeholder_Email" xml:space="preserve">
     <value>your@email.com</value>
   </data>
-  <data xml:space="preserve" name="Res_Placeholder_Phone">
+  <data name="Res_Placeholder_Phone" xml:space="preserve">
     <value>+389 7X XXX XXX</value>
   </data>
-  <data xml:space="preserve" name="Res_Placeholder_Info">
+  <data name="Res_Placeholder_Info" xml:space="preserve">
     <value>Notes or special requests...</value>
   </data>
-  <data xml:space="preserve" name="News_Meta_Title">
+  <data name="News_Meta_Title" xml:space="preserve">
     <value>News &amp; Offers - Autocamp Otesevo</value>
   </data>
-  <data xml:space="preserve" name="News_Meta_Desc">
+  <data name="News_Meta_Desc" xml:space="preserve">
     <value>Latest news, announcements, and special offers from Autocamp Otesevo on Lake Prespa.</value>
   </data>
-  <data xml:space="preserve" name="News_Badge">
+  <data name="News_Badge" xml:space="preserve">
     <value>News &amp; Offers</value>
   </data>
-  <data xml:space="preserve" name="News_Title">
+  <data name="News_Title" xml:space="preserve">
     <value>Stay informed</value>
   </data>
-  <data xml:space="preserve" name="News_Sub">
+  <data name="News_Sub" xml:space="preserve">
     <value>Discover the latest news, events, and special offers at Autocamp Otesevo.</value>
   </data>
-  <data xml:space="preserve" name="News_ReadMore">
+  <data name="News_ReadMore" xml:space="preserve">
     <value>Read more →</value>
   </data>
-  <data xml:space="preserve" name="News_NoItems">
+  <data name="News_NoItems" xml:space="preserve">
     <value>There are currently no published news items.</value>
   </data>
-  <data xml:space="preserve" name="News_PublishedOn">
+  <data name="News_PublishedOn" xml:space="preserve">
     <value>Published on</value>
   </data>
-  <data xml:space="preserve" name="Acc_Bungalow">
+  <data name="Acc_Bungalow" xml:space="preserve">
     <value>Bungalow</value>
   </data>
-  <data xml:space="preserve" name="Acc_Trailer">
+  <data name="Acc_Trailer" xml:space="preserve">
     <value>Campervan / Trailer</value>
   </data>
-  <data xml:space="preserve" name="Acc_Pitch">
+  <data name="Acc_Pitch" xml:space="preserve">
     <value>Tent Pitch</value>
   </data>
-  <data xml:space="preserve" name="Currency_MKD">
+  <data name="Currency_MKD" xml:space="preserve">
     <value>MKD</value>
   </data>
-  <data xml:space="preserve" name="PerNight">
+  <data name="PerNight" xml:space="preserve">
     <value>/ night</value>
   </data>
-  <data xml:space="preserve" name="Val_Required">
+  <data name="Val_Required" xml:space="preserve">
     <value>{0} is required.</value>
   </data>
-  <data xml:space="preserve" name="Val_Email">
+  <data name="Val_Email" xml:space="preserve">
     <value>Please enter a valid email address.</value>
   </data>
-  <data xml:space="preserve" name="Val_Generic_Error">
+  <data name="Val_Generic_Error" xml:space="preserve">
     <value>Sorry, please try again....</value>
   </data>
-  <data xml:space="preserve" name="Js_Sending">
+  <data name="Js_Sending" xml:space="preserve">
     <value>Sending...</value>
   </data>
-  <data xml:space="preserve" name="Js_SendRequest">
+  <data name="Js_SendRequest" xml:space="preserve">
     <value>Send request ↗</value>
   </data>
-  <data xml:space="preserve" name="Login_Title">
+  <data name="Login_Title" xml:space="preserve">
     <value>Log In</value>
   </data>
-  <data xml:space="preserve" name="Register_Title">
+  <data name="Register_Title" xml:space="preserve">
     <value>Register</value>
   </data>
-  <data xml:space="preserve" name="Email">
+  <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
-  <data xml:space="preserve" name="Password">
+  <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
-  <data xml:space="preserve" name="ConfirmPassword">
+  <data name="ConfirmPassword" xml:space="preserve">
     <value>Confirm Password</value>
   </data>
-  <data xml:space="preserve" name="RememberMe">
+  <data name="RememberMe" xml:space="preserve">
     <value>Remember me?</value>
   </data>
   <data name="Nav_AddAdmin" xml:space="preserve">
@@ -1019,5 +1124,8 @@
   </data>
   <data name="News_Cta_Button" xml:space="preserve">
     <value>Book now</value>
+  </data>
+  <data name="News_Hero_Desc" xml:space="preserve">
+    <value>Stay up to date with everything new in Prespa — news, events, and exclusive offers.</value>
   </data>
 </root>
