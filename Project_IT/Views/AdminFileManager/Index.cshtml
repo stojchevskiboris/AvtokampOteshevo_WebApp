@@ -1,7 +1,7 @@
 @model Project_IT.Models.FileManagerViewModel
 
 @{
-    ViewBag.Title = "Администрација — File Manager";
+    ViewBag.Title = Strings.AdminFileManager_Meta_Title;
     var imagesList = Model.Items.Where(i => !i.IsDirectory && i.IsImage).ToList();
 }
 
@@ -32,16 +32,16 @@
     <!-- Top Header -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
         <div>
-            <h1 class="text-2xl sm:text-3xl font-serif text-slate-800">File Manager</h1>
-            <p class="text-slate-500 text-xs sm:text-sm mt-1">Управување со сите фајлови и директориуми во <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">~/Content</code></p>
+            <h1 class="text-2xl sm:text-3xl font-serif text-slate-800">@Strings.AdminFileManager_Heading</h1>
+            <p class="text-slate-500 text-xs sm:text-sm mt-1">@Strings.AdminFileManager_Subheading <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">~/Content</code></p>
         </div>
 
         <div class="flex items-center gap-2 sm:gap-3">
             <button onclick="openModal('uploadModal')" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-white bg-brand-gradient shadow-md hover:opacity-90 transition cursor-pointer">
-                <span>📤</span> Прикачи
+                <span>📤</span> @Strings.AdminFileManager_Upload
             </button>
             <button onclick="openModal('createFolderModal')" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-slate-700 bg-white border border-slate-200 shadow-sm hover:bg-slate-50 transition cursor-pointer">
-                <span>📁</span> Нов Фолдер
+                <span>📁</span> @Strings.AdminFileManager_CreateFolder
             </button>
         </div>
     </div>
@@ -50,7 +50,7 @@
     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-3.5 sm:p-4 mb-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <!-- Breadcrumb & Copy Path -->
         <div class="flex items-center gap-2 flex-wrap text-xs sm:text-sm font-medium">
-            <span class="text-slate-400">Патека:</span>
+            <span class="text-slate-400">@Strings.AdminFileManager_Path</span>
             <div class="flex items-center gap-1 bg-slate-50 border border-slate-200 rounded-xl px-2.5 sm:px-3 py-1.5 flex-wrap max-w-full overflow-hidden">
                 @for (int i = 0; i < Model.Breadcrumbs.Count; i++)
                 {
@@ -69,8 +69,8 @@
                     }
                 }
             </div>
-            <button type="button" onclick="copyPathToClipboard('@Model.CurrentPath')" title="Копирај патека" class="border p-1.5 sm:p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition cursor-pointer">
-                📋 <span class="text-xs ml-0.5 hidden sm:inline">Копирај Патека</span>
+            <button type="button" onclick="copyPathToClipboard('@Model.CurrentPath')" title="@Strings.AdminFileManager_CopyPathTitle" class="border p-1.5 sm:p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition cursor-pointer">
+                📋 <span class="text-xs ml-0.5 hidden sm:inline">@Strings.AdminFileManager_CopyPathBtn</span>
             </button>
         </div>
 
@@ -80,7 +80,7 @@
             <form method="get" action="@Url.Action("Index", "AdminFileManager")" class="relative flex items-center flex-1 sm:flex-none">
                 <input type="hidden" name="currentPath" value="@Model.CurrentPath" />
                 <input type="hidden" name="viewType" value="@Model.ViewType" />
-                <input type="text" name="query" value="@Model.SearchQuery" placeholder="Пребарај фајлови..."
+                <input type="text" name="query" value="@Model.SearchQuery" placeholder="@Strings.AdminFileManager_SearchPlaceholder"
                        class="w-full sm:w-64 pl-9 pr-8 py-1.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition" />
                 <span class="absolute left-3 text-slate-400 text-xs">🔍</span>
                 @if (!string.IsNullOrWhiteSpace(Model.SearchQuery))
@@ -115,7 +115,7 @@
     {
         <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 sm:p-12 text-center text-slate-400">
             <div class="text-3xl sm:text-4xl mb-3">📂</div>
-            <p class="text-xs sm:text-base font-medium">Оваа папка е празна или нема фајлови што одговараат на пребарувањето.</p>
+            <p class="text-xs sm:text-base font-medium">@Strings.AdminFileManager_EmptyFolder</p>
         </div>
     }
     else if (Model.ViewType == "grid")
@@ -132,13 +132,13 @@
                         </button>
                         <div id="dropdown-@item.GetHashCode()" class="hidden absolute right-0 mt-1 w-36 bg-white rounded-xl shadow-lg border border-slate-100 py-1 text-xs z-20">
                             <button type="button" onclick="openDetailsModal('@item.Name', '@item.VirtualPath', '@item.FormattedSize', '@item.CreatedOn.ToString("dd.MM.yyyy HH:mm")', '@item.ModifiedOn.ToString("dd.MM.yyyy HH:mm")', '@item.DimensionString')" class="w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700">
-                                ℹ️ Детали
+                                ℹ️ @Strings.AdminFileManager_ActionDetails
                             </button>
                             <button type="button" onclick="openRenameModal('@item.RelativePath', '@item.Name')" class="w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700">
-                                ✏️ Преименувај
+                                ✏️ @Strings.AdminFileManager_ActionRename
                             </button>
                             <button type="button" onclick="openDeleteModal('@item.RelativePath', '@item.Name')" class="w-full text-left px-3 py-1.5 hover:bg-rose-50 text-rose-600 font-medium">
-                                🗑️ Избриши
+                                🗑️ @Strings.AdminFileManager_ActionDelete
                             </button>
                         </div>
                     </div>
@@ -205,7 +205,7 @@
                                 <div class="min-w-0 flex-1">
                                     <div class="text-xs font-semibold text-slate-800 truncate" title="@item.Name">@item.Name</div>
                                     <div class="text-[10px] text-slate-400 flex items-center gap-2 mt-0.5">
-                                        <span>@(item.IsDirectory ? "Фолдер" : (string.IsNullOrWhiteSpace(item.Extension) ? "Фајл" : item.Extension.ToUpper().TrimStart('.')))</span>
+                                        <span>@(item.IsDirectory ? Strings.AdminFileManager_Folder : (string.IsNullOrWhiteSpace(item.Extension) ? Strings.AdminFileManager_File : item.Extension.ToUpper().TrimStart('.')))</span>
                                         @if (!item.IsDirectory)
                                         {
                                             <span>•</span>
@@ -222,13 +222,13 @@
                                 </button>
                                 <div id="dropdown-m-@item.GetHashCode()" class="hidden absolute right-0 mt-1 w-36 bg-white rounded-xl shadow-lg border border-slate-100 py-1 text-xs z-20">
                                     <button type="button" onclick="openDetailsModal('@item.Name', '@item.VirtualPath', '@item.FormattedSize', '@item.CreatedOn.ToString("dd.MM.yyyy HH:mm")', '@item.ModifiedOn.ToString("dd.MM.yyyy HH:mm")', '@item.DimensionString')" class="w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700">
-                                        ℹ️ Детали
+                                        ℹ️ @Strings.AdminFileManager_ActionDetails
                                     </button>
                                     <button type="button" onclick="openRenameModal('@item.RelativePath', '@item.Name')" class="w-full text-left px-3 py-1.5 hover:bg-slate-50 text-slate-700">
-                                        ✏️ Преименувај
+                                        ✏️ @Strings.AdminFileManager_ActionRename
                                     </button>
                                     <button type="button" onclick="openDeleteModal('@item.RelativePath', '@item.Name')" class="w-full text-left px-3 py-1.5 hover:bg-rose-50 text-rose-600 font-medium">
-                                        🗑️ Избриши
+                                        🗑️ @Strings.AdminFileManager_ActionDelete
                                     </button>
                                 </div>
                             </div>
@@ -242,11 +242,11 @@
                 <table class="w-full text-left text-sm text-slate-600">
                     <thead class="bg-slate-50 border-b border-slate-100 text-slate-500 uppercase text-xs">
                         <tr>
-                            <th class="px-4 md:px-6 py-4 font-semibold">Име</th>
-                            <th class="px-4 md:px-6 py-4 font-semibold">Тип</th>
-                            <th class="px-4 md:px-6 py-4 font-semibold">Големина</th>
-                            <th class="px-4 md:px-6 py-4 font-semibold">Изменето</th>
-                            <th class="px-4 md:px-6 py-4 font-semibold text-right">Акции</th>
+                            <th class="px-4 md:px-6 py-4 font-semibold">@Strings.AdminFileManager_ColName</th>
+                            <th class="px-4 md:px-6 py-4 font-semibold">@Strings.AdminFileManager_ColType</th>
+                            <th class="px-4 md:px-6 py-4 font-semibold">@Strings.AdminFileManager_ColSize</th>
+                            <th class="px-4 md:px-6 py-4 font-semibold">@Strings.AdminFileManager_ColModified</th>
+                            <th class="px-4 md:px-6 py-4 font-semibold text-right">@Strings.AdminFileManager_ColActions</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100">
@@ -273,7 +273,7 @@
                                     </div>
                                 </td>
                                 <td class="px-4 md:px-6 py-3 text-xs text-slate-400 whitespace-nowrap">
-                                    @(item.IsDirectory ? "Фолдер" : (string.IsNullOrWhiteSpace(item.Extension) ? "Фајл" : item.Extension.ToUpper().TrimStart('.')))
+                                    @(item.IsDirectory ? Strings.AdminFileManager_Folder : (string.IsNullOrWhiteSpace(item.Extension) ? Strings.AdminFileManager_File : item.Extension.ToUpper().TrimStart('.')))
                                 </td>
                                 <td class="px-4 md:px-6 py-3 text-xs text-slate-500 whitespace-nowrap">
                                     @item.FormattedSize
@@ -282,9 +282,9 @@
                                     @item.ModifiedOn.ToString("dd.MM.yyyy HH:mm")
                                 </td>
                                 <td class="px-4 md:px-6 py-3 text-right space-x-2 whitespace-nowrap">
-                                    <button type="button" onclick="openDetailsModal('@item.Name', '@item.VirtualPath', '@item.FormattedSize', '@item.CreatedOn.ToString("dd.MM.yyyy HH:mm")', '@item.ModifiedOn.ToString("dd.MM.yyyy HH:mm")', '@item.DimensionString')" class="text-slate-600 hover:text-slate-900 font-semibold text-xs">Детали</button>
-                                    <button type="button" onclick="openRenameModal('@item.RelativePath', '@item.Name')" class="text-emerald-700 hover:text-emerald-900 font-semibold text-xs">Преименувај</button>
-                                    <button type="button" onclick="openDeleteModal('@item.RelativePath', '@item.Name')" class="text-rose-600 hover:text-rose-800 font-semibold text-xs">Избриши</button>
+                                    <button type="button" onclick="openDetailsModal('@item.Name', '@item.VirtualPath', '@item.FormattedSize', '@item.CreatedOn.ToString("dd.MM.yyyy HH:mm")', '@item.ModifiedOn.ToString("dd.MM.yyyy HH:mm")', '@item.DimensionString')" class="text-slate-600 hover:text-slate-900 font-semibold text-xs">@Strings.AdminFileManager_ActionDetails</button>
+                                    <button type="button" onclick="openRenameModal('@item.RelativePath', '@item.Name')" class="text-emerald-700 hover:text-emerald-900 font-semibold text-xs">@Strings.AdminFileManager_ActionRename</button>
+                                    <button type="button" onclick="openDeleteModal('@item.RelativePath', '@item.Name')" class="text-rose-600 hover:text-rose-800 font-semibold text-xs">@Strings.AdminFileManager_ActionDelete</button>
                                 </td>
                             </tr>
                         }
@@ -302,7 +302,7 @@
             {
                 <a href="@Url.Action("Index", "AdminFileManager", new { currentPath = Model.CurrentPath, page = Model.CurrentPage - 1, query = Model.SearchQuery, viewType = Model.ViewType })"
                    class="px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-600 text-xs font-semibold hover:bg-slate-50 transition no-underline">
-                    ← <span class="hidden sm:inline">Претходна</span>
+                    ← <span class="hidden sm:inline">@Strings.AdminFileManager_Prev</span>
                 </a>
             }
 
@@ -333,7 +333,7 @@
             {
                 <a href="@Url.Action("Index", "AdminFileManager", new { currentPath = Model.CurrentPath, page = Model.CurrentPage + 1, query = Model.SearchQuery, viewType = Model.ViewType })"
                    class="px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-600 text-xs font-semibold hover:bg-slate-50 transition no-underline">
-                    <span class="hidden sm:inline">Следна</span> →
+                    <span class="hidden sm:inline">@Strings.AdminFileManager_Next</span> →
                 </a>
             }
         </div>
@@ -345,7 +345,7 @@
 <div id="uploadModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-100 animate-fadeIn">
         <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-bold text-slate-800">Прикачи Фајл</h3>
+            <h3 class="text-lg font-bold text-slate-800">@Strings.AdminFileManager_UploadFile</h3>
             <button onclick="closeModal('uploadModal')" class="text-slate-400 hover:text-slate-600 font-bold">&times;</button>
         </div>
         @using (Html.BeginForm("Upload", "AdminFileManager", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -354,12 +354,12 @@
             <input type="hidden" name="targetPath" value="@Model.CurrentPath" />
             <div class="mb-4">
                 @* ".jpg", ".jpeg", ".png", ".gif", ".webp", ".svg", ".mp4", ".webm", ".ogg", ".pdf", ".css", ".js", ".txt" *@
-                <label class="block text-xs font-semibold text-slate-600 mb-2">Изберете фајл (.jpg, .png, .gif, .webp, .mp4, .webm, .ogg, .pdf, .css, .js, .txt):</label>
+                <label class="block text-xs font-semibold text-slate-600 mb-2">@Strings.AdminFileManager_ChooseFile</label>
                 <input type="file" name="file" required class="w-full text-xs text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100" />
             </div>
             <div class="flex justify-end gap-2 mt-6">
-                <button type="button" onclick="closeModal('uploadModal')" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition">Откажи</button>
-                <button type="submit" class="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-brand-gradient shadow transition">Прикачи</button>
+                <button type="button" onclick="closeModal('uploadModal')" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition">@Strings.AdminFileManager_Cancel</button>
+                <button type="submit" class="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-brand-gradient shadow transition">@Strings.AdminFileManager_Upload</button>
             </div>
         }
     </div>
@@ -369,7 +369,7 @@
 <div id="createFolderModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-100 animate-fadeIn">
         <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-bold text-slate-800">Креирај Нов Фолдер</h3>
+            <h3 class="text-lg font-bold text-slate-800">@Strings.AdminFileManager_CreateFolder</h3>
             <button onclick="closeModal('createFolderModal')" class="text-slate-400 hover:text-slate-600 font-bold">&times;</button>
         </div>
         @using (Html.BeginForm("CreateFolder", "AdminFileManager", FormMethod.Post))
@@ -377,12 +377,12 @@
             @Html.AntiForgeryToken()
             <input type="hidden" name="currentPath" value="@Model.CurrentPath" />
             <div class="mb-4">
-                <label class="block text-xs font-semibold text-slate-600 mb-2">Име на фолдер:</label>
-                <input type="text" name="folderName" required placeholder="Пример: gallery" class="w-full px-3 py-2 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500" />
+                <label class="block text-xs font-semibold text-slate-600 mb-2">@Strings.AdminFileManager_FolderName</label>
+                <input type="text" name="folderName" required placeholder="@Strings.AdminFileManager_FolderNamePlaceholder" class="w-full px-3 py-2 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500" />
             </div>
             <div class="flex justify-end gap-2 mt-6">
-                <button type="button" onclick="closeModal('createFolderModal')" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition">Откажи</button>
-                <button type="submit" class="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-brand-gradient shadow transition">Креирај</button>
+                <button type="button" onclick="closeModal('createFolderModal')" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition">@Strings.AdminFileManager_Cancel</button>
+                <button type="submit" class="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-brand-gradient shadow transition">@Strings.AdminFileManager_Create</button>
             </div>
         }
     </div>
@@ -392,7 +392,7 @@
 <div id="renameModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-100 animate-fadeIn">
         <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-bold text-slate-800">Преименувај</h3>
+            <h3 class="text-lg font-bold text-slate-800">@Strings.AdminFileManager_ActionRename</h3>
             <button onclick="closeModal('renameModal')" class="text-slate-400 hover:text-slate-600 font-bold">&times;</button>
         </div>
         @using (Html.BeginForm("Rename", "AdminFileManager", FormMethod.Post))
@@ -401,12 +401,12 @@
             <input type="hidden" name="currentPath" value="@Model.CurrentPath" />
             <input type="hidden" id="renameItemPath" name="itemPath" value="" />
             <div class="mb-4">
-                <label class="block text-xs font-semibold text-slate-600 mb-2">Ново име:</label>
+                <label class="block text-xs font-semibold text-slate-600 mb-2">@Strings.AdminFileManager_NewName</label>
                 <input type="text" id="renameNewName" name="newName" required class="w-full px-3 py-2 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500" />
             </div>
             <div class="flex justify-end gap-2 mt-6">
-                <button type="button" onclick="closeModal('renameModal')" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition">Откажи</button>
-                <button type="submit" class="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-brand-gradient shadow transition">Зачувај</button>
+                <button type="button" onclick="closeModal('renameModal')" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition">@Strings.AdminFileManager_Cancel</button>
+                <button type="submit" class="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-brand-gradient shadow transition">@Strings.AdminFileManager_Save</button>
             </div>
         }
     </div>
@@ -416,7 +416,7 @@
 <div id="deleteModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-100 animate-fadeIn">
         <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-bold text-rose-600">Потврда за бришење</h3>
+            <h3 class="text-lg font-bold text-rose-600">@Strings.AdminFileManager_ConfirmDeleteTitle</h3>
             <button onclick="closeModal('deleteModal')" class="text-slate-400 hover:text-slate-600 font-bold">&times;</button>
         </div>
         @using (Html.BeginForm("Delete", "AdminFileManager", FormMethod.Post))
@@ -424,10 +424,10 @@
             @Html.AntiForgeryToken()
             <input type="hidden" name="currentPath" value="@Model.CurrentPath" />
             <input type="hidden" id="deleteItemPath" name="itemPath" value="" />
-            <p class="text-sm text-slate-600 mb-4">Дали сте сигурни дека сакате да го избришете <strong id="deleteItemName" class="text-slate-900"></strong>?</p>
+            <p class="text-sm text-slate-600 mb-4">@Strings.AdminFileManager_ConfirmDeleteMsg <strong id="deleteItemName" class="text-slate-900"></strong>?</p>
             <div class="flex justify-end gap-2 mt-6">
-                <button type="button" onclick="closeModal('deleteModal')" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition">Откажи</button>
-                <button type="submit" class="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-rose-600 hover:bg-rose-700 shadow transition">Избриши</button>
+                <button type="button" onclick="closeModal('deleteModal')" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition">@Strings.AdminFileManager_Cancel</button>
+                <button type="submit" class="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-rose-600 hover:bg-rose-700 shadow transition">@Strings.AdminFileManager_ActionDelete</button>
             </div>
         }
     </div>
@@ -437,37 +437,37 @@
 <div id="detailsModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-100 animate-fadeIn">
         <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-bold text-slate-800">Детали за фајлот</h3>
+            <h3 class="text-lg font-bold text-slate-800">@Strings.AdminFileManager_FileDetailsTitle</h3>
             <button onclick="closeModal('detailsModal')" class="text-slate-400 hover:text-slate-600 font-bold">&times;</button>
         </div>
         <div class="space-y-3 text-sm">
             <div>
-                <span class="block text-xs font-semibold text-slate-400">Име:</span>
+                <span class="block text-xs font-semibold text-slate-400">@Strings.AdminFileManager_DetailName</span>
                 <span id="detailName" class="font-medium text-slate-800 break-all"></span>
             </div>
             <div>
-                <span class="block text-xs font-semibold text-slate-400">Патека:</span>
+                <span class="block text-xs font-semibold text-slate-400">@Strings.AdminFileManager_DetailPath</span>
                 <span id="detailPath" class="font-mono text-xs text-slate-600 break-all"></span>
             </div>
             <div>
-                <span class="block text-xs font-semibold text-slate-400">Големина:</span>
+                <span class="block text-xs font-semibold text-slate-400">@Strings.AdminFileManager_DetailSize</span>
                 <span id="detailSize" class="text-slate-700"></span>
             </div>
             <div id="detailDimensionContainer" class="hidden">
-                <span class="block text-xs font-semibold text-slate-400">Резолуција:</span>
+                <span class="block text-xs font-semibold text-slate-400">@Strings.AdminFileManager_DetailResolution</span>
                 <span id="detailDimension" class="text-slate-700"></span>
             </div>
             <div>
-                <span class="block text-xs font-semibold text-slate-400">Креирано на:</span>
+                <span class="block text-xs font-semibold text-slate-400">@Strings.AdminFileManager_DetailCreated</span>
                 <span id="detailCreated" class="text-slate-700"></span>
             </div>
             <div>
-                <span class="block text-xs font-semibold text-slate-400">Изменето на:</span>
+                <span class="block text-xs font-semibold text-slate-400">@Strings.AdminFileManager_DetailModified</span>
                 <span id="detailModified" class="text-slate-700"></span>
             </div>
         </div>
         <div class="flex justify-end gap-2 mt-6">
-            <button type="button" onclick="closeModal('detailsModal')" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition">Затвори</button>
+            <button type="button" onclick="closeModal('detailsModal')" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition">@Strings.AdminFileManager_Close</button>
         </div>
     </div>
 </div>
@@ -495,10 +495,10 @@
         <!-- Metadata & Link Footer -->
         <div class="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 border-t border-slate-100 pt-4 text-xs">
             <div class="space-y-1">
-                <div><span class="font-semibold text-slate-400">Патека:</span> <span id="lightboxPath" class="font-mono text-slate-700 break-all"></span> <button type="button" onclick="copyPathToClipboard(document.getElementById('lightboxPath').textContent)" title="Копирај патека" class="border p-1 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition cursor-pointer">📋</button></div>
+                <div><span class="font-semibold text-slate-400">@Strings.AdminFileManager_DetailPath</span> <span id="lightboxPath" class="font-mono text-slate-700 break-all"></span> <button type="button" onclick="copyPathToClipboard(document.getElementById('lightboxPath').textContent)" title="@Strings.AdminFileManager_CopyPathTitle" class="border p-1 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition cursor-pointer">📋</button></div>
                 <div class="flex gap-4">
-                    <div><span class="font-semibold text-slate-400">Големина:</span> <span id="lightboxSize" class="text-slate-700"></span></div>
-                    <div><span class="font-semibold text-slate-400">Резолуција:</span> <span id="lightboxResolution" class="text-slate-700"></span></div>
+                    <div><span class="font-semibold text-slate-400">@Strings.AdminFileManager_DetailSize</span> <span id="lightboxSize" class="text-slate-700"></span></div>
+                    <div><span class="font-semibold text-slate-400">@Strings.AdminFileManager_DetailResolution</span> <span id="lightboxResolution" class="text-slate-700"></span></div>
                 </div>
             </div>
             <div class="shrink-0">

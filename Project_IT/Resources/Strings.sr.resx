@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -422,5 +422,602 @@
   </data>
   <data xml:space="preserve" name="RememberMe">
     <value>Запомни ме?</value>
+  </data>
+  <data name="Nav_AddAdmin" xml:space="preserve">
+    <value>Додај администратора</value>
+  </data>
+  <data name="Nav_Hello" xml:space="preserve">
+    <value>Здраво, {0}!</value>
+  </data>
+  <data name="Error_Meta_Title" xml:space="preserve">
+    <value>Дошло је до грешке - Автокамп Отешево</value>
+  </data>
+  <data name="Error_Title" xml:space="preserve">
+    <value>Дошло је до грешке</value>
+  </data>
+  <data name="Error_Message" xml:space="preserve">
+    <value>Извињавамо се, дошло је до непредвиђене грешке приликом обраде вашег захтева. Молимо покушајте поново касније или се вратите на почетну страницу.</value>
+  </data>
+  <data name="Error_BackHome" xml:space="preserve">
+    <value>← Почетна</value>
+  </data>
+  <data name="Lockout_Meta_Title" xml:space="preserve">
+    <value>Закључан налог - Автокамп Отешево</value>
+  </data>
+  <data name="Lockout_Title" xml:space="preserve">
+    <value>Закључан налог.</value>
+  </data>
+  <data name="Lockout_Message" xml:space="preserve">
+    <value>Овај налог је закључан, молимо покушајте поново касније.</value>
+  </data>
+  <data name="AdminFileManager_Meta_Title" xml:space="preserve">
+    <value>Администрација — Управљач датотекама</value>
+  </data>
+  <data name="AdminFileManager_Heading" xml:space="preserve">
+    <value>Управљач датотекама</value>
+  </data>
+  <data name="AdminFileManager_Subheading" xml:space="preserve">
+    <value>Управљање свим датотекама и директоријумима у</value>
+  </data>
+  <data name="AdminFileManager_Path" xml:space="preserve">
+    <value>Путања:</value>
+  </data>
+  <data name="AdminFileManager_CopyPathTitle" xml:space="preserve">
+    <value>Копирај путању</value>
+  </data>
+  <data name="AdminFileManager_CopyPathBtn" xml:space="preserve">
+    <value>Копирај Путању</value>
+  </data>
+  <data name="AdminFileManager_SearchPlaceholder" xml:space="preserve">
+    <value>Претражи датотеке...</value>
+  </data>
+  <data name="AdminFileManager_EmptyFolder" xml:space="preserve">
+    <value>Ова фасцикла је празна или нема датотека које одговарају претрази.</value>
+  </data>
+  <data name="AdminFileManager_ColName" xml:space="preserve">
+    <value>Име</value>
+  </data>
+  <data name="AdminFileManager_ColType" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="AdminFileManager_ColSize" xml:space="preserve">
+    <value>Величина</value>
+  </data>
+  <data name="AdminFileManager_ColModified" xml:space="preserve">
+    <value>Измењено</value>
+  </data>
+  <data name="AdminFileManager_ColActions" xml:space="preserve">
+    <value>Акције</value>
+  </data>
+  <data name="AdminFileManager_ActionDetails" xml:space="preserve">
+    <value>Детаљи</value>
+  </data>
+  <data name="AdminFileManager_ActionRename" xml:space="preserve">
+    <value>Преименуј</value>
+  </data>
+  <data name="AdminFileManager_ActionDelete" xml:space="preserve">
+    <value>Избриши</value>
+  </data>
+  <data name="AdminFileManager_Prev" xml:space="preserve">
+    <value>Претходна</value>
+  </data>
+  <data name="AdminFileManager_Next" xml:space="preserve">
+    <value>Следећа</value>
+  </data>
+  <data name="AdminFileManager_UploadFile" xml:space="preserve">
+    <value>Отпреми Датотеку</value>
+  </data>
+  <data name="AdminFileManager_ChooseFile" xml:space="preserve">
+    <value>Изаберите датотеку (.jpg, .png, .gif, .webp, .mp4, .webm, .ogg, .pdf, .css, .js, .txt):</value>
+  </data>
+  <data name="AdminFileManager_Cancel" xml:space="preserve">
+    <value>Откажи</value>
+  </data>
+  <data name="AdminFileManager_Upload" xml:space="preserve">
+    <value>Отпреми</value>
+  </data>
+  <data name="AdminFileManager_CreateFolder" xml:space="preserve">
+    <value>Креирај Нову Фасциклу</value>
+  </data>
+  <data name="AdminFileManager_FolderName" xml:space="preserve">
+    <value>Име фасцикле:</value>
+  </data>
+  <data name="AdminFileManager_FolderNamePlaceholder" xml:space="preserve">
+    <value>Пример: gallery</value>
+  </data>
+  <data name="AdminFileManager_Create" xml:space="preserve">
+    <value>Креирај</value>
+  </data>
+  <data name="AdminFileManager_NewName" xml:space="preserve">
+    <value>Ново име:</value>
+  </data>
+  <data name="AdminFileManager_Save" xml:space="preserve">
+    <value>Сачувај</value>
+  </data>
+  <data name="AdminFileManager_ConfirmDeleteTitle" xml:space="preserve">
+    <value>Потврда брисања</value>
+  </data>
+  <data name="AdminFileManager_ConfirmDeleteMsg" xml:space="preserve">
+    <value>Да ли сте сигурни да желите да избришете</value>
+  </data>
+  <data name="AdminFileManager_FileDetailsTitle" xml:space="preserve">
+    <value>Детаљи датотеке</value>
+  </data>
+  <data name="AdminFileManager_DetailName" xml:space="preserve">
+    <value>Име:</value>
+  </data>
+  <data name="AdminFileManager_DetailPath" xml:space="preserve">
+    <value>Путања:</value>
+  </data>
+  <data name="AdminFileManager_DetailSize" xml:space="preserve">
+    <value>Величина:</value>
+  </data>
+  <data name="AdminFileManager_DetailResolution" xml:space="preserve">
+    <value>Резолуција:</value>
+  </data>
+  <data name="AdminFileManager_DetailCreated" xml:space="preserve">
+    <value>Креирано дана:</value>
+  </data>
+  <data name="AdminFileManager_DetailModified" xml:space="preserve">
+    <value>Измењено дана:</value>
+  </data>
+  <data name="AdminFileManager_Close" xml:space="preserve">
+    <value>Затвори</value>
+  </data>
+  <data name="AdminRes_Meta_Title" xml:space="preserve">
+    <value>Администрација — Резервације</value>
+  </data>
+  <data name="AdminRes_Title" xml:space="preserve">
+    <value>Управљање Резервацијама</value>
+  </data>
+  <data name="AdminRes_Subtitle" xml:space="preserve">
+    <value>Преглед и управљање свим пристиглим резервацијама</value>
+  </data>
+  <data name="AdminRes_Empty" xml:space="preserve">
+    <value>Нема пронађених резервација.</value>
+  </data>
+  <data name="AdminRes_Accommodation" xml:space="preserve">
+    <value>Смештај:</value>
+  </data>
+  <data name="AdminRes_Period" xml:space="preserve">
+    <value>Период:</value>
+  </data>
+  <data name="AdminRes_Details" xml:space="preserve">
+    <value>Детаљи:</value>
+  </data>
+  <data name="AdminRes_Created" xml:space="preserve">
+    <value>Креирано:</value>
+  </data>
+  <data name="AdminRes_Edit" xml:space="preserve">
+    <value>Измени</value>
+  </data>
+  <data name="AdminRes_ViewDetails" xml:space="preserve">
+    <value>Детаљи</value>
+  </data>
+  <data name="AdminRes_Delete" xml:space="preserve">
+    <value>Избриши</value>
+  </data>
+  <data name="AdminRes_ColCreated" xml:space="preserve">
+    <value>Креирано</value>
+  </data>
+  <data name="AdminRes_ColClient" xml:space="preserve">
+    <value>Клијент</value>
+  </data>
+  <data name="AdminRes_ColContact" xml:space="preserve">
+    <value>Контакт</value>
+  </data>
+  <data name="AdminRes_ColAccommodation" xml:space="preserve">
+    <value>Смештај</value>
+  </data>
+  <data name="AdminRes_ColPeriod" xml:space="preserve">
+    <value>Период</value>
+  </data>
+  <data name="AdminRes_ColStatus" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="AdminRes_ColActions" xml:space="preserve">
+    <value>Акције</value>
+  </data>
+  <data name="AdminRes_NightsGuestsFormat" xml:space="preserve">
+    <value>{0} ноћења, {1} гостију</value>
+  </data>
+  <data name="AdminRes_Create_Meta_Title" xml:space="preserve">
+    <value>Креирај резервацију — Администрација</value>
+  </data>
+  <data name="AdminRes_BackToList" xml:space="preserve">
+    <value>← Назад на листу</value>
+  </data>
+  <data name="AdminRes_Create_Title" xml:space="preserve">
+    <value>Креирај нову резервацију</value>
+  </data>
+  <data name="AdminRes_Edit_Meta_Title" xml:space="preserve">
+    <value>Измени резервацију — Администрација</value>
+  </data>
+  <data name="AdminRes_Edit_Title" xml:space="preserve">
+    <value>Измени резервацију</value>
+  </data>
+  <data name="AdminRes_Delete_Meta_Title" xml:space="preserve">
+    <value>Избриши резервацију — Администрација</value>
+  </data>
+  <data name="AdminRes_Delete_Title" xml:space="preserve">
+    <value>Избриши резервацију</value>
+  </data>
+  <data name="AdminRes_Delete_Confirm" xml:space="preserve">
+    <value>Да ли сте сигурни да желите да избришете ову резервацију?</value>
+  </data>
+  <data name="AdminRes_LabelEmail" xml:space="preserve">
+    <value>Е-маил</value>
+  </data>
+  <data name="AdminRes_LabelPhone" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="AdminRes_LabelGuests" xml:space="preserve">
+    <value>Гости</value>
+  </data>
+  <data name="AdminRes_LabelNights" xml:space="preserve">
+    <value>Ноћења</value>
+  </data>
+  <data name="AdminRes_LabelPrice" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="AdminRes_Details_Meta_Title" xml:space="preserve">
+    <value>Детаљи резервације — Администрација</value>
+  </data>
+  <data name="AdminRes_Details_Title" xml:space="preserve">
+    <value>Детаљи резервације</value>
+  </data>
+  <data name="AdminRes_LabelClient" xml:space="preserve">
+    <value>Клијент</value>
+  </data>
+  <data name="AdminRes_AdditionalRequests" xml:space="preserve">
+    <value>Додатни захтеви</value>
+  </data>
+  <data name="AdminRes_TechnicalDetails" xml:space="preserve">
+    <value>Технички детаљи</value>
+  </data>
+  <data name="AdminRes_IpAddress" xml:space="preserve">
+    <value>ИП адреса:</value>
+  </data>
+  <data name="AdminRes_OS" xml:space="preserve">
+    <value>Оперативни систем:</value>
+  </data>
+  <data name="AdminRes_Platform" xml:space="preserve">
+    <value>Платформа:</value>
+  </data>
+  <data name="AdminRes_Browser" xml:space="preserve">
+    <value>Прегледач:</value>
+  </data>
+  <data name="AdminRes_UserAgent" xml:space="preserve">
+    <value>User Agent:</value>
+  </data>
+  <data name="AdminRes_Referrer" xml:space="preserve">
+    <value>Referrer:</value>
+  </data>
+  <data name="AdminRes_Modified" xml:space="preserve">
+    <value>Измењено:</value>
+  </data>
+  <data name="AdminSettings_Meta_Title" xml:space="preserve">
+    <value>Администрација — Подешавања Апликације</value>
+  </data>
+  <data name="AdminSettings_SearchPlaceholder" xml:space="preserve">
+    <value>Претражи подешавања...</value>
+  </data>
+  <data name="AdminSettings_Prices_Meta_Title" xml:space="preserve">
+    <value>Администрација — Цене за Резервацију</value>
+  </data>
+  <data name="AdminSettings_Prices_Title" xml:space="preserve">
+    <value>Подешавања Цена</value>
+  </data>
+  <data name="AdminSettings_Prices_Subtitle" xml:space="preserve">
+    <value>Измена ценовника за све типове смештаја</value>
+  </data>
+  <data name="AdminSettings_Prices_Accommodation" xml:space="preserve">
+    <value>Смештај</value>
+  </data>
+  <data name="AdminSettings_Prices_Den" xml:space="preserve">
+    <value>ден.</value>
+  </data>
+  <data name="AdminSettings_Prices_AdditionalFees" xml:space="preserve">
+    <value>Додатне таксе</value>
+  </data>
+  <data name="AdminSettings_General_Meta_Title" xml:space="preserve">
+    <value>Администрација — Опште Опције</value>
+  </data>
+  <data name="AdminSettings_General_Title" xml:space="preserve">
+    <value>Опште Опције Апликације</value>
+  </data>
+  <data name="AdminSettings_General_Subtitle" xml:space="preserve">
+    <value>Конфигурација основних подешавања апликације</value>
+  </data>
+  <data name="AdminSettings_General_GalleryTitle" xml:space="preserve">
+    <value>Галерија 'О нама'</value>
+  </data>
+  <data name="AdminSettings_General_GalleryHelp" xml:space="preserve">
+    <value>Путања до фасцикле у којој се налазе слике/видео записи за галерију О нама (нпр. /Content/gallery/1). Ако е празно или нема датотека, галерија се неће приказати.</value>
+  </data>
+  <data name="FeedItems_Index_Meta_Title" xml:space="preserve">
+    <value>Администрација — Фед Садржај</value>
+  </data>
+  <data name="FeedItems_Title" xml:space="preserve">
+    <value>Управљање Вестима и Понудама</value>
+  </data>
+  <data name="FeedItems_Subtitle" xml:space="preserve">
+    <value>Додајте, мењајте или бришите садржај из феда</value>
+  </data>
+  <data name="FeedItems_Empty" xml:space="preserve">
+    <value>Нема пронађених записа.</value>
+  </data>
+  <data name="FeedItems_FeaturedLabel" xml:space="preserve">
+    <value>Истакнуто:</value>
+  </data>
+  <data name="FeedItems_PublishedLabel" xml:space="preserve">
+    <value>Објављено:</value>
+  </data>
+  <data name="FeedItems_ColTitle" xml:space="preserve">
+    <value>Наслов</value>
+  </data>
+  <data name="FeedItems_ColCategory" xml:space="preserve">
+    <value>Категорија</value>
+  </data>
+  <data name="FeedItems_ColBadge" xml:space="preserve">
+    <value>Беџ</value>
+  </data>
+  <data name="FeedItems_ColFeatured" xml:space="preserve">
+    <value>Истакнуто</value>
+  </data>
+  <data name="FeedItems_ColPublished" xml:space="preserve">
+    <value>Објављено</value>
+  </data>
+  <data name="FeedItems_ColDate" xml:space="preserve">
+    <value>Датум</value>
+  </data>
+  <data name="FeedItems_ColActions" xml:space="preserve">
+    <value>Акције</value>
+  </data>
+  <data name="FeedItems_Create_Meta_Title" xml:space="preserve">
+    <value>Креирај нов запис — Вести и Понуде</value>
+  </data>
+  <data name="FeedItems_BackToList" xml:space="preserve">
+    <value>← Назад на листу</value>
+  </data>
+  <data name="FeedItems_Create_Title" xml:space="preserve">
+    <value>Додај нов запис</value>
+  </data>
+  <data name="FeedItems_Edit_Meta_Title" xml:space="preserve">
+    <value>Измени запис — Вести и Понуде</value>
+  </data>
+  <data name="FeedItems_Edit_Title" xml:space="preserve">
+    <value>Измени запис</value>
+  </data>
+  <data name="FeedItems_Delete_Meta_Title" xml:space="preserve">
+    <value>Брисање записа — Вести и Понуде</value>
+  </data>
+  <data name="FeedItems_Delete_Title" xml:space="preserve">
+    <value>Избриши запис</value>
+  </data>
+  <data name="FeedItems_Delete_Confirm" xml:space="preserve">
+    <value>Да ли сте сигурни да желите да избришете овај запис?</value>
+  </data>
+  <data name="FeedItems_Details_Meta_Title" xml:space="preserve">
+    <value>Детаљи записа — Вести и Понуде</value>
+  </data>
+  <data name="FeedItems_Details_Title" xml:space="preserve">
+    <value>Детаљи записа</value>
+  </data>
+  <data name="FeedItems_LabelSubtitle" xml:space="preserve">
+    <value>Поднаслов</value>
+  </data>
+  <data name="FeedItems_LabelImage" xml:space="preserve">
+    <value>Слика</value>
+  </data>
+  <data name="FeedItems_LabelDescription" xml:space="preserve">
+    <value>Опис</value>
+  </data>
+  <data name="News_Index_Meta_Title" xml:space="preserve">
+    <value>Вести и Понуде — Автокамп Отешево</value>
+  </data>
+  <data name="News_Hero_Alt" xml:space="preserve">
+    <value>Камп под звездама</value>
+  </data>
+  <data name="News_Cta_Title" xml:space="preserve">
+    <value>Спремни за незабораван одмор?</value>
+  </data>
+  <data name="News_Details_Published" xml:space="preserve">
+    <value>Објављено:</value>
+  </data>
+  <data name="News_Details_NoDesc" xml:space="preserve">
+    <value>Нема дополнителног описа за ову вест.</value>
+  </data>
+  <data name="News_Details_Location" xml:space="preserve">
+    <value>Преспанско Језеро, Македонија</value>
+  </data>
+  <data name="Account_Login_Meta_Title" xml:space="preserve">
+    <value>Пријава — Автокамп Отешево</value>
+  </data>
+  <data name="Account_Login_Heading" xml:space="preserve">
+    <value>Пријави се</value>
+  </data>
+  <data name="Account_Login_Subheading" xml:space="preserve">
+    <value>Унесите ваши податке да бисте се пријавили</value>
+  </data>
+  <data name="Account_Register_Meta_Title" xml:space="preserve">
+    <value>Регистрација — Автокамп Отешево</value>
+  </data>
+  <data name="Account_Register_Heading" xml:space="preserve">
+    <value>Регистрација</value>
+  </data>
+  <data name="Account_Register_Subheading" xml:space="preserve">
+    <value>Креирајте нов кориснички налог</value>
+  </data>
+  <data name="Account_AddRole_Meta_Title" xml:space="preserve">
+    <value>Додај улогу корисника — Автокамп Отешево</value>
+  </data>
+  <data name="Account_AddRole_Heading" xml:space="preserve">
+    <value>Додај привилегију</value>
+  </data>
+  <data name="Account_ConfirmEmail_Meta_Title" xml:space="preserve">
+    <value>Потврди е-пошту — Автокамп Отешево</value>
+  </data>
+  <data name="Account_ExtConfirm_Meta_Title" xml:space="preserve">
+    <value>Спољашња регистрација — Автокамп Отешево</value>
+  </data>
+  <data name="Account_ExtConfirm_Heading" xml:space="preserve">
+    <value>Повежите ваш {0} налог.</value>
+  </data>
+  <data name="Account_ExtConfirm_FormTitle" xml:space="preserve">
+    <value>Образац за повезивање</value>
+  </data>
+  <data name="Account_ExtConfirm_Submit" xml:space="preserve">
+    <value>Региструј се</value>
+  </data>
+  <data name="Account_ExtFail_Meta_Title" xml:space="preserve">
+    <value>Неуспешна пријава — Автокамп Отешево</value>
+  </data>
+  <data name="Account_ExtFail_Heading" xml:space="preserve">
+    <value>Неуспешна пријава преко сервиса.</value>
+  </data>
+  <data name="Account_Forgot_Meta_Title" xml:space="preserve">
+    <value>Заборављена лозинка — Автокамп Отешево</value>
+  </data>
+  <data name="Account_Forgot_Heading" xml:space="preserve">
+    <value>Унесите ваш е-маил.</value>
+  </data>
+  <data name="Account_Forgot_Submit" xml:space="preserve">
+    <value>Пошаљи линк</value>
+  </data>
+  <data name="Account_ForgotConfirm_Meta_Title" xml:space="preserve">
+    <value>Потврда за заборављену лозинку — Автокамп Отешево</value>
+  </data>
+  <data name="Account_Reset_Meta_Title" xml:space="preserve">
+    <value>Ресетирај лозинку — Автокамп Отешево</value>
+  </data>
+  <data name="Account_Reset_Heading" xml:space="preserve">
+    <value>Ресетирајте вашу лозинку.</value>
+  </data>
+  <data name="Account_Reset_Submit" xml:space="preserve">
+    <value>Ресетирај</value>
+  </data>
+  <data name="Account_ResetConfirm_Meta_Title" xml:space="preserve">
+    <value>Потврда ресетовања лозинке — Автокамп Отешево</value>
+  </data>
+  <data name="Account_SendCode_Meta_Title" xml:space="preserve">
+    <value>Пошаљи код за верификацију — Автокамп Отешево</value>
+  </data>
+  <data name="Account_SendCode_Heading" xml:space="preserve">
+    <value>Пошаљи код за верификацију</value>
+  </data>
+  <data name="Account_SendCode_Submit" xml:space="preserve">
+    <value>Пошаљи</value>
+  </data>
+  <data name="Account_VerifyCode_Meta_Title" xml:space="preserve">
+    <value>Верификуј код — Автокамп Отешево</value>
+  </data>
+  <data name="Account_VerifyCode_Heading" xml:space="preserve">
+    <value>Унесите код за верификацију</value>
+  </data>
+  <data name="Account_ExtLogins_Heading" xml:space="preserve">
+    <value>Користите други сервис за пријаву.</value>
+  </data>
+  <data name="Account_ExtLogins_Article" xml:space="preserve">
+    <value>овај чланак</value>
+  </data>
+  <data name="Account_ExtLogins_BtnTitle" xml:space="preserve">
+    <value>Пријавите се користећи ваш {0} налог</value>
+  </data>
+  <data name="Manage_Index_Meta_Title" xml:space="preserve">
+    <value>Подешавања налога — Автокамп Отешево</value>
+  </data>
+  <data name="Manage_Index_Subtitle" xml:space="preserve">
+    <value>Управљајте свим подешавањима вашег корисничког налога</value>
+  </data>
+  <data name="Manage_Password" xml:space="preserve">
+    <value>Лозинка</value>
+  </data>
+  <data name="Manage_ChangePasswordSub" xml:space="preserve">
+    <value>Промените вашу лозинку за пријаву</value>
+  </data>
+  <data name="Manage_ExternalLogins" xml:space="preserve">
+    <value>Спољашње пријаве</value>
+  </data>
+  <data name="Manage_ExternalLoginsCountFormat" xml:space="preserve">
+    <value>Повезани налози: {0}</value>
+  </data>
+  <data name="Manage_ChangePassword_Meta_Title" xml:space="preserve">
+    <value>Промени лозинку — Автокамп Отешево</value>
+  </data>
+  <data name="Manage_BackToSettings" xml:space="preserve">
+    <value>← Назад на подешавања</value>
+  </data>
+  <data name="Manage_ChangePassword_Heading" xml:space="preserve">
+    <value>Промени лозинку</value>
+  </data>
+  <data name="Manage_SetPassword_Meta_Title" xml:space="preserve">
+    <value>Креирај лозинку — Автокамп Отешево</value>
+  </data>
+  <data name="Manage_SetPassword_Heading" xml:space="preserve">
+    <value>Креирај лозинку</value>
+  </data>
+  <data name="Manage_AddPhone_Meta_Title" xml:space="preserve">
+    <value>Додај број телефона — Автокамп Отешево</value>
+  </data>
+  <data name="Manage_AddPhone_Heading" xml:space="preserve">
+    <value>Додај број телефона</value>
+  </data>
+  <data name="Manage_VerifyPhone_Meta_Title" xml:space="preserve">
+    <value>Верификуј број телефона — Автокамп Отешево</value>
+  </data>
+  <data name="Manage_Logins_Meta_Title" xml:space="preserve">
+    <value>Подеси пријаве са осталих мрежа — Автокамп Отешево</value>
+  </data>
+  <data name="Manage_Logins_Heading" xml:space="preserve">
+    <value>Регистроване пријаве</value>
+  </data>
+  <data name="Manage_Logins_Remove" xml:space="preserve">
+    <value>Уклони</value>
+  </data>
+  <data name="Manage_Logins_RemoveTitle" xml:space="preserve">
+    <value>Уклоните ову {0} пријаву са вашег налога</value>
+  </data>
+  <data name="Contact_Alt_Instagram" xml:space="preserve">
+    <value>Инстаграм</value>
+  </data>
+  <data name="Contact_Alt_Facebook" xml:space="preserve">
+    <value>Фејсбук</value>
+  </data>
+  <data name="About_Alt_Thumbnail" xml:space="preserve">
+    <value>Минијатура</value>
+  </data>
+  <data name="Gallery_Aria_Previous" xml:space="preserve">
+    <value>Претходно</value>
+  </data>
+  <data name="Gallery_Aria_Next" xml:space="preserve">
+    <value>Следеће</value>
+  </data>
+  <data name="Gallery_Aria_SlideFormat" xml:space="preserve">
+    <value>Слајд {0}</value>
+  </data>
+  <data name="Res_PerNight_Den_Eur_Format" xml:space="preserve">
+    <value>{0} ден. (~{1} €)</value>
+  </data>
+  <data name="Res_Yes" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="Res_No" xml:space="preserve">
+    <value>Не</value>
+  </data>
+  <data name="AdminFileManager_Folder" xml:space="preserve">
+    <value>Фасцикла</value>
+  </data>
+  <data name="AdminFileManager_File" xml:space="preserve">
+    <value>Датотека</value>
+  </data>
+  <data name="Admin_NewEntry" xml:space="preserve">
+    <value>+ Нови запис</value>
+  </data>
+  <data name="News_Cta_Desc" xml:space="preserve">
+    <value>Резервишите ваш боравак данас и доживите лепоту Преспанског Језера.</value>
+  </data>
+  <data name="News_Cta_Button" xml:space="preserve">
+    <value>Резервиши сада</value>
   </data>
 </root>

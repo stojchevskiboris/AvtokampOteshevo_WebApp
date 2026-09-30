@@ -1,17 +1,17 @@
 @model IEnumerable<Project_IT.Models.Reservation>
 
 @{
-    ViewBag.Title = "Администрација — Резервации";
+    ViewBag.Title = Strings.AdminRes_Meta_Title;
 }
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10 font-sans">
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
         <div>
-            <h1 class="text-2xl sm:text-3xl font-serif text-slate-800">Управување со Резервации</h1>
-            <p class="text-slate-500 text-xs sm:text-sm mt-1">Преглед и управување со сите пристигнати резервации</p>
+            <h1 class="text-2xl sm:text-3xl font-serif text-slate-800">@Strings.AdminRes_Title</h1>
+            <p class="text-slate-500 text-xs sm:text-sm mt-1">@Strings.AdminRes_Subtitle</p>
         </div>
         <a href="@Url.Action("Create")" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-brand-gradient shadow-md hover:opacity-90 transition self-start sm:self-auto no-underline">
-            + Нов запис
+            @Strings.Admin_NewEntry
         </a>
     </div>
 
@@ -20,7 +20,7 @@
         {
             <div class="p-8 sm:p-12 text-center text-slate-400">
                 <div class="text-3xl sm:text-4xl mb-3">📋</div>
-                <p class="text-xs sm:text-base font-medium">Нема пронајдено резервации.</p>
+                <p class="text-xs sm:text-base font-medium">@Strings.AdminRes_Empty</p>
             </div>
         }
         else
@@ -70,27 +70,27 @@
 
                         <div class="bg-slate-50 rounded-xl p-3 text-xs text-slate-700 space-y-1">
                             <div class="flex items-center justify-between">
-                                <span class="text-slate-400">Сместување:</span>
+                                <span class="text-slate-400">@Strings.AdminRes_Accommodation</span>
                                 <span class="font-semibold text-slate-800">@item.AccommodationType</span>
                             </div>
                             <div class="flex items-center justify-between">
-                                <span class="text-slate-400">Период:</span>
+                                <span class="text-slate-400">@Strings.AdminRes_Period</span>
                                 <span class="font-medium">@(item.CheckInDate?.ToString("dd.MM.yyyy") ?? "-") &mdash; @(item.CheckOutDate?.ToString("dd.MM.yyyy") ?? "-")</span>
                             </div>
                             <div class="flex items-center justify-between">
-                                <span class="text-slate-400">Детали:</span>
-                                <span>@item.Days ноќевања, @item.Guests гости</span>
+                                <span class="text-slate-400">@Strings.AdminRes_Details</span>
+                                <span>@string.Format(Strings.AdminRes_NightsGuestsFormat, item.Days, item.Guests)</span>
                             </div>
                         </div>
 
                         <div class="flex items-center justify-between text-[11px] text-slate-400 pt-1">
-                            <span>Креирано: @item.CreatedOn.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</span>
+                            <span>@Strings.AdminRes_Created @item.CreatedOn.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</span>
                         </div>
 
                         <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-100 text-xs font-semibold">
-                            <a href="@Url.Action("Edit", new { id = item.Id })" class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition no-underline">Измени</a>
-                            <a href="@Url.Action("Details", new { id = item.Id })" class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition no-underline">Детали</a>
-                            <a href="@Url.Action("Delete", new { id = item.Id })" class="px-3 py-1.5 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 transition no-underline">Избриши</a>
+                            <a href="@Url.Action("Edit", new { id = item.Id })" class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition no-underline">@Strings.AdminRes_Edit</a>
+                            <a href="@Url.Action("Details", new { id = item.Id })" class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition no-underline">@Strings.AdminRes_ViewDetails</a>
+                            <a href="@Url.Action("Delete", new { id = item.Id })" class="px-3 py-1.5 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 transition no-underline">@Strings.AdminRes_Delete</a>
                         </div>
                     </div>
                 }
@@ -101,13 +101,13 @@
                 <table class="w-full text-left text-sm text-slate-600">
                     <thead class="bg-slate-50 border-b border-slate-100 text-slate-500 uppercase text-xs">
                         <tr>
-                            <th class="px-6 py-4 font-semibold">Креирано</th>
-                            <th class="px-6 py-4 font-semibold">Клиент</th>
-                            <th class="px-6 py-4 font-semibold">Контакт</th>
-                            <th class="px-6 py-4 font-semibold">Сместување</th>
-                            <th class="px-6 py-4 font-semibold">Период</th>
-                            <th class="px-6 py-4 font-semibold">Статус</th>
-                            <th class="px-6 py-4 font-semibold text-right">Акции</th>
+                            <th class="px-6 py-4 font-semibold">@Strings.AdminRes_ColCreated</th>
+                            <th class="px-6 py-4 font-semibold">@Strings.AdminRes_ColClient</th>
+                            <th class="px-6 py-4 font-semibold">@Strings.AdminRes_ColContact</th>
+                            <th class="px-6 py-4 font-semibold">@Strings.AdminRes_ColAccommodation</th>
+                            <th class="px-6 py-4 font-semibold">@Strings.AdminRes_ColPeriod</th>
+                            <th class="px-6 py-4 font-semibold">@Strings.AdminRes_ColStatus</th>
+                            <th class="px-6 py-4 font-semibold text-right">@Strings.AdminRes_ColActions</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100">
@@ -131,7 +131,7 @@
                                 </td>
                                 <td class="px-6 py-4 text-xs">
                                     <div>@(item.CheckInDate?.ToString("dd.MM.yyyy") ?? "-") &mdash; @(item.CheckOutDate?.ToString("dd.MM.yyyy") ?? "-")</div>
-                                    <div class="text-slate-400">@item.Days ноќевања, @item.Guests гости</div>
+                                    <div class="text-slate-400">@string.Format(Strings.AdminRes_NightsGuestsFormat, item.Days, item.Guests)</div>
                                 </td>
                                 <td class="px-6 py-4 text-xs">
                                     @if (item.Status == "Accepted")
@@ -154,9 +154,9 @@
                                     }
                                 </td>
                                 <td class="px-6 py-4 text-right space-x-2 whitespace-nowrap">
-                                    <a href="@Url.Action("Edit", new { id = item.Id })" class="text-emerald-700 hover:text-emerald-900 font-semibold text-xs no-underline">Измени</a>
-                                    <a href="@Url.Action("Details", new { id = item.Id })" class="text-slate-600 hover:text-slate-900 font-semibold text-xs no-underline">Детали</a>
-                                    <a href="@Url.Action("Delete", new { id = item.Id })" class="text-rose-600 hover:text-rose-800 font-semibold text-xs no-underline">Избриши</a>
+                                    <a href="@Url.Action("Edit", new { id = item.Id })" class="text-emerald-700 hover:text-emerald-900 font-semibold text-xs no-underline">@Strings.AdminRes_Edit</a>
+                                    <a href="@Url.Action("Details", new { id = item.Id })" class="text-slate-600 hover:text-slate-900 font-semibold text-xs no-underline">@Strings.AdminRes_ViewDetails</a>
+                                    <a href="@Url.Action("Delete", new { id = item.Id })" class="text-rose-600 hover:text-rose-800 font-semibold text-xs no-underline">@Strings.AdminRes_Delete</a>
                                 </td>
                             </tr>
                         }

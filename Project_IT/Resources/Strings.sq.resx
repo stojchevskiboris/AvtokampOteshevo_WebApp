@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -422,5 +422,602 @@
   </data>
   <data xml:space="preserve" name="RememberMe">
     <value>Më mbaj mend?</value>
+  </data>
+  <data name="Nav_AddAdmin" xml:space="preserve">
+    <value>Shto administrator</value>
+  </data>
+  <data name="Nav_Hello" xml:space="preserve">
+    <value>Përshëndetje, {0}!</value>
+  </data>
+  <data name="Error_Meta_Title" xml:space="preserve">
+    <value>Ndodhi një gabim - Autocamp Otesevo</value>
+  </data>
+  <data name="Error_Title" xml:space="preserve">
+    <value>Ndodhi një gabim</value>
+  </data>
+  <data name="Error_Message" xml:space="preserve">
+    <value>Na vjen keq, ndodhi një gabim i papritur gjatë përpunimit të kërkesës suaj. Ju lutemi provoni përsëri më vonë ose kthehuni në faqen kryesore.</value>
+  </data>
+  <data name="Error_BackHome" xml:space="preserve">
+    <value>← Kthehu në kreu</value>
+  </data>
+  <data name="Lockout_Meta_Title" xml:space="preserve">
+    <value>Llogari e bllokuar - Autocamp Otesevo</value>
+  </data>
+  <data name="Lockout_Title" xml:space="preserve">
+    <value>Llogaria u bllokua.</value>
+  </data>
+  <data name="Lockout_Message" xml:space="preserve">
+    <value>Kjo llogari është bllokuar, ju lutemi provoni përsëri më vonë.</value>
+  </data>
+  <data name="AdminFileManager_Meta_Title" xml:space="preserve">
+    <value>Administrimi — Menaxheri i skedarëve</value>
+  </data>
+  <data name="AdminFileManager_Heading" xml:space="preserve">
+    <value>Menaxheri i skedarëve</value>
+  </data>
+  <data name="AdminFileManager_Subheading" xml:space="preserve">
+    <value>Menaxhoni të gjithë skedarët dhe direktoritë në</value>
+  </data>
+  <data name="AdminFileManager_Path" xml:space="preserve">
+    <value>Rruga:</value>
+  </data>
+  <data name="AdminFileManager_CopyPathTitle" xml:space="preserve">
+    <value>Kopjo rrugën</value>
+  </data>
+  <data name="AdminFileManager_CopyPathBtn" xml:space="preserve">
+    <value>Kopjo Rrugën</value>
+  </data>
+  <data name="AdminFileManager_SearchPlaceholder" xml:space="preserve">
+    <value>Kërko skedarë...</value>
+  </data>
+  <data name="AdminFileManager_EmptyFolder" xml:space="preserve">
+    <value>Kjo dosje është e zbrazët ose asnjë skedar nuk përputhet me kërkimin tuaj.</value>
+  </data>
+  <data name="AdminFileManager_ColName" xml:space="preserve">
+    <value>Emri</value>
+  </data>
+  <data name="AdminFileManager_ColType" xml:space="preserve">
+    <value>Lloji</value>
+  </data>
+  <data name="AdminFileManager_ColSize" xml:space="preserve">
+    <value>Madhësia</value>
+  </data>
+  <data name="AdminFileManager_ColModified" xml:space="preserve">
+    <value>Ndryshuar</value>
+  </data>
+  <data name="AdminFileManager_ColActions" xml:space="preserve">
+    <value>Veprimet</value>
+  </data>
+  <data name="AdminFileManager_ActionDetails" xml:space="preserve">
+    <value>Detajet</value>
+  </data>
+  <data name="AdminFileManager_ActionRename" xml:space="preserve">
+    <value>Riemëro</value>
+  </data>
+  <data name="AdminFileManager_ActionDelete" xml:space="preserve">
+    <value>Fshij</value>
+  </data>
+  <data name="AdminFileManager_Prev" xml:space="preserve">
+    <value>E mëparshme</value>
+  </data>
+  <data name="AdminFileManager_Next" xml:space="preserve">
+    <value>E rradhës</value>
+  </data>
+  <data name="AdminFileManager_UploadFile" xml:space="preserve">
+    <value>Ngarko Skedar</value>
+  </data>
+  <data name="AdminFileManager_ChooseFile" xml:space="preserve">
+    <value>Zgjidhni një skedar (.jpg, .png, .gif, .webp, .mp4, .webm, .ogg, .pdf, .css, .js, .txt):</value>
+  </data>
+  <data name="AdminFileManager_Cancel" xml:space="preserve">
+    <value>Anulo</value>
+  </data>
+  <data name="AdminFileManager_Upload" xml:space="preserve">
+    <value>Ngarko</value>
+  </data>
+  <data name="AdminFileManager_CreateFolder" xml:space="preserve">
+    <value>Krijo Dosje të Re</value>
+  </data>
+  <data name="AdminFileManager_FolderName" xml:space="preserve">
+    <value>Emri i dosjes:</value>
+  </data>
+  <data name="AdminFileManager_FolderNamePlaceholder" xml:space="preserve">
+    <value>Shembull: gallery</value>
+  </data>
+  <data name="AdminFileManager_Create" xml:space="preserve">
+    <value>Krijo</value>
+  </data>
+  <data name="AdminFileManager_NewName" xml:space="preserve">
+    <value>Emri i ri:</value>
+  </data>
+  <data name="AdminFileManager_Save" xml:space="preserve">
+    <value>Ruaj</value>
+  </data>
+  <data name="AdminFileManager_ConfirmDeleteTitle" xml:space="preserve">
+    <value>Konfirmo Fshirjen</value>
+  </data>
+  <data name="AdminFileManager_ConfirmDeleteMsg" xml:space="preserve">
+    <value>A jeni të sigurt se dëshironi të fshini</value>
+  </data>
+  <data name="AdminFileManager_FileDetailsTitle" xml:space="preserve">
+    <value>Detajet e skedarit</value>
+  </data>
+  <data name="AdminFileManager_DetailName" xml:space="preserve">
+    <value>Emri:</value>
+  </data>
+  <data name="AdminFileManager_DetailPath" xml:space="preserve">
+    <value>Rruga:</value>
+  </data>
+  <data name="AdminFileManager_DetailSize" xml:space="preserve">
+    <value>Madhësia:</value>
+  </data>
+  <data name="AdminFileManager_DetailResolution" xml:space="preserve">
+    <value>Rezolucioni:</value>
+  </data>
+  <data name="AdminFileManager_DetailCreated" xml:space="preserve">
+    <value>Krijuar më:</value>
+  </data>
+  <data name="AdminFileManager_DetailModified" xml:space="preserve">
+    <value>Ndryshuar më:</value>
+  </data>
+  <data name="AdminFileManager_Close" xml:space="preserve">
+    <value>Mbyll</value>
+  </data>
+  <data name="AdminRes_Meta_Title" xml:space="preserve">
+    <value>Administrimi — Rezervimet</value>
+  </data>
+  <data name="AdminRes_Title" xml:space="preserve">
+    <value>Menaxhimi i Rezervimeve</value>
+  </data>
+  <data name="AdminRes_Subtitle" xml:space="preserve">
+    <value>Përmbledhje dhe menaxhim i të gjitha rezervimeve të marra</value>
+  </data>
+  <data name="AdminRes_Empty" xml:space="preserve">
+    <value>Nuk u gjetën rezervime.</value>
+  </data>
+  <data name="AdminRes_Accommodation" xml:space="preserve">
+    <value>Akomodimi:</value>
+  </data>
+  <data name="AdminRes_Period" xml:space="preserve">
+    <value>Periudha:</value>
+  </data>
+  <data name="AdminRes_Details" xml:space="preserve">
+    <value>Detajet:</value>
+  </data>
+  <data name="AdminRes_Created" xml:space="preserve">
+    <value>Krijuar:</value>
+  </data>
+  <data name="AdminRes_Edit" xml:space="preserve">
+    <value>Ndrysho</value>
+  </data>
+  <data name="AdminRes_ViewDetails" xml:space="preserve">
+    <value>Detajet</value>
+  </data>
+  <data name="AdminRes_Delete" xml:space="preserve">
+    <value>Fshij</value>
+  </data>
+  <data name="AdminRes_ColCreated" xml:space="preserve">
+    <value>Krijuar</value>
+  </data>
+  <data name="AdminRes_ColClient" xml:space="preserve">
+    <value>Klienti</value>
+  </data>
+  <data name="AdminRes_ColContact" xml:space="preserve">
+    <value>Kontakti</value>
+  </data>
+  <data name="AdminRes_ColAccommodation" xml:space="preserve">
+    <value>Akomodimi</value>
+  </data>
+  <data name="AdminRes_ColPeriod" xml:space="preserve">
+    <value>Periudha</value>
+  </data>
+  <data name="AdminRes_ColStatus" xml:space="preserve">
+    <value>Statusi</value>
+  </data>
+  <data name="AdminRes_ColActions" xml:space="preserve">
+    <value>Veprimet</value>
+  </data>
+  <data name="AdminRes_NightsGuestsFormat" xml:space="preserve">
+    <value>{0} netë, {1} mysafirë</value>
+  </data>
+  <data name="AdminRes_Create_Meta_Title" xml:space="preserve">
+    <value>Krijo Rezervim — Administrimi</value>
+  </data>
+  <data name="AdminRes_BackToList" xml:space="preserve">
+    <value>← Kthehu në listë</value>
+  </data>
+  <data name="AdminRes_Create_Title" xml:space="preserve">
+    <value>Krijo Rezervim të Ri</value>
+  </data>
+  <data name="AdminRes_Edit_Meta_Title" xml:space="preserve">
+    <value>Ndrysho Rezervimin — Administrimi</value>
+  </data>
+  <data name="AdminRes_Edit_Title" xml:space="preserve">
+    <value>Ndrysho Rezervimin</value>
+  </data>
+  <data name="AdminRes_Delete_Meta_Title" xml:space="preserve">
+    <value>Fshij Rezervimin — Administrimi</value>
+  </data>
+  <data name="AdminRes_Delete_Title" xml:space="preserve">
+    <value>Fshij Rezervimin</value>
+  </data>
+  <data name="AdminRes_Delete_Confirm" xml:space="preserve">
+    <value>A jeni të sigurt se dëshironi të fshini këtë rezervim?</value>
+  </data>
+  <data name="AdminRes_LabelEmail" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="AdminRes_LabelPhone" xml:space="preserve">
+    <value>Telefoni</value>
+  </data>
+  <data name="AdminRes_LabelGuests" xml:space="preserve">
+    <value>Mysafirët</value>
+  </data>
+  <data name="AdminRes_LabelNights" xml:space="preserve">
+    <value>Netë</value>
+  </data>
+  <data name="AdminRes_LabelPrice" xml:space="preserve">
+    <value>Çmimi</value>
+  </data>
+  <data name="AdminRes_Details_Meta_Title" xml:space="preserve">
+    <value>Detajet e Rezervimit — Administrimi</value>
+  </data>
+  <data name="AdminRes_Details_Title" xml:space="preserve">
+    <value>Detajet e Rezervimit</value>
+  </data>
+  <data name="AdminRes_LabelClient" xml:space="preserve">
+    <value>Klienti</value>
+  </data>
+  <data name="AdminRes_AdditionalRequests" xml:space="preserve">
+    <value>Kërkesa shtesë</value>
+  </data>
+  <data name="AdminRes_TechnicalDetails" xml:space="preserve">
+    <value>Detajet teknike</value>
+  </data>
+  <data name="AdminRes_IpAddress" xml:space="preserve">
+    <value>Adresa IP:</value>
+  </data>
+  <data name="AdminRes_OS" xml:space="preserve">
+    <value>Sistemi operativ:</value>
+  </data>
+  <data name="AdminRes_Platform" xml:space="preserve">
+    <value>Platforma:</value>
+  </data>
+  <data name="AdminRes_Browser" xml:space="preserve">
+    <value>Shfletuesi:</value>
+  </data>
+  <data name="AdminRes_UserAgent" xml:space="preserve">
+    <value>User Agent:</value>
+  </data>
+  <data name="AdminRes_Referrer" xml:space="preserve">
+    <value>Referrer:</value>
+  </data>
+  <data name="AdminRes_Modified" xml:space="preserve">
+    <value>Ndryshuar:</value>
+  </data>
+  <data name="AdminSettings_Meta_Title" xml:space="preserve">
+    <value>Administrimi — Cilësimet e Aplikacionit</value>
+  </data>
+  <data name="AdminSettings_SearchPlaceholder" xml:space="preserve">
+    <value>Kërko cilësimet...</value>
+  </data>
+  <data name="AdminSettings_Prices_Meta_Title" xml:space="preserve">
+    <value>Administrimi — Çmimet e Rezervimit</value>
+  </data>
+  <data name="AdminSettings_Prices_Title" xml:space="preserve">
+    <value>Cilësimet e Çmimeve</value>
+  </data>
+  <data name="AdminSettings_Prices_Subtitle" xml:space="preserve">
+    <value>Ndrysho listat e çmimeve për të gjitha llojet e akomodimit</value>
+  </data>
+  <data name="AdminSettings_Prices_Accommodation" xml:space="preserve">
+    <value>Akomodimi</value>
+  </data>
+  <data name="AdminSettings_Prices_Den" xml:space="preserve">
+    <value>MKD</value>
+  </data>
+  <data name="AdminSettings_Prices_AdditionalFees" xml:space="preserve">
+    <value>Tarifat shtesë</value>
+  </data>
+  <data name="AdminSettings_General_Meta_Title" xml:space="preserve">
+    <value>Administrimi — Opsionet Përgjithshme</value>
+  </data>
+  <data name="AdminSettings_General_Title" xml:space="preserve">
+    <value>Opsionet Përgjithshme të Aplikacionit</value>
+  </data>
+  <data name="AdminSettings_General_Subtitle" xml:space="preserve">
+    <value>Konfigurimi i cilësimeve bazë të aplikacionit</value>
+  </data>
+  <data name="AdminSettings_General_GalleryTitle" xml:space="preserve">
+    <value>Galeria 'Rreth Nesh'</value>
+  </data>
+  <data name="AdminSettings_General_GalleryHelp" xml:space="preserve">
+    <value>Rruga për në dosjen që përmban foto/video për galerinë Rreth Nesh (psh. /Content/gallery/1). Nëse është e zbrazët ose pa skedarë, galeria nuk do të shfaqet.</value>
+  </data>
+  <data name="FeedItems_Index_Meta_Title" xml:space="preserve">
+    <value>Administrimi — Përmbajtja e Feed-it</value>
+  </data>
+  <data name="FeedItems_Title" xml:space="preserve">
+    <value>Menaxhimi i Lajmeve dhe Ofertave</value>
+  </data>
+  <data name="FeedItems_Subtitle" xml:space="preserve">
+    <value>Shtoni, ndryshoni ose fshini artikujt e feed-it</value>
+  </data>
+  <data name="FeedItems_Empty" xml:space="preserve">
+    <value>Nuk u gjetën hyrje.</value>
+  </data>
+  <data name="FeedItems_FeaturedLabel" xml:space="preserve">
+    <value>E zgjedhur:</value>
+  </data>
+  <data name="FeedItems_PublishedLabel" xml:space="preserve">
+    <value>Publikuar:</value>
+  </data>
+  <data name="FeedItems_ColTitle" xml:space="preserve">
+    <value>Titulli</value>
+  </data>
+  <data name="FeedItems_ColCategory" xml:space="preserve">
+    <value>Kategoria</value>
+  </data>
+  <data name="FeedItems_ColBadge" xml:space="preserve">
+    <value>Bexhi</value>
+  </data>
+  <data name="FeedItems_ColFeatured" xml:space="preserve">
+    <value>E zgjedhur</value>
+  </data>
+  <data name="FeedItems_ColPublished" xml:space="preserve">
+    <value>Publikuar</value>
+  </data>
+  <data name="FeedItems_ColDate" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="FeedItems_ColActions" xml:space="preserve">
+    <value>Veprimet</value>
+  </data>
+  <data name="FeedItems_Create_Meta_Title" xml:space="preserve">
+    <value>Krijo Hyrje — Lajme dhe Oferta</value>
+  </data>
+  <data name="FeedItems_BackToList" xml:space="preserve">
+    <value>← Kthehu në listë</value>
+  </data>
+  <data name="FeedItems_Create_Title" xml:space="preserve">
+    <value>Shto Hyrje të Re</value>
+  </data>
+  <data name="FeedItems_Edit_Meta_Title" xml:space="preserve">
+    <value>Ndrysho Hyrjen — Lajme dhe Oferta</value>
+  </data>
+  <data name="FeedItems_Edit_Title" xml:space="preserve">
+    <value>Ndrysho Hyrjen</value>
+  </data>
+  <data name="FeedItems_Delete_Meta_Title" xml:space="preserve">
+    <value>Fshij Hyrjen — Lajme dhe Oferta</value>
+  </data>
+  <data name="FeedItems_Delete_Title" xml:space="preserve">
+    <value>Fshij Hyrjen</value>
+  </data>
+  <data name="FeedItems_Delete_Confirm" xml:space="preserve">
+    <value>A jeni të sigurt se dëshironi të fshini këtë hyrje?</value>
+  </data>
+  <data name="FeedItems_Details_Meta_Title" xml:space="preserve">
+    <value>Detajet e Hyrjes — Lajme dhe Oferta</value>
+  </data>
+  <data name="FeedItems_Details_Title" xml:space="preserve">
+    <value>Detajet e Hyrjes</value>
+  </data>
+  <data name="FeedItems_LabelSubtitle" xml:space="preserve">
+    <value>Nëntitulli</value>
+  </data>
+  <data name="FeedItems_LabelImage" xml:space="preserve">
+    <value>Imazhi</value>
+  </data>
+  <data name="FeedItems_LabelDescription" xml:space="preserve">
+    <value>Përshkrimi</value>
+  </data>
+  <data name="News_Index_Meta_Title" xml:space="preserve">
+    <value>Lajme dhe Oferta — Autocamp Otesevo</value>
+  </data>
+  <data name="News_Hero_Alt" xml:space="preserve">
+    <value>Kamping nën yje</value>
+  </data>
+  <data name="News_Cta_Title" xml:space="preserve">
+    <value>Gati për një pushim të pahaarrueshëm?</value>
+  </data>
+  <data name="News_Details_Published" xml:space="preserve">
+    <value>Publikuar:</value>
+  </data>
+  <data name="News_Details_NoDesc" xml:space="preserve">
+    <value>Nuk ka përshkrim shtesë për këtë lajm.</value>
+  </data>
+  <data name="News_Details_Location" xml:space="preserve">
+    <value>Liqeni i Prespës, Maqedonia e Veriut</value>
+  </data>
+  <data name="Account_Login_Meta_Title" xml:space="preserve">
+    <value>Hyrje — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_Login_Heading" xml:space="preserve">
+    <value>Hyrje</value>
+  </data>
+  <data name="Account_Login_Subheading" xml:space="preserve">
+    <value>Shkruani të dhënat tuaja për t'u kyçur</value>
+  </data>
+  <data name="Account_Register_Meta_Title" xml:space="preserve">
+    <value>Regjistrimi — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_Register_Heading" xml:space="preserve">
+    <value>Regjistrimi</value>
+  </data>
+  <data name="Account_Register_Subheading" xml:space="preserve">
+    <value>Krijoni një llogari të re përdoruesi</value>
+  </data>
+  <data name="Account_AddRole_Meta_Title" xml:space="preserve">
+    <value>Shto rolin e përdoruesit — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_AddRole_Heading" xml:space="preserve">
+    <value>Shto privilegj</value>
+  </data>
+  <data name="Account_ConfirmEmail_Meta_Title" xml:space="preserve">
+    <value>Konfirmo E-mail — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_ExtConfirm_Meta_Title" xml:space="preserve">
+    <value>Regjistrim i jashtëm — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_ExtConfirm_Heading" xml:space="preserve">
+    <value>Lidhni llogarinë tuaj {0}.</value>
+  </data>
+  <data name="Account_ExtConfirm_FormTitle" xml:space="preserve">
+    <value>Formular i Lidhjes</value>
+  </data>
+  <data name="Account_ExtConfirm_Submit" xml:space="preserve">
+    <value>Regjistrohu</value>
+  </data>
+  <data name="Account_ExtFail_Meta_Title" xml:space="preserve">
+    <value>Dështim i Kyçjes — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_ExtFail_Heading" xml:space="preserve">
+    <value>Hyrje e pasuksesshme me shërbimin.</value>
+  </data>
+  <data name="Account_Forgot_Meta_Title" xml:space="preserve">
+    <value>Harruat Fjalëkalimin — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_Forgot_Heading" xml:space="preserve">
+    <value>Shkruani e-mailin tuaj.</value>
+  </data>
+  <data name="Account_Forgot_Submit" xml:space="preserve">
+    <value>Dërgo Linkun</value>
+  </data>
+  <data name="Account_ForgotConfirm_Meta_Title" xml:space="preserve">
+    <value>Konfirmimi i Harresës së Fjalëkalimit — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_Reset_Meta_Title" xml:space="preserve">
+    <value>Ristabili Fjalëkalimin — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_Reset_Heading" xml:space="preserve">
+    <value>Ristabilni fjalëkalimin tuaj.</value>
+  </data>
+  <data name="Account_Reset_Submit" xml:space="preserve">
+    <value>Ristabili</value>
+  </data>
+  <data name="Account_ResetConfirm_Meta_Title" xml:space="preserve">
+    <value>Konfirmimi i Ristabilimit të Fjalëkalimit — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_SendCode_Meta_Title" xml:space="preserve">
+    <value>Dërgo Kodin e Verifikimit — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_SendCode_Heading" xml:space="preserve">
+    <value>Dërgo kodin e verifikimit</value>
+  </data>
+  <data name="Account_SendCode_Submit" xml:space="preserve">
+    <value>Dërgo</value>
+  </data>
+  <data name="Account_VerifyCode_Meta_Title" xml:space="preserve">
+    <value>Verifiko Kodin — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_VerifyCode_Heading" xml:space="preserve">
+    <value>Shkruani kodin e verifikimit</value>
+  </data>
+  <data name="Account_ExtLogins_Heading" xml:space="preserve">
+    <value>Përdorni një shërbim tjetër për t'u kyçur.</value>
+  </data>
+  <data name="Account_ExtLogins_Article" xml:space="preserve">
+    <value>këtë artikull</value>
+  </data>
+  <data name="Account_ExtLogins_BtnTitle" xml:space="preserve">
+    <value>Kyçuni duke përdorur llogarinë tuaj {0}</value>
+  </data>
+  <data name="Manage_Index_Meta_Title" xml:space="preserve">
+    <value>Cilësimet e llogarisë — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_Index_Subtitle" xml:space="preserve">
+    <value>Menaxhoni të gjitha cilësimet e llogarisë suaj të përdoruesit</value>
+  </data>
+  <data name="Manage_Password" xml:space="preserve">
+    <value>Fjalëkalimi</value>
+  </data>
+  <data name="Manage_ChangePasswordSub" xml:space="preserve">
+    <value>Ndryshoni fjalëkalimin tuaj të hyrjes</value>
+  </data>
+  <data name="Manage_ExternalLogins" xml:space="preserve">
+    <value>Hyrje të jashtme</value>
+  </data>
+  <data name="Manage_ExternalLoginsCountFormat" xml:space="preserve">
+    <value>Llogaritë e lidhura: {0}</value>
+  </data>
+  <data name="Manage_ChangePassword_Meta_Title" xml:space="preserve">
+    <value>Ndrysho Fjalëkalimin — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_BackToSettings" xml:space="preserve">
+    <value>← Kthehu në Cilësimet</value>
+  </data>
+  <data name="Manage_ChangePassword_Heading" xml:space="preserve">
+    <value>Ndrysho Fjalëkalimin</value>
+  </data>
+  <data name="Manage_SetPassword_Meta_Title" xml:space="preserve">
+    <value>Vendos Fjalëkalimin — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_SetPassword_Heading" xml:space="preserve">
+    <value>Vendos Fjalëkalimin</value>
+  </data>
+  <data name="Manage_AddPhone_Meta_Title" xml:space="preserve">
+    <value>Shto Numrin e Telefonit — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_AddPhone_Heading" xml:space="preserve">
+    <value>Shto një numër telefoni</value>
+  </data>
+  <data name="Manage_VerifyPhone_Meta_Title" xml:space="preserve">
+    <value>Verifiko Numrin e Telefonit — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_Logins_Meta_Title" xml:space="preserve">
+    <value>Menaxho hyrjet e jashtme — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_Logins_Heading" xml:space="preserve">
+    <value>Hyrjet e Regjistruara</value>
+  </data>
+  <data name="Manage_Logins_Remove" xml:space="preserve">
+    <value>Largo</value>
+  </data>
+  <data name="Manage_Logins_RemoveTitle" xml:space="preserve">
+    <value>Largoni këtë hyrje {0} nga llogaria juaj</value>
+  </data>
+  <data name="Contact_Alt_Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="Contact_Alt_Facebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="About_Alt_Thumbnail" xml:space="preserve">
+    <value>Miniaturë</value>
+  </data>
+  <data name="Gallery_Aria_Previous" xml:space="preserve">
+    <value>E mëparshme</value>
+  </data>
+  <data name="Gallery_Aria_Next" xml:space="preserve">
+    <value>E rradhës</value>
+  </data>
+  <data name="Gallery_Aria_SlideFormat" xml:space="preserve">
+    <value>Sllajdi {0}</value>
+  </data>
+  <data name="Res_PerNight_Den_Eur_Format" xml:space="preserve">
+    <value>{0} MKD (~{1} €)</value>
+  </data>
+  <data name="Res_Yes" xml:space="preserve">
+    <value>Po</value>
+  </data>
+  <data name="Res_No" xml:space="preserve">
+    <value>Jo</value>
+  </data>
+  <data name="AdminFileManager_Folder" xml:space="preserve">
+    <value>Dosje</value>
+  </data>
+  <data name="AdminFileManager_File" xml:space="preserve">
+    <value>Skedar</value>
+  </data>
+  <data name="Admin_NewEntry" xml:space="preserve">
+    <value>+ Hyrje e re</value>
+  </data>
+  <data name="News_Cta_Desc" xml:space="preserve">
+    <value>Rezervoni qëndrimin tuaj sot dhe përjetoni bukurinë e Liqenit të Prespës.</value>
+  </data>
+  <data name="News_Cta_Button" xml:space="preserve">
+    <value>Rezervoni tani</value>
   </data>
 </root>

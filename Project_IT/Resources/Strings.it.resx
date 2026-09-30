@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -422,5 +422,602 @@
   </data>
   <data xml:space="preserve" name="RememberMe">
     <value>Ricordami?</value>
+  </data>
+  <data name="Nav_AddAdmin" xml:space="preserve">
+    <value>Aggiungi amministratore</value>
+  </data>
+  <data name="Nav_Hello" xml:space="preserve">
+    <value>Ciao, {0}!</value>
+  </data>
+  <data name="Error_Meta_Title" xml:space="preserve">
+    <value>Si è verificato un errore - Autocamp Otesevo</value>
+  </data>
+  <data name="Error_Title" xml:space="preserve">
+    <value>Si è verificato un errore</value>
+  </data>
+  <data name="Error_Message" xml:space="preserve">
+    <value>Ci scusiamo, si è verificato un errore imprevisto durante l'elaborazione della richiesta. Riprova più tardi o torna alla pagina principale.</value>
+  </data>
+  <data name="Error_BackHome" xml:space="preserve">
+    <value>← Torna alla Home</value>
+  </data>
+  <data name="Lockout_Meta_Title" xml:space="preserve">
+    <value>Account bloccato - Autocamp Otesevo</value>
+  </data>
+  <data name="Lockout_Title" xml:space="preserve">
+    <value>Account bloccato.</value>
+  </data>
+  <data name="Lockout_Message" xml:space="preserve">
+    <value>Questo account è stato bloccato, riprova più tardi.</value>
+  </data>
+  <data name="AdminFileManager_Meta_Title" xml:space="preserve">
+    <value>Amministrazione — Gestione File</value>
+  </data>
+  <data name="AdminFileManager_Heading" xml:space="preserve">
+    <value>Gestione File</value>
+  </data>
+  <data name="AdminFileManager_Subheading" xml:space="preserve">
+    <value>Gestisci tutti i file e le directory in</value>
+  </data>
+  <data name="AdminFileManager_Path" xml:space="preserve">
+    <value>Percorso:</value>
+  </data>
+  <data name="AdminFileManager_CopyPathTitle" xml:space="preserve">
+    <value>Copia percorso</value>
+  </data>
+  <data name="AdminFileManager_CopyPathBtn" xml:space="preserve">
+    <value>Copia Percorso</value>
+  </data>
+  <data name="AdminFileManager_SearchPlaceholder" xml:space="preserve">
+    <value>Cerca file...</value>
+  </data>
+  <data name="AdminFileManager_EmptyFolder" xml:space="preserve">
+    <value>Questa cartella è vuota o nessun file corrisponde alla ricerca.</value>
+  </data>
+  <data name="AdminFileManager_ColName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="AdminFileManager_ColType" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="AdminFileManager_ColSize" xml:space="preserve">
+    <value>Dimensione</value>
+  </data>
+  <data name="AdminFileManager_ColModified" xml:space="preserve">
+    <value>Modificato</value>
+  </data>
+  <data name="AdminFileManager_ColActions" xml:space="preserve">
+    <value>Azioni</value>
+  </data>
+  <data name="AdminFileManager_ActionDetails" xml:space="preserve">
+    <value>Dettagli</value>
+  </data>
+  <data name="AdminFileManager_ActionRename" xml:space="preserve">
+    <value>Rinomina</value>
+  </data>
+  <data name="AdminFileManager_ActionDelete" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="AdminFileManager_Prev" xml:space="preserve">
+    <value>Precedente</value>
+  </data>
+  <data name="AdminFileManager_Next" xml:space="preserve">
+    <value>Successivo</value>
+  </data>
+  <data name="AdminFileManager_UploadFile" xml:space="preserve">
+    <value>Carica File</value>
+  </data>
+  <data name="AdminFileManager_ChooseFile" xml:space="preserve">
+    <value>Seleziona un file (.jpg, .png, .gif, .webp, .mp4, .webm, .ogg, .pdf, .css, .js, .txt):</value>
+  </data>
+  <data name="AdminFileManager_Cancel" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="AdminFileManager_Upload" xml:space="preserve">
+    <value>Carica</value>
+  </data>
+  <data name="AdminFileManager_CreateFolder" xml:space="preserve">
+    <value>Crea Nuova Cartella</value>
+  </data>
+  <data name="AdminFileManager_FolderName" xml:space="preserve">
+    <value>Nome cartella:</value>
+  </data>
+  <data name="AdminFileManager_FolderNamePlaceholder" xml:space="preserve">
+    <value>Esempio: gallery</value>
+  </data>
+  <data name="AdminFileManager_Create" xml:space="preserve">
+    <value>Crea</value>
+  </data>
+  <data name="AdminFileManager_NewName" xml:space="preserve">
+    <value>Nuovo nome:</value>
+  </data>
+  <data name="AdminFileManager_Save" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="AdminFileManager_ConfirmDeleteTitle" xml:space="preserve">
+    <value>Conferma eliminazione</value>
+  </data>
+  <data name="AdminFileManager_ConfirmDeleteMsg" xml:space="preserve">
+    <value>Sei sicuro di voler eliminare</value>
+  </data>
+  <data name="AdminFileManager_FileDetailsTitle" xml:space="preserve">
+    <value>Dettagli file</value>
+  </data>
+  <data name="AdminFileManager_DetailName" xml:space="preserve">
+    <value>Nome:</value>
+  </data>
+  <data name="AdminFileManager_DetailPath" xml:space="preserve">
+    <value>Percorso:</value>
+  </data>
+  <data name="AdminFileManager_DetailSize" xml:space="preserve">
+    <value>Dimensione:</value>
+  </data>
+  <data name="AdminFileManager_DetailResolution" xml:space="preserve">
+    <value>Risoluzione:</value>
+  </data>
+  <data name="AdminFileManager_DetailCreated" xml:space="preserve">
+    <value>Creato il:</value>
+  </data>
+  <data name="AdminFileManager_DetailModified" xml:space="preserve">
+    <value>Modificato il:</value>
+  </data>
+  <data name="AdminFileManager_Close" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="AdminRes_Meta_Title" xml:space="preserve">
+    <value>Amministrazione — Prenotazioni</value>
+  </data>
+  <data name="AdminRes_Title" xml:space="preserve">
+    <value>Gestione Prenotazioni</value>
+  </data>
+  <data name="AdminRes_Subtitle" xml:space="preserve">
+    <value>Panoramica e gestione di tutte le prenotazioni ricevute</value>
+  </data>
+  <data name="AdminRes_Empty" xml:space="preserve">
+    <value>Nessuna prenotazione trovata.</value>
+  </data>
+  <data name="AdminRes_Accommodation" xml:space="preserve">
+    <value>Alloggio:</value>
+  </data>
+  <data name="AdminRes_Period" xml:space="preserve">
+    <value>Periodo:</value>
+  </data>
+  <data name="AdminRes_Details" xml:space="preserve">
+    <value>Dettagli:</value>
+  </data>
+  <data name="AdminRes_Created" xml:space="preserve">
+    <value>Creato:</value>
+  </data>
+  <data name="AdminRes_Edit" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="AdminRes_ViewDetails" xml:space="preserve">
+    <value>Dettagli</value>
+  </data>
+  <data name="AdminRes_Delete" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="AdminRes_ColCreated" xml:space="preserve">
+    <value>Creato</value>
+  </data>
+  <data name="AdminRes_ColClient" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="AdminRes_ColContact" xml:space="preserve">
+    <value>Contatto</value>
+  </data>
+  <data name="AdminRes_ColAccommodation" xml:space="preserve">
+    <value>Alloggio</value>
+  </data>
+  <data name="AdminRes_ColPeriod" xml:space="preserve">
+    <value>Periodo</value>
+  </data>
+  <data name="AdminRes_ColStatus" xml:space="preserve">
+    <value>Stato</value>
+  </data>
+  <data name="AdminRes_ColActions" xml:space="preserve">
+    <value>Azioni</value>
+  </data>
+  <data name="AdminRes_NightsGuestsFormat" xml:space="preserve">
+    <value>{0} notti, {1} ospiti</value>
+  </data>
+  <data name="AdminRes_Create_Meta_Title" xml:space="preserve">
+    <value>Crea Prenotazione — Amministrazione</value>
+  </data>
+  <data name="AdminRes_BackToList" xml:space="preserve">
+    <value>← Torna alla Lista</value>
+  </data>
+  <data name="AdminRes_Create_Title" xml:space="preserve">
+    <value>Crea Nuova Prenotazione</value>
+  </data>
+  <data name="AdminRes_Edit_Meta_Title" xml:space="preserve">
+    <value>Modifica Prenotazione — Amministrazione</value>
+  </data>
+  <data name="AdminRes_Edit_Title" xml:space="preserve">
+    <value>Modifica Prenotazione</value>
+  </data>
+  <data name="AdminRes_Delete_Meta_Title" xml:space="preserve">
+    <value>Elimina Prenotazione — Amministrazione</value>
+  </data>
+  <data name="AdminRes_Delete_Title" xml:space="preserve">
+    <value>Elimina Prenotazione</value>
+  </data>
+  <data name="AdminRes_Delete_Confirm" xml:space="preserve">
+    <value>Sei sicuro di voler eliminare questa prenotazione?</value>
+  </data>
+  <data name="AdminRes_LabelEmail" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="AdminRes_LabelPhone" xml:space="preserve">
+    <value>Telefono</value>
+  </data>
+  <data name="AdminRes_LabelGuests" xml:space="preserve">
+    <value>Ospiti</value>
+  </data>
+  <data name="AdminRes_LabelNights" xml:space="preserve">
+    <value>Notti</value>
+  </data>
+  <data name="AdminRes_LabelPrice" xml:space="preserve">
+    <value>Prezzo</value>
+  </data>
+  <data name="AdminRes_Details_Meta_Title" xml:space="preserve">
+    <value>Dettagli Prenotazione — Amministrazione</value>
+  </data>
+  <data name="AdminRes_Details_Title" xml:space="preserve">
+    <value>Dettagli Prenotazione</value>
+  </data>
+  <data name="AdminRes_LabelClient" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="AdminRes_AdditionalRequests" xml:space="preserve">
+    <value>Richieste aggiuntive</value>
+  </data>
+  <data name="AdminRes_TechnicalDetails" xml:space="preserve">
+    <value>Dettagli tecnici</value>
+  </data>
+  <data name="AdminRes_IpAddress" xml:space="preserve">
+    <value>Indirizzo IP:</value>
+  </data>
+  <data name="AdminRes_OS" xml:space="preserve">
+    <value>Sistema operativo:</value>
+  </data>
+  <data name="AdminRes_Platform" xml:space="preserve">
+    <value>Piattaforma:</value>
+  </data>
+  <data name="AdminRes_Browser" xml:space="preserve">
+    <value>Browser:</value>
+  </data>
+  <data name="AdminRes_UserAgent" xml:space="preserve">
+    <value>User Agent:</value>
+  </data>
+  <data name="AdminRes_Referrer" xml:space="preserve">
+    <value>Referrer:</value>
+  </data>
+  <data name="AdminRes_Modified" xml:space="preserve">
+    <value>Modificato:</value>
+  </data>
+  <data name="AdminSettings_Meta_Title" xml:space="preserve">
+    <value>Amministrazione — Impostazioni Applicazione</value>
+  </data>
+  <data name="AdminSettings_SearchPlaceholder" xml:space="preserve">
+    <value>Cerca impostazioni...</value>
+  </data>
+  <data name="AdminSettings_Prices_Meta_Title" xml:space="preserve">
+    <value>Amministrazione — Prezzi Prenotazione</value>
+  </data>
+  <data name="AdminSettings_Prices_Title" xml:space="preserve">
+    <value>Impostazioni Prezzi</value>
+  </data>
+  <data name="AdminSettings_Prices_Subtitle" xml:space="preserve">
+    <value>Modifica listini prezzi per tutti i tipi di alloggio</value>
+  </data>
+  <data name="AdminSettings_Prices_Accommodation" xml:space="preserve">
+    <value>Alloggio</value>
+  </data>
+  <data name="AdminSettings_Prices_Den" xml:space="preserve">
+    <value>MKD</value>
+  </data>
+  <data name="AdminSettings_Prices_AdditionalFees" xml:space="preserve">
+    <value>Tariffe aggiuntive</value>
+  </data>
+  <data name="AdminSettings_General_Meta_Title" xml:space="preserve">
+    <value>Amministrazione — Opzioni Generali</value>
+  </data>
+  <data name="AdminSettings_General_Title" xml:space="preserve">
+    <value>Opzioni Generali Applicazione</value>
+  </data>
+  <data name="AdminSettings_General_Subtitle" xml:space="preserve">
+    <value>Configurazione delle impostazioni di base dell'applicazione</value>
+  </data>
+  <data name="AdminSettings_General_GalleryTitle" xml:space="preserve">
+    <value>Galleria 'Chi Siamo'</value>
+  </data>
+  <data name="AdminSettings_General_GalleryHelp" xml:space="preserve">
+    <value>Percorso della cartella contenente foto/video per la galleria Chi Siamo (es. /Content/gallery/1). Se vuoto o senza file, la galleria non verrà mostrata.</value>
+  </data>
+  <data name="FeedItems_Index_Meta_Title" xml:space="preserve">
+    <value>Amministrazione — Contenuti Feed</value>
+  </data>
+  <data name="FeedItems_Title" xml:space="preserve">
+    <value>Gestione Notizie e Offerte</value>
+  </data>
+  <data name="FeedItems_Subtitle" xml:space="preserve">
+    <value>Aggiungi, modifica o elimina elementi del feed</value>
+  </data>
+  <data name="FeedItems_Empty" xml:space="preserve">
+    <value>Nessuna voce trovata.</value>
+  </data>
+  <data name="FeedItems_FeaturedLabel" xml:space="preserve">
+    <value>In evidenza:</value>
+  </data>
+  <data name="FeedItems_PublishedLabel" xml:space="preserve">
+    <value>Pubblicato:</value>
+  </data>
+  <data name="FeedItems_ColTitle" xml:space="preserve">
+    <value>Titolo</value>
+  </data>
+  <data name="FeedItems_ColCategory" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="FeedItems_ColBadge" xml:space="preserve">
+    <value>Badge</value>
+  </data>
+  <data name="FeedItems_ColFeatured" xml:space="preserve">
+    <value>In evidenza</value>
+  </data>
+  <data name="FeedItems_ColPublished" xml:space="preserve">
+    <value>Pubblicato</value>
+  </data>
+  <data name="FeedItems_ColDate" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="FeedItems_ColActions" xml:space="preserve">
+    <value>Azioni</value>
+  </data>
+  <data name="FeedItems_Create_Meta_Title" xml:space="preserve">
+    <value>Crea Voce — Notizie e Offerte</value>
+  </data>
+  <data name="FeedItems_BackToList" xml:space="preserve">
+    <value>← Torna alla Lista</value>
+  </data>
+  <data name="FeedItems_Create_Title" xml:space="preserve">
+    <value>Aggiungi Nuova Voce</value>
+  </data>
+  <data name="FeedItems_Edit_Meta_Title" xml:space="preserve">
+    <value>Modifica Voce — Notizie e Offerte</value>
+  </data>
+  <data name="FeedItems_Edit_Title" xml:space="preserve">
+    <value>Modifica Voce</value>
+  </data>
+  <data name="FeedItems_Delete_Meta_Title" xml:space="preserve">
+    <value>Elimina Voce — Notizie e Offerte</value>
+  </data>
+  <data name="FeedItems_Delete_Title" xml:space="preserve">
+    <value>Elimina Voce</value>
+  </data>
+  <data name="FeedItems_Delete_Confirm" xml:space="preserve">
+    <value>Sei sicuro di voler eliminare questa voce?</value>
+  </data>
+  <data name="FeedItems_Details_Meta_Title" xml:space="preserve">
+    <value>Dettagli Voce — Notizie e Offerte</value>
+  </data>
+  <data name="FeedItems_Details_Title" xml:space="preserve">
+    <value>Dettagli Voce</value>
+  </data>
+  <data name="FeedItems_LabelSubtitle" xml:space="preserve">
+    <value>Sottotitolo</value>
+  </data>
+  <data name="FeedItems_LabelImage" xml:space="preserve">
+    <value>Immagine</value>
+  </data>
+  <data name="FeedItems_LabelDescription" xml:space="preserve">
+    <value>Descrizione</value>
+  </data>
+  <data name="News_Index_Meta_Title" xml:space="preserve">
+    <value>Notizie e Offerte — Autocamp Otesevo</value>
+  </data>
+  <data name="News_Hero_Alt" xml:space="preserve">
+    <value>Campeggio sotto le stelle</value>
+  </data>
+  <data name="News_Cta_Title" xml:space="preserve">
+    <value>Pronto per una vacanza indimenticabile?</value>
+  </data>
+  <data name="News_Details_Published" xml:space="preserve">
+    <value>Pubblicato:</value>
+  </data>
+  <data name="News_Details_NoDesc" xml:space="preserve">
+    <value>Nessuna descrizione aggiuntiva per questa notizia.</value>
+  </data>
+  <data name="News_Details_Location" xml:space="preserve">
+    <value>Lago Prespa, Macedonia del Nord</value>
+  </data>
+  <data name="Account_Login_Meta_Title" xml:space="preserve">
+    <value>Accedi — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_Login_Heading" xml:space="preserve">
+    <value>Accedi</value>
+  </data>
+  <data name="Account_Login_Subheading" xml:space="preserve">
+    <value>Inserisci le tue credenziali per accedere</value>
+  </data>
+  <data name="Account_Register_Meta_Title" xml:space="preserve">
+    <value>Registrati — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_Register_Heading" xml:space="preserve">
+    <value>Registrazione</value>
+  </data>
+  <data name="Account_Register_Subheading" xml:space="preserve">
+    <value>Crea un nuovo account utente</value>
+  </data>
+  <data name="Account_AddRole_Meta_Title" xml:space="preserve">
+    <value>Aggiungi ruolo utente — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_AddRole_Heading" xml:space="preserve">
+    <value>Aggiungi privilegio</value>
+  </data>
+  <data name="Account_ConfirmEmail_Meta_Title" xml:space="preserve">
+    <value>Conferma E-mail — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_ExtConfirm_Meta_Title" xml:space="preserve">
+    <value>Registrazione esterna — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_ExtConfirm_Heading" xml:space="preserve">
+    <value>Associa il tuo account {0}.</value>
+  </data>
+  <data name="Account_ExtConfirm_FormTitle" xml:space="preserve">
+    <value>Modulo di associazione</value>
+  </data>
+  <data name="Account_ExtConfirm_Submit" xml:space="preserve">
+    <value>Registrati</value>
+  </data>
+  <data name="Account_ExtFail_Meta_Title" xml:space="preserve">
+    <value>Errore di accesso — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_ExtFail_Heading" xml:space="preserve">
+    <value>Accesso non riuscito con il servizio.</value>
+  </data>
+  <data name="Account_Forgot_Meta_Title" xml:space="preserve">
+    <value>Password dimenticata — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_Forgot_Heading" xml:space="preserve">
+    <value>Inserisci la tua e-mail.</value>
+  </data>
+  <data name="Account_Forgot_Submit" xml:space="preserve">
+    <value>Invia Link</value>
+  </data>
+  <data name="Account_ForgotConfirm_Meta_Title" xml:space="preserve">
+    <value>Conferma password dimenticata — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_Reset_Meta_Title" xml:space="preserve">
+    <value>Reimposta Password — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_Reset_Heading" xml:space="preserve">
+    <value>Reimposta la tua password.</value>
+  </data>
+  <data name="Account_Reset_Submit" xml:space="preserve">
+    <value>Reimposta</value>
+  </data>
+  <data name="Account_ResetConfirm_Meta_Title" xml:space="preserve">
+    <value>Conferma reimpostazione password — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_SendCode_Meta_Title" xml:space="preserve">
+    <value>Invia codice di verifica — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_SendCode_Heading" xml:space="preserve">
+    <value>Invia codice di verifica</value>
+  </data>
+  <data name="Account_SendCode_Submit" xml:space="preserve">
+    <value>Invia</value>
+  </data>
+  <data name="Account_VerifyCode_Meta_Title" xml:space="preserve">
+    <value>Verifica codice — Autocamp Otesevo</value>
+  </data>
+  <data name="Account_VerifyCode_Heading" xml:space="preserve">
+    <value>Inserisci il codice di verifica</value>
+  </data>
+  <data name="Account_ExtLogins_Heading" xml:space="preserve">
+    <value>Usa un altro servizio per accedere.</value>
+  </data>
+  <data name="Account_ExtLogins_Article" xml:space="preserve">
+    <value>questo articolo</value>
+  </data>
+  <data name="Account_ExtLogins_BtnTitle" xml:space="preserve">
+    <value>Accedi usando il tuo account {0}</value>
+  </data>
+  <data name="Manage_Index_Meta_Title" xml:space="preserve">
+    <value>Impostazioni account — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_Index_Subtitle" xml:space="preserve">
+    <value>Gestisci tutte le impostazioni del tuo account utente</value>
+  </data>
+  <data name="Manage_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Manage_ChangePasswordSub" xml:space="preserve">
+    <value>Cambia la tua password di accesso</value>
+  </data>
+  <data name="Manage_ExternalLogins" xml:space="preserve">
+    <value>Accessi esterni</value>
+  </data>
+  <data name="Manage_ExternalLoginsCountFormat" xml:space="preserve">
+    <value>Account collegati: {0}</value>
+  </data>
+  <data name="Manage_ChangePassword_Meta_Title" xml:space="preserve">
+    <value>Cambia Password — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_BackToSettings" xml:space="preserve">
+    <value>← Torna alle Impostazioni</value>
+  </data>
+  <data name="Manage_ChangePassword_Heading" xml:space="preserve">
+    <value>Cambia Password</value>
+  </data>
+  <data name="Manage_SetPassword_Meta_Title" xml:space="preserve">
+    <value>Imposta Password — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_SetPassword_Heading" xml:space="preserve">
+    <value>Imposta Password</value>
+  </data>
+  <data name="Manage_AddPhone_Meta_Title" xml:space="preserve">
+    <value>Aggiungi numero di telefono — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_AddPhone_Heading" xml:space="preserve">
+    <value>Aggiungi un numero di telefono</value>
+  </data>
+  <data name="Manage_VerifyPhone_Meta_Title" xml:space="preserve">
+    <value>Verifica numero di telefono — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_Logins_Meta_Title" xml:space="preserve">
+    <value>Gestisci accessi esterni — Autocamp Otesevo</value>
+  </data>
+  <data name="Manage_Logins_Heading" xml:space="preserve">
+    <value>Accessi registrati</value>
+  </data>
+  <data name="Manage_Logins_Remove" xml:space="preserve">
+    <value>Rimuovi</value>
+  </data>
+  <data name="Manage_Logins_RemoveTitle" xml:space="preserve">
+    <value>Rimuovi questo accesso {0} dal tuo account</value>
+  </data>
+  <data name="Contact_Alt_Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="Contact_Alt_Facebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="About_Alt_Thumbnail" xml:space="preserve">
+    <value>Miniatura</value>
+  </data>
+  <data name="Gallery_Aria_Previous" xml:space="preserve">
+    <value>Precedente</value>
+  </data>
+  <data name="Gallery_Aria_Next" xml:space="preserve">
+    <value>Successivo</value>
+  </data>
+  <data name="Gallery_Aria_SlideFormat" xml:space="preserve">
+    <value>Diapositiva {0}</value>
+  </data>
+  <data name="Res_PerNight_Den_Eur_Format" xml:space="preserve">
+    <value>{0} MKD (~{1} €)</value>
+  </data>
+  <data name="Res_Yes" xml:space="preserve">
+    <value>Sì</value>
+  </data>
+  <data name="Res_No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="AdminFileManager_Folder" xml:space="preserve">
+    <value>Cartella</value>
+  </data>
+  <data name="AdminFileManager_File" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="Admin_NewEntry" xml:space="preserve">
+    <value>+ Nuova voce</value>
+  </data>
+  <data name="News_Cta_Desc" xml:space="preserve">
+    <value>Prenota il tuo soggiorno oggi e vivi la bellezza del Lago Prespa.</value>
+  </data>
+  <data name="News_Cta_Button" xml:space="preserve">
+    <value>Prenota ora</value>
   </data>
 </root>
