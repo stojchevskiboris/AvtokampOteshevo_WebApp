@@ -221,6 +221,7 @@
     <Compile Include="Models\ViewModels\BookingPricesViewModel.cs" />
     <Compile Include="Models\ViewModels\GeneralAppPreferencesViewModel.cs" />
     <Compile Include="Models\ViewModels\FileManagerViewModels.cs" />
+    <Compile Include="Models\ViewModels\SendEmailRequestModel.cs" />
     <Compile Include="Models\ViewModels\SettingsDashboardViewModel.cs" />
     <Compile Include="Controllers\AdminReservationsController.cs" />
     <Compile Include="Controllers\FeedItemsController.cs" />
@@ -250,10 +251,12 @@
     <Compile Include="Models\ViewModels\ReservationSubmissionModel.cs" />
     <Compile Include="Models\ViewModels\TItleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Implementations\EmailService.cs" />
     <Compile Include="Services\Interfaces\IFeedItemService.cs" />
     <Compile Include="Services\Interfaces\IFileManagerService.cs" />
     <Compile Include="Services\Interfaces\INewsService.cs" />
     <Compile Include="Services\Interfaces\IReservationService.cs" />
+    <Compile Include="Services\Interfaces\IEmailService.cs" />
     <Compile Include="Services\Interfaces\ISettingService.cs" />
     <Compile Include="Services\Interfaces\ISitemapService.cs" />
     <Compile Include="Services\Implementations\FeedItemService.cs" />
