@@ -205,39 +205,12 @@
     </div>
 </div>
 
-<!-- Hidden EmailJS Form -->
-<form id="form" class="hidden">
-    <input type="text" name="customer_name" id="form_customer_name" />
-    <input type="email" name="customer_email" id="form_customer_email" />
-    <input type="text" name="phone" id="form_phone" />
-    <input type="text" name="guests" id="form_guests" />
-    <input type="text" name="smestuvanje" id="form_smestuvanje" />
-    <input type="text" name="check_in" id="form_check_in" />
-    <input type="text" name="check_out" id="form_check_out" />
-    <textarea name="message" id="form_message"></textarea>
-
-    <input type="text" name="user_os" id="form_user_os" />
-    <input type="text" name="user_platform" id="form_user_platform" />
-    <input type="text" name="user_browser" id="form_user_browser" />
-    <input type="text" name="user_version" id="form_user_version" />
-    <input type="text" name="user_referrer" id="form_user_referrer" />
-
-    <textarea name="from_name" id="from_name"></textarea>
-    <input type="text" name="reply_to" id="reply_to" />
-</form>
-
 <style>
     .danger {
         border-color: #ef4444 !important;
         background-color: #fef2f2 !important;
     }
 </style>
-
-<script src="~/Content/email.min.js"></script>
-
-<script type="text/javascript">
-    emailjs.init('0YVQaG2ITtZEM__Mt');
-</script>
 
 <script type="text/javascript">
     Date.prototype.addDays = function (days) {
@@ -419,72 +392,43 @@
             const platformVal = navigator.platform || "";
             const versionVal = navigator.appVersion || "";
             const referrerVal = document.referrer || "";
-            const localeVal = navigator.language || "";
+            const localeVal = navigator.language || "mk";
             const userAgentVal = navigator.userAgent || "";
 
-            // Populate hidden form for EmailJS
-            document.getElementById("form_customer_name").value = fullNameElem.value;
-            document.getElementById("form_customer_email").value = emailVal;
-            document.getElementById("form_phone").value = phoneElem.value;
-            document.getElementById("form_guests").value = guestsElem.value;
-            document.getElementById("form_smestuvanje").value = accommodationTypeElem.value;
-            document.getElementById("form_check_in").value = formattedCheckIn;
-            document.getElementById("form_check_out").value = formattedCheckOut;
-            document.getElementById("form_message").value = infoElem.value;
-            document.getElementById("form_user_os").value = osVal;
-            document.getElementById("form_user_platform").value = platformVal;
-            document.getElementById("form_user_browser").value = browserVal;
-            document.getElementById("form_user_version").value = versionVal;
-            document.getElementById("form_user_referrer").value = referrerVal;
+            const modelPayload = {
+                FullName: fullNameElem.value,
+                Email: emailVal,
+                Phone: phoneElem.value,
+                Guests: guestsElem.value,
+                AccommodationType: accommodationTypeElem.value,
+                CheckInDate: formattedCheckIn,
+                CheckOutDate: formattedCheckOut,
+                Info: infoElem.value,
+                UserOs: osVal,
+                UserPlatform: platformVal,
+                UserBrowser: browserVal,
+                UserVersion: versionVal,
+                UserAgent: userAgentVal,
+                UserCountry: localeVal,
+                UserReferrer: referrerVal
+            };
 
-            document.getElementById("from_name").value = " Име и презиме: " + fullNameElem.value +
-                "\n Email: " + emailVal +
-                "\n Телефон: " + phoneElem.value +
-                "\n Број на лица: " + guestsElem.value +
-                "\n Сместување: " + accommodationTypeElem.value +
-                "\n Дата на пристигнување: " + formattedCheckIn +
-                "\n Дата на заминување: " + formattedCheckOut;
-            document.getElementById("reply_to").value = emailVal;
-
-            const serviceID = 'default_service';
-            const templateID = 'template_bjhyjh8';
-            const formElem = document.getElementById('form');
-
-            // Step 1: Send via EmailJS
-            emailjs.sendForm(serviceID, templateID, formElem)
-                .then(function () {
-                    // Step 2: Save to backend database
-                    const modelPayload = {
-                        FullName: fullNameElem.value,
-                        Email: emailVal,
-                        Phone: phoneElem.value,
-                        Guests: guestsElem.value,
-                        AccommodationType: accommodationTypeElem.value,
-                        CheckInDate: formattedCheckIn,
-                        CheckOutDate: formattedCheckOut,
-                        Info: infoElem.value,
-                        UserOs: osVal,
-                        UserPlatform: platformVal,
-                        UserBrowser: browserVal,
-                        UserVersion: versionVal,
-                        UserAgent: userAgentVal,
-                        UserCountry: localeVal,
-                        UserReferrer: referrerVal
-                    };
-
-                    return fetch('@Url.Action("Save", "Reservations")', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(modelPayload)
-                    });
-                })
-                .then(function (response) {
-                    if (response && !response.ok) {
-                        throw new Error('Database save failed');
-                    }
-                    // Step 3: Success UI
+            fetch('@Url.Action("Save", "Reservations")', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-user-locale': localeVal
+                },
+                body: JSON.stringify(modelPayload)
+            })
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error('Save failed');
+                }
+                return response.json();
+            })
+            .then(function (data) {
+                if (data && data.status === 'success') {
                     const formCardElem = document.getElementById('formCard');
                     formCardElem.innerHTML = `
                         <div class="text-center py-12 px-4 space-y-4">
@@ -500,13 +444,17 @@
                         </div>
                     `;
                     const pricesCardElem = document.getElementById('pricesCard');
-                    pricesCardElem.classList.add("hidden");
-
-                })
-                .catch(function (err) {
-                    console.error("Submission failed:", err);
+                    if (pricesCardElem) {
+                        pricesCardElem.classList.add("hidden");
+                    }
+                } else {
                     showUIError();
-                });
+                }
+            })
+            .catch(function (err) {
+                console.error("Submission failed:", err);
+                showUIError();
+            });
         });
     });
 </script>
