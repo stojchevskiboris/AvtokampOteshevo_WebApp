@@ -1,4 +1,5 @@
 using System;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -6,6 +7,7 @@ using System.Web.Mvc;
 using log4net;
 using Project_IT.Models;
 using Project_IT.Models.ViewModels;
+using Project_IT.Services;
 using Project_IT.Services.Interfaces;
 
 namespace Project_IT.Controllers
@@ -15,11 +17,13 @@ namespace Project_IT.Controllers
         private static readonly ILog log = LogManager.GetLogger(typeof(ReservationsController));
         private readonly IReservationService _reservationService;
         private readonly ISettingService _settingService;
+        private readonly IEmailService _emailService;
 
-        public ReservationsController(IReservationService reservationService, ISettingService settingService)
+        public ReservationsController(IReservationService reservationService, ISettingService settingService, IEmailService emailService)
         {
             _reservationService = reservationService;
             _settingService = settingService;
+            _emailService = emailService;
         }
 
         public async Task<ActionResult> New()
@@ -51,7 +55,7 @@ namespace Project_IT.Controllers
         }
 
         [HttpPost]
-        public ActionResult Save(ReservationSubmissionModel model)
+        public async Task<ActionResult> Save(ReservationSubmissionModel model)
         {
             try
             {
@@ -68,6 +72,37 @@ namespace Project_IT.Controllers
 
                 if (success)
                 {
+                    // Email Dispatch Workflow
+                    try
+                    {
+                        // Extract client culture/locale
+                        string requestedCulture = Request?.Headers["x-user-locale"]
+                            ?? Request?.Headers["culture"]
+                            ?? model.UserCountry;
+
+                        // 1. Admin Notification Email (Always Macedonian)
+                        string adminEmailAddress = ConfigurationManager.AppSettings["MailFromAddress"];
+                        if (!string.IsNullOrWhiteSpace(adminEmailAddress))
+                        {
+                            string adminSubject = $"Нова Резервација - {model.FullName}";
+                            string adminBody = EmailTemplateBuilder.BuildAdminNotificationEmail(model);
+                            await _emailService.SendEmailAsync(adminEmailAddress, adminSubject, adminBody);
+                        }
+
+                        // 2. Client Confirmation Email (Localized)
+                        if (!string.IsNullOrWhiteSpace(model.Email))
+                        {
+                            string clientSubject = EmailTemplateBuilder.GetSubjectForCulture(requestedCulture);
+                            string clientBody = EmailTemplateBuilder.BuildClientConfirmationEmail(model, requestedCulture);
+                            await _emailService.SendEmailAsync(model.Email, clientSubject, clientBody);
+                        }
+                    }
+                    catch (Exception emailEx)
+                    {
+                        log.Error("Failed sending email notifications for reservation submission: " + emailEx.Message, emailEx);
+                        // Do not fail the submission if email sending encounters an issue, but log it.
+                    }
+
                     return Json(new { status = "success" });
                 }
 
