@@ -1,9 +1,8 @@
-using Project_IT.Models.ViewModels;
 using System.Threading.Tasks;
 
 namespace Project_IT.Services.Interfaces
 {
-    public interface IEmailService
+    public interface IResendEmailService
     {
         Task SendEmailAsync(string to, string subject, string htmlContent);
     }

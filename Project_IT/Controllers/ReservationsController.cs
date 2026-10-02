@@ -17,9 +17,9 @@ namespace Project_IT.Controllers
         private static readonly ILog log = LogManager.GetLogger(typeof(ReservationsController));
         private readonly IReservationService _reservationService;
         private readonly ISettingService _settingService;
-        private readonly IEmailService _emailService;
+        private readonly IResendEmailService _emailService;
 
-        public ReservationsController(IReservationService reservationService, ISettingService settingService, IEmailService emailService)
+        public ReservationsController(IReservationService reservationService, ISettingService settingService, IResendEmailService emailService)
         {
             _reservationService = reservationService;
             _settingService = settingService;

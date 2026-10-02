@@ -15,19 +15,19 @@ using System.Web.Caching;
 
 namespace Project_IT.Services.Implementations
 {
-    public class EmailService : IEmailService
+    public class ResendEmailService : IResendEmailService
     {
         private static readonly HttpClient _httpClient = new HttpClient
         {
             BaseAddress = new Uri("https://api.resend.com/")
         };
 
-        private ILog log = LogManager.GetLogger(typeof(EmailService));
+        private ILog log = LogManager.GetLogger(typeof(ResendEmailService));
 
         private readonly string _apiKey;
         private readonly string _fromAddress;
 
-        public EmailService()
+        public ResendEmailService()
         {
             _apiKey = ConfigurationManager.AppSettings["ResendApiKey"];
             _fromAddress = ConfigurationManager.AppSettings["MailFromAddress"];
