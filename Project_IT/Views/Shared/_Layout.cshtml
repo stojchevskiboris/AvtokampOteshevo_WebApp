@@ -152,19 +152,19 @@
                         </button>
                         <div id="adminDropdownMenu" class="absolute right-0 mt-2 w-56 rounded-xl border border-slate-100 bg-white shadow-lg hidden z-50">
                             <a href='@Url.Action("Index", "AdminReservations")'
-                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 rounded-t-xl @(currentController == "AdminReservations" ? "font-semibold text-emerald-700" : "")">
+                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 rounded-t-xl @(currentController.ToLower() == "adminreservations" ? "font-semibold text-emerald-700" : "")">
                                 @Strings.Nav_Reservations
                             </a>
                             <a href='@Url.Action("Index", "FeedItems")'
-                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 @(currentController == "FeedItems" ? "font-semibold text-emerald-700" : "")">
+                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 @(currentController.ToLower() == "feeditems" ? "font-semibold text-emerald-700" : "")">
                                 @Strings.Nav_EditNews
                             </a>
                             <a href='@Url.Action("Index", "AdminSettings")'
-                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 @(currentController == "AdminSettings" ? "font-semibold text-emerald-700" : "")">
+                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 @(currentController.ToLower() == "adminsettings" ? "font-semibold text-emerald-700" : "")">
                                 @Strings.Nav_Settings
                             </a>
                             <a href='@Url.Action("Index", "AdminFileManager")'
-                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 rounded-b-xl @(currentController == "AdminFileManager" ? "font-semibold text-emerald-700" : "")">
+                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 rounded-b-xl @(currentController.ToLower() == "adminfilemanager" ? "font-semibold text-emerald-700" : "")">
                                 @Strings.Nav_FileManager
                             </a>
                         </div>
@@ -213,42 +213,42 @@
         <!-- Mobile Menu Drawer -->
         <div id="mobileMenu" class="hidden sm:hidden text-xl border-t border-slate-100 bg-white/95 backdrop-blur-md px-6 py-4 flex flex-col gap-2 overflow-y-auto max-h-[calc(100vh-4rem)]">
             <a href='@Url.Action("Index", "Home")#home'
-               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController == "Home" && currentAction == "Index" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
+               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController.ToLower() == "home" && currentAction.ToLower() == "index" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
                 @Strings.Nav_Home
             </a>
 
             <a href='@Url.Action("Index", "News")'
-               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController == "News" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
+               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController.ToLower() == "news" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
                 @Strings.Nav_News
             </a>
 
             @if (isAuthenticated)
             {
                 <a href='@Url.Action("Index", "AdminReservations")'
-                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "AdminReservations" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
+                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController.ToLower() == "adminreservations" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
                     @Strings.Nav_Reservations
                 </a>
                 <a href='@Url.Action("Index", "FeedItems")'
-                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "FeedItems" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
+                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController.ToLower() == "feeditems" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
                     @Strings.Nav_EditNews
                 </a>
                 <a href='@Url.Action("Index", "AdminSettings")'
-                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "AdminSettings" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
+                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController.ToLower() == "adminsettings" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
                     @Strings.Nav_Settings
                 </a>
                 <a href='@Url.Action("Index", "AdminFileManager")'
-                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "AdminFileManager" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
+                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController.ToLower() == "adminfilemanager" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
                     @Strings.Nav_FileManager
                 </a>
             }
 
             <a href='@Url.Action("About", "Home")'
-               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController == "Home" && currentAction == "About" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
+               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController.ToLower() == "home" && currentAction.ToLower() == "about" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
                 @Strings.Nav_About
             </a>
 
             <a href='@Url.Action("Contact", "Home")'
-               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController == "Home" && currentAction == "Contact" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
+               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController.ToLower() == "home" && currentAction.ToLower() == "contact" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
                 @Strings.Nav_Contact
             </a>
 
