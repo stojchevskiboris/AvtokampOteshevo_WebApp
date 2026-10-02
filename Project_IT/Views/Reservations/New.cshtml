@@ -40,7 +40,7 @@
                 <div class="grid grid-cols-2 gap-3">
                     @if (prices.PriceBoxVisible1)
                     {
-                        string label = (lang == "en" && !string.IsNullOrEmpty(prices.LabelBungalow1.NameEn)) ? prices.LabelBungalow1.NameEn : prices.LabelBungalow1.Name;
+                        string label = (lang != "mk" && !string.IsNullOrEmpty(prices.LabelBungalow1.NameEn)) ? prices.LabelBungalow1.NameEn : prices.LabelBungalow1.Name;
                         int eur = (int)Math.Round(prices.PricePerNightBungalow1 / 61.5m);
                         <div class="group relative overflow-hidden rounded-xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 text-center transition-all duration-200 hover:border-emerald-300 hover:shadow-md hover:-translate-y-0.5">
                             <div class="mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 group-hover:bg-emerald-100 transition-colors">
@@ -54,7 +54,7 @@
                     }
                     @if (prices.PriceBoxVisible2)
                     {
-                        string label = (lang == "en" && !string.IsNullOrEmpty(prices.LabelBungalow2.NameEn)) ? prices.LabelBungalow2.NameEn : prices.LabelBungalow2.Name;
+                        string label = (lang != "mk" && !string.IsNullOrEmpty(prices.LabelBungalow2.NameEn)) ? prices.LabelBungalow2.NameEn : prices.LabelBungalow2.Name;
                         int eur = (int)Math.Round(prices.PricePerNightBungalow2 / 61.5m);
                         <div class="group relative overflow-hidden rounded-xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 text-center transition-all duration-200 hover:border-emerald-300 hover:shadow-md hover:-translate-y-0.5">
                             <div class="mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 group-hover:bg-emerald-100 transition-colors">
@@ -68,7 +68,7 @@
                     }
                     @if (prices.PriceBoxVisible3)
                     {
-                        string label = (lang == "en" && !string.IsNullOrEmpty(prices.LabelBungalow3.NameEn)) ? prices.LabelBungalow3.NameEn : prices.LabelBungalow3.Name;
+                        string label = (lang != "mk" && !string.IsNullOrEmpty(prices.LabelBungalow3.NameEn)) ? prices.LabelBungalow3.NameEn : prices.LabelBungalow3.Name;
                         int eur = (int)Math.Round(prices.PricePerNightBungalow3 / 61.5m);
                         <div class="group relative overflow-hidden rounded-xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 text-center transition-all duration-200 hover:border-emerald-300 hover:shadow-md hover:-translate-y-0.5">
                             <div class="mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 group-hover:bg-emerald-100 transition-colors">
@@ -82,7 +82,7 @@
                     }
                     @if (prices.PriceBoxVisible4)
                     {
-                        string label = (lang == "en" && !string.IsNullOrEmpty(prices.LabelTrailer.NameEn)) ? prices.LabelTrailer.NameEn : prices.LabelTrailer.Name;
+                        string label = (lang != "mk" && !string.IsNullOrEmpty(prices.LabelTrailer.NameEn)) ? prices.LabelTrailer.NameEn : prices.LabelTrailer.Name;
                         int eur = (int)Math.Round(prices.PricePerNightTrailer / 61.5m);
                         <div class="group relative overflow-hidden rounded-xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 text-center transition-all duration-200 hover:border-emerald-300 hover:shadow-md hover:-translate-y-0.5">
                             <div class="mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 group-hover:bg-emerald-100 transition-colors">
@@ -94,7 +94,7 @@
                     }
                     @if (prices.PriceBoxVisible5)
                     {
-                        string label = (lang == "en" && !string.IsNullOrEmpty(prices.LabelPitch.NameEn)) ? prices.LabelPitch.NameEn : prices.LabelPitch.Name;
+                        string label = (lang != "mk" && !string.IsNullOrEmpty(prices.LabelPitch.NameEn)) ? prices.LabelPitch.NameEn : prices.LabelPitch.Name;
                         int eur = (int)Math.Round(prices.PitchFee / 61.5m);
                         <div class="group relative overflow-hidden rounded-xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 text-center transition-all duration-200 hover:border-emerald-300 hover:shadow-md hover:-translate-y-0.5">
                             <div class="mx-auto mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 group-hover:bg-emerald-100 transition-colors">
