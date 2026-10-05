@@ -473,27 +473,35 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.mk.resx">
       <CustomToolNamespace>Otesevo.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.sq.resx">
       <CustomToolNamespace>Otesevo.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.sr.resx">
       <CustomToolNamespace>Otesevo.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.de.resx">
       <CustomToolNamespace>Otesevo.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.pl.resx">
       <CustomToolNamespace>Otesevo.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.it.resx">
       <CustomToolNamespace>Otesevo.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.el.resx">
       <CustomToolNamespace>Otesevo.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.es.resx">
       <CustomToolNamespace>Otesevo.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

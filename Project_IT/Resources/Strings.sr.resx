@@ -192,6 +192,9 @@
   <data name="Home_Hero_Sub_2" xml:space="preserve">
     <value>Преспанског језера</value>
   </data>
+  <data name="Site_Name_Sub" xml:space="preserve">
+    <value>Преспанског језера</value>
+  </data>
   <data name="Home_Hero_Cta" xml:space="preserve">
     <value>Истражите камп</value>
   </data>

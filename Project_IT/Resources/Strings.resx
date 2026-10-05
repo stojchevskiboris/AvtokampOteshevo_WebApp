@@ -1188,4 +1188,7 @@
   <data name="News_AllNews" xml:space="preserve">
     <value>← All news</value>
   </data>
+  <data name="Site_Name_Sub" xml:space="preserve">
+    <value>Lake Prespa</value>
+  </data>
 </root>

@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.otesevo.com/root</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.otesevo.com/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://www.otesevo.com/home/about</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.otesevo.com/home/contact</loc>
@@ -21,13 +21,14 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.otesevo.com/reservations/new</loc>
+    <loc>https://www.otesevo.com/News/3</loc>
+    <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.otesevo.com/News/1</loc>
-    <lastmod>2026-09-11</lastmod>
+    <loc>https://www.otesevo.com/News/4</loc>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>

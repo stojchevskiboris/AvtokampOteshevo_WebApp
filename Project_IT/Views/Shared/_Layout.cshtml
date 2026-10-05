@@ -109,7 +109,7 @@
                         @Strings.Site_Name
                     </span>
                     <span class="text-xs font-normal text-slate-500 italic font-display">
-                        @Strings.Home_Hero_Sub_2
+                        @Strings.Site_Name_Sub
                     </span>
                 </div>
             </a>
@@ -211,7 +211,7 @@
         </div>
 
         <!-- Mobile Menu Drawer -->
-        <div id="mobileMenu" class="hidden sm:hidden text-xl border-t border-slate-100 bg-white/95 backdrop-blur-md px-6 py-4 flex flex-col gap-2 overflow-y-auto max-h-[calc(100vh-4rem)]">
+        <div id="mobileMenu" class="hidden sm:hidden text-xl border-t border-slate-100 bg-white/95 backdrop-blur-md px-6 py-4 flex flex-col gap-2 overflow-y-auto max-h-[50dvh]">
             <a href='@Url.Action("Index", "Home")#home'
                class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController.ToLower() == "home" && currentAction.ToLower() == "index" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
                 @Strings.Nav_Home
