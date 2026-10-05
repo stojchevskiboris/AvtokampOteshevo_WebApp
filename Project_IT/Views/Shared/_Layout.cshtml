@@ -252,6 +252,13 @@
                 @Strings.Nav_Contact
             </a>
 
+            <div class="pt-2 border-t border-slate-100 flex flex-col gap-2">
+                @Html.Partial("_LoginPartial")
+                <a href='@Url.Action("New", "Reservations")' class="py-3 rounded-full text-white font-semibold text-center bg-brand-gradient no-underline">
+                    @Strings.Nav_Book
+                </a>
+            </div>
+
             <!-- Mobile Language Switcher -->
             <div class="py-2 px-3 border-t border-slate-100 font-body text-xs flex flex-wrap gap-2 text-slate-600" aria-label="Language">
                 <a href="@Url.ForCulture("mk")" lang="mk" hreflang="mk" class="px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-800 no-underline @(lang == "mk" ? "font-bold text-emerald-800 bg-emerald-100" : "")">Македонски</a>
@@ -263,13 +270,6 @@
                 <a href="@Url.ForCulture("it")" lang="it" hreflang="it" class="px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-800 no-underline @(lang == "it" ? "font-bold text-emerald-800 bg-emerald-100" : "")">Italiano</a>
                 <a href="@Url.ForCulture("el")" lang="el" hreflang="el" class="px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-800 no-underline @(lang == "el" ? "font-bold text-emerald-800 bg-emerald-100" : "")">Ελληνικά</a>
                 <a href="@Url.ForCulture("es")" lang="es" hreflang="es" class="px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-800 no-underline @(lang == "es" ? "font-bold text-emerald-800 bg-emerald-100" : "")">Español</a>
-            </div>
-
-            <div class="pt-2 border-t border-slate-100 flex flex-col gap-2">
-                @Html.Partial("_LoginPartial")
-                <a href='@Url.Action("New", "Reservations")' class="py-3 rounded-full text-white font-semibold text-center bg-brand-gradient no-underline">
-                    @Strings.Nav_Book
-                </a>
             </div>
         </div>
     </header>
