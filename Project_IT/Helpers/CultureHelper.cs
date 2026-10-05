@@ -64,10 +64,10 @@ namespace Project_IT.Helpers
         {
             if (string.IsNullOrWhiteSpace(lang) || !IsSupported(lang))
             {
-                lang = Fallback;
+                lang = Default;
             }
             lang = lang.ToLowerInvariant();
-            var cultureName = Locale.ContainsKey(lang) ? Locale[lang] : Locale[Fallback];
+            var cultureName = Locale.ContainsKey(lang) ? Locale[lang] : Locale[Default];
             var ci = CultureInfo.GetCultureInfo(cultureName);
             Thread.CurrentThread.CurrentCulture = ci;     // dates, numbers
             Thread.CurrentThread.CurrentUICulture = ci;   // resource lookup
@@ -75,22 +75,12 @@ namespace Project_IT.Helpers
 
         public static string Detect(HttpRequestBase req)
         {
-            if (req == null) return Fallback;
+            if (req == null) return Default;
 
             var cookie = req.Cookies["lang"]?.Value;
             if (IsSupported(cookie)) return cookie.ToLowerInvariant();
 
-            if (req.UserLanguages != null)
-            {
-                foreach (var raw in req.UserLanguages)
-                {
-                    if (string.IsNullOrWhiteSpace(raw)) continue;
-                    var two = raw.Split(';')[0].Split('-')[0].Trim().ToLowerInvariant();
-                    if (IsSupported(two)) return two;
-                }
-            }
-
-            return Fallback;
+            return Default;
         }
     }
 }
