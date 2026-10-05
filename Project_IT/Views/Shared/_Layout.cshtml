@@ -276,6 +276,24 @@
                 <a href="@Url.ForCulture("el")" lang="el" hreflang="el" class="px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-800 no-underline @(lang == "el" ? "font-bold text-emerald-800 bg-emerald-100" : "")">Ελληνικά</a>
                 <a href="@Url.ForCulture("es")" lang="es" hreflang="es" class="px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-800 no-underline @(lang == "es" ? "font-bold text-emerald-800 bg-emerald-100" : "")">Español</a>
             </div>
+
+            <!-- Mobile Menu Scroll Down -->
+            <button id="mobileMenuScrollArrow"
+                    type="button"
+                    aria-label="Scroll to bottom"
+                    class="hidden sticky mt-[-50px] bottom-3 ml-auto shrink-0 w-9 h-9 rounded-full bg-white/95 shadow-lg border border-slate-200 items-center justify-center text-slate-700 hover:bg-white active:scale-95 transition-all duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="w-5 h-5"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2.5"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="M6 9l6 6 6-6"></path>
+                </svg>
+            </button>
+
         </div>
     </header>
 
