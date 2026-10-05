@@ -1,7 +1,7 @@
 @model Project_IT.Models.BookingPricesViewModel
 
 @{
-    ViewBag.Title = "Администрација — Цени за Резервација";
+    ViewBag.Title = Strings.AdminSettings_Prices_Meta_Title;
 }
 
 <div class="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-10 font-sans">
@@ -22,8 +22,8 @@
             </svg>
         </div>
         <div>
-            <h1 class="text-2xl sm:text-3xl font-serif text-slate-800">Подесувања на Цени</h1>
-            <p class="text-slate-500 text-xs sm:text-sm mt-0.5">Измена на ценовникот за сите типови на сместување</p>
+            <h1 class="text-2xl sm:text-3xl font-serif text-slate-800">@Strings.AdminSettings_Prices_Title</h1>
+            <p class="text-slate-500 text-xs sm:text-sm mt-0.5">@Strings.AdminSettings_Prices_Subtitle</p>
         </div>
     </div>
 
@@ -53,7 +53,7 @@
 
             <!-- Accommodation prices -->
             <div>
-                <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4 font-body">Сместување</h2>
+                <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4 font-body">@Strings.AdminSettings_Prices_Accommodation</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
 
                     <!-- Bungalow 1 -->
@@ -82,7 +82,7 @@
                                     min = "0",
                                     @class = "w-full pl-4 pr-14 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
                                 })
-                                <span class="absolute inset-y-0 right-4 flex items-center text-xs font-semibold text-slate-400 pointer-events-none">ден.</span>
+                                <span class="absolute inset-y-0 right-4 flex items-center text-xs font-semibold text-slate-400 pointer-events-none">@Strings.AdminSettings_Prices_Den</span>
                             </div>
                             @Html.ValidationMessageFor(m => m.PricePerNightBungalow1, "", new { @class = "text-xs text-red-500" })
                         </div>
@@ -117,7 +117,7 @@
                             @Html.LabelFor(m => m.PricePerNightBungalow2, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-600 font-body" })
                             <div class="relative rounded-xl shadow-sm">
                                 @Html.TextBox("PricePerNightBungalow2", Model.PricePerNightBungalow2.ToString("0", System.Globalization.CultureInfo.InvariantCulture), new { type = "number", step = "1", min = "0", @class = "w-full pl-4 pr-14 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors" })
-                                <span class="absolute inset-y-0 right-4 flex items-center text-xs font-semibold text-slate-400 pointer-events-none">ден.</span>
+                                <span class="absolute inset-y-0 right-4 flex items-center text-xs font-semibold text-slate-400 pointer-events-none">@Strings.AdminSettings_Prices_Den</span>
                             </div>
                             @Html.ValidationMessageFor(m => m.PricePerNightBungalow2, "", new { @class = "text-xs text-red-500" })
                         </div>
@@ -152,7 +152,7 @@
                             @Html.LabelFor(m => m.PricePerNightBungalow3, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-600 font-body" })
                             <div class="relative rounded-xl shadow-sm">
                                 @Html.TextBox("PricePerNightBungalow3", Model.PricePerNightBungalow3.ToString("0", System.Globalization.CultureInfo.InvariantCulture), new { type = "number", step = "1", min = "0", @class = "w-full pl-4 pr-14 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors" })
-                                <span class="absolute inset-y-0 right-4 flex items-center text-xs font-semibold text-slate-400 pointer-events-none">ден.</span>
+                                <span class="absolute inset-y-0 right-4 flex items-center text-xs font-semibold text-slate-400 pointer-events-none">@Strings.AdminSettings_Prices_Den</span>
                             </div>
                             @Html.ValidationMessageFor(m => m.PricePerNightBungalow3, "", new { @class = "text-xs text-red-500" })
                         </div>
@@ -187,7 +187,7 @@
                             @Html.LabelFor(m => m.PricePerNightTrailer, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-600 font-body" })
                             <div class="relative rounded-xl shadow-sm">
                                 @Html.TextBox("PricePerNightTrailer", Model.PricePerNightTrailer.ToString("0", System.Globalization.CultureInfo.InvariantCulture), new { type = "number", step = "1", min = "0", @class = "w-full pl-4 pr-14 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors" })
-                                <span class="absolute inset-y-0 right-4 flex items-center text-xs font-semibold text-slate-400 pointer-events-none">ден.</span>
+                                <span class="absolute inset-y-0 right-4 flex items-center text-xs font-semibold text-slate-400 pointer-events-none">@Strings.AdminSettings_Prices_Den</span>
                             </div>
                             @Html.ValidationMessageFor(m => m.PricePerNightTrailer, "", new { @class = "text-xs text-red-500" })
                         </div>
@@ -207,7 +207,7 @@
 
             <!-- Pitch fee -->
             <div>
-                <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4 font-body">Дополнителни такси</h2>
+                <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4 font-body">@Strings.AdminSettings_Prices_AdditionalFees</h2>
                 <div class="flex flex-col gap-4 p-4 rounded-xl border border-slate-100 bg-slate-50/60 max-w-2xl">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div class="flex flex-col gap-1.5">
@@ -225,7 +225,7 @@
                         @Html.LabelFor(m => m.PitchFee, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-600 font-body" })
                         <div class="relative rounded-xl shadow-sm">
                             @Html.TextBox("PitchFee", Model.PitchFee.ToString("0", System.Globalization.CultureInfo.InvariantCulture), new { type = "number", step = "1", min = "0", @class = "w-full pl-4 pr-14 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors" })
-                            <span class="absolute inset-y-0 right-4 flex items-center text-xs font-semibold text-slate-400 pointer-events-none">ден.</span>
+                            <span class="absolute inset-y-0 right-4 flex items-center text-xs font-semibold text-slate-400 pointer-events-none">@Strings.AdminSettings_Prices_Den</span>
                         </div>
                         @Html.ValidationMessageFor(m => m.PitchFee, "", new { @class = "text-xs text-red-500" })
                     </div>

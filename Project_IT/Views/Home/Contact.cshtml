@@ -1,5 +1,6 @@
 @{
-    ViewBag.Title = "Контакт - Автокамп Отешево";
+    ViewBag.Title = Strings.Contact_Meta_Title;
+    ViewBag.Description = Strings.Contact_Meta_Desc;
 }
 
 <div class="py-12 md:py-16 px-6 max-w-7xl mx-auto">
@@ -7,13 +8,13 @@
     <div class="text-center max-w-3xl mx-auto mb-16">
         <span class="inline-block text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 font-body"
               style="background: rgba(26,61,43,0.08); color: #1a3d2b;">
-            Контакт Информации
+            @Strings.Contact_Badge
         </span>
         <h1 class="text-4xl md:text-5xl text-slate-800 mb-6 leading-tight font-display font-bold">
-            Контактирајте нè и <em class="italic font-normal">посетете нè</em>
+            @Strings.Contact_Title_1 <em class="italic font-normal">@Strings.Contact_Title_2</em>
         </h1>
         <p class="text-slate-600 text-lg leading-relaxed font-body">
-            Тука сме да одговориме на сите Ваши прашања, информации за слободни термини и резервации.
+            @Strings.Contact_Sub
         </p>
     </div>
 
@@ -28,11 +29,9 @@
                         📍
                     </div>
                     <div>
-                        <h3 class="text-base font-semibold text-slate-800 font-body mb-1">Адреса</h3>
+                        <h3 class="text-base font-semibold text-slate-800 font-body mb-1">@Strings.Contact_Address_Label</h3>
                         <p class="text-slate-600 text-sm leading-relaxed font-body">
-                            Туристичка населба Отешево бб.<br />
-                            Ресен, 7310<br />
-                            Република Северна Македонија.
+                            @Strings.Contact_Address_Val
                         </p>
                     </div>
                 </div>
@@ -45,7 +44,7 @@
                         📩
                     </div>
                     <div>
-                        <h3 class="text-base font-semibold text-slate-800 font-body mb-1">Информации и резервации</h3>
+                        <h3 class="text-base font-semibold text-slate-800 font-body mb-1">@Strings.Contact_Email_Label</h3>
                         <a href="mailto:avtokamp.otesevo@gmail.com" class="text-emerald-800 hover:text-emerald-900 font-medium text-sm transition-colors font-body">
                             avtokamp.otesevo@gmail.com
                         </a>
@@ -60,7 +59,7 @@
                         📞
                     </div>
                     <div>
-                        <h3 class="text-base font-semibold text-slate-800 font-body mb-1">Телефон за контакт</h3>
+                        <h3 class="text-base font-semibold text-slate-800 font-body mb-1">@Strings.Contact_Phone_Label</h3>
                         <a href="tel:+38970207259" class="text-emerald-800 hover:text-emerald-900 font-medium text-sm transition-colors font-body">
                             070207259
                         </a>
@@ -70,13 +69,13 @@
 
             <!-- Social Links & Logo Card -->
             <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                <h3 class="text-base font-semibold text-slate-800 font-body mb-4">Следете нè на социјалните мрежи</h3>
+                <h3 class="text-base font-semibold text-slate-800 font-body mb-4">@Strings.Contact_Social_Label</h3>
                 <div class="flex items-center gap-4 mb-6">
                     <a href="https://www.instagram.com/autocampotesevo/" target="_blank" rel="noopener" class="transition-transform hover:scale-110">
-                        <img src="~/Content/insta_Logo.png" alt="Instagram" class="w-11 h-11 object-contain" />
+                        <img src="~/Content/insta_Logo.png" alt="@Strings.Contact_Alt_Instagram" class="w-11 h-11 object-contain" />
                     </a>
                     <a href="https://www.facebook.com/autocampotesevo/" target="_blank" rel="noopener" class="transition-transform hover:scale-110">
-                        <img src="~/Content/fb_Logo.png" alt="Facebook" class="w-11 h-11 object-contain" />
+                        <img src="~/Content/fb_Logo.png" alt="@Strings.Contact_Alt_Facebook" class="w-11 h-11 object-contain" />
                     </a>
                 </div>
             </div>

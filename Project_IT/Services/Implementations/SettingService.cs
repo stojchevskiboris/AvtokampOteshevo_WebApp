@@ -80,7 +80,7 @@ namespace Project_IT.Services.Implementations
             return dashboard;
         }
 
-        public async Task<T> GetSettingAsync<T>(string key, T defaultValue = default) where T : class, new()
+        public async Task<T> GetSettingAsync<T>(string key, T defaultValue = default(T)) where T : class, new()
         {
             string cacheKey = $"sys_setting_{key}";
 

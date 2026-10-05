@@ -1,7 +1,7 @@
 @model Project_IT.Models.ViewModels.SettingsDashboardViewModel
 
 @{
-    ViewBag.Title = "Администрација — Подесувања на Апликацијата";
+    ViewBag.Title = Strings.AdminSettings_Meta_Title;
 }
 
 <div class="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10 font-sans" x-data="{ searchQuery: '', selectedCategory: 'All' }">
@@ -34,7 +34,7 @@
             </div>
             <input type="text"
                    x-model="searchQuery"
-                   placeholder="Пребарај подесувања..."
+                   placeholder="@Strings.AdminSettings_SearchPlaceholder"
                    class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm font-medium outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors shadow-sm" />
         </div>
 

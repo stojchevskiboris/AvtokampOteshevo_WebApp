@@ -2,11 +2,11 @@
 @using Project_IT.Models
 
 @{
-    ViewBag.Title = Model.FeedItem.Title + " — Новости & Понуди — Автокамп Отешево";
+    ViewBag.Title = Model.FeedItem.Title + " — " + Strings.News_Index_Meta_Title;
     var isEvent = Model.FeedItem.Category == FeedCategory.Event;
     var isOffer = Model.FeedItem.Category == FeedCategory.Offer;
 
-    string categoryName = isOffer ? "Специјална Понуда" : (isEvent ? "Настан" : "Новост");
+    string categoryName = isOffer ? Strings.News_Badge_Offer : (isEvent ? Strings.News_Badge_Event : Strings.News_Badge_News);
     string badgeText = !string.IsNullOrEmpty(Model.FeedItem.LabelBadge) ? Model.FeedItem.LabelBadge : categoryName;
     string categoryTagClass = isOffer ? "bg-amber-100 text-amber-900 border-amber-200" : (isEvent ? "bg-amber-50 text-[#6b3a1a] border-amber-100" : "bg-emerald-50 text-[#1a4a6b] border-emerald-100");
     bool hasMultipleMedia = Model.GalleryMedia != null && Model.GalleryMedia.Count > 1;
@@ -32,7 +32,7 @@
         <meta property="og:type" content="website" />
         <meta property="og:url" content="@Request.Url.AbsoluteUri" />
         <meta property="og:title" content="@Model.FeedItem.Title" />
-        <meta property="og:description" content="@(!string.IsNullOrWhiteSpace(Model.FeedItem.Subtitle) ? Model.FeedItem.Subtitle : "Отешево — Новости и Понуди")" />
+        <meta property="og:description" content="@(!string.IsNullOrWhiteSpace(Model.FeedItem.Subtitle) ? Model.FeedItem.Subtitle : Strings.News_Og_Default_Desc)" />
         <meta property="og:image" content="@absoluteImageUrl" />
         <meta property="og:image:secure_url" content="@absoluteImageUrl" />
         <meta property="article:author" content="Autocamp Otesevo" />
@@ -41,7 +41,7 @@
         <!-- Twitter Card -->
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="@Model.FeedItem.Title" />
-        <meta name="twitter:description" content="@(!string.IsNullOrWhiteSpace(Model.FeedItem.Subtitle) ? Model.FeedItem.Subtitle : "Отешево — Новости и Понуди")" />
+        <meta name="twitter:description" content="@(!string.IsNullOrWhiteSpace(Model.FeedItem.Subtitle) ? Model.FeedItem.Subtitle : Strings.News_Og_Default_Desc)" />
         <meta name="twitter:image" content="@absoluteImageUrl" />
     }
 }
@@ -57,7 +57,7 @@
             }
             else
             {
-                <img src="~/Content/newsBanner.png" alt="Автокамп Отешево" class="w-full h-full object-cover opacity-35" />
+                <img src="~/Content/newsBanner.png" alt="@Strings.Site_Name" class="w-full h-full object-cover opacity-35" />
             }
             <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(10,25,18,0.7) 0%, rgba(10,25,18,0.75) 100%);"></div>
         </div>
@@ -69,9 +69,9 @@
                 @Model.FeedItem.Title
             </h1>
             <p class="text-white/70 text-sm md:text-base max-w-xl mx-auto flex items-center justify-center gap-3">
-                <span>Објавено: @Model.FeedItem.CreatedOn.ToString("dd MMMM yyyy")</span>
+                <span>@Strings.News_Details_Published @Model.FeedItem.CreatedOn.ToString("dd MMMM yyyy")</span>
                 <span>•</span>
-                <span>Автокамп Отешево</span>
+                <span>@Strings.Site_Name</span>
             </p>
         </div>
     </section>
@@ -81,10 +81,10 @@
         <div class="max-w-4xl mx-auto px-6 h-12 flex items-center justify-between">
             <a href="@Url.Action("Index", "News")"
                class="text-sm font-semibold text-slate-600 hover:text-[#1a3d2b] transition flex items-center gap-1.5">
-                &larr; Назад на сите новости
+                @Strings.News_BackToAll
             </a>
             <span class="text-xs text-slate-400">
-                Категорија: <strong class="text-slate-700 font-medium">@categoryName</strong>
+                @Strings.News_Category_Label <strong class="text-slate-700 font-medium">@categoryName</strong>
             </span>
         </div>
     </div>
@@ -121,7 +121,7 @@
                             @if (Model.FeedItem.IsFeatured)
                             {
                                 <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
-                                    Истакнато
+                                    @Strings.News_Featured
                                 </span>
                             }
                             <span class="text-xs text-slate-400 ml-auto">
@@ -147,12 +147,12 @@
                         <div class="mb-10 p-6 md:p-8 rounded-2xl bg-gradient-to-br from-amber-50/80 via-white to-emerald-50/60 border border-amber-200/60 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
                             <div>
                                 <span class="text-xs font-bold uppercase tracking-widest text-amber-800 bg-amber-100/80 px-3 py-1 rounded-full">
-                                    Специјална понуда
+                                    @Strings.News_Badge_Offer
                                 </span>
                                 @if (Model.FeedItem.ValidTo.HasValue)
                                 {
                                     <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-3">
-                                        Важи до: <span class="text-amber-800 font-bold">@Model.FeedItem.ValidTo.Value.ToString("dd MMMM yyyy")</span>
+                                        @Strings.News_ValidTo <span class="text-amber-800 font-bold">@Model.FeedItem.ValidTo.Value.ToString("dd MMMM yyyy")</span>
                                     </p>
                                 }
                                 @if (!string.IsNullOrEmpty(Model.FeedItem.OfferText))
@@ -165,7 +165,7 @@
                             <div>
                                 <a href="@(!string.IsNullOrEmpty(Model.FeedItem.ActionUrl) ? Model.FeedItem.ActionUrl : Url.Action("New", "Reservations"))"
                                    class="inline-block px-7 py-3.5 rounded-full text-sm font-semibold text-white transition-all hover:opacity-90 hover:shadow-lg active:scale-95 bg-gradient-to-r from-[#1a3d2b] to-[#2d6a46] shadow-md whitespace-nowrap">
-                                    @(!string.IsNullOrEmpty(Model.FeedItem.ButtonText) ? Model.FeedItem.ButtonText : "Искористи ја понудата \u2192")
+                                    @(!string.IsNullOrEmpty(Model.FeedItem.ButtonText) ? Model.FeedItem.ButtonText : Strings.News_ClaimOffer_Arrow)
                                 </a>
                             </div>
                         </div>
@@ -179,7 +179,7 @@
                         }
                         else
                         {
-                            <p class="text-slate-500 italic">Нема дополнителен опис за оваа новост.</p>
+                            <p class="text-slate-500 italic">@Strings.News_Details_NoDesc</p>
                         }
                     </div>
 
@@ -190,7 +190,7 @@
                             <div class="flex items-center gap-3 mb-6">
                                 <div class="w-1.5 h-7 bg-[#1a3d2b] rounded-full"></div>
                                 <h3 class="text-2xl font-serif font-bold text-slate-800 tracking-tight">
-                                    Галерија
+                                    @Strings.News_Gallery_Heading
                                 </h3>
                             </div>
 
@@ -234,7 +234,7 @@
                                                         }
                                                         else
                                                         {
-                                                            <img src="@media.Url" alt="Thumbnail" class="w-full h-full object-cover" />
+                                                            <img src="@media.Url" alt="@Strings.About_Alt_Thumbnail" class="w-full h-full object-cover" />
                                                         }
                                                     </div>
                                                 </div>
@@ -253,14 +253,14 @@
                                 АО
                             </div>
                             <div>
-                                <p class="text-sm font-semibold text-slate-800">Автокамп Отешево</p>
-                                <p class="text-xs text-slate-400">Преспанско Езеро, Македонија</p>
+                                <p class="text-sm font-semibold text-slate-800">@Strings.Site_Name</p>
+                                <p class="text-xs text-slate-400">@Strings.News_Details_Location</p>
                             </div>
                         </div>
 
                         <div class="flex items-center gap-3">
                             <a href="@Url.Action("Index", "News")" class="px-5 py-2.5 rounded-full text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition">
-                                &larr; Сите новости
+                                @Strings.News_AllNews
                             </a>
                         </div>
                     </div>
@@ -272,13 +272,13 @@
 
     <!-- Footer Banner CTA -->
     <div class="py-14 px-6 bg-white text-center border-t border-slate-100">
-        <h3 class="text-3xl font-serif text-slate-800 mb-3">Подготвени за незаборавен одмор?</h3>
+        <h3 class="text-3xl font-serif text-slate-800 mb-3">@Strings.News_Cta_Title</h3>
         <p class="text-slate-500 text-sm mb-7 max-w-md mx-auto">
-            Резервирајте го вашиот престој денес и доживејте ја убавината на Преспанското Езеро.
+            @Strings.News_Cta_Desc
         </p>
         <a href="@Url.Action("New", "Reservations")"
            class="inline-block px-8 py-4 text-[10px] rounded-full text-white font-body transition-all hover:opacity-90 hover:shadow-lg bg-gradient-to-r from-[#1a3d2b] to-[#2d6a46] shadow-md">
-            Резервирај сега ↗
+            @Strings.News_Cta_Button ↗
         </a>
     </div>
 

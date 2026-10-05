@@ -1,27 +1,36 @@
+@using System.Configuration
+@{
+    var lang = CultureHelper.Current;
+    string site = ConfigurationManager.AppSettings["BaseUrl"] ?? "https://www.otesevo.com";
+    if (site.EndsWith("/"))
+    {
+        site = site.TrimEnd('/');
+    }
+    string pageTitle = ViewBag.Title ?? Strings.Home_Meta_Title;
+    string pageDesc = ViewBag.Description ?? Strings.Home_Meta_Desc;
+}
 <!DOCTYPE html>
-<html lang="mk">
+<html lang="@lang">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autocamp Otesevo - Автокамп Отешево | Camping | Otesevo, Macedonia</title>
+    <title>@pageTitle</title>
+    <meta name="description" content="@pageDesc" />
 
-    <!-- Canonical Tag -->
-    @{
-        string rawPath = Request.Url.AbsolutePath.ToLowerInvariant();
-        if (rawPath.EndsWith("/home/index"))
-        {
-            rawPath = rawPath.Substring(0, rawPath.Length - 10); // Normalizes /home/index to /
-        }
-        string canonicalUrl = $"{Request.Url.Scheme}://{Request.Url.Authority}{rawPath}";
+    <!-- Canonical & hreflang Tags -->
+    <link rel="canonical" href="@(site + Url.ForCulture(lang))" />
+    @foreach (var l in CultureHelper.Supported)
+    {
+        <link rel="alternate" hreflang="@l" href="@(site + Url.ForCulture(l))" />
     }
-    <link rel="canonical" href="@canonicalUrl" />
+    <link rel="alternate" hreflang="x-default" href="@site/" />
 
     <!-- Facebook App ID -->
     <meta property="fb:app_id" content="1219520254588206" />
 
     <!-- Basic Open Graph Tags -->
-    <meta property="og:site_name" content="Autocamp Otesevo" />
-    <meta property="og:locale" content="mk_MK" />
+    <meta property="og:site_name" content="@Strings.Site_Name" />
+    <meta property="og:locale" content="@CultureHelper.OgLocale(lang)" />
 
     @if (IsSectionDefined("OGMeta"))
     {
@@ -32,19 +41,19 @@
         <!-- Default Fallback OG Tags for General Pages -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="@Request.Url.AbsoluteUri" />
-        <meta property="og:title" content="Autocamp Otesevo - Автокамп Отешево | Camping & RV Park Lake Prespa" />
-        <meta property="og:description" content="Reserve your stay at Autocamp Otesevo on Lake Prespa. Enjoy lakeside camping, campervan pitches, and nature stays near Galicica National Park." />
-        <meta property="og:image" content="https://www.otesevo.com/Content/bungalows_1200x630.jpg" />
-        <meta property="og:image:secure_url" content="https://www.otesevo.com/Content/bungalows_1200x630.jpg" />
+        <meta property="og:title" content="@pageTitle" />
+        <meta property="og:description" content="@pageDesc" />
+        <meta property="og:image" content="@(site)/Content/bungalows_1200x630.jpg" />
+        <meta property="og:image:secure_url" content="@(site)/Content/bungalows_1200x630.jpg" />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Autocamp Otesevo campsite on Lake Prespa" />
+        <meta property="og:image:alt" content="@Strings.Site_Name" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Autocamp Otesevo | Camping Lake Prespa" />
-        <meta name="twitter:description" content="Lakeside camping and RV pitches at Autocamp Otesevo." />
-        <meta name="twitter:image" content="https://www.otesevo.com/Content/bungalows_1200x630.jpg" />
+        <meta name="twitter:title" content="@pageTitle" />
+        <meta name="twitter:description" content="@pageDesc" />
+        <meta name="twitter:image" content="@(site)/Content/bungalows_1200x630.jpg" />
     }
 
     <!-- Google tag (gtag.js) -->
@@ -57,6 +66,18 @@
         gtag('config', 'G-FY6047P9JE');
     </script>
 
+    <!-- Global i18n object for client-side JavaScript -->
+    <script>
+        window.i18n = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(new {
+            sending = Strings.Res_Sending,
+            sendRequest = Strings.Js_SendRequest,
+            thankYou = Strings.Res_Success_Title,
+            successMsg = Strings.Res_Success_Msg,
+            genericError = Strings.Val_Generic_Error,
+            emailError = Strings.Val_Email
+        }));
+    </script>
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -66,11 +87,12 @@
     <!-- Alpine.js CDN for collapsible states (x-data, x-collapse) -->
     <script defer src="~/Scripts/alpinejs.min.js"></script>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link rel="stylesheet" href="~/Scripts/css/style.css" />
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body class="min-h-screen flex flex-col antialiased">
@@ -84,10 +106,10 @@
                 </div>
                 <div class="flex flex-col leading-none">
                     <span class="text-sm font-semibold tracking-wide text-slate-800 font-body">
-                        Автокамп
+                        @Strings.Site_Name
                     </span>
-                    <span class="text-base font-normal text-slate-700 italic font-display">
-                        Отешево
+                    <span class="text-xs font-normal text-slate-500 italic font-display">
+                        @Strings.Site_Name_Sub
                     </span>
                 </div>
             </a>
@@ -101,23 +123,23 @@
             <!-- Desktop Nav Links -->
             <nav class="max-sm:hidden sm:flex items-center gap-1">
                 <a href='@Url.Action("Index", "Home")#home'
-                   class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-slate-700 hover:text-slate-900 hover:bg-slate-100 @(currentController == "Home" && currentAction == "Index" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
-                    Дома
+                   class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-slate-700 hover:text-slate-900 hover:bg-slate-100 @(currentController.ToLower() == "home" && currentAction.ToLower() == "index" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
+                    @Strings.Nav_Home
                 </a>
 
                 <a href='@Url.Action("Index", "News")'
-                   class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-slate-700 hover:text-slate-900 hover:bg-slate-100 @(currentController == "News" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
-                    Новости
+                   class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-slate-700 hover:text-slate-900 hover:bg-slate-100 @(currentController.ToLower() == "news" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
+                    @Strings.Nav_News
                 </a>
 
                 <a href='@Url.Action("About", "Home")'
-                   class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-slate-700 hover:text-slate-900 hover:bg-slate-100 @(currentController == "Home" && currentAction == "About" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
-                    За нас
+                   class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-slate-700 hover:text-slate-900 hover:bg-slate-100 @(currentController.ToLower() == "home" && currentAction.ToLower() == "about" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
+                    @Strings.Nav_About
                 </a>
 
                 <a href='@Url.Action("Contact", "Home")'
-                   class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-slate-700 hover:text-slate-900 hover:bg-slate-100 @(currentController == "Home" && currentAction == "Contact" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
-                    Контакт
+                   class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-slate-700 hover:text-slate-900 hover:bg-slate-100 @(currentController.ToLower() == "home" && currentAction.ToLower() == "contact" ? "font-semibold after:content-[''] after:absolute after:bottom-1 after:left-4 after:right-4 after:h-[2px] after:bg-[#2d6a46]" : "")">
+                    @Strings.Nav_Contact
                 </a>
 
                 @if (isAuthenticated)
@@ -125,35 +147,58 @@
                     <div class="relative">
                         <button id="adminDropdownBtn" type="button"
                                 class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline font-body relative text-amber-700 bg-amber-50 hover:bg-amber-100 inline-flex items-center gap-1 cursor-pointer">
-                            Администрација
+                            @Strings.Nav_Admin
                             <span class="text-xs">▾</span>
                         </button>
                         <div id="adminDropdownMenu" class="absolute right-0 mt-2 w-56 rounded-xl border border-slate-100 bg-white shadow-lg hidden z-50">
                             <a href='@Url.Action("Index", "AdminReservations")'
-                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 rounded-t-xl @(currentController == "AdminReservations" ? "font-semibold text-emerald-700" : "")">
-                                Резервации
+                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 rounded-t-xl @(currentController.ToLower() == "adminreservations" ? "font-semibold text-emerald-700" : "")">
+                                @Strings.Nav_Reservations
                             </a>
                             <a href='@Url.Action("Index", "FeedItems")'
-                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 @(currentController == "FeedItems" ? "font-semibold text-emerald-700" : "")">
-                                Новости
+                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 @(currentController.ToLower() == "feeditems" ? "font-semibold text-emerald-700" : "")">
+                                @Strings.Nav_EditNews
                             </a>
                             <a href='@Url.Action("Index", "AdminSettings")'
-                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 @(currentController == "AdminSettings" ? "font-semibold text-emerald-700" : "")">
-                                Подесувања
+                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 @(currentController.ToLower() == "adminsettings" ? "font-semibold text-emerald-700" : "")">
+                                @Strings.Nav_Settings
                             </a>
                             <a href='@Url.Action("Index", "AdminFileManager")'
-                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 rounded-b-xl @(currentController == "AdminFileManager" ? "font-semibold text-emerald-700" : "")">
-                                File Manager
+                               class="block px-4 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50 rounded-b-xl @(currentController.ToLower() == "adminfilemanager" ? "font-semibold text-emerald-700" : "")">
+                                @Strings.Nav_FileManager
                             </a>
                         </div>
                     </div>
                 }
             </nav>
 
-            <div class="max-sm:hidden sm:flex items-center gap-4">
+            <div class="max-sm:hidden sm:flex items-center gap-3">
+                <!-- Language Switcher Dropdown -->
+                <div class="relative" x-data="{ open: false }">
+                    <button @@click="open = !open" @@click.outside="open = false" type="button" aria-label="Language Switcher"
+                            class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:bg-slate-100 inline-flex items-center gap-1.5 transition border border-slate-200 uppercase font-body cursor-pointer">
+                        <span class="flex">
+                            <img src="~/Content/globe.svg" />
+                        </span>
+                        @lang.ToUpperInvariant()
+                        <span class="text-[10px]">▾</span>
+                    </button>
+                    <div x-show="open" x-transition x-cloak class="absolute right-0 mt-2 w-40 rounded-xl border border-slate-100 bg-white shadow-xl py-1 z-50">
+                        <a href="@Url.ForCulture("mk")" lang="mk" hreflang="mk" class="block px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 no-underline font-body @(lang == "mk" ? "font-bold text-emerald-700 bg-emerald-50/50" : "")">Македонски</a>
+                        <a href="@Url.ForCulture("en")" lang="en" hreflang="en" class="block px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 no-underline font-body @(lang == "en" ? "font-bold text-emerald-700 bg-emerald-50/50" : "")">English</a>
+                        <a href="@Url.ForCulture("sq")" lang="sq" hreflang="sq" class="block px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 no-underline font-body @(lang == "sq" ? "font-bold text-emerald-700 bg-emerald-50/50" : "")">Shqip</a>
+                        <a href="@Url.ForCulture("sr")" lang="sr" hreflang="sr" class="block px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 no-underline font-body @(lang == "sr" ? "font-bold text-emerald-700 bg-emerald-50/50" : "")">Српски</a>
+                        <a href="@Url.ForCulture("de")" lang="de" hreflang="de" class="block px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 no-underline font-body @(lang == "de" ? "font-bold text-emerald-700 bg-emerald-50/50" : "")">Deutsch</a>
+                        <a href="@Url.ForCulture("pl")" lang="pl" hreflang="pl" class="block px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 no-underline font-body @(lang == "pl" ? "font-bold text-emerald-700 bg-emerald-50/50" : "")">Polski</a>
+                        <a href="@Url.ForCulture("it")" lang="it" hreflang="it" class="block px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 no-underline font-body @(lang == "it" ? "font-bold text-emerald-700 bg-emerald-50/50" : "")">Italiano</a>
+                        <a href="@Url.ForCulture("el")" lang="el" hreflang="el" class="block px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 no-underline font-body @(lang == "el" ? "font-bold text-emerald-700 bg-emerald-50/50" : "")">Ελληνικά</a>
+                        <a href="@Url.ForCulture("es")" lang="es" hreflang="es" class="block px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 no-underline font-body @(lang == "es" ? "font-bold text-emerald-700 bg-emerald-50/50" : "")">Español</a>
+                    </div>
+                </div>
+
                 @Html.Partial("_LoginPartial")
                 <a href='@Url.Action("New", "Reservations")' class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-brand-gradient transition-all duration-200 hover:opacity-90 hover:shadow-lg active:scale-95 no-underline shadow-md" style="box-shadow: 0 4px 14px rgba(26,61,43,0.35);">
-                    Резервирај <span class="text-xs">↗</span>
+                    @Strings.Nav_Book <span class="text-xs">↗</span>
                 </a>
             </div>
 
@@ -165,54 +210,90 @@
             </button>
         </div>
 
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenuOverlay"
+             class="hidden sm:hidden fixed inset-0 bg-black/40 backdrop-blur-[1px] z-40">
+        </div>
+
         <!-- Mobile Menu Drawer -->
-        <div id="mobileMenu" class="hidden sm:hidden text-xl border-t border-slate-100 bg-white/95 backdrop-blur-md px-6 py-4 flex flex-col gap-2 overflow-y-auto max-h-[calc(100vh-4rem)]">
+        <div id="mobileMenu" class="hidden sm:hidden text-xl z-50 border-t border-slate-100 bg-white/95 backdrop-blur-md px-6 py-4 flex flex-col gap-2 overflow-y-auto max-h-[50dvh]">
             <a href='@Url.Action("Index", "Home")#home'
-               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController == "Home" && currentAction == "Index" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
-                Дома
+               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController.ToLower() == "home" && currentAction.ToLower() == "index" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
+                @Strings.Nav_Home
             </a>
 
             <a href='@Url.Action("Index", "News")'
-               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController == "News" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
-                Новости & Понуди
+               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController.ToLower() == "news" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
+                @Strings.Nav_News
             </a>
 
             @if (isAuthenticated)
             {
                 <a href='@Url.Action("Index", "AdminReservations")'
-                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "AdminReservations" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
-                    Резервации
+                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController.ToLower() == "adminreservations" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
+                    @Strings.Nav_Reservations
                 </a>
                 <a href='@Url.Action("Index", "FeedItems")'
-                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "FeedItems" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
-                    Уреди Новости
+                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController.ToLower() == "feeditems" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
+                    @Strings.Nav_EditNews
                 </a>
                 <a href='@Url.Action("Index", "AdminSettings")'
-                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "AdminSettings" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
-                    Подесувања
+                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController.ToLower() == "adminsettings" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
+                    @Strings.Nav_Settings
                 </a>
                 <a href='@Url.Action("Index", "AdminFileManager")'
-                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController == "AdminFileManager" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
-                    File Manager
+                   class="py-2.5 px-3 rounded-xl font-medium hover:bg-amber-100/80 no-underline font-body transition-all border-l-4 @(currentController.ToLower() == "adminfilemanager" ? "text-[#2d6a46] bg-amber-100/60 border-[#2d6a46] font-semibold" : "text-amber-700 bg-amber-50 border-transparent")">
+                    @Strings.Nav_FileManager
                 </a>
             }
 
             <a href='@Url.Action("About", "Home")'
-               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController == "Home" && currentAction == "About" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
-                За нас
+               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController.ToLower() == "home" && currentAction.ToLower() == "about" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
+                @Strings.Nav_About
             </a>
 
             <a href='@Url.Action("Contact", "Home")'
-               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController == "Home" && currentAction == "Contact" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
-                Контакт
+               class="py-2.5 px-3 rounded-xl font-medium hover:bg-slate-50 no-underline font-body transition-all border-l-4 @(currentController.ToLower() == "home" && currentAction.ToLower() == "contact" ? "text-[#2d6a46] bg-slate-100/80 border-[#2d6a46] font-semibold" : "text-slate-700 border-transparent")">
+                @Strings.Nav_Contact
             </a>
 
             <div class="pt-2 border-t border-slate-100 flex flex-col gap-2">
                 @Html.Partial("_LoginPartial")
                 <a href='@Url.Action("New", "Reservations")' class="py-3 rounded-full text-white font-semibold text-center bg-brand-gradient no-underline">
-                    Резервирај
+                    @Strings.Nav_Book
                 </a>
             </div>
+
+            <!-- Mobile Language Switcher -->
+            <div class="py-2 px-3 border-t border-slate-100 font-body text-xs flex flex-wrap gap-2 text-slate-600" aria-label="Language">
+                <a href="@Url.ForCulture("mk")" lang="mk" hreflang="mk" class="px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-800 no-underline @(lang == "mk" ? "font-bold text-emerald-800 bg-emerald-100" : "")">Македонски</a>
+                <a href="@Url.ForCulture("en")" lang="en" hreflang="en" class="px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-800 no-underline @(lang == "en" ? "font-bold text-emerald-800 bg-emerald-100" : "")">English</a>
+                <a href="@Url.ForCulture("sq")" lang="sq" hreflang="sq" class="px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-800 no-underline @(lang == "sq" ? "font-bold text-emerald-800 bg-emerald-100" : "")">Shqip</a>
+                <a href="@Url.ForCulture("sr")" lang="sr" hreflang="sr" class="px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-800 no-underline @(lang == "sr" ? "font-bold text-emerald-800 bg-emerald-100" : "")">Српски</a>
+                <a href="@Url.ForCulture("de")" lang="de" hreflang="de" class="px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-800 no-underline @(lang == "de" ? "font-bold text-emerald-800 bg-emerald-100" : "")">Deutsch</a>
+                <a href="@Url.ForCulture("pl")" lang="pl" hreflang="pl" class="px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-800 no-underline @(lang == "pl" ? "font-bold text-emerald-800 bg-emerald-100" : "")">Polski</a>
+                <a href="@Url.ForCulture("it")" lang="it" hreflang="it" class="px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-800 no-underline @(lang == "it" ? "font-bold text-emerald-800 bg-emerald-100" : "")">Italiano</a>
+                <a href="@Url.ForCulture("el")" lang="el" hreflang="el" class="px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-800 no-underline @(lang == "el" ? "font-bold text-emerald-800 bg-emerald-100" : "")">Ελληνικά</a>
+                <a href="@Url.ForCulture("es")" lang="es" hreflang="es" class="px-2 py-1 rounded bg-slate-100 hover:bg-emerald-100 text-slate-800 no-underline @(lang == "es" ? "font-bold text-emerald-800 bg-emerald-100" : "")">Español</a>
+            </div>
+
+            <!-- Mobile Menu Scroll Down -->
+            <button id="mobileMenuScrollArrow"
+                    type="button"
+                    aria-label="Scroll to bottom"
+                    class="hidden sticky mt-[-50px] me-[-5px] bottom-3 ml-auto shrink-0 w-9 h-9 rounded-full bg-white/95 shadow-lg border border-slate-200 items-center justify-center text-slate-700 hover:bg-white active:scale-95 transition-all duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="w-5 h-5"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2.5"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="M6 9l6 6 6-6"></path>
+                </svg>
+            </button>
+
         </div>
     </header>
 
@@ -231,46 +312,46 @@
                         <img src="~/Content/logo.png" alt="Logo" class="w-full h-full object-contain" />
                     </div>
                     <div>
-                        <div class="text-sm font-semibold opacity-80 font-body">Автокамп</div>
-                        <div class="text-base italic font-display">Отешево</div>
+                        <div class="text-sm font-semibold opacity-80 font-body">@Strings.Site_Name</div>
+                        <div class="text-base italic font-display">@Strings.Home_Hero_Sub_2</div>
                     </div>
                 </div>
                 <p class="text-white/50 text-sm leading-relaxed font-body">
-                    Природен рај на брегот на Преспанското Езеро. Дојдете и доживејте ја убавината на нашиот Автокамп.
+                    @Strings.Site_Footer_Desc
                 </p>
             </div>
 
             <!-- Navigation Links Column -->
             <div>
-                <h4 class="text-xs font-semibold uppercase tracking-widest opacity-50 mb-5 font-body">Навигација</h4>
+                <h4 class="text-xs font-semibold uppercase tracking-widest opacity-50 mb-5 font-body">@Strings.Nav_Home</h4>
                 <div class="flex flex-col gap-3 font-body">
-                    <a href='@Url.Action("Index", "Home")#home' class="text-white/60 hover:text-white text-sm transition no-underline">Дома</a>
-                    <a href='@Url.Action("New", "Reservations")' class="text-white/60 hover:text-white text-sm transition no-underline">Резервирај</a>
-                    <a href='@Url.Action("Index", "News")' class="text-white/60 hover:text-white text-sm transition no-underline">Новости и понуди</a>
-                    <a href='@Url.Action("About", "Home")' class="text-white/60 hover:text-white text-sm transition no-underline">За нас</a>
-                    <a href='@Url.Action("Contact", "Home")' class="text-white/60 hover:text-white text-sm transition no-underline">Контакт</a>
+                    <a href='@Url.Action("Index", "Home")#home' class="text-white/60 hover:text-white text-sm transition no-underline">@Strings.Nav_Home</a>
+                    <a href='@Url.Action("New", "Reservations")' class="text-white/60 hover:text-white text-sm transition no-underline">@Strings.Nav_Book</a>
+                    <a href='@Url.Action("Index", "News")' class="text-white/60 hover:text-white text-sm transition no-underline">@Strings.Nav_News</a>
+                    <a href='@Url.Action("About", "Home")' class="text-white/60 hover:text-white text-sm transition no-underline">@Strings.Nav_About</a>
+                    <a href='@Url.Action("Contact", "Home")' class="text-white/60 hover:text-white text-sm transition no-underline">@Strings.Nav_Contact</a>
                 </div>
             </div>
 
             <!-- Contact Information Column -->
             <div>
-                <h4 class="text-xs font-semibold uppercase tracking-widest opacity-50 mb-5 font-body">Контакт</h4>
+                <h4 class="text-xs font-semibold uppercase tracking-widest opacity-50 mb-5 font-body">@Strings.Nav_Contact</h4>
                 <div class="flex flex-col gap-3 text-sm text-white/60 font-body">
-                    <span>📍 Отешево, Ресен, Македонија</span>
+                    <span>📍 @Strings.Contact_Address_Val</span>
                     <span>📞 <a href="tel:+38970207259">070207259</a></span>
                     <span>✉️ <a href="mailto:avtokamp.otesevo@gmail.com">avtokamp.otesevo@gmail.com</a></span>
                 </div>
                 <div class="mt-6">
                     <a href='@Url.Action("New", "Reservations")' class="inline-block px-6 py-3 rounded-full text-sm font-semibold text-white transition-all hover:opacity-90 no-underline cursor-pointer" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.15);">
-                        Резервирај сега →
+                        @Strings.Nav_Book →
                     </a>
                 </div>
             </div>
         </div>
 
         <div class="max-w-6xl mx-auto mt-14 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-white/30 text-xs font-body">
-            <span>© @DateTime.Now.Year Автокамп Отешево. Сите права задржани.</span>
-            <span>Преспанско Езеро, Р. Македонија</span>
+            <span>© @DateTime.Now.Year @Strings.Site_Footer_Rights</span>
+            <span>@Strings.Site_Footer_Location</span>
         </div>
     </footer>
 
