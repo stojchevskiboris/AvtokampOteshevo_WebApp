@@ -9,8 +9,9 @@ namespace Project_IT.Controllers
         public ActionResult Index()
         {
             var lang = CultureHelper.Detect(Request);
+            CultureHelper.Apply(lang);
             Response.Cache.SetCacheability(HttpCacheability.Private);
-            Response.AppendHeader("Vary", "Accept-Language, Cookie");
+            Response.AppendHeader("Vary", "Cookie");
             return Redirect("/" + lang + "/");
         }
     }
