@@ -1,3 +1,7 @@
+using log4net;
+using Project_IT.Helpers;
+using Project_IT.Models;
+using Project_IT.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,10 +10,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using log4net;
-using Project_IT.Helpers;
-using Project_IT.Models;
-using Project_IT.Services.Interfaces;
 
 namespace Project_IT.Services.Implementations
 {
@@ -154,8 +154,8 @@ namespace Project_IT.Services.Implementations
                     return result;
                 }
 
-                var checkIn = ParseDate(model.CheckInDate) ?? DateTime.UtcNow.Date;
-                var checkOut = ParseDate(model.CheckOutDate) ?? checkIn;
+                var checkIn = string.IsNullOrEmpty(model.CheckInDate) ? null : ParseDate(model.CheckInDate);
+                var checkOut = string.IsNullOrEmpty(model.CheckOutDate) ? null : ParseDate(model.CheckOutDate);
                 var guests = ParseInt(model.Guests);
 
                 var nameParts = fullName.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -175,7 +175,7 @@ namespace Project_IT.Services.Implementations
                     AccommodationType = model.AccommodationType,
                     CheckInDate = checkIn,
                     CheckOutDate = checkOut,
-                    Days = CalculateDays(checkIn, checkOut),
+                    Days = checkIn.HasValue && checkOut.HasValue ? CalculateDays(checkIn.Value, checkOut.Value) : 0,
                     Info = model.Info,
                     Status = "New",
                     CreatedOn = DateTime.UtcNow,
@@ -226,7 +226,7 @@ namespace Project_IT.Services.Implementations
         {
             try
             {
-                string adminEmail = "autocampoteshevo@gmail.com";
+                string adminEmail = "avtokamp.otesevo@gmail.com";
                 string templateContent = LoadTemplate("adminTemplate.txt");
 
                 if (string.IsNullOrWhiteSpace(templateContent))
@@ -239,8 +239,8 @@ namespace Project_IT.Services.Implementations
                     .Replace("{{customer_name}}", reservation.FullName ?? string.Empty)
                     .Replace("{{smestuvanje}}", reservation.AccommodationType ?? string.Empty)
                     .Replace("{{guests}}", reservation.Guests.ToString())
-                    .Replace("{{check_in}}", reservation.CheckInDate.ToString("dd.MM.yyyy"))
-                    .Replace("{{check_out}}", reservation.CheckOutDate.ToString("dd.MM.yyyy"))
+                    .Replace("{{check_in}}", reservation.CheckInDate.HasValue ? reservation.CheckInDate.Value.ToString("dd.MM.yyyy") : "/")
+                    .Replace("{{check_out}}", reservation.CheckOutDate.HasValue ? reservation.CheckOutDate.Value.ToString("dd.MM.yyyy") : "/")
                     .Replace("{{phone}}", reservation.Phone ?? string.Empty);
 
                 string subject = "Ново барање за резервација - " + reservation.FullName;
@@ -250,8 +250,8 @@ namespace Project_IT.Services.Implementations
                     { "customer_name", reservation.FullName ?? string.Empty },
                     { "smestuvanje", reservation.AccommodationType ?? string.Empty },
                     { "guests", reservation.Guests.ToString() },
-                    { "check_in", reservation.CheckInDate.ToString("dd.MM.yyyy") },
-                    { "check_out", reservation.CheckOutDate.ToString("dd.MM.yyyy") },
+                    { "check_in", reservation.CheckInDate.HasValue ? reservation.CheckInDate.Value.ToString("dd.MM.yyyy") : "/" },
+                    { "check_out", reservation.CheckOutDate.HasValue ? reservation.CheckOutDate.Value.ToString("dd.MM.yyyy") : "/" },
                     { "phone", reservation.Phone ?? string.Empty }
                 };
 
@@ -317,9 +317,9 @@ namespace Project_IT.Services.Implementations
                     .Replace("{{label_guests}}", labelGuests)
                     .Replace("{{guests}}", reservation.Guests.ToString())
                     .Replace("{{label_check_in}}", labelCheckIn)
-                    .Replace("{{check_in}}", reservation.CheckInDate.ToString("dd.MM.yyyy"))
+                    .Replace("{{check_in}}", reservation.CheckInDate.HasValue ? reservation.CheckInDate.Value.ToString("dd.MM.yyyy") : "/")
                     .Replace("{{label_check_out}}", labelCheckOut)
-                    .Replace("{{check_out}}", reservation.CheckOutDate.ToString("dd.MM.yyyy"))
+                    .Replace("{{check_out}}", reservation.CheckOutDate.HasValue ? reservation.CheckOutDate.Value.ToString("dd.MM.yyyy") : "/")
                     .Replace("{{label_phone}}", labelPhone)
                     .Replace("{{phone}}", reservation.Phone ?? string.Empty)
                     .Replace("{{email_client_next_steps_title}}", nextStepsTitle)
@@ -334,8 +334,8 @@ namespace Project_IT.Services.Implementations
                     { "customer_name", reservation.FullName ?? string.Empty },
                     { "smestuvanje", reservation.AccommodationType ?? string.Empty },
                     { "guests", reservation.Guests.ToString() },
-                    { "check_in", reservation.CheckInDate.ToString("dd.MM.yyyy") },
-                    { "check_out", reservation.CheckOutDate.ToString("dd.MM.yyyy") },
+                    { "check_in", reservation.CheckInDate.HasValue ? reservation.CheckInDate.Value.ToString("dd.MM.yyyy") : "/" },
+                    { "check_out", reservation.CheckOutDate.HasValue ? reservation.CheckOutDate.Value.ToString("dd.MM.yyyy") : "/" },
                     { "phone", reservation.Phone ?? string.Empty }
                 };
 

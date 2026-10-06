@@ -1,11 +1,11 @@
+using log4net;
+using Newtonsoft.Json;
+using Project_IT.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using log4net;
-using Newtonsoft.Json;
-using Project_IT.Services.Interfaces;
 
 namespace Project_IT.Services.Implementations
 {
@@ -36,8 +36,8 @@ namespace Project_IT.Services.Implementations
                     { "subject", subject ?? string.Empty },
                     { "message", htmlContent ?? string.Empty },
                     { "html_content", htmlContent ?? string.Empty },
-                    { "reply_to", "info@avtokampoteshevo.com" },
-                    { "from_name", "Автокамп Отешево" }
+                    { "reply_to", "avtokamp.otesevo@gmail.com" },
+                    { "from_name", "Autocamp Otesevo" }
                 };
 
                 if (customParams != null)
