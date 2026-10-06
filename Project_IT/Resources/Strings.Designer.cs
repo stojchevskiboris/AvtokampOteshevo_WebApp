@@ -3282,4 +3282,58 @@ namespace Otesevo.Resources {
             }
         }
     }
+
+        public static string Email_Client_Title {
+            get {
+                return ResourceManager.GetString("Email_Client_Title", resourceCulture);
+            }
+        }
+
+        public static string Email_Client_Header {
+            get {
+                return ResourceManager.GetString("Email_Client_Header", resourceCulture);
+            }
+        }
+
+        public static string Email_Client_Banner {
+            get {
+                return ResourceManager.GetString("Email_Client_Banner", resourceCulture);
+            }
+        }
+
+        public static string Email_Client_Greeting {
+            get {
+                return ResourceManager.GetString("Email_Client_Greeting", resourceCulture);
+            }
+        }
+
+        public static string Email_Client_Intro {
+            get {
+                return ResourceManager.GetString("Email_Client_Intro", resourceCulture);
+            }
+        }
+
+        public static string Email_Client_Summary_Title {
+            get {
+                return ResourceManager.GetString("Email_Client_Summary_Title", resourceCulture);
+            }
+        }
+
+        public static string Email_Client_NextSteps_Title {
+            get {
+                return ResourceManager.GetString("Email_Client_NextSteps_Title", resourceCulture);
+            }
+        }
+
+        public static string Email_Client_NextSteps_Text {
+            get {
+                return ResourceManager.GetString("Email_Client_NextSteps_Text", resourceCulture);
+            }
+        }
+
+        public static string Email_Client_Notice {
+            get {
+                return ResourceManager.GetString("Email_Client_Notice", resourceCulture);
+            }
+        }
 }

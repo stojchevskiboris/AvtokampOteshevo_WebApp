@@ -4,6 +4,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using log4net;
+using Project_IT.Helpers;
 using Project_IT.Models;
 using Project_IT.Models.ViewModels;
 using Project_IT.Services.Interfaces;
@@ -51,7 +52,7 @@ namespace Project_IT.Controllers
         }
 
         [HttpPost]
-        public ActionResult Save(ReservationSubmissionModel model)
+        public async Task<ActionResult> Save(ReservationSubmissionModel model)
         {
             try
             {
@@ -62,21 +63,22 @@ namespace Project_IT.Controllers
 
                 var userAgent = Request?.UserAgent;
                 var userHostAddress = GetRequestIpAddress();
+                var currentCulture = CultureHelper.Detect(Request);
 
-                bool success = _reservationService.ProcessReservationSubmission(
-                    model, userAgent, userHostAddress, out var errorMessage, out var validationErrors);
+                var result = await _reservationService.ProcessReservationSubmissionAsync(
+                    model, userAgent, userHostAddress, currentCulture);
 
-                if (success)
+                if (result.Success)
                 {
                     return Json(new { status = "success" });
                 }
 
-                if (validationErrors != null)
+                if (result.ValidationErrors != null)
                 {
-                    return Json(new { status = "error", errors = validationErrors });
+                    return Json(new { status = "error", errors = result.ValidationErrors });
                 }
 
-                return Json(new { status = "error", message = errorMessage ?? "Unable to save reservation." });
+                return Json(new { status = "error", message = result.ErrorMessage ?? "Unable to save reservation." });
             }
             catch (Exception ex)
             {

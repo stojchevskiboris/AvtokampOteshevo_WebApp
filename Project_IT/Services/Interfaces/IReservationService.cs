@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Project_IT.Models;
 
 namespace Project_IT.Services.Interfaces
@@ -10,6 +11,6 @@ namespace Project_IT.Services.Interfaces
         void CreateReservation(Reservation reservation);
         void UpdateReservation(Reservation reservation);
         void DeleteReservation(int id);
-        bool ProcessReservationSubmission(ReservationSubmissionModel model, string userAgent, string userHostAddress, out string errorMessage, out Dictionary<string, IEnumerable<string>> validationErrors);
+        Task<ReservationSubmissionResult> ProcessReservationSubmissionAsync(ReservationSubmissionModel model, string userAgent, string userHostAddress, string culture = null);
     }
 }
