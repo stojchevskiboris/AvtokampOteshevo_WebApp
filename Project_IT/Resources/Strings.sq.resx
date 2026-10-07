@@ -1191,4 +1191,31 @@
   <data name="News_AllNews" xml:space="preserve">
     <value>← Të gjitha lajmet</value>
   </data>
+  <data name="Email_Client_Title" xml:space="preserve">
+    <value>Konfirmim i kërkesës për rezervim - Autocamp Otesevo</value>
+  </data>
+  <data name="Email_Client_Header" xml:space="preserve">
+    <value>Kërkesa për rezervim u pranua!</value>
+  </data>
+  <data name="Email_Client_Banner" xml:space="preserve">
+    <value>Kërkesa juaj u dërgua me sukses. Do tju kontaktojmë së shpejti për konfirmim.</value>
+  </data>
+  <data name="Email_Client_Greeting" xml:space="preserve">
+    <value>Përshëndetje</value>
+  </data>
+  <data name="Email_Client_Intro" xml:space="preserve">
+    <value>Faleminderit për interesimin tuaj për të qëndruar në Autocamp Otesevo! Kërkesa juaj për rezervim është regjistruar me sukses. Më poshtë është një përmbledhje e të dhënave që dërguat:</value>
+  </data>
+  <data name="Email_Client_Summary_Title" xml:space="preserve">
+    <value>Përmbledhja e rezervimit</value>
+  </data>
+  <data name="Email_Client_NextSteps_Title" xml:space="preserve">
+    <value>Çfarë është e radhës?</value>
+  </data>
+  <data name="Email_Client_NextSteps_Text" xml:space="preserve">
+    <value>Ekipi ynë do të kontrollojë kapacitetet e disponueshme për datat e zgjedhura dhe do tju kontaktojë përmes email-it ose telefonit për konfirmimin përfundimtar.</value>
+  </data>
+  <data name="Email_Client_Notice" xml:space="preserve">
+    <value>Nëse keni pyetje shtesë ose dëshironi të bëni ndryshime, mos hezitoni ti përgjigjeni këtij email-i.</value>
+  </data>
 </root>

@@ -1191,4 +1191,31 @@
   <data name="News_AllNews" xml:space="preserve">
     <value>← Όλα τα νέα</value>
   </data>
+  <data name="Email_Client_Title" xml:space="preserve">
+    <value>Επιβεβαίωση αιτήματος κράτησης - Autocamp Otesevo</value>
+  </data>
+  <data name="Email_Client_Header" xml:space="preserve">
+    <value>Το αίτημα κράτησης παραλήφθηκε!</value>
+  </data>
+  <data name="Email_Client_Banner" xml:space="preserve">
+    <value>Το αίτημά σας στάλθηκε με επιτυχία. Θα επικοινωνήσουμε μαζί σας σύντομα για επιβεβαίωση.</value>
+  </data>
+  <data name="Email_Client_Greeting" xml:space="preserve">
+    <value>Γεια σας</value>
+  </data>
+  <data name="Email_Client_Intro" xml:space="preserve">
+    <value>Σας ευχαριστούμε για το ενδιαφέρον σας για διαμονή στο Autocamp Otesevo! Το αίτημα κράτησής σας καταγράφηκε με επιτυχία. Παρακάτω ακολουθεί σύνοψη των στοιχείων που υποβάλατε:</value>
+  </data>
+  <data name="Email_Client_Summary_Title" xml:space="preserve">
+    <value>Σύνοψη κράτησης</value>
+  </data>
+  <data name="Email_Client_NextSteps_Title" xml:space="preserve">
+    <value>Τι ακολουθεί;</value>
+  </data>
+  <data name="Email_Client_NextSteps_Text" xml:space="preserve">
+    <value>Η ομάδα μας θα ελέγξει τη διαθεσιμότητα για τις επιλεγμένες ημερομηνίες και θα επικοινωνήσει μαζί σας μέσω email ή τηλεφώνου για την τελική επιβεβαίωση.</value>
+  </data>
+  <data name="Email_Client_Notice" xml:space="preserve">
+    <value>Εάν έχετε επιπλέον ερωτήσεις ή θέλετε να κάνετε κάποια αλλαγή, μη διστάσετε να απαντήσετε σε αυτό το email.</value>
+  </data>
 </root>

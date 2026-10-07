@@ -1191,4 +1191,31 @@
   <data name="News_AllNews" xml:space="preserve">
     <value>← Wszystkie wiadomości</value>
   </data>
+  <data name="Email_Client_Title" xml:space="preserve">
+    <value>Potwierdzenie rezerwacji - Autocamp Otesevo</value>
+  </data>
+  <data name="Email_Client_Header" xml:space="preserve">
+    <value>Wniosek o rezerwację został odebrany!</value>
+  </data>
+  <data name="Email_Client_Banner" xml:space="preserve">
+    <value>Twoje zgłoszenie zostało pomyślnie wysłane. Skontaktujemy się z Tobą wkrótce w celu potwierdzenia.</value>
+  </data>
+  <data name="Email_Client_Greeting" xml:space="preserve">
+    <value>Cześć</value>
+  </data>
+  <data name="Email_Client_Intro" xml:space="preserve">
+    <value>Dziękujemy za zainteresowanie pobytem w Autocamp Otesevo! Twoje zgłoszenie rezerwacyjne zostało pomyślnie zarejestrowane. Poniżej znajduje się podsumowanie wysłanych danych:</value>
+  </data>
+  <data name="Email_Client_Summary_Title" xml:space="preserve">
+    <value>Podsumowanie rezerwacji</value>
+  </data>
+  <data name="Email_Client_NextSteps_Title" xml:space="preserve">
+    <value>Co dalej?</value>
+  </data>
+  <data name="Email_Client_NextSteps_Text" xml:space="preserve">
+    <value>Nasz zespół sprawdzi dostępne miejsca w wybranych terminach i skontaktuje się z Tobą e-mailem lub telefonicznie w celu ostatecznego potwierdzenia.</value>
+  </data>
+  <data name="Email_Client_Notice" xml:space="preserve">
+    <value>Jeśli masz dodatkowe pytania lub chcesz dokonać zmian, odpowiedz na tę wiadomość e-mail.</value>
+  </data>
 </root>

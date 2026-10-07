@@ -29,6 +29,7 @@ namespace Project_IT
             container.RegisterType<INewsService, NewsService>(new HierarchicalLifetimeManager());
             container.RegisterType<IFileManagerService, FileManagerService>(new HierarchicalLifetimeManager());
             container.RegisterType<ISettingService, SettingService>(new HierarchicalLifetimeManager());
+            container.RegisterType<ISmtpService, SmtpService>(new HierarchicalLifetimeManager());
 
             // 4. Set Unity as the ASP.NET MVC Dependency Resolver
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
