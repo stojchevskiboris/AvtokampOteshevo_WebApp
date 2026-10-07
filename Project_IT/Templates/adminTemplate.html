@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Нова Резервација - Автокамп Отешево</title>
+</head>
+<body style="margin: 0; padding: 20px 0; background-color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td align="center">
+        <!-- Main Email Container -->
+        <table role="presentation" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; border-spacing: 0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+          
+          <!-- Header Bar -->
+          <tr>
+            <td style="background-color: #064e3b; padding: 24px 32px; text-align: left;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td>
+                    <span style="display: inline-block; background-color: rgba(255, 255, 255, 0.15); color: #6ee7b7; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; padding: 4px 10px; border-radius: 9999px; margin-bottom: 8px;">
+                      Известување
+                    </span>
+                    <h1 style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 700; font-family: 'Georgia', serif;">
+                      Нова резервација
+                    </h1>
+                  </td>
+                  
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Quick Action Banner -->
+          <!--<tr>
+            <td style="background-color: #ecfdf5; border-bottom: 1px solid #a7f3d0; padding: 12px 32px; font-size: 13px; color: #065f46;">
+              <strong>Статус:</strong> Пристигнато е ново барање кое чека потврда.
+            </td>
+          </tr>-->
+
+          <!-- Body Content -->
+          <tr>
+            <td style="padding: 32px;">
+
+              <!-- Guest Information Section -->
+              <div style="margin-bottom: 24px;">
+                <h2 style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin: 0 0 12px 0;">
+                  Податоци за гостинот
+                </h2>
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;">
+                  <tr>
+                    <td style="padding-bottom: 8px; font-size: 15px; font-weight: 700; color: #0f172a;">
+                      {{customer_name}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding-bottom: 4px; font-size: 14px; color: #334155;">
+                      <strong>Email:</strong> <a href="mailto:{{customer_email}}" style="color: #059669; text-decoration: none; font-weight: 600;">{{customer_email}}</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 14px; color: #334155;">
+                      <strong>Телефон:</strong> <a href="tel:{{phone}}" style="color: #059669; text-decoration: none; font-weight: 600;">{{phone}}</a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
+              <!-- Reservation Details Section -->
+              <div style="margin-bottom: 24px;">
+                <h2 style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin: 0 0 12px 0;">
+                  Детали за престој
+                </h2>
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="border-collapse: collapse; font-size: 14px;">
+                  <tr style="border-bottom: 1px solid #f1f5f9;">
+                    <td style="padding: 10px 0; color: #64748b; width: 45%;">Сместување:</td>
+                    <td style="padding: 10px 0; color: #0f172a; font-weight: 600;">{{smestuvanje}}</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #f1f5f9;">
+                    <td style="padding: 10px 0; color: #64748b;">Број на лица:</td>
+                    <td style="padding: 10px 0; color: #0f172a; font-weight: 600;">{{guests}}</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #f1f5f9;">
+                    <td style="padding: 10px 0; color: #64748b;">Дата на пристигнување:</td>
+                    <td style="padding: 10px 0; color: #059669; font-weight: 700;">{{check_in}}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 10px 0; color: #64748b;">Дата на заминување:</td>
+                    <td style="padding: 10px 0; color: #dc2626; font-weight: 700;">{{check_out}}</td>
+                  </tr>
+                </table>
+              </div>
+
+              <!-- Message / Special Requests -->
+              <div style="margin-bottom: 28px;">
+                <h2 style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin: 0 0 8px 0;">
+                  Дополнителна порака / Забелешка
+                </h2>
+                <div style="background-color: #ffffff; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 14px 16px; font-size: 14px; color: #334155; line-height: 1.5; font-style: italic;">
+                  {{message}}
+                </div>
+              </div>
+
+              <!-- Direct Reply Action Button -->
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <!-- <tr>
+                  <td align="center">
+                    <a href="mailto:{{customer_email}}?subject=Резервација%20-%20Автокамп%20Отешево" style="display: inline-block; background-color: #059669; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600; padding: 12px 28px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                      Одговори му на гостинот ↗
+                    </a>
+                  </td>
+                </tr> -->
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- Technical Diagnostic Metadata -->
+          <tr>
+            <td style="background-color: #f8fafc; border-top: 1px solid #e2e8f0; padding: 20px 32px; font-size: 11px; color: #94a3b8; line-height: 1.6;">
+              OS: {{user_os}} &bull; Platform: {{user_platform}} &bull; Browser: {{user_browser}}<br />
+              Referrer: <a href="{{user_referrer}}" style="color: #94a3b8;">{{user_referrer}}</a>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

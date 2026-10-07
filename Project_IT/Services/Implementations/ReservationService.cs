@@ -17,12 +17,12 @@ namespace Project_IT.Services.Implementations
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(ReservationService));
         private readonly ApplicationDbContext _db;
-        private readonly IEmailJsService _emailJsService;
+        private readonly ISmtpService _smtpService;
 
-        public ReservationService(ApplicationDbContext db, IEmailJsService emailJsService)
+        public ReservationService(ApplicationDbContext db, ISmtpService smtpService)
         {
             _db = db;
-            _emailJsService = emailJsService;
+            _smtpService = smtpService;
         }
 
         public IEnumerable<Reservation> GetAllReservations()
@@ -227,11 +227,11 @@ namespace Project_IT.Services.Implementations
             try
             {
                 string adminEmail = "avtokamp.otesevo@gmail.com";
-                string templateContent = LoadTemplate("adminTemplate.txt");
+                string templateContent = LoadTemplate("adminTemplate.html");
 
                 if (string.IsNullOrWhiteSpace(templateContent))
                 {
-                    log.Warn("Admin email template (adminTemplate.txt) is empty or could not be loaded.");
+                    log.Warn("Admin email template (adminTemplate.html) is empty or could not be loaded.");
                     return false;
                 }
 
@@ -255,7 +255,7 @@ namespace Project_IT.Services.Implementations
                     { "phone", reservation.Phone ?? string.Empty }
                 };
 
-                return await _emailJsService.SendEmailAsync(adminEmail, subject, htmlContent, customParams);
+                return await _smtpService.SendEmailAsync(adminEmail, subject, htmlContent, customParams, replyToEmail: reservation.Email);
             }
             catch (Exception ex)
             {
@@ -277,11 +277,11 @@ namespace Project_IT.Services.Implementations
                 string langCode = CultureHelper.IsSupported(culture) ? culture.ToLowerInvariant() : CultureHelper.Default;
                 CultureInfo ci = CultureInfo.GetCultureInfo(langCode == "mk" ? "mk-MK" : (langCode == "en" ? "en-GB" : langCode));
 
-                string templateContent = LoadTemplate("clientTemplate.txt");
+                string templateContent = LoadTemplate("clientTemplate.html");
 
                 if (string.IsNullOrWhiteSpace(templateContent))
                 {
-                    log.Warn("Client email template (clientTemplate.txt) is empty or could not be loaded.");
+                    log.Warn("Client email template (clientTemplate.html) is empty or could not be loaded.");
                     return false;
                 }
 
@@ -339,7 +339,7 @@ namespace Project_IT.Services.Implementations
                     { "phone", reservation.Phone ?? string.Empty }
                 };
 
-                return await _emailJsService.SendEmailAsync(reservation.Email, subject, htmlContent, customParams);
+                return await _smtpService.SendEmailAsync(reservation.Email, subject, htmlContent, customParams);
             }
             catch (Exception ex)
             {
