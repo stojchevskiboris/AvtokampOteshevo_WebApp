@@ -237,25 +237,17 @@ namespace Project_IT.Services.Implementations
 
                 string htmlContent = templateContent
                     .Replace("{{customer_name}}", reservation.FullName ?? string.Empty)
+                    .Replace("{{customer_email}}", reservation.Email ?? string.Empty)
                     .Replace("{{smestuvanje}}", reservation.AccommodationType ?? string.Empty)
                     .Replace("{{guests}}", reservation.Guests.ToString())
                     .Replace("{{check_in}}", reservation.CheckInDate.HasValue ? reservation.CheckInDate.Value.ToString("dd.MM.yyyy") : "/")
                     .Replace("{{check_out}}", reservation.CheckOutDate.HasValue ? reservation.CheckOutDate.Value.ToString("dd.MM.yyyy") : "/")
-                    .Replace("{{phone}}", reservation.Phone ?? string.Empty);
+                    .Replace("{{phone}}", reservation.Phone ?? string.Empty)
+                    .Replace("{{message}}", reservation.Info ?? string.Empty);
 
                 string subject = "Ново барање за резервација - " + reservation.FullName;
 
-                var customParams = new Dictionary<string, string>
-                {
-                    { "customer_name", reservation.FullName ?? string.Empty },
-                    { "smestuvanje", reservation.AccommodationType ?? string.Empty },
-                    { "guests", reservation.Guests.ToString() },
-                    { "check_in", reservation.CheckInDate.HasValue ? reservation.CheckInDate.Value.ToString("dd.MM.yyyy") : "/" },
-                    { "check_out", reservation.CheckOutDate.HasValue ? reservation.CheckOutDate.Value.ToString("dd.MM.yyyy") : "/" },
-                    { "phone", reservation.Phone ?? string.Empty }
-                };
-
-                return await _smtpService.SendEmailAsync(adminEmail, subject, htmlContent, customParams, replyToEmail: reservation.Email);
+                return await _smtpService.SendEmailAsync(adminEmail, subject, htmlContent, replyToEmail: reservation.Email);
             }
             catch (Exception ex)
             {
@@ -329,17 +321,7 @@ namespace Project_IT.Services.Implementations
 
                 string subject = !string.IsNullOrWhiteSpace(title) ? title : "Потврда за примено барање - Автокамп Отешево";
 
-                var customParams = new Dictionary<string, string>
-                {
-                    { "customer_name", reservation.FullName ?? string.Empty },
-                    { "smestuvanje", reservation.AccommodationType ?? string.Empty },
-                    { "guests", reservation.Guests.ToString() },
-                    { "check_in", reservation.CheckInDate.HasValue ? reservation.CheckInDate.Value.ToString("dd.MM.yyyy") : "/" },
-                    { "check_out", reservation.CheckOutDate.HasValue ? reservation.CheckOutDate.Value.ToString("dd.MM.yyyy") : "/" },
-                    { "phone", reservation.Phone ?? string.Empty }
-                };
-
-                return await _smtpService.SendEmailAsync(reservation.Email, subject, htmlContent, customParams);
+                return await _smtpService.SendEmailAsync(reservation.Email, subject, htmlContent);
             }
             catch (Exception ex)
             {

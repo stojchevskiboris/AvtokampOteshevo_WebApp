@@ -1,7 +1,6 @@
 using log4net;
 using Project_IT.Services.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
 using System.Net.Mail;
@@ -21,7 +20,7 @@ namespace Project_IT.Services.Implementations
         private readonly string _replyToEmail = ConfigurationManager.AppSettings["ReplyToEmail"];
         private readonly string _fromName = ConfigurationManager.AppSettings["FromName"];
 
-        public async Task<bool> SendEmailAsync(string toEmail, string subject, string htmlContent, Dictionary<string, string> customParams = null, string replyToEmail = null)
+        public async Task<bool> SendEmailAsync(string toEmail, string subject, string htmlContent, string replyToEmail = null)
         {
             try
             {
