@@ -151,6 +151,13 @@ namespace Project_IT.Services.Implementations
                     }
 
                     string submittedPath = (file.FileName ?? string.Empty).Replace('\\', '/').TrimStart('/');
+                    int colonIndex = submittedPath.IndexOf(':');
+                    int slashIndex = submittedPath.IndexOf('/');
+                    bool isAbsoluteClientPath = colonIndex >= 0 && (slashIndex < 0 || colonIndex < slashIndex);
+                    if (isAbsoluteClientPath || submittedPath.StartsWith("fakepath/", StringComparison.OrdinalIgnoreCase))
+                    {
+                        submittedPath = Path.GetFileName(submittedPath);
+                    }
                     string[] rawSegments = submittedPath.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
                     if (rawSegments.Length == 0)
                     {
