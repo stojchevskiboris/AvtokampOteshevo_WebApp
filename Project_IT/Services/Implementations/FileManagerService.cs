@@ -14,6 +14,7 @@ namespace Project_IT.Services.Implementations
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(FileManagerService));
         private const int PageSize = 30;
+        private const int MaxUploadFileSizeBytes = 40 * 1024 * 1024;
 
         private static readonly HashSet<string> AllowedUploadExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
@@ -110,23 +111,20 @@ namespace Project_IT.Services.Implementations
             }
         }
 
-        public bool UploadFile(HttpPostedFileBase file, string targetPath, Func<string, string> mapPath, out string errorMessage, out string sanitizedRelativePath)
+        public bool UploadFiles(IEnumerable<HttpPostedFileBase> files, string targetPath, Func<string, string> mapPath, out string errorMessage, out string sanitizedRelativePath)
         {
             errorMessage = null;
             sanitizedRelativePath = SanitizeRelativePath(targetPath);
 
             try
             {
-                if (file == null || file.ContentLength == 0)
-                {
-                    errorMessage = "Ве молиме изберете фајл за прикачување.";
-                    return false;
-                }
+                var uploadFiles = files?
+                    .Where(f => f != null && f.ContentLength > 0)
+                    .ToList() ?? new List<HttpPostedFileBase>();
 
-                string ext = Path.GetExtension(file.FileName);
-                if (string.IsNullOrEmpty(ext) || !AllowedUploadExtensions.Contains(ext))
+                if (!uploadFiles.Any())
                 {
-                    errorMessage = "Форматот на фајлот не е дозволен.";
+                    errorMessage = "Ве молиме изберете фајл(ови) за прикачување.";
                     return false;
                 }
 
@@ -144,21 +142,74 @@ namespace Project_IT.Services.Implementations
                     Directory.CreateDirectory(targetDirPhysicalPath);
                 }
 
-                string fileName = Path.GetFileName(file.FileName);
-                string savePath = Path.Combine(targetDirPhysicalPath, fileName);
-
-                if (!IsPathWithinRoot(savePath, rootPhysicalPath))
+                foreach (var file in uploadFiles)
                 {
-                    errorMessage = "Невалидно име на фајл!";
-                    return false;
+                    if (file.ContentLength > MaxUploadFileSizeBytes)
+                    {
+                        errorMessage = "Максималната дозволена големина е 40MB по фајл.";
+                        return false;
+                    }
+
+                    string submittedPath = (file.FileName ?? string.Empty).Replace('\\', '/').TrimStart('/');
+                    string[] rawSegments = submittedPath.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (rawSegments.Length == 0)
+                    {
+                        errorMessage = "Невалидно име на фајл!";
+                        return false;
+                    }
+
+                    var sanitizedSegments = rawSegments
+                        .Select(SanitizeFileName)
+                        .ToArray();
+
+                    if (sanitizedSegments.Any(string.IsNullOrWhiteSpace))
+                    {
+                        errorMessage = "Невалидно име на фајл!";
+                        return false;
+                    }
+
+                    string fileName = sanitizedSegments.Last();
+                    string ext = Path.GetExtension(fileName);
+                    if (string.IsNullOrEmpty(ext) || !AllowedUploadExtensions.Contains(ext))
+                    {
+                        errorMessage = $"Форматот на фајлот не е дозволен: {fileName}";
+                        return false;
+                    }
+
+                    string[] folderSegments = sanitizedSegments.Take(sanitizedSegments.Length - 1).ToArray();
+                    string destinationFolderPath = targetDirPhysicalPath;
+                    if (folderSegments.Length > 0)
+                    {
+                        destinationFolderPath = Path.Combine(targetDirPhysicalPath, Path.Combine(folderSegments));
+                    }
+
+                    destinationFolderPath = GetNormalizedPath(destinationFolderPath);
+                    if (!IsPathWithinRoot(destinationFolderPath, rootPhysicalPath))
+                    {
+                        errorMessage = "Невалидна патека!";
+                        return false;
+                    }
+
+                    if (!Directory.Exists(destinationFolderPath))
+                    {
+                        Directory.CreateDirectory(destinationFolderPath);
+                    }
+
+                    string savePath = Path.Combine(destinationFolderPath, fileName);
+                    if (!IsPathWithinRoot(savePath, rootPhysicalPath))
+                    {
+                        errorMessage = "Невалидно име на фајл!";
+                        return false;
+                    }
+
+                    file.SaveAs(savePath);
                 }
 
-                file.SaveAs(savePath);
                 return true;
             }
             catch (Exception ex)
             {
-                log.Error("Error uploading file: " + ex.Message, ex);
+                log.Error("Error uploading files: " + ex.Message, ex);
                 throw;
             }
         }
