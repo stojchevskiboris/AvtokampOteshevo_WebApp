@@ -192,9 +192,6 @@
   <data name="Home_Hero_Sub_2" xml:space="preserve">
     <value>Λίμνης Πρέσπας</value>
   </data>
-  <data name="Site_Name_Sub" xml:space="preserve">
-    <value>Λίμνης Πρέσπας</value>
-  </data>
   <data name="Home_Hero_Cta" xml:space="preserve">
     <value>Εξερευνήστε το camping</value>
   </data>
@@ -486,10 +483,19 @@
   <data name="Acc_Bungalow" xml:space="preserve">
     <value>Μпанγκαλόу</value>
   </data>
+  <data name="Bungalov" xml:space="preserve">
+    <value>Μпанγκαλόу</value>
+  </data>
   <data name="Acc_Trailer" xml:space="preserve">
     <value>Τроχόσπιτο / Camper</value>
   </data>
+  <data name="Prikolka" xml:space="preserve">
+    <value>Τроχόσπιτο / Camper</value>
+  </data>
   <data name="Acc_Pitch" xml:space="preserve">
+    <value>Θέση σκηνής</value>
+  </data>
+  <data name="Plac za shator" xml:space="preserve">
     <value>Θέση σκηνής</value>
   </data>
   <data name="Currency_MKD" xml:space="preserve">
@@ -1190,6 +1196,9 @@
   </data>
   <data name="News_AllNews" xml:space="preserve">
     <value>← Όλα τα νέα</value>
+  </data>
+  <data name="Site_Name_Sub" xml:space="preserve">
+    <value>Λίμνης Πρέσπας</value>
   </data>
   <data name="Email_Client_Title" xml:space="preserve">
     <value>Επιβεβαίωση αιτήματος κράτησης - Autocamp Otesevo</value>

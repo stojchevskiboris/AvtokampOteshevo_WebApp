@@ -192,9 +192,6 @@
   <data name="Home_Hero_Sub_2" xml:space="preserve">
     <value>Преспанското Езеро</value>
   </data>
-  <data name="Site_Name_Sub" xml:space="preserve">
-    <value>Преспанско Езеро</value>
-  </data>
   <data name="Home_Hero_Cta" xml:space="preserve">
     <value>Истражете го кампот</value>
   </data>
@@ -486,10 +483,19 @@
   <data name="Acc_Bungalow" xml:space="preserve">
     <value>Бунгалов</value>
   </data>
+  <data name="Bungalov" xml:space="preserve">
+    <value>Бунгалов</value>
+  </data>
   <data name="Acc_Trailer" xml:space="preserve">
     <value>Приколка</value>
   </data>
+  <data name="Prikolka" xml:space="preserve">
+    <value>Приколка</value>
+  </data>
   <data name="Acc_Pitch" xml:space="preserve">
+    <value>Плац за шатор</value>
+  </data>
+  <data name="Plac za shator" xml:space="preserve">
     <value>Плац за шатор</value>
   </data>
   <data name="Currency_MKD" xml:space="preserve">
@@ -1190,6 +1196,9 @@
   </data>
   <data name="News_AllNews" xml:space="preserve">
     <value>← Сите новости</value>
+  </data>
+  <data name="Site_Name_Sub" xml:space="preserve">
+    <value>Преспанско Езеро</value>
   </data>
   <data name="Email_Client_Title" xml:space="preserve">
     <value>Потврда за примено барање - Автокамп Отешево</value>

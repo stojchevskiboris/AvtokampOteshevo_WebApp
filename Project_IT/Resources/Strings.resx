@@ -483,10 +483,19 @@
   <data name="Acc_Bungalow" xml:space="preserve">
     <value>Bungalow</value>
   </data>
+  <data name="Bungalov" xml:space="preserve">
+    <value>Bungalow</value>
+  </data>
   <data name="Acc_Trailer" xml:space="preserve">
     <value>Campervan / Trailer</value>
   </data>
+  <data name="Prikolka" xml:space="preserve">
+    <value>Campervan / Trailer</value>
+  </data>
   <data name="Acc_Pitch" xml:space="preserve">
+    <value>Tent Pitch</value>
+  </data>
+  <data name="Plac za shator" xml:space="preserve">
     <value>Tent Pitch</value>
   </data>
   <data name="Currency_MKD" xml:space="preserve">

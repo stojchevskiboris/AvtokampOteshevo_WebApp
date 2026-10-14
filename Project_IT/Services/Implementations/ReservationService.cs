@@ -243,7 +243,11 @@ namespace Project_IT.Services.Implementations
                     .Replace("{{check_in}}", reservation.CheckInDate.HasValue ? reservation.CheckInDate.Value.ToString("dd.MM.yyyy") : "/")
                     .Replace("{{check_out}}", reservation.CheckOutDate.HasValue ? reservation.CheckOutDate.Value.ToString("dd.MM.yyyy") : "/")
                     .Replace("{{phone}}", reservation.Phone ?? string.Empty)
-                    .Replace("{{message}}", reservation.Info ?? string.Empty);
+                    .Replace("{{message}}", reservation.Info ?? string.Empty)
+                    .Replace("{{user_os}}", reservation.UserOs ?? string.Empty)
+                    .Replace("{{user_platform}}", reservation.UserPlatform ?? string.Empty)
+                    .Replace("{{user_browser}}", reservation.UserBrowser ?? string.Empty)
+                    .Replace("{{user_referrer}}", reservation.UserReferrer ?? string.Empty);
 
                 string subject = "Ново барање за резервација - " + reservation.FullName;
 
@@ -288,11 +292,13 @@ namespace Project_IT.Services.Implementations
                 string labelCheckIn = GetLocalizedString("Res_CheckIn", ci);
                 string labelCheckOut = GetLocalizedString("Res_CheckOut", ci);
                 string labelPhone = GetLocalizedString("Res_Phone", ci);
+                string labelNote = GetLocalizedString("Res_Info", ci);
                 string nextStepsTitle = GetLocalizedString("Email_Client_NextSteps_Title", ci);
                 string nextStepsText = GetLocalizedString("Email_Client_NextSteps_Text", ci);
                 string notice = GetLocalizedString("Email_Client_Notice", ci);
                 string siteName = GetLocalizedString("Site_Name", ci);
                 string siteLocation = GetLocalizedString("Site_Footer_Location", ci);
+                string accommodation = GetLocalizedString(reservation.AccommodationType, ci);
 
                 string htmlContent = templateContent
                     .Replace("{{lang_code}}", langCode)
@@ -305,7 +311,7 @@ namespace Project_IT.Services.Implementations
                     .Replace("{{email_client_intro}}", intro)
                     .Replace("{{email_client_summary_title}}", summaryTitle)
                     .Replace("{{label_accommodation}}", labelAcc)
-                    .Replace("{{smestuvanje}}", reservation.AccommodationType ?? string.Empty)
+                    .Replace("{{smestuvanje}}", accommodation)
                     .Replace("{{label_guests}}", labelGuests)
                     .Replace("{{guests}}", reservation.Guests.ToString())
                     .Replace("{{label_check_in}}", labelCheckIn)
@@ -314,6 +320,8 @@ namespace Project_IT.Services.Implementations
                     .Replace("{{check_out}}", reservation.CheckOutDate.HasValue ? reservation.CheckOutDate.Value.ToString("dd.MM.yyyy") : "/")
                     .Replace("{{label_phone}}", labelPhone)
                     .Replace("{{phone}}", reservation.Phone ?? string.Empty)
+                    .Replace("{{label_note}}", labelNote)
+                    .Replace("{{note}}", reservation.Info ?? string.Empty)
                     .Replace("{{email_client_next_steps_title}}", nextStepsTitle)
                     .Replace("{{email_client_next_steps_text}}", nextStepsText)
                     .Replace("{{email_client_notice}}", notice)

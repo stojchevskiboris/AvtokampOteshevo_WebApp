@@ -192,9 +192,6 @@
   <data name="Home_Hero_Sub_2" xml:space="preserve">
     <value>Jeziora Prespa</value>
   </data>
-  <data name="Site_Name_Sub" xml:space="preserve">
-    <value>Jeziora Prespa</value>
-  </data>
   <data name="Home_Hero_Cta" xml:space="preserve">
     <value>Odkryj kemping</value>
   </data>
@@ -486,10 +483,19 @@
   <data name="Acc_Bungalow" xml:space="preserve">
     <value>Domek</value>
   </data>
+  <data name="Bungalov" xml:space="preserve">
+    <value>Domek</value>
+  </data>
   <data name="Acc_Trailer" xml:space="preserve">
     <value>Przyczepa / Kamper</value>
   </data>
+  <data name="Prikolka" xml:space="preserve">
+    <value>Przyczepa / Kamper</value>
+  </data>
   <data name="Acc_Pitch" xml:space="preserve">
+    <value>Miejsce na namiot</value>
+  </data>
+  <data name="Plac za shator" xml:space="preserve">
     <value>Miejsce na namiot</value>
   </data>
   <data name="Currency_MKD" xml:space="preserve">
@@ -1190,6 +1196,9 @@
   </data>
   <data name="News_AllNews" xml:space="preserve">
     <value>← Wszystkie wiadomości</value>
+  </data>
+  <data name="Site_Name_Sub" xml:space="preserve">
+    <value>Jeziora Prespa</value>
   </data>
   <data name="Email_Client_Title" xml:space="preserve">
     <value>Potwierdzenie rezerwacji - Autocamp Otesevo</value>
