@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
 using log4net;
+using Project_IT.Helpers;
 using Project_IT.Models;
 using Project_IT.Services.Interfaces;
 
@@ -36,22 +37,36 @@ namespace Project_IT.Services.Implementations
                 try
                 {
                     XNamespace ns = ConfigurationManager.AppSettings["Xmlns"] ?? "http://www.sitemaps.org/schemas/sitemap/0.9";
-                    string baseUrl = ConfigurationManager.AppSettings["BaseUrl"] ?? "";
+                    string baseUrl = (ConfigurationManager.AppSettings["BaseUrl"] ?? "").TrimEnd('/');
+                    string now = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss+00:00");
+                    var locales = CultureHelper.Supported;
 
                     var root = new XElement(ns + "urlset");
 
-                    // 1. Static Routes
+                    // 1. Localized Home + Static Routes
                     var staticRoutes = GetStaticRoutes();
-                    foreach (var route in staticRoutes)
+                    foreach (var locale in locales)
                     {
+                        bool isDefaultLocale = locale.Equals(CultureHelper.Default, StringComparison.OrdinalIgnoreCase);
+                        string localePrefix = "/" + locale.ToLowerInvariant();
+
                         root.Add(new XElement(ns + "url",
-                            new XElement(ns + "loc", baseUrl + route),
-                            new XElement(ns + "changefreq", route == "/" ? "daily" : "weekly"),
-                            new XElement(ns + "priority", route == "/" ? "1.0" : "0.8")
+                            new XElement(ns + "loc", baseUrl + localePrefix),
+                            new XElement(ns + "lastmod", now),
+                            new XElement(ns + "priority", isDefaultLocale ? "1.0" : "0.8")
                         ));
+
+                        foreach (var route in staticRoutes.Where(r => r != "/"))
+                        {
+                            root.Add(new XElement(ns + "url",
+                                new XElement(ns + "loc", baseUrl + localePrefix + route),
+                                new XElement(ns + "lastmod", now),
+                                new XElement(ns + "priority", isDefaultLocale ? "0.8" : "0.64")
+                            ));
+                        }
                     }
 
-                    // 2. Dynamic News Items
+                    // 2. Localized dynamic news items
                     using (var db = _db != null ? null : new ApplicationDbContext())
                     {
                         var context = _db ?? db;
@@ -60,14 +75,19 @@ namespace Project_IT.Services.Implementations
                             .Select(x => new { x.Id, x.CreatedOn })
                             .ToList();
 
-                        foreach (var item in newsItems)
+                        foreach (var locale in locales)
                         {
-                            root.Add(new XElement(ns + "url",
-                                new XElement(ns + "loc", $"{baseUrl}/News/{item.Id}"),
-                                new XElement(ns + "lastmod", item.CreatedOn.ToString("yyyy-MM-dd")),
-                                new XElement(ns + "changefreq", "weekly"),
-                                new XElement(ns + "priority", "0.6")
-                            ));
+                            bool isDefaultLocale = locale.Equals(CultureHelper.Default, StringComparison.OrdinalIgnoreCase);
+                            string localePrefix = "/" + locale.ToLowerInvariant();
+
+                            foreach (var item in newsItems)
+                            {
+                                root.Add(new XElement(ns + "url",
+                                    new XElement(ns + "loc", $"{baseUrl}{localePrefix}/news/{item.Id}"),
+                                    new XElement(ns + "lastmod", item.CreatedOn.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss+00:00")),
+                                    new XElement(ns + "priority", isDefaultLocale ? "0.64" : "0.512")
+                                ));
+                            }
                         }
                     }
 
@@ -90,7 +110,7 @@ namespace Project_IT.Services.Implementations
             var controllerTypes = Assembly.GetExecutingAssembly().GetTypes()
                 .Where(t => typeof(IController).IsAssignableFrom(t) && !t.IsAbstract && t.Name.EndsWith("Controller"));
 
-            var excludedControllers = new[] { "AccountController", "ManageController", "ErrorController", "AdminFileManagerController", "AdminReservationsController" };
+            var excludedControllers = new[] { "AccountController", "ManageController", "ErrorController", "AdminFileManagerController", "AdminReservationsController", "RootController" };
             var routes = new List<string>();
 
             foreach (var controller in controllerTypes.Where(c => !excludedControllers.Contains(c.Name)))
