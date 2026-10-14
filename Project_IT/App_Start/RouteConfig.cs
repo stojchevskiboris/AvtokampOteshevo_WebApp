@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Project_IT.Helpers;
 
 namespace Project_IT
 {
@@ -15,7 +16,7 @@ namespace Project_IT
 
             routes.LowercaseUrls = true;
 
-            string cultureConstraint = "mk|en|sq|sr|de|pl|it|el|es";
+            string cultureConstraint = string.Join("|", CultureHelper.Supported);
 
             // Localized custom routes
             routes.MapRoute(

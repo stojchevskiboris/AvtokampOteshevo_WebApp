@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System;
 using System.Web;
 using System.Web.Mvc;
@@ -34,14 +35,14 @@ namespace Project_IT.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Upload(HttpPostedFileBase file, string targetPath)
+        public ActionResult Upload(IEnumerable<HttpPostedFileBase> files, string targetPath)
         {
             try
             {
-                bool success = _fileManagerService.UploadFile(file, targetPath, Server.MapPath, out string errorMessage, out string sanitizedRelativePath);
+                bool success = _fileManagerService.UploadFiles(files, targetPath, Server.MapPath, out string errorMessage, out string sanitizedRelativePath);
                 if (success)
                 {
-                    TempData["SuccessMessage"] = "Фајлот е успешно прикачен.";
+                    TempData["SuccessMessage"] = "Фајловите се успешно прикачени.";
                     return RedirectToRouteOrPath(sanitizedRelativePath);
                 }
 
