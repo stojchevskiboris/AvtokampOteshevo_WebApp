@@ -89,6 +89,13 @@ To run the application locally or deploy it to IIS, create a `web.config` file i
 		<add key="LegacyUrl" value="otesevo.bsite.net"/>
 		<add key="BaseUrl" value="https://www.otesevo.com"/>
 		<add key="Xmlns" value="http://www.sitemaps.org/schemas/sitemap/0.9"/>
+		<add key="FromEmail" value="avtokamp.otesevo@gmail.com"/>
+		<add key="FromName" value="Autocamp Otesevo"/>
+		<add key="ReplyToEmail" value="avtokamp.otesevo@gmail.com"/>
+		<add key="SmtpServer" value="smtp.gmail.com"/>
+		<add key="SmtpPort" value="587"/>
+		<add key="SmtpUsername" value="avtokamp.otesevo@gmail.com"/>
+		<add key="SmtpPassword" value="SMTP_APP_PASSWORD"/>
 	</appSettings>
 	<system.web>
 		<trust level="Full"/>
@@ -310,13 +317,45 @@ To run the application locally or deploy it to IIS, create a `web.config` file i
 
 ### Custom AppSettings Explanation
 
-Below is the description of every custom configuration key defined under the `` node in `web.config`:
+Below is the description of every key defined under the `<appSettings>` node in `web.config`:
+
+#### ASP.NET MVC Framework Settings
+
+| Key Name | Sample Value | Description |
+| --- | --- | --- |
+| `webpages:Version` | `3.0.0.0` | Specifies the ASP.NET Web Pages (Razor) version used by the application. Must match the installed `System.Web.WebPages` assembly version (see the binding redirects in the `<runtime>` section). |
+| `webpages:Enabled` | `false` | Disables the Web Pages request pipeline for `.cshtml` files inside the application root, so Razor views are served only through MVC controllers and cannot be requested directly by URL. |
+| `ClientValidationEnabled` | `true` | Enables client-side (browser) form validation generated from model data annotations, giving users instant feedback before a form is submitted. |
+| `UnobtrusiveJavaScriptEnabled` | `true` | Makes MVC emit validation rules as HTML5 `data-*` attributes instead of inline JavaScript. Works together with `jquery.validate.unobtrusive`. |
+
+#### Logging
 
 | Key Name | Sample Value | Description |
 | --- | --- | --- |
 | `log4net.Config.Watch` | `True` | Instructs the `log4net` logging framework to dynamically monitor `web.config` for logging configuration changes at runtime without requiring an Application Pool restart. |
+
+#### Domain & URL Settings
+
+| Key Name | Sample Value | Description |
+| --- | --- | --- |
 | `EnableDomainRedirect` | `false` | Boolean flag (`true`/`false`) determining whether incoming web traffic should be forcibly redirected from legacy domains to the primary domain. |
 | `AuthenticationRedirect` | `true` | Controls whether unauthenticated users attempting to access protected resources are automatically redirected to the login flow. |
 | `LegacyUrl` | `otesevo.bsite.net` | The previous or staging domain address used for matching incoming requests that require canonical domain redirection. |
 | `BaseUrl` | `https://www.otesevo.com` | The primary production domain URL used to generate absolute links across the application and inside XML sitemaps. |
 | `Xmlns` | `http://www.sitemaps.org/schemas/sitemap/0.9` | The XML namespace schema definition used during automated XML sitemap generation for search engine optimization. |
+
+#### Email (SMTP) Settings
+
+Used to send transactional emails, such as reservation confirmations and notifications.
+
+| Key Name | Sample Value | Description |
+| --- | --- | --- |
+| `FromEmail` | `avtokamp.otesevo@gmail.com` | The sender address shown in the "From" field of outgoing emails. |
+| `FromName` | `Autocamp Otesevo` | The display name shown to recipients alongside the sender address. |
+| `ReplyToEmail` | `avtokamp.otesevo@gmail.com` | The address that receives replies when a recipient clicks "Reply". Can differ from `FromEmail` if replies should go to another inbox. |
+| `SmtpServer` | `smtp.gmail.com` | Hostname of the SMTP server used to deliver outgoing mail. |
+| `SmtpPort` | `587` | SMTP port. `587` is the standard port for STARTTLS (encrypted) submission; use `465` only if the code is configured for implicit SSL. |
+| `SmtpUsername` | `avtokamp.otesevo@gmail.com` | The account used to authenticate with the SMTP server. For Gmail, this is the full email address. |
+| `SmtpPassword` | `SMTP_APP_PASSWORD` | The password used to authenticate with the SMTP server. For Gmail, use a 16-character **App Password** (requires 2-Step Verification), not the account's regular password. |
+
+> **Security note:** Never commit real credentials to version control. Keep `SmtpPassword` and the database connection string out of the repository, for example by adding `web.config` to `.gitignore` (as this README implies) or by moving secrets into a separate file referenced with `<appSettings file="secrets.config">`.
