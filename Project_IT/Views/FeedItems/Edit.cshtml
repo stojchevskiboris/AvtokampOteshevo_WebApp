@@ -17,10 +17,6 @@
 <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 space-y-6">
     @Html.ValidationSummary(true, "", new { @class = "text-rose-600 text-sm" })
 
-    <div class="pb-2 border-b border-slate-100">
-        <h2 class="text-sm font-semibold tracking-wider uppercase text-slate-500">MK Content</h2>
-    </div>
-
     <div>
         @* show id only for ui info and make it readonly disabled *@
         @Html.LabelFor(model => model.Id, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
@@ -34,23 +30,45 @@
     </div>
 
     <div>
+        @Html.LabelFor(model => model.TitleEn, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+        @Html.TextBoxFor(model => model.TitleEn, new { @class = "min-w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
+        @Html.ValidationMessageFor(model => model.TitleEn, "", new { @class = "text-rose-600 text-xs mt-1" })
+    </div>
+
+    <br />
+
+    <div>
         @Html.LabelFor(model => model.Subtitle, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
         @Html.TextBoxFor(model => model.Subtitle, new { @class = "min-w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
         @Html.ValidationMessageFor(model => model.Subtitle, "", new { @class = "text-rose-600 text-xs mt-1" })
     </div>
 
-    <div class="grid md:grid-cols-2 gap-4">
-        <div>
-            @Html.LabelFor(model => model.Category, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
-            @Html.EnumDropDownListFor(model => model.Category, new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm bg-white" })
-            @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-rose-600 text-xs mt-1" })
-        </div>
+    <div>
+        @Html.LabelFor(model => model.SubtitleEn, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+        @Html.TextBoxFor(model => model.SubtitleEn, new { @class = "min-w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
+        @Html.ValidationMessageFor(model => model.SubtitleEn, "", new { @class = "text-rose-600 text-xs mt-1" })
+    </div>
 
-        <div>
-            @Html.LabelFor(model => model.LabelBadge, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
-            @Html.TextBoxFor(model => model.LabelBadge, new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
-            @Html.ValidationMessageFor(model => model.LabelBadge, "", new { @class = "text-rose-600 text-xs mt-1" })
-        </div>
+    <br />
+
+    <div>
+        @Html.LabelFor(model => model.LabelBadge, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+        @Html.TextBoxFor(model => model.LabelBadge, new { @class = "min-w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
+        @Html.ValidationMessageFor(model => model.LabelBadge, "", new { @class = "text-rose-600 text-xs mt-1" })
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.LabelBadgeEn, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+        @Html.TextBoxFor(model => model.LabelBadgeEn, new { @class = "min-w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
+        @Html.ValidationMessageFor(model => model.LabelBadgeEn, "", new { @class = "text-rose-600 text-xs mt-1" })
+    </div>
+
+    <br />
+
+    <div>
+        @Html.LabelFor(model => model.Category, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+        @Html.EnumDropDownListFor(model => model.Category, new { @class = "min-w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm bg-white" })
+        @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-rose-600 text-xs mt-1" })
     </div>
 
     <div>
@@ -65,20 +83,40 @@
         @Html.ValidationMessageFor(model => model.GalleryPath, "", new { @class = "text-rose-600 text-xs mt-1" })
     </div>
 
-    <div class="grid md:grid-cols-3 gap-4">
+    <div>
+        @Html.LabelFor(model => model.ActionUrl, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+        @Html.TextBoxFor(model => model.ActionUrl, new { @class = "min-w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
+    </div>
+
+    <br />
+
+    <div class="grid md:grid-cols-2 gap-4">
         <div>
-            @Html.LabelFor(model => model.OfferText, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
-            @Html.TextBoxFor(model => model.OfferText, new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
+            <div class="mb-2">
+                @Html.LabelFor(model => model.OfferText, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+                @Html.TextBoxFor(model => model.OfferText, new { @class = "min-w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.OfferTextEn, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+                @Html.TextBoxFor(model => model.OfferTextEn, new { @class = "min-w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
+                @Html.ValidationMessageFor(model => model.OfferTextEn, "", new { @class = "text-rose-600 text-xs mt-1" })
+            </div>
         </div>
         <div>
-            @Html.LabelFor(model => model.ButtonText, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
-            @Html.TextBoxFor(model => model.ButtonText, new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
-        </div>
-        <div>
-            @Html.LabelFor(model => model.ActionUrl, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
-            @Html.TextBoxFor(model => model.ActionUrl, new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
+            <div class="mb-2">
+                @Html.LabelFor(model => model.ButtonText, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+                @Html.TextBoxFor(model => model.ButtonText, new { @class = "min-w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
+            </div>
+            <div>
+                @Html.LabelFor(model => model.ButtonTextEn, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
+                @Html.TextBoxFor(model => model.ButtonTextEn, new { @class = "min-w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
+                @Html.ValidationMessageFor(model => model.ButtonTextEn, "", new { @class = "text-rose-600 text-xs mt-1" })
+            </div>
         </div>
     </div>
+
+    <br />
 
     <div>
         @Html.LabelFor(model => model.ValidTo, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
@@ -94,40 +132,6 @@
         @Html.LabelFor(model => model.Description, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
         @Html.TextAreaFor(model => model.Description, new { @class = "min-w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm h-32" })
         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-rose-600 text-xs mt-1" })
-    </div>
-
-    <div class="pt-4 pb-2 border-y border-slate-100">
-        <h2 class="text-sm font-semibold tracking-wider uppercase text-slate-500">EN Content</h2>
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.TitleEn, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
-        @Html.TextBoxFor(model => model.TitleEn, new { @class = "min-w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
-        @Html.ValidationMessageFor(model => model.TitleEn, "", new { @class = "text-rose-600 text-xs mt-1" })
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.SubtitleEn, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
-        @Html.TextBoxFor(model => model.SubtitleEn, new { @class = "min-w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
-        @Html.ValidationMessageFor(model => model.SubtitleEn, "", new { @class = "text-rose-600 text-xs mt-1" })
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-4">
-        <div>
-            @Html.LabelFor(model => model.LabelBadgeEn, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
-            @Html.TextBoxFor(model => model.LabelBadgeEn, new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
-            @Html.ValidationMessageFor(model => model.LabelBadgeEn, "", new { @class = "text-rose-600 text-xs mt-1" })
-        </div>
-        <div>
-            @Html.LabelFor(model => model.OfferTextEn, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
-            @Html.TextBoxFor(model => model.OfferTextEn, new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
-            @Html.ValidationMessageFor(model => model.OfferTextEn, "", new { @class = "text-rose-600 text-xs mt-1" })
-        </div>
-        <div>
-            @Html.LabelFor(model => model.ButtonTextEn, new { @class = "block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2" })
-            @Html.TextBoxFor(model => model.ButtonTextEn, new { @class = "w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-600 text-sm" })
-            @Html.ValidationMessageFor(model => model.ButtonTextEn, "", new { @class = "text-rose-600 text-xs mt-1" })
-        </div>
     </div>
 
     <div>

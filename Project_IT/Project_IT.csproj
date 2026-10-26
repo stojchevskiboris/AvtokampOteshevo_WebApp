@@ -211,6 +211,10 @@
     <Compile Include="Filters\LocalizationAttribute.cs" />
     <Compile Include="Helpers\CultureHelper.cs" />
     <Compile Include="Helpers\UrlExtensions.cs" />
+    <Compile Include="Migrations\202610261803508_FeedEngItems.cs" />
+    <Compile Include="Migrations\202610261803508_FeedEngItems.Designer.cs">
+      <DependentUpon>202610261803508_FeedEngItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -226,7 +230,6 @@
     <Compile Include="Migrations\202609252236509_addSystemSettings.Designer.cs">
       <DependentUpon>202609252236509_addSystemSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202610261225000_AddFeedItemEnglishFields.cs" />
     <Compile Include="Models\ViewModels\FeedItemDetailsViewModel.cs" />
     <Compile Include="Models\ViewModels\BookingPricesViewModel.cs" />
     <Compile Include="Models\ViewModels\GeneralAppPreferencesViewModel.cs" />
@@ -471,6 +474,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202609252236509_addSystemSettings.resx">
       <DependentUpon>202609252236509_addSystemSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202610261803508_FeedEngItems.resx">
+      <DependentUpon>202610261803508_FeedEngItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
