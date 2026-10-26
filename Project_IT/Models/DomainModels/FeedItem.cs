@@ -19,13 +19,25 @@ namespace Project_IT.Models
         [Display(Name = "Наслов")]
         public string Title { get; set; }
 
+        [StringLength(200)]
+        [Display(Name = "Наслов (EN)")]
+        public string TitleEn { get; set; }
+
         [StringLength(500)]
         [Display(Name = "Поднаслов")]
         public string Subtitle { get; set; }
 
+        [StringLength(500)]
+        [Display(Name = "Поднаслов (EN)")]
+        public string SubtitleEn { get; set; }
+
         [DataType(DataType.Html)]
         [Display(Name = "Опис")]
         public string Description { get; set; }
+
+        [DataType(DataType.Html)]
+        [Display(Name = "Опис (EN)")]
+        public string DescriptionEn { get; set; }
 
         [Display(Name = "Слика URL")]
         public string ImageUrl { get; set; }
@@ -37,11 +49,20 @@ namespace Project_IT.Models
         [Display(Name = "Беџ")]
         public string LabelBadge { get; set; }
 
+        [Display(Name = "Беџ (EN)")]
+        public string LabelBadgeEn { get; set; }
+
         [Display(Name = "Текст за понуда")]
         public string OfferText { get; set; }
 
+        [Display(Name = "Текст за понуда (EN)")]
+        public string OfferTextEn { get; set; }
+
         [Display(Name = "Текст на копче")]
         public string ButtonText { get; set; }
+
+        [Display(Name = "Текст на копче (EN)")]
+        public string ButtonTextEn { get; set; }
 
         [Display(Name = "Линк / URL")]
         public string ActionUrl { get; set; }

@@ -16,11 +16,27 @@
             <h2 class="text-xl font-serif text-slate-800">@Model.Title</h2>
         </div>
 
+        @if (!string.IsNullOrEmpty(Model.TitleEn))
+        {
+            <div>
+                <span class="text-xs font-semibold uppercase text-slate-400">Title (EN)</span>
+                <h3 class="text-lg font-serif text-slate-700">@Model.TitleEn</h3>
+            </div>
+        }
+
         @if (!string.IsNullOrEmpty(Model.Subtitle))
         {
             <div>
                 <span class="text-xs font-semibold uppercase text-slate-400">@Strings.FeedItems_LabelSubtitle</span>
                 <p class="text-sm text-slate-600">@Model.Subtitle</p>
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.SubtitleEn))
+        {
+            <div>
+                <span class="text-xs font-semibold uppercase text-slate-400">Subtitle (EN)</span>
+                <p class="text-sm text-slate-600">@Model.SubtitleEn</p>
             </div>
         }
 
@@ -55,6 +71,31 @@
             <span class="text-xs font-semibold uppercase text-slate-400 block mb-1">@Strings.FeedItems_LabelDescription</span>
             <div class="text-sm text-slate-600 leading-relaxed">
                 @Html.Raw(Model.Description)
+            </div>
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.DescriptionEn))
+        {
+            <div>
+                <span class="text-xs font-semibold uppercase text-slate-400 block mb-1">Description (EN)</span>
+                <div class="text-sm text-slate-600 leading-relaxed">
+                    @Html.Raw(Model.DescriptionEn)
+                </div>
+            </div>
+        }
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 border-y border-slate-100">
+            <div>
+                <span class="text-xs font-semibold uppercase text-slate-400 block">Label Badge (EN)</span>
+                <span class="text-sm text-slate-700">@(!string.IsNullOrEmpty(Model.LabelBadgeEn) ? Model.LabelBadgeEn : "-")</span>
+            </div>
+            <div>
+                <span class="text-xs font-semibold uppercase text-slate-400 block">Offer Text (EN)</span>
+                <span class="text-sm text-slate-700">@(!string.IsNullOrEmpty(Model.OfferTextEn) ? Model.OfferTextEn : "-")</span>
+            </div>
+            <div>
+                <span class="text-xs font-semibold uppercase text-slate-400 block">Button Text (EN)</span>
+                <span class="text-sm text-slate-700">@(!string.IsNullOrEmpty(Model.ButtonTextEn) ? Model.ButtonTextEn : "-")</span>
             </div>
         </div>
 
