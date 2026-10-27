@@ -179,6 +179,7 @@ namespace Project_IT.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult AddUserToRole()
         {
             try
@@ -199,8 +200,9 @@ namespace Project_IT.Controllers
             }
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddUserToRole(AddToRoleModel model)
         {
             try

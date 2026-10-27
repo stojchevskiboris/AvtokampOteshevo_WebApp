@@ -7,7 +7,7 @@ using Project_IT.Services.Interfaces;
 
 namespace Project_IT.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AdminFileManagerController : Controller
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(AdminFileManagerController));

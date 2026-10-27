@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Project_IT.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AdminSettingsController : Controller
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(AdminSettingsController));
