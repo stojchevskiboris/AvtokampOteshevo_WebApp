@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using log4net;
+using Project_IT.Helpers;
 using Project_IT.Models;
 using Project_IT.Services.Interfaces;
 
@@ -65,11 +66,13 @@ namespace Project_IT.Services.Implementations
                     .Where(x => x.Category == FeedCategory.Offer && (!x.ValidTo.HasValue || x.ValidTo.Value >= now))
                     .ToList();
 
+                var currentCulture = CultureHelper.Current;
+
                 return new NewsPageViewModel
                 {
-                    FeaturedNews = featured,
-                    GridNews = gridNews,
-                    Offers = offers,
+                    FeaturedNews = LocalizeFeedItem(featured, currentCulture),
+                    GridNews = gridNews.Select(x => LocalizeFeedItem(x, currentCulture)).ToList(),
+                    Offers = offers.Select(x => LocalizeFeedItem(x, currentCulture)).ToList(),
                     CurrentPage = page,
                     TotalPages = totalPages,
                     PageSize = pageSize,
@@ -124,7 +127,7 @@ namespace Project_IT.Services.Implementations
 
                 return new FeedItemDetailsViewModel
                 {
-                    FeedItem = feedItem,
+                    FeedItem = LocalizeFeedItem(feedItem, CultureHelper.Current),
                     GalleryMedia = mediaList
                 };
             }
@@ -133,6 +136,114 @@ namespace Project_IT.Services.Implementations
                 log.Error($"Error getting FeedItemDetailsViewModel for ID {id}: " + ex.Message, ex);
                 throw;
             }
+        }
+
+        private static FeedItem LocalizeFeedItem(FeedItem feedItem, string currentCulture)
+        {
+            if (feedItem == null)
+            {
+                return null;
+            }
+
+            var localized = new FeedItem
+            {
+                Id = feedItem.Id,
+                Title = feedItem.Title,
+                TitleEn = feedItem.TitleEn,
+                Subtitle = feedItem.Subtitle,
+                SubtitleEn = feedItem.SubtitleEn,
+                Description = feedItem.Description,
+                DescriptionEn = feedItem.DescriptionEn,
+                ImageUrl = feedItem.ImageUrl,
+                Category = feedItem.Category,
+                LabelBadge = feedItem.LabelBadge,
+                LabelBadgeEn = feedItem.LabelBadgeEn,
+                OfferText = feedItem.OfferText,
+                OfferTextEn = feedItem.OfferTextEn,
+                ButtonText = feedItem.ButtonText,
+                ButtonTextEn = feedItem.ButtonTextEn,
+                ActionUrl = feedItem.ActionUrl,
+                ValidTo = feedItem.ValidTo,
+                IsFeatured = feedItem.IsFeatured,
+                IsPublished = feedItem.IsPublished,
+                CreatedOn = feedItem.CreatedOn,
+                GalleryPath = feedItem.GalleryPath
+            };
+
+            var normalizedCulture = NormalizeCulture(currentCulture);
+            var isMacedonian = string.Equals(normalizedCulture, CultureHelper.Default, StringComparison.OrdinalIgnoreCase);
+
+            if (!isMacedonian)
+            {
+                localized.Title = string.IsNullOrWhiteSpace(localized.TitleEn) ? localized.Title : localized.TitleEn;
+                localized.Subtitle = string.IsNullOrWhiteSpace(localized.SubtitleEn) ? localized.Subtitle : localized.SubtitleEn;
+                localized.Description = string.IsNullOrWhiteSpace(localized.DescriptionEn) ? localized.Description : localized.DescriptionEn;
+                localized.LabelBadge = string.IsNullOrWhiteSpace(localized.LabelBadgeEn) ? localized.LabelBadge : localized.LabelBadgeEn;
+                localized.OfferText = string.IsNullOrWhiteSpace(localized.OfferTextEn) ? localized.OfferText : localized.OfferTextEn;
+                localized.ButtonText = string.IsNullOrWhiteSpace(localized.ButtonTextEn) ? localized.ButtonText : localized.ButtonTextEn;
+            }
+
+            localized.ActionUrl = LocalizeActionUrl(localized.ActionUrl, normalizedCulture);
+
+            return localized;
+        }
+
+        private static string NormalizeCulture(string currentCulture)
+        {
+            var culture = string.IsNullOrWhiteSpace(currentCulture)
+                ? CultureHelper.Default
+                : currentCulture.Trim().ToLowerInvariant();
+
+            if (culture.Contains("-"))
+            {
+                culture = culture.Split('-')[0];
+            }
+
+            return CultureHelper.IsSupported(culture) ? culture : CultureHelper.Default;
+        }
+
+        private static string LocalizeActionUrl(string actionUrl, string culture)
+        {
+            if (string.IsNullOrWhiteSpace(actionUrl))
+            {
+                return actionUrl;
+            }
+
+            var normalized = actionUrl.Trim();
+            if (normalized.StartsWith("~/"))
+            {
+                normalized = normalized.Substring(1);
+            }
+
+            if (normalized.StartsWith("#", StringComparison.Ordinal) ||
+                normalized.StartsWith("//", StringComparison.Ordinal) ||
+                normalized.StartsWith("mailto:", StringComparison.OrdinalIgnoreCase) ||
+                normalized.StartsWith("tel:", StringComparison.OrdinalIgnoreCase) ||
+                Uri.TryCreate(normalized, UriKind.Absolute, out _))
+            {
+                return normalized;
+            }
+
+            if (!normalized.StartsWith("/"))
+            {
+                normalized = "/" + normalized;
+            }
+
+            foreach (var supportedCulture in CultureHelper.Supported)
+            {
+                var existingPrefix = "/" + supportedCulture;
+                if (normalized.Equals(existingPrefix, StringComparison.OrdinalIgnoreCase))
+                {
+                    return "/" + culture;
+                }
+
+                if (normalized.StartsWith(existingPrefix + "/", StringComparison.OrdinalIgnoreCase))
+                {
+                    return "/" + culture + normalized.Substring(existingPrefix.Length);
+                }
+            }
+
+            return "/" + culture + normalized;
         }
     }
 }
