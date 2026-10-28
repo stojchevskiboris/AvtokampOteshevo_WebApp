@@ -359,3 +359,19 @@ Used to send transactional emails, such as reservation confirmations and notific
 | `SmtpPassword` | `SMTP_APP_PASSWORD` | The password used to authenticate with the SMTP server. For Gmail, use a 16-character **App Password** (requires 2-Step Verification), not the account's regular password. |
 
 > **Security note:** Never commit real credentials to version control. Keep `SmtpPassword` and the database connection string out of the repository, for example by adding `web.config` to `.gitignore` (as this README implies) or by moving secrets into a separate file referenced with `<appSettings file="secrets.config">`.
+
+
+## 🚀 Web Performance & Core Web Vitals Optimization
+
+The repository includes a comprehensive performance optimization suite addressing PageSpeed Insights & Core Web Vitals:
+- **Image Optimization:** Auto-conversion to WebP format and responsive `<picture>` tags.
+- **Hero Video Compression:** High-efficiency WEBM / MP4 compression.
+- **Loading & Script Optimization:** Resource preconnects, script deferral, and LCP prioritization.
+- **Accessibility & SEO:** WCAG 2.2 AA contrast compliance, explicit form control associations, touch target sizing, and security attributes.
+
+For detailed performance documentation and guides, see:
+- [Audit Findings & Status Matrix](docs/performance/AUDIT_FINDINGS.md)
+- [Performance Engineering Plan](docs/performance/PLAN.md)
+- [Performance Changelog](docs/performance/CHANGELOG_PERFORMANCE.md)
+- [Maintainer & Developer Guide](docs/performance/MAINTENANCE_GUIDE.md)
+- [Manual Actions & Server Setup Guide](docs/performance/MANUAL_ACTIONS.md)
